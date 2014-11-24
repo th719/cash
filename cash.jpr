@@ -1,0 +1,660 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<project xmlns="http://xmlns.oracle.com/jdeveloper/903/jproject" nselem="project" class="oracle.jdeveloper.model.JProject">
+   <defaultPackage>th.cash.ui.sale.event</defaultPackage>
+   <defaultPackages class="java.util.ArrayList">
+      <Item class="java.lang.String">th.cash.ui.sale.event</Item>
+      <Item class="java.lang.String">th.cash.ui.sale</Item>
+      <Item class="java.lang.String">th.cash.fr.state</Item>
+      <Item class="java.lang.String">th.cash.model</Item>
+      <Item class="java.lang.String">th.cash.fr.doc</Item>
+      <Item class="java.lang.String">th.cash.ui.sale.dsc</Item>
+      <Item class="java.lang.String">th.cash.card.ui.sale.dsc</Item>
+      <Item class="java.lang.String">th.cash.card.ui</Item>
+      <Item class="java.lang.String">th.cash.card</Item>
+      <Item class="java.lang.String">th.cash.ui.setup</Item>
+      <Item class="java.lang.String">th.cash.test</Item>
+      <Item class="java.lang.String"/>
+      <Item class="java.lang.String">th.cash.fr.err</Item>
+      <Item class="java.lang.String">th.cash.ui.util</Item>
+      <Item class="java.lang.String">th.cash.cd</Item>
+      <Item class="java.lang.String">th.cash.fr</Item>
+      <Item class="java.lang.String">th.cash.dev</Item>
+      <Item class="java.lang.String">th.cash.fr.table</Item>
+      <Item class="java.lang.String">mypackage1</Item>
+   </defaultPackages>
+   <dependencyList/>
+   <htmlRootDirectory path="public_html/"/>
+   <j2eeWebAppName>shop-cash-webapp</j2eeWebAppName>
+   <j2eeWebContextRoot>shop-cash-context-root</j2eeWebContextRoot>
+   <listOfChildren class="oracle.ide.model.DataList">
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/sale/DocCashe.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/sale/SalePanel.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/model/Barcode.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/model/CheckBarcode.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/model/GoodMain.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/model/PwdUserDecode.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/model/SearchData.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/model/SprController.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/model/SprModel.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/model/Tax.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/test/TestConroller.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/model/User.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/fr/FrConst.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/fr/FrDrv.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/fr/FrErrors.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/fr/FrException.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/fr/FrUtil.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/fr/Hex.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/test/TestFr.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/fr/table/FrTable.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/fr/table/TabFieldDescr.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/fr/state/FullStateFr.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/fr/state/ShortStateFr.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/fr/state/StateA.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/fr/doc/FDoc.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/fr/doc/Position.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/fr/doc/Transaction.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/env/CashMain.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/env/DbCfg.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/env/KKMEnv.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/sale/SaleFrame.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/sale/InputLabel.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/test/LabelTestFrame.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/fr/doc/SaleCheck.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/model/Settings.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/fr/table/CellIndex.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/fr/doc/InPay.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/dev/CustDisplay.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/dev/FiscalPrinter.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/fr/FrKPrinter.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/fr/doc/OutPay.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/fr/doc/ZReport.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/fr/doc/Check.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/sale/TypeRenderer.java"/>
+      </Item>
+      <Item class="oracle.ide.model.DeployableTextNode">
+         <URL path="classes/conn.properties"/>
+      </Item>
+      <Item class="oracle.ide.model.XMLDataNode">
+         <URL path="cash.deploy"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/model/Role.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/model/CheckPerm.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/sale/UserException.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/sale/PermException.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/sale/TimerRunnable.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/sale/AScannerSwitcher.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/fr/doc/ReturnCheck.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/fr/doc/TaxSum.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/model/SprUpdater.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.PngImageNode">
+         <URL path="src/logo_a.png"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/sale/ProcessShow.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/cd/PosDisp.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/fr/doc/StrFormat.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/util/UserDlg.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/sale/LogoFrame.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/setup/SetupPanel.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/setup/TabSetPanel.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/setup/ExchSetPanel.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/setup/FrSetPanel.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/setup/SetupFrame.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/sale/RelFlowLayout.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/sale/ColoredRenderer.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/sale/StringColoredRenderer.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/fr/doc/DbConverter.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/sale/DoubleColoredRenderer.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.compiler.ant.AntNode">
+         <URL path="build.xml"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/sale/ProgressFrame.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/fr/err/FrErrHandler.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/fr/doc/Report.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/fr/doc/Pay.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/fr/doc/XReport.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/setup/FrSetTableModel.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/setup/FrTablesPanel.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/sale/CashLoginDialog.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/sale/UsersListDisplayable.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/fr/err/StateFrEvent.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/fr/err/StateFrListener.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/setup/SetDbUtil.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/setup/UISetPanel.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/sale/UpdateLocker.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/sale/PermControl.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/test/ChTest.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/test/KeyTestFrame.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/setup/FrParamsPanel.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/sale/GMSelectPanel.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/sale/TabelUISettings.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/sale/TbColorSettins.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/model/BCComparator.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/model/BCCmp.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/fr/doc/LogConverter.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/card/PaymentSelector.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/card/CardActivator.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/card/CardReport.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/abg/ATrUtil.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/abg/AuthData.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/abg/FConst.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/paym/ACardReader.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/paym/AbgCardActivator.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/paym/BankOper.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/paym/CardInputDialog.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/paym/ForDigField.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/paym/PaymentSelectDialog.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/paym/PaymentSelectPanel.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/paym/SPFilter.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/paym/TestCard.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/abg/ACEmulator.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/model/FixedDsc.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/sale/dsc/TFDscCashe.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/sale/dsc/FDscSelectPanel.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/sale/dsc/FDscSelDialog.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/model/DscCard.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/model/AmassDsc.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/model/AutoDsc.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/model/AutoSchem.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/model/SecSaleRule.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/fr/state/StateConst.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/sale/event/LoadSprEvent.java"/>
+      </Item>
+      <Item class="oracle.jdeveloper.model.JavaSourceNode">
+         <URL path="src/th/cash/ui/sale/event/SaveRepEvent.java"/>
+      </Item>
+   </listOfChildren>
+   <ownerMap/>
+   <projectDocPath>
+      <entries class="[Ljava.net.URL;"/>
+   </projectDocPath>
+   <projectLibraryList class="oracle.jdeveloper.library.JProjectLibraryList">
+      <jdkList class="java.util.ArrayList"/>
+      <libraryList class="java.util.ArrayList"/>
+   </projectLibraryList>
+   <projectSettings>
+      <activeConfigName>Development</activeConfigName>
+      <commonData class="java.util.HashMap">
+         <Item>
+            <Key>oracle.bm.commonIde.data.project.ModelerProjectSettings</Key>
+            <Value class="oracle.bm.commonIde.data.project.ModelerProjectSettings">
+               <modelersPath>
+                  <entries>
+                     <Item path="model/"/>
+                  </entries>
+               </modelersPath>
+            </Value>
+         </Item>
+         <Item>
+            <Key>oracle.jdeveloper.compiler.ant.AntConfiguration</Key>
+            <Value class="oracle.jdeveloper.compiler.ant.AntConfiguration">
+               <arguments class="java.lang.String"/>
+               <makeTarget/>
+               <projectBuildfile/>
+               <rebuildTarget/>
+               <showOutput>true</showOutput>
+            </Value>
+         </Item>
+      </commonData>
+      <configurations class="java.util.TreeMap">
+         <Item>
+            <Key>Development</Key>
+            <Value class="oracle.jdeveloper.model.JProjectConfiguration">
+               <configData class="java.util.HashMap">
+                  <Item>
+                     <Key>oracle.jdeveloper.compiler.OjcConfiguration</Key>
+                     <Value class="oracle.jdeveloper.compiler.OjcConfiguration">
+                        <assertionsEnabled>false</assertionsEnabled>
+                        <copyRes>
+                           <Item>.gif</Item>
+                           <Item>.properties</Item>
+                           <Item>.jpg</Item>
+                           <Item>.jpeg</Item>
+                           <Item>.xml</Item>
+                           <Item>-apf.xml</Item>
+                        </copyRes>
+                        <currentEncoding>KOI8-R</currentEncoding>
+                        <debugInformation>true</debugInformation>
+                        <excludedClasses class="[Ljava.lang.String;"/>
+                        <obfuscate>false</obfuscate>
+                        <showCompileProgress>false</showCompileProgress>
+                        <showDeprecations>true</showDeprecations>
+                        <showObjectDotStaticWarnings>false</showObjectDotStaticWarnings>
+                        <showPartialImportWarnings>false</showPartialImportWarnings>
+                        <showSelfDeprecations>true</showSelfDeprecations>
+                        <showUnusedImportWarnings>false</showUnusedImportWarnings>
+                        <showWarnings>true</showWarnings>
+                        <target>Default</target>
+                        <updateImports>true</updateImports>
+                        <updateZipJarImports>false</updateZipJarImports>
+                     </Value>
+                  </Item>
+                  <Item>
+                     <Key>oracle.jdeveloper.javadoc.JProjectJavadoc</Key>
+                     <Value class="oracle.jdeveloper.javadoc.JProjectJavadoc">
+                        <generateAuthor>false</generateAuthor>
+                        <generateDeprecated>true</generateDeprecated>
+                        <generateIndex>true</generateIndex>
+                        <generateNavbar>true</generateNavbar>
+                        <generateSince>true</generateSince>
+                        <generateTree>true</generateTree>
+                        <generateVersion>false</generateVersion>
+                        <heapSize>32</heapSize>
+                        <miscOptions class="java.lang.String"/>
+                        <oneOneFormat>false</oneOneFormat>
+                        <outputDirectory path="javadoc/"/>
+                        <scope>-protected</scope>
+                     </Value>
+                  </Item>
+                  <Item>
+                     <Key>oracle.jdeveloper.runner.RunConfiguration</Key>
+                     <Value class="oracle.jdeveloper.runner.RunConfiguration">
+                        <VMName>hotspot</VMName>
+                        <allowInput>false</allowInput>
+                        <alwaysUseTarget>false</alwaysUseTarget>
+                        <clearLogBeforeRun>false</clearLogBeforeRun>
+                        <compileBeforeRun>true</compileBeforeRun>
+                        <connectionName/>
+                        <javaOptions>-noverify -Dlog4j.configuration=file:/home/lazarev/wpr/shop/cash/set/test_log.xml -Djava.library.path=/usr/lib/ </javaOptions>
+                        <logCommand>true</logCommand>
+                        <logError>true</logError>
+                        <logExit>true</logExit>
+                        <logOutput>true</logOutput>
+                        <programArguments>/dev/ttyS2 voyager /dev/ttyS1</programArguments>
+                        <runActiveFile>true</runActiveFile>
+                        <runDirectoryURL path="set/"/>
+                        <targetURL path="src/th/cash/env/CashMain.java"/>
+                        <useProxy>true</useProxy>
+                     </Value>
+                  </Item>
+                  <Item>
+                     <Key>oracle.jdevimpl.config.JProjectLibraries</Key>
+                     <Value class="oracle.jdevimpl.config.JProjectLibraries">
+                        <jdkName>j2sdk1.4.2_10_rx</jdkName>
+                        <jdkVersionNumber>1.4.2_10</jdkVersionNumber>
+                        <libraries>Log4J;Forms;ThCommons;kkm_exch_sa;Postgres Jdbc;Xerces XML Parcer;JPos;_cfg_jpos;SwingWorker</libraries>
+                     </Value>
+                  </Item>
+                  <Item>
+                     <Key>oracle.jdevimpl.config.JProjectPaths</Key>
+                     <Value class="oracle.jdevimpl.config.JProjectPaths">
+                        <additionalClassPath>
+                           <entries class="[Ljava.net.URL;"/>
+                        </additionalClassPath>
+                        <outputDirectory path="classes/"/>
+                     </Value>
+                  </Item>
+                  <Item>
+                     <Key>oracle.jdevimpl.idl.config.IdlConfiguration</Key>
+                     <Value class="oracle.jdevimpl.idl.config.IdlConfiguration">
+                        <codeForIncludedFiles>false</codeForIncludedFiles>
+                        <noBindMethods>false</noBindMethods>
+                        <noComments>false</noComments>
+                        <noExampleCode>false</noExampleCode>
+                        <noSkeletonCode>false</noSkeletonCode>
+                        <noStubCode>false</noStubCode>
+                        <noTieCode>false</noTieCode>
+                        <noToString>false</noToString>
+                        <objectWrapper>false</objectWrapper>
+                        <packageName class="java.lang.String"/>
+                     </Value>
+                  </Item>
+                  <Item>
+                     <Key>oracle.jdevimpl.runner.codecoach.CCConfiguration</Key>
+                     <Value class="oracle.jdevimpl.runner.codecoach.CCConfiguration">
+                        <advices>ALL</advices>
+                        <exclude>com;java;javax;sun;sunw;org;oracle</exclude>
+                        <include class="java.lang.String"/>
+                        <level>4</level>
+                     </Value>
+                  </Item>
+                  <Item>
+                     <Key>oracle.jdevimpl.runner.debug.DebugConfiguration</Key>
+                     <Value class="oracle.jdevimpl.runner.debug.DebugConfiguration">
+                        <JPDAClassicDebugArguments>-Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,address=&lt;port></JPDAClassicDebugArguments>
+                        <JPDADebugArguments>-Xdebug -Xrunjdwp:transport=dt_socket,server=y,address=&lt;port></JPDADebugArguments>
+                        <OJVMDebugArguments>-XXdebug,quiet,port&lt;port></OJVMDebugArguments>
+                        <breakpointScope>workspace</breakpointScope>
+                        <remoteDebugging>false</remoteDebugging>
+                        <remoteDebuggingParameters class="java.util.HashMap"/>
+                        <remoteDebuggingParametersSaved>false</remoteDebuggingParametersSaved>
+                        <remoteDebuggingProtocol>ojvm</remoteDebuggingProtocol>
+                        <startOption>running</startOption>
+                        <tracingDisabled>java;javax;sun;sunw;com.sun;org.xml.sax</tracingDisabled>
+                        <tracingEnabled class="java.lang.String"/>
+                     </Value>
+                  </Item>
+                  <Item>
+                     <Key>oracle.jdevimpl.runner.profile.ProfileConfiguration</Key>
+                     <Value class="oracle.jdevimpl.runner.profile.ProfileConfiguration">
+                        <DMSstartID>20000</DMSstartID>
+                        <DMSstate>0</DMSstate>
+                        <eventColumnVisible>
+                           <Item>true</Item>
+                           <Item>true</Item>
+                           <Item>true</Item>
+                           <Item>true</Item>
+                           <Item>true</Item>
+                           <Item>true</Item>
+                        </eventColumnVisible>
+                        <events>G(All events;(G(VM Events;(E(0;GC;-16776961;1);E(10;Wait;-65485;0);E(11;Synch Blocks 0;-39322;0);E(12;Synch Blocks 1;-39322;0);E(13;Synch Blocks 2;-39322;0);E(20;Prepare Class;-16751002;0);E(21;Load Class;-16724992;0);E(22;Resolve Class;-16737997;0);));G(BC4J Events;(E(1000;JBO_MISCELLANEOUS;-4144960;1);E(1001;JDBC_SELECT;-256;1);E(1002;JDBC_CREATE_STATEMENT;-256;1);E(1003;JDBC_CONNECT;-256;1);E(1004;JDBC_CREATE_PREPARED_STATEMENT;-256;1);E(1005;JDBC_EXECUTE;-256;1);E(1006;METAOBJECT_LOAD;-65281;1);E(1007;EXECUTE_QUERY;-16776961;1);E(1008;BC4J_CREATE_COMPOBJ;-65281;0);E(1009;BC4J_CREATE_ROOTAM;-65281;1);E(1010;BC4J_CREATE_VIEWOBJECT;-65281;0);E(1011;BC4J_CREATE_AM;-65281;0);E(1012;BC4J_CREATE_VIEWLINK;-65281;0);E(1013;SQLB_DOENTITYDML;-16776961;1);E(1014;SQLB_DOENTITYSELECT;-16776961;1);E(1015;VIEWOBJECT_GETSTATEMENT;-16776961;1);E(1016;REMOTE_METHOD_CALL;-65536;1);));));</events>
+                        <excludedClasses>java;javax;sun;sunw;com;oracle</excludedClasses>
+                        <excludedInstances class="java.lang.String"/>
+                        <includedClasses class="java.lang.String"/>
+                        <includedInstances class="java.lang.String"/>
+                        <localProfiling>true</localProfiling>
+                        <memColumnVisible>
+                           <Item>true</Item>
+                           <Item>true</Item>
+                           <Item>true</Item>
+                           <Item>true</Item>
+                           <Item>true</Item>
+                           <Item>true</Item>
+                           <Item>true</Item>
+                           <Item>true</Item>
+                           <Item>true</Item>
+                           <Item>true</Item>
+                        </memColumnVisible>
+                        <memoryUpdateInterval>10</memoryUpdateInterval>
+                        <remoteHost class="java.lang.String"/>
+                        <remoteParametersSaved>false</remoteParametersSaved>
+                        <remotePort>4000</remotePort>
+                        <sampleColumnVisible>
+                           <Item>true</Item>
+                           <Item>true</Item>
+                           <Item>true</Item>
+                           <Item>true</Item>
+                           <Item>true</Item>
+                           <Item>true</Item>
+                           <Item>true</Item>
+                        </sampleColumnVisible>
+                        <sampleInterval>5</sampleInterval>
+                        <sliderDepth>20</sliderDepth>
+                        <useAPI>false</useAPI>
+                     </Value>
+                  </Item>
+                  <Item>
+                     <Key>oracle.jdevimpl.sqlj.config.SqljConfiguration</Key>
+                     <Value class="oracle.jdevimpl.sqlj.config.SqljConfiguration">
+                        <checkSemantics>false</checkSemantics>
+                        <codegen>oracle</codegen>
+                        <contextConnectionMap class="java.util.HashMap"/>
+                        <useCache>false</useCache>
+                        <warnAll>false</warnAll>
+                        <warnNull>false</warnNull>
+                        <warnPortable>false</warnPortable>
+                        <warnPrecision>false</warnPrecision>
+                        <warnStrict>false</warnStrict>
+                        <warnVerbose>false</warnVerbose>
+                     </Value>
+                  </Item>
+                  <Item>
+                     <Key>WebappJspCompilerOptions</Key>
+                     <Value class="oracle.jdevimpl.webapp.jsp.JspCompilerOptions">
+                        <requestTimeIntrospection>false</requestTimeIntrospection>
+                     </Value>
+                  </Item>
+               </configData>
+            </Value>
+         </Item>
+      </configurations>
+   </projectSettings>
+   <projectSourcePath>
+      <entries>
+         <Item path="src/"/>
+         <Item path="../ABGRel/src/"/>
+      </entries>
+   </projectSourcePath>
+   <properties class="java.util.HashMap">
+      <Item>
+         <Key>JbxEventListener0</Key>
+         <Value>th.cash.ui.sale.StateFrListener</Value>
+      </Item>
+      <Item>
+         <Key>useDynamicPaths</Key>
+         <Value class="java.lang.Boolean">false</Value>
+      </Item>
+   </properties>
+   <userAuthor/>
+   <userCompany/>
+   <userCopyright/>
+   <userDescription/>
+   <userTitle/>
+   <userVersion/>
+</project>

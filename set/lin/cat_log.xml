@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+
+
+
+   <appender name="EXCH_APR" class="org.apache.log4j.FileAppender">
+     <errorHandler class="org.apache.log4j.helpers.OnlyOnceErrorHandler"/>
+     <param name="File" value="/var/log/kkm/exch.log"/>
+     <param name="Append" value="false"/>
+     <!--param name="DatePattern" value="'.'yyyy-MM-dd"/-->
+
+     <layout class="org.apache.log4j.PatternLayout">
+       <param name="ConversionPattern" value="%d{dd.MM.yy HH:mm:ss} %-5p [%c] %m%n"/>
+     </layout>
+
+   </appender>
+
+   <appender name="UI_APR" class="org.apache.log4j.FileAppender">
+     <errorHandler class="org.apache.log4j.helpers.OnlyOnceErrorHandler"/>
+     <param name="File" value="/var/log/kkm/ui.log"/>
+     <param name="Append" value="true"/>
+     <!--param name="DatePattern" value="'.'yyyy-MM-dd"/-->
+     <layout class="org.apache.log4j.PatternLayout">
+       <param name="ConversionPattern" value="%d{dd.MM.yy HH:mm:ss} %-5p [%c] %m%n"/>
+     </layout>
+   </appender>
+
+   <appender name="MODEL_APR" class="org.apache.log4j.FileAppender">
+     <errorHandler class="org.apache.log4j.helpers.OnlyOnceErrorHandler"/>
+     <param name="File" value="/var/log/kkm/model.log"/>
+     <param name="Append" value="true"/>
+     <!--param name="DatePattern" value="'.'yyyy-MM-dd"/-->
+     <layout class="org.apache.log4j.PatternLayout">
+       <param name="ConversionPattern" value="%d{dd.MM.yy HH:mm:ss} %-5p [%c] %m%n"/>
+     </layout>
+   </appender>
+
+   <appender name="FR_APR" class="org.apache.log4j.FileAppender">
+     <errorHandler class="org.apache.log4j.helpers.OnlyOnceErrorHandler"/>
+     <param name="File" value="/var/log/kkm/fr.log"/>
+     <param name="Append" value="true"/>
+     <!--param name="DatePattern" value="'.'yyyy-MM-dd"/-->
+     <layout class="org.apache.log4j.PatternLayout">
+       <param name="ConversionPattern" value="%d{dd.MM.yy HH:mm:ss} %-5p [%c] %m%n"/>
+     </layout>
+   </appender>
+
+   <appender name="MAIN_APR" class="org.apache.log4j.FileAppender">
+     <errorHandler class="org.apache.log4j.helpers.OnlyOnceErrorHandler"/>
+     <param name="File" value="/var/log/kkm/main.log"/>
+     <param name="Append" value="true"/>
+     <!--param name="DatePattern" value="'.'yyyy-MM-dd"/-->
+     <layout class="org.apache.log4j.PatternLayout">
+       <param name="ConversionPattern" value="%d{dd.MM.yy HH:mm:ss} %-5p [%c] %m%n"/>
+     </layout>
+   </appender>
+
+<!-- Buffer events and log them asynchronously --> 
+<!--appender name="ASYNC" class="org.apache.log4j.AsyncAppender"> 
+  <appender-ref ref="EXCHANGE"/> 
+</appender-->
+
+
+<category name="EXCH" additivity="false"> 
+  <priority value="INFO"/>
+  <appender-ref ref="EXCH_APR"/> 
+</category> 
+
+<category name="UI" additivity="false"> 
+  <priority value="INFO"/>
+  <appender-ref ref="UI_APR"/> 
+</category> 
+
+<category name="MODEL" additivity="false"> 
+  <priority value="DEBUG"/>
+  <appender-ref ref="MODEL_APR"/> 
+</category> 
+
+<category name="FR" additivity="false"> 
+  <priority value="DEBUG"/>
+  <appender-ref ref="FR_APR"/> 
+</category> 
+
+<category name="MAIN" additivity="false"> 
+  <priority value="DEBUG"/>
+  <appender-ref ref="MAIN_APR"/> 
+</category> 
+
+<!--root> 
+  <appender-ref ref="ASYNC"/> 
+</root-->
+
+</log4j:configuration>

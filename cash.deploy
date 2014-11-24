@@ -1,0 +1,33 @@
+<?xml version = '1.0' encoding = 'windows-1251'?>
+<simple-archive-deployment xmlns="http://xmlns.oracle.com/jdeveloper/903/deploy/jar" nselem="simple-archive-deployment" class="oracle.jdeveloper.deploy.jar.ArchiveProfile">
+   <archiveOptions>
+      <additionalManifests>
+         <Item path="for_manifest.txt"/>
+      </additionalManifests>
+      <compressed>true</compressed>
+      <hasManifest>true</hasManifest>
+      <mainClass>th.cash.env.CashMain</mainClass>
+   </archiveOptions>
+   <cdaSettings>
+      <additionalArchives/>
+      <afterFilters/>
+      <beforeFilters/>
+      <duringFilters/>
+      <selectedArchives>
+         <archives class="[Ljava.net.URL;"/>
+         <selectionMode>0</selectionMode>
+      </selectedArchives>
+   </cdaSettings>
+   <jarURL path="deploy/cash.jar"/>
+   <profileDeps/>
+   <selectedProjectFiles>
+      <autoInclude>true</autoInclude>
+      <deploySourceAs>0</deploySourceAs>
+      <files>
+         <Item path="src/th/cash/test/LabelTestFrame.java"/>
+         <Item path="src/th/cash/test/TestConroller.java"/>
+         <Item path="src/th/cash/test/TestFr.java"/>
+      </files>
+      <selectionFilters/>
+   </selectedProjectFiles>
+</simple-archive-deployment>

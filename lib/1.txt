@@ -1,0 +1,56 @@
+  private void test1_actionPerformed(ActionEvent e) //start server
+  {
+    KKMEnv cashEnv = new KKMEnv();
+
+    try
+    {
+      cashEnv.init();
+
+  
+      s=new Server();    
+      Vector params=new Vector();
+
+  // set main server params
+      Vector main_params=new Vector();
+      main_params.add(new Integer(5));  //delay in seconds
+      main_params.add(new Integer(100));  //sleep time in microseconds
+      main_params.add(Boolean.FALSE);  //commit_enabled
+
+  // set checkLoadUnload params
+      Vector p_clu=new Vector();
+      p_clu.add(new Integer(checkLoadUnload.FILE_TYPE_FLAG));
+
+
+      Vector p_fl=new Vector();
+      
+      Vector p_dbl=new Vector();
+
+      Vector p_dbu=new Vector();
+
+      Vector p_fu=new Vector();
+      
+      params.add(main_params);
+      params.add(p_clu);
+      params.add(p_fl);
+      params.add(p_dbl);
+      params.add(p_dbu);
+      params.add(p_fu);
+
+    
+      int init_res=s.init(params,cashEnv);
+      System.out.println("init_res="+init_res);
+      if(init_res==1)
+      {
+        s.start();
+      }  
+    }catch(Exception ex)
+    {
+      ex.printStackTrace();
+    }
+  }
+  
+  private void test2_actionPerformed(ActionEvent e)
+  {
+    s.stopServer();
+    s.interrupt();
+  }

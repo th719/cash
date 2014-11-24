@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+
+
+
+   <appender name="COM_APR" class="org.apache.log4j.FileAppender">
+     <errorHandler class="org.apache.log4j.helpers.OnlyOnceErrorHandler"/>
+     <param name="File" value="c:\\log\\kkm.log"/>
+     <param name="Append" value="true"/>
+     <!--param name="DatePattern" value="'.'yyyy-MM-dd"/-->
+     <layout class="org.apache.log4j.PatternLayout">
+       <param name="ConversionPattern" value="%d{dd.MM.yy HH:mm:ss} %-5p [%c] %m%n"/>
+     </layout>
+   </appender>
+
+
+
+<category name="EXCH" additivity="false"> 
+  <priority value="INFO"/>
+  <appender-ref ref="COM_APR"/> 
+</category> 
+
+<category name="UI" additivity="false"> 
+  <priority value="INFO"/>
+  <appender-ref ref="COM_APR"/> 
+</category> 
+
+<category name="MODEL" additivity="false"> 
+  <priority value="DEBUG"/>
+  <appender-ref ref="COM_APR"/> 
+</category> 
+
+<category name="FR" additivity="false"> 
+  <priority value="DEBUG"/>
+  <appender-ref ref="COM_APR"/> 
+</category> 
+
+
+
+</log4j:configuration>

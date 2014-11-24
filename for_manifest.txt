@@ -1,0 +1,9 @@
+Manifest-version: 1.0
+
+Name: th/cash
+Specification-Title: Shop cash program 
+Specification-Version: 0.1
+Specification-Vendor: TH
+Implementation-Title: th.cash
+Implementation-Version: 0.1.3
+Implementation-Vendor: TH
