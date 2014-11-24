@@ -16,7 +16,7 @@ import javax.swing.JTextField;
 
 import th.cash.model.Settings;
 
-// параметры загрузки / выгрузки справочников
+// п©п╟я─п╟п╪п╣я┌я─я▀ п╥п╟пЁя─я┐п╥п╨п╦ / п╡я▀пЁя─я┐п╥п╨п╦ я│п©я─п╟п╡п╬я┤п╫п╦п╨п╬п╡
 public class ExchSetPanel extends TabSetPanel
 {
 //  private JTextField jtf_kkm_num;
@@ -49,7 +49,7 @@ public class ExchSetPanel extends TabSetPanel
 //
 //    CellConstraints cc = new CellConstraints();
 //
-////    p.add(new JLabel("N кассы"), cc.xy(1, 1));
+////    p.add(new JLabel("N п╨п╟я│я│я▀"), cc.xy(1, 1));
 ////    p.add(jtf_kkm_num = new JTextField(10), cc.xy(3, 1));
 //
 //    p.setBorder(BorderFactory.createTitledBorder("-"));
@@ -60,24 +60,24 @@ public class ExchSetPanel extends TabSetPanel
     p = new JPanel(fl);
 
 
-    p.add(jcb_loadEnabled = new JCheckBox("Разрешить загрузку"), cc.xywh(1, 1, 3, 1));
+    p.add(jcb_loadEnabled = new JCheckBox("п═п╟п╥я─п╣я┬п╦я┌я▄ п╥п╟пЁя─я┐п╥п╨я┐"), cc.xywh(1, 1, 3, 1));
 
-    p.add(new JLabel("Файл справочника"), cc.xy(1, 3));
+    p.add(new JLabel("п╓п╟п╧п╩ я│п©я─п╟п╡п╬я┤п╫п╦п╨п╟"), cc.xy(1, 3));
     p.add(jtf_sprLoadFile = new JTextField(40), cc.xy(3, 3));
 
-    p.add(new JLabel("Флаг загрузки"), cc.xy(1, 5));
+    p.add(new JLabel("п╓п╩п╟пЁ п╥п╟пЁя─я┐п╥п╨п╦"), cc.xy(1, 5));
     p.add(jtf_sprLoadFlag = new JTextField(40), cc.xy(3, 5));
 
 
-    p.add(jcb_unloadEnabled = new JCheckBox("Разрешить выгрузку"), cc.xywh(1, 7, 3, 1));
+    p.add(jcb_unloadEnabled = new JCheckBox("п═п╟п╥я─п╣я┬п╦я┌я▄ п╡я▀пЁя─я┐п╥п╨я┐"), cc.xywh(1, 7, 3, 1));
 
-    p.add(new JLabel("Файл отчета"), cc.xy(1, 9));
+    p.add(new JLabel("п╓п╟п╧п╩ п╬я┌я┤п╣я┌п╟"), cc.xy(1, 9));
     p.add(jtf_repUnloadFile = new JTextField(40), cc.xy(3, 9));
 
-    p.add(new JLabel("Флаг выгрузки"), cc.xy(1, 11));
+    p.add(new JLabel("п╓п╩п╟пЁ п╡я▀пЁя─я┐п╥п╨п╦"), cc.xy(1, 11));
     p.add(jtf_repUnloadFlag = new JTextField(40), cc.xy(3, 11));
 
-    p.setBorder(BorderFactory.createTitledBorder("Обмен данными"));
+    p.setBorder(BorderFactory.createTitledBorder("п·п╠п╪п╣п╫ п╢п╟п╫п╫я▀п╪п╦"));
 
     add(p);
 

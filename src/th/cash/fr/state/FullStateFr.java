@@ -13,33 +13,33 @@ import th.cash.fr.Hex;
 //import th.cash.log.LogUtil;
 import th.cash.fr.FrException;
 
-// дескриптор состояния ФР (ответ на запрос состояния)
+// п╢п╣я│п╨я─п╦п©я┌п╬я─ я│п╬я│я┌п╬я▐п╫п╦я▐ п╓п═ (п╬я┌п╡п╣я┌ п╫п╟ п╥п╟п©я─п╬я│ я│п╬я│я┌п╬я▐п╫п╦я▐)
 public class FullStateFr extends StateA
 {
   // TODO - add date/time fields
-//  private byte   operNum;            // Порядковый номер оператора (1 байт) 1?30
-  private String verSoftFr;          // Версия ПО ФР (2 байта)
-  private int    buildSoftFr;        // Сборка ПО ФР (2 байта) 
-  private byte[] dateSoftFr;         // Дата ПО ФР (3 байта) ДД-ММ-ГГ
-  private byte   frNum;              // Номер в зале (1 байт)
-  private int    curDocNum;          // Сквозной номер текущего документа (2 байта) 
-//  private int    flagsFr;            // Флаги ФР (2 байта) 
-//  private byte   modeFr;             // Режим ФР (1 байт) 
-//  private byte   subModeFr;          // Подрежим ФР (1 байт)
-  private byte   portFr;             // Порт ФР (1 байт) 
-  private String verSofrFp;          // Версия ПО ФП (2 байта)
-  private int    buildSoftFp;        // Сборка ПО ФП (2 байта) 
-  private byte[] dateSoftFp;         // Дата ПО ФП (3 байта) ДД-ММ-ГГ 
-  private byte[] curDt;              // Дата (3 байта) ДД-ММ-ГГ
-  private byte[] curTm;              // Время (3 байта) ЧЧ-ММ-СС
-    private Date curDate;              // то же в формате java.util.Date  
-  private byte   flagsFp;            // Флаги ФП (1 байт)
-  private long   serNumber;          // Заводской номер (4 байта)
-  private int    lastCloseShift;     // Номер последней закрытой смены (2 байта)
-  private int    freeRecordsFp;      // Количество свободных записей в ФП (2 байта)
-  private int    numFiscals;         // Количество перерегистраций (фискализаций) (1 байт)
-  private int    numAccesibleFiscals;// Количество оставшихся перерегистраций (фискализаций) (1 байт)
-  private long   inn;                // ИНН (6 байт)                                   
+//  private byte   operNum;            // п÷п╬я─я▐п╢п╨п╬п╡я▀п╧ п╫п╬п╪п╣я─ п╬п©п╣я─п╟я┌п╬я─п╟ (1 п╠п╟п╧я┌) 1?30
+  private String verSoftFr;          // п▓п╣я─я│п╦я▐ п÷п· п╓п═ (2 п╠п╟п╧я┌п╟)
+  private int    buildSoftFr;        // п║п╠п╬я─п╨п╟ п÷п· п╓п═ (2 п╠п╟п╧я┌п╟) 
+  private byte[] dateSoftFr;         // п■п╟я┌п╟ п÷п· п╓п═ (3 п╠п╟п╧я┌п╟) п■п■-п°п°-п⌠п⌠
+  private byte   frNum;              // п²п╬п╪п╣я─ п╡ п╥п╟п╩п╣ (1 п╠п╟п╧я┌)
+  private int    curDocNum;          // п║п╨п╡п╬п╥п╫п╬п╧ п╫п╬п╪п╣я─ я┌п╣п╨я┐я┴п╣пЁп╬ п╢п╬п╨я┐п╪п╣п╫я┌п╟ (2 п╠п╟п╧я┌п╟) 
+//  private int    flagsFr;            // п╓п╩п╟пЁп╦ п╓п═ (2 п╠п╟п╧я┌п╟) 
+//  private byte   modeFr;             // п═п╣п╤п╦п╪ п╓п═ (1 п╠п╟п╧я┌) 
+//  private byte   subModeFr;          // п÷п╬п╢я─п╣п╤п╦п╪ п╓п═ (1 п╠п╟п╧я┌)
+  private byte   portFr;             // п÷п╬я─я┌ п╓п═ (1 п╠п╟п╧я┌) 
+  private String verSofrFp;          // п▓п╣я─я│п╦я▐ п÷п· п╓п÷ (2 п╠п╟п╧я┌п╟)
+  private int    buildSoftFp;        // п║п╠п╬я─п╨п╟ п÷п· п╓п÷ (2 п╠п╟п╧я┌п╟) 
+  private byte[] dateSoftFp;         // п■п╟я┌п╟ п÷п· п╓п÷ (3 п╠п╟п╧я┌п╟) п■п■-п°п°-п⌠п⌠ 
+  private byte[] curDt;              // п■п╟я┌п╟ (3 п╠п╟п╧я┌п╟) п■п■-п°п°-п⌠п⌠
+  private byte[] curTm;              // п▓я─п╣п╪я▐ (3 п╠п╟п╧я┌п╟) п╖п╖-п°п°-п║п║
+    private Date curDate;              // я┌п╬ п╤п╣ п╡ я└п╬я─п╪п╟я┌п╣ java.util.Date  
+  private byte   flagsFp;            // п╓п╩п╟пЁп╦ п╓п÷ (1 п╠п╟п╧я┌)
+  private long   serNumber;          // п≈п╟п╡п╬п╢я│п╨п╬п╧ п╫п╬п╪п╣я─ (4 п╠п╟п╧я┌п╟)
+  private int    lastCloseShift;     // п²п╬п╪п╣я─ п©п╬я│п╩п╣п╢п╫п╣п╧ п╥п╟п╨я─я▀я┌п╬п╧ я│п╪п╣п╫я▀ (2 п╠п╟п╧я┌п╟)
+  private int    freeRecordsFp;      // п п╬п╩п╦я┤п╣я│я┌п╡п╬ я│п╡п╬п╠п╬п╢п╫я▀я┘ п╥п╟п©п╦я│п╣п╧ п╡ п╓п÷ (2 п╠п╟п╧я┌п╟)
+  private int    numFiscals;         // п п╬п╩п╦я┤п╣я│я┌п╡п╬ п©п╣я─п╣я─п╣пЁп╦я│я┌я─п╟я├п╦п╧ (я└п╦я│п╨п╟п╩п╦п╥п╟я├п╦п╧) (1 п╠п╟п╧я┌)
+  private int    numAccesibleFiscals;// п п╬п╩п╦я┤п╣я│я┌п╡п╬ п╬я│я┌п╟п╡я┬п╦я┘я│я▐ п©п╣я─п╣я─п╣пЁп╦я│я┌я─п╟я├п╦п╧ (я└п╦я│п╨п╟п╩п╦п╥п╟я├п╦п╧) (1 п╠п╟п╧я┌)
+  private long   inn;                // п≤п²п² (6 п╠п╟п╧я┌)                                   
 
 
   public void initFromFr(FrDrv fr) throws FrException
@@ -167,34 +167,34 @@ public class FullStateFr extends StateA
 
   public void printAll()
   {
-    debug("{********************* Полный запрос состояния ФР ***********************");
-    debug("Номер оператора" + TAB + operNum);
-    debug("Версия ПО ФР" + TAB + verSoftFr);
-    debug("Сборка ПО ФР" + TAB + buildSoftFr);
-    debug("Дата ПО ФР" + TAB +  getDTStr(dateSoftFr, '-'));
-    debug("Номер ФР" + TAB + frNum);
-    debug("Номер тек. док." + TAB + curDocNum);
+    debug("{********************* п÷п╬п╩п╫я▀п╧ п╥п╟п©я─п╬я│ я│п╬я│я┌п╬я▐п╫п╦я▐ п╓п═ ***********************");
+    debug("п²п╬п╪п╣я─ п╬п©п╣я─п╟я┌п╬я─п╟" + TAB + operNum);
+    debug("п▓п╣я─я│п╦я▐ п÷п· п╓п═" + TAB + verSoftFr);
+    debug("п║п╠п╬я─п╨п╟ п÷п· п╓п═" + TAB + buildSoftFr);
+    debug("п■п╟я┌п╟ п÷п· п╓п═" + TAB +  getDTStr(dateSoftFr, '-'));
+    debug("п²п╬п╪п╣я─ п╓п═" + TAB + frNum);
+    debug("п²п╬п╪п╣я─ я┌п╣п╨. п╢п╬п╨." + TAB + curDocNum);
 
     printFlags();
     printModes();
 
-    debug("Порт ФР" + TAB + portFr);
-    debug("Версия ПО ФП" + TAB + verSofrFp);
-    debug("Сборка ПО ФП" + TAB + buildSoftFp);
+    debug("п÷п╬я─я┌ п╓п═" + TAB + portFr);
+    debug("п▓п╣я─я│п╦я▐ п÷п· п╓п÷" + TAB + verSofrFp);
+    debug("п║п╠п╬я─п╨п╟ п÷п· п╓п÷" + TAB + buildSoftFp);
 
-    debug("Дата ПО ФП" + TAB +  getDTStr(dateSoftFp, '-'));
-    debug("Тек. дата" + TAB +  getDTStr(curDt, '-'));
-    debug("Время" + TAB +  getDTStr(curTm, ':'));
+    debug("п■п╟я┌п╟ п÷п· п╓п÷" + TAB +  getDTStr(dateSoftFp, '-'));
+    debug("п╒п╣п╨. п╢п╟я┌п╟" + TAB +  getDTStr(curDt, '-'));
+    debug("п▓я─п╣п╪я▐" + TAB +  getDTStr(curTm, ':'));
 
     
-    debug("Серийный номер" + TAB + serNumber);
-    debug("Последняя закрытая смена" + TAB + lastCloseShift);
-    debug("Свободных записей в ФП" + TAB + freeRecordsFp);
-    debug("Число фискализаций" + TAB + numFiscals);
+    debug("п║п╣я─п╦п╧п╫я▀п╧ п╫п╬п╪п╣я─" + TAB + serNumber);
+    debug("п÷п╬я│п╩п╣п╢п╫я▐я▐ п╥п╟п╨я─я▀я┌п╟я▐ я│п╪п╣п╫п╟" + TAB + lastCloseShift);
+    debug("п║п╡п╬п╠п╬п╢п╫я▀я┘ п╥п╟п©п╦я│п╣п╧ п╡ п╓п÷" + TAB + freeRecordsFp);
+    debug("п╖п╦я│п╩п╬ я└п╦я│п╨п╟п╩п╦п╥п╟я├п╦п╧" + TAB + numFiscals);
 
-    debug("Ресурс фискализаций" + TAB + numAccesibleFiscals);
-    debug("ИНН" + TAB + inn);
-    debug("********************* Полный запрос состояния ФР ***********************}");
+    debug("п═п╣я│я┐я─я│ я└п╦я│п╨п╟п╩п╦п╥п╟я├п╦п╧" + TAB + numAccesibleFiscals);
+    debug("п≤п²п²" + TAB + inn);
+    debug("********************* п÷п╬п╩п╫я▀п╧ п╥п╟п©я─п╬я│ я│п╬я│я┌п╬я▐п╫п╦я▐ п╓п═ ***********************}");
    
   }
 }

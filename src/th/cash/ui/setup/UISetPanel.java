@@ -44,10 +44,10 @@ public class UISetPanel extends TabSetPanel
 
     CellConstraints cc = new CellConstraints();
 
-    p.add(new JLabel("N кассы"), cc.xy(1, 1));
+    p.add(new JLabel("N п╨п╟я│я│я▀"), cc.xy(1, 1));
     p.add(jtf_kkm_num = new JTextField(10), cc.xy(3, 1));
 
-    p.setBorder(BorderFactory.createTitledBorder("Основные настройки"));
+    p.setBorder(BorderFactory.createTitledBorder("п·я│п╫п╬п╡п╫я▀п╣ п╫п╟я│я┌я─п╬п╧п╨п╦"));
     add(p);
     
   }
@@ -70,12 +70,12 @@ public class UISetPanel extends TabSetPanel
   
     String s = jtf_kkm_num.getText().trim();
 
-    if ("".equals(s)) return "Необходимо указать номер кассы!";
+    if ("".equals(s)) return "п²п╣п╬п╠я┘п╬п╢п╦п╪п╬ я┐п╨п╟п╥п╟я┌я▄ п╫п╬п╪п╣я─ п╨п╟я│я│я▀!";
 
     int k_n;
-    try { k_n = Integer.parseInt(s); } catch (Exception ex) { return "Некорректно задан номер кассы"; }
+    try { k_n = Integer.parseInt(s); } catch (Exception ex) { return "п²п╣п╨п╬я─я─п╣п╨я┌п╫п╬ п╥п╟п╢п╟п╫ п╫п╬п╪п╣я─ п╨п╟я│я│я▀"; }
 
-    if (k_n < 1 || k_n > 1000000) return "Некорректно задан номер кассы";
+    if (k_n < 1 || k_n > 1000000) return "п²п╣п╨п╬я─я─п╣п╨я┌п╫п╬ п╥п╟п╢п╟п╫ п╫п╬п╪п╣я─ п╨п╟я│я│я▀";
 
     p.setProperty(Settings.P_CASH_NUM, jtf_kkm_num.getText());
 

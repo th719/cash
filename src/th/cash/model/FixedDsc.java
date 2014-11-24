@@ -1,6 +1,6 @@
 package th.cash.model;
 
-// фиксированная скидка
+// я└п╦п╨я│п╦я─п╬п╡п╟п╫п╫п╟я▐ я│п╨п╦п╢п╨п╟
 public class FixedDsc implements Comparable
 {
   private Integer dscId;

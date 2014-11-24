@@ -9,83 +9,83 @@ import java.util.Vector;
 
 public class Settings 
 {
-  // фиксированные ключи к таблице t_set
-  // загрузка   
+  // я└п╦п╨я│п╦я─п╬п╡п╟п╫п╫я▀п╣ п╨п╩я▌я┤п╦ п╨ я┌п╟п╠п╩п╦я├п╣ t_set
+  // п╥п╟пЁя─я┐п╥п╨п╟   
   public final static String UI_LOAD_FILE       = "load_file";
   public final static String UI_LOAD_FLAG       = "load_flag";
   public final static String UI_LOAD_ENABLED    = "load_enabled"; 
 
-  // выгрузка
+  // п╡я▀пЁя─я┐п╥п╨п╟
   public final static String UI_UNLOAD_FILE     = "unload_file";
   public final static String UI_UNLOAD_FLAG     = "unload_flag";
   public final static String UI_UNLOAD_ENABLED  = "unload_enabled";
 
-  // некоторые ссылки на таблицу с настройками 
-  public final static String P_CASH_NUM         = "CASH_NUM";   // новое свойство  для номера кассы
-  public final static String FM_CASH_NUM        = "FR_T[1].1.1"; // пока поддерживаются оба
+  // п╫п╣п╨п╬я┌п╬я─я▀п╣ я│я│я▀п╩п╨п╦ п╫п╟ я┌п╟п╠п╩п╦я├я┐ я│ п╫п╟я│я┌я─п╬п╧п╨п╟п╪п╦ 
+  public final static String P_CASH_NUM         = "CASH_NUM";   // п╫п╬п╡п╬п╣ я│п╡п╬п╧я│я┌п╡п╬  п╢п╩я▐ п╫п╬п╪п╣я─п╟ п╨п╟я│я│я▀
+  public final static String FM_CASH_NUM        = "FR_T[1].1.1"; // п©п╬п╨п╟ п©п╬п╢п╢п╣я─п╤п╦п╡п╟я▌я┌я│я▐ п╬п╠п╟
   public final static String FM_CLEAR_ZREP      = "FR_T[1].1.2";
   public final static String FM_OPEN_MONEYBOX   = "FR_T[1].1.7";
 
-  // использовать весовве датчики для индикации конца ленты
+  // п╦я│п©п╬п╩я▄п╥п╬п╡п╟я┌я▄ п╡п╣я│п╬п╡п╡п╣ п╢п╟я┌я┤п╦п╨п╦ п╢п╩я▐ п╦п╫п╢п╦п╨п╟я├п╦п╦ п╨п╬п╫я├п╟ п╩п╣п╫я┌я▀
   public final static String USE_WEIGHT_SENSORS = "use_weight_sensors";
 
-  // ограничения по кол-вам и суммам
+  // п╬пЁя─п╟п╫п╦я┤п╣п╫п╦я▐ п©п╬ п╨п╬п╩-п╡п╟п╪ п╦ я│я┐п╪п╪п╟п╪
   public final static String MAX_INT_QUAN       = "max_int_quan";
   public final static String MAX_DOUBLE_QUAN    = "max_double_quan";
   public final static String MAX_MONEY_SUM      = "max_money_sum";
   public final static String MAX_CHECK_SUM      = "max_check_sum";
 
   // added new settings
-  // отметки
-  // о авторизации/ выходе
+  // п╬я┌п╪п╣я┌п╨п╦
+  // п╬ п╟п╡я┌п╬я─п╦п╥п╟я├п╦п╦/ п╡я▀я┘п╬п╢п╣
   private final static String LOGIN_MARK        = "login_mark";
-  // о запуске / выключении
+  // п╬ п╥п╟п©я┐я│п╨п╣ / п╡я▀п╨п╩я▌я┤п╣п╫п╦п╦
   private final static String START_MARK        = "start_mark";
-  // записывать транзакции в файл (log4j)
+  // п╥п╟п©п╦я│я▀п╡п╟я┌я▄ я┌я─п╟п╫п╥п╟п╨я├п╦п╦ п╡ я└п╟п╧п╩ (log4j)
   private final static String LOG_TRANS_TO_FILE = "log_trans_to_file";
-  // транзакция о открытии денежного ящика с клавиатуры
+  // я┌я─п╟п╫п╥п╟п╨я├п╦я▐ п╬ п╬я┌п╨я─я▀я┌п╦п╦ п╢п╣п╫п╣п╤п╫п╬пЁп╬ я▐я┴п╦п╨п╟ я│ п╨п╩п╟п╡п╦п╟я┌я┐я─я▀
   private final static String MONEYBOX_MARK     = "moneybox_mark";
-  // транзакция диагностики о завершении ЭКЛЗ
+  // я┌я─п╟п╫п╥п╟п╨я├п╦я▐ п╢п╦п╟пЁп╫п╬я│я┌п╦п╨п╦ п╬ п╥п╟п╡п╣я─я┬п╣п╫п╦п╦ п╜п п⌡п≈
   private final static String DIAGN_EKLZ_FULL   = "diagn_eklz_full";
 
-  // разница во времени между ПК и ФР при которой работа блокируется
+  // я─п╟п╥п╫п╦я├п╟ п╡п╬ п╡я─п╣п╪п╣п╫п╦ п╪п╣п╤п╢я┐ п÷п  п╦ п╓п═ п©я─п╦ п╨п╬я┌п╬я─п╬п╧ я─п╟п╠п╬я┌п╟ п╠п╩п╬п╨п╦я─я┐п╣я┌я│я▐
   private final static String WORK_LOCK_DIF     = "work_lock_dif";
-  // разница во времени, при которой ФР синхронизируется с компом
+  // я─п╟п╥п╫п╦я├п╟ п╡п╬ п╡я─п╣п╪п╣п╫п╦, п©я─п╦ п╨п╬я┌п╬я─п╬п╧ п╓п═ я│п╦п╫я┘я─п╬п╫п╦п╥п╦я─я┐п╣я┌я│я▐ я│ п╨п╬п╪п©п╬п╪
   private final static String TIME_DIF_SEC      = "time_dif_sec";
 
-  // дисплей, сообщение о заблокированной кассе (окно авторизации)
-  // строки разделяются "\n"
+  // п╢п╦я│п©п╩п╣п╧, я│п╬п╬п╠я┴п╣п╫п╦п╣ п╬ п╥п╟п╠п╩п╬п╨п╦я─п╬п╡п╟п╫п╫п╬п╧ п╨п╟я│я│п╣ (п╬п╨п╫п╬ п╟п╡я┌п╬я─п╦п╥п╟я├п╦п╦)
+  // я│я┌я─п╬п╨п╦ я─п╟п╥п╢п╣п╩я▐я▌я┌я│я▐ "\n"
   private final static String LOCKED_CD_TEXT    = "locked_cd_text";
-  // дисплей, сообщение о простое кассы (окно продаж)
+  // п╢п╦я│п©п╩п╣п╧, я│п╬п╬п╠я┴п╣п╫п╦п╣ п╬ п©я─п╬я│я┌п╬п╣ п╨п╟я│я│я▀ (п╬п╨п╫п╬ п©я─п╬п╢п╟п╤)
   private final static String AWAY_CD_TEXT      = "away_cd_text";
 
   //
   private final static String CREDIT_PAY_ENABLED = "credit_pay_enabled";
 
-  // номер терминала для б/н оплаты
+  // п╫п╬п╪п╣я─ я┌п╣я─п╪п╦п╫п╟п╩п╟ п╢п╩я▐ п╠/п╫ п╬п©п╩п╟я┌я▀
   public final static String TRM_NUM            = "trm_num";  
 
-  // номер кассы (для ухода от FR_T[1].1.1 и от записи в таблицы ФР)
+  // п╫п╬п╪п╣я─ п╨п╟я│я│я▀ (п╢п╩я▐ я┐я┘п╬п╢п╟ п╬я┌ FR_T[1].1.1 п╦ п╬я┌ п╥п╟п©п╦я│п╦ п╡ я┌п╟п╠п╩п╦я├я▀ п╓п═)
   private final static String KKM_NUM            = "kkm_num";
 
-  // разрешение скидок
+  // я─п╟п╥я─п╣я┬п╣п╫п╦п╣ я│п╨п╦п╢п╬п╨
   private final static String DISCOUNTS_ENABLED  = "discounts_enabled";
 
-  // шаблон имени свойства для правила 
+  // я┬п╟п╠п╩п╬п╫ п╦п╪п╣п╫п╦ я│п╡п╬п╧я│я┌п╡п╟ п╢п╩я▐ п©я─п╟п╡п╦п╩п╟ 
   private final static String GOOD_ROLE_PREF = "RULE_";
 
   // **************************************************************** 
   private Properties allSet;
-  private Properties frModes;  // для таблицы1 тип и режимы кассы
-  private Properties frCheckText; // для таблицы 
+  private Properties frModes;  // п╢п╩я▐ я┌п╟п╠п╩п╦я├я▀1 я┌п╦п© п╦ я─п╣п╤п╦п╪я▀ п╨п╟я│я│я▀
+  private Properties frCheckText; // п╢п╩я▐ я┌п╟п╠п╩п╦я├я▀ 
 
-  // префикс таблиц
+  // п©я─п╣я└п╦п╨я│ я┌п╟п╠п╩п╦я├
   protected final static String FR_PREF = "FR_T";
 
   private String fr_modes_pref;
   private String fr_check_text_pref;
-  // имена свойств именуются как FR_T[01].1.2
-  // номер таблицы, номер строки, номер столбца
+  // п╦п╪п╣п╫п╟ я│п╡п╬п╧я│я┌п╡ п╦п╪п╣п╫я┐я▌я┌я│я▐ п╨п╟п╨ FR_T[01].1.2
+  // п╫п╬п╪п╣я─ я┌п╟п╠п╩п╦я├я▀, п╫п╬п╪п╣я─ я│я┌я─п╬п╨п╦, п╫п╬п╪п╣я─ я│я┌п╬п╩п╠я├п╟
 
   private  NumberFormat nfmt = NumberFormat.getInstance(Locale.ENGLISH);
   
@@ -98,16 +98,16 @@ public class Settings
   private boolean loadEnabled = false, unloadEnabled = false;
 
 
-  // значения по умолчанию
+  // п╥п╫п╟я┤п╣п╫п╦я▐ п©п╬ я┐п╪п╬п╩я┤п╟п╫п╦я▌
   private final static boolean DEF_USE_WEIGHT_SENSORS = false;
 
-  // ограничители 
+  // п╬пЁя─п╟п╫п╦я┤п╦я┌п╣п╩п╦ 
   private final static double DEF_INT_QUAN_LIMIT = 1000;
   private final static double DEF_DOUBLE_QUAN_LIMIT = 100;
   private final static double DEF_MONEY_SUM_LIMIT = 10000000;
   private final static double DEF_CHECK_SUM_LIMIT = 10000000;
 
-  // транзакции
+  // я┌я─п╟п╫п╥п╟п╨я├п╦п╦
   private final static boolean DEF_LOGIN_MARK    = false;
   private final static boolean DEF_START_MARK    = false;
 
@@ -116,7 +116,7 @@ public class Settings
   private final static boolean DEF_MONEYBOX_MARK = false;
   private final static boolean DEF_DIAGN_EKLZ_FULL    = false;
 
-  private final static int DEF_WORK_LOCK_DIF = 5400;  // полтора часа
+  private final static int DEF_WORK_LOCK_DIF = 5400;  // п©п╬п╩я┌п╬я─п╟ я┤п╟я│п╟
   private final static int DEF_TIME_DIF_SEC = 1;
 
 
@@ -124,13 +124,13 @@ public class Settings
 
   private final static boolean DEF_DSC_ENABLED = false;
 
-  // инициализация отдельных параметров настройки
+  // п╦п╫п╦я├п╦п╟п╩п╦п╥п╟я├п╦я▐ п╬я┌п╢п╣п╩я▄п╫я▀я┘ п©п╟я─п╟п╪п╣я┌я─п╬п╡ п╫п╟я│я┌я─п╬п╧п╨п╦
   private boolean use_weight_sensors = DEF_USE_WEIGHT_SENSORS;
   
-  private double max_int_quan = DEF_INT_QUAN_LIMIT;      // максимальное целое кол-во
-  private double max_double_quan = DEF_DOUBLE_QUAN_LIMIT;   // максимальное дробное кол-во (вес)
-  private double max_money_sum = DEF_MONEY_SUM_LIMIT; // максимальная сумма ден. операции 
-  private double max_check_sum = DEF_CHECK_SUM_LIMIT; // максимальная сумма чека
+  private double max_int_quan = DEF_INT_QUAN_LIMIT;      // п╪п╟п╨я│п╦п╪п╟п╩я▄п╫п╬п╣ я├п╣п╩п╬п╣ п╨п╬п╩-п╡п╬
+  private double max_double_quan = DEF_DOUBLE_QUAN_LIMIT;   // п╪п╟п╨я│п╦п╪п╟п╩я▄п╫п╬п╣ п╢я─п╬п╠п╫п╬п╣ п╨п╬п╩-п╡п╬ (п╡п╣я│)
+  private double max_money_sum = DEF_MONEY_SUM_LIMIT; // п╪п╟п╨я│п╦п╪п╟п╩я▄п╫п╟я▐ я│я┐п╪п╪п╟ п╢п╣п╫. п╬п©п╣я─п╟я├п╦п╦ 
+  private double max_check_sum = DEF_CHECK_SUM_LIMIT; // п╪п╟п╨я│п╦п╪п╟п╩я▄п╫п╟я▐ я│я┐п╪п╪п╟ я┤п╣п╨п╟
 
   private boolean login_mark = DEF_LOGIN_MARK;
   private boolean start_mark = DEF_START_MARK;
@@ -138,18 +138,18 @@ public class Settings
   private boolean moneybox_mark = DEF_MONEYBOX_MARK;
   private boolean diagn_eklz_full = DEF_DIAGN_EKLZ_FULL;
 
-  // разница между ФР и ПК, при которой блокируется продажа 
+  // я─п╟п╥п╫п╦я├п╟ п╪п╣п╤п╢я┐ п╓п═ п╦ п÷п , п©я─п╦ п╨п╬я┌п╬я─п╬п╧ п╠п╩п╬п╨п╦я─я┐п╣я┌я│я▐ п©я─п╬п╢п╟п╤п╟ 
   private int work_lock_dif = DEF_WORK_LOCK_DIF;
-  // разница во времени, при которой устанавливается врема на ФР
+  // я─п╟п╥п╫п╦я├п╟ п╡п╬ п╡я─п╣п╪п╣п╫п╦, п©я─п╦ п╨п╬я┌п╬я─п╬п╧ я┐я│я┌п╟п╫п╟п╡п╩п╦п╡п╟п╣я┌я│я▐ п╡я─п╣п╪п╟ п╫п╟ п╓п═
   private int time_dif_sec = DEF_TIME_DIF_SEC;
 
   private String locked_cd_text1 = null, locked_cd_text2 = null;
   private String away_cd_text1 = null, away_cd_text2 = null;
 
-  // бн. оплата, константы и настройки
+  // п╠п╫. п╬п©п╩п╟я┌п╟, п╨п╬п╫я│я┌п╟п╫я┌я▀ п╦ п╫п╟я│я┌я─п╬п╧п╨п╦
   private boolean creadit_pay_enabled = DEF_CREDIT_PAY_ENABLED;
 
-  // скидки, все виды 
+  // я│п╨п╦п╢п╨п╦, п╡я│п╣ п╡п╦п╢я▀ 
   private boolean discounts_enabled = DEF_DSC_ENABLED;
 
 
@@ -161,11 +161,11 @@ public class Settings
   
   public Settings()
   {
-    // префиксы
+    // п©я─п╣я└п╦п╨я│я▀
     fr_modes_pref = getFrTabPref(1);
     fr_check_text_pref = getFrTabPref(4);
 
-    // наборы свойств
+    // п╫п╟п╠п╬я─я▀ я│п╡п╬п╧я│я┌п╡
     allSet = new Properties();
     frModes = new Properties();
     frCheckText = new Properties();
@@ -190,19 +190,19 @@ public class Settings
   }
 
 
-  // префикс таблицы
+  // п©я─п╣я└п╦п╨я│ я┌п╟п╠п╩п╦я├я▀
   private String getFrTabPref(int tab)
   {
     return FR_PREF + "[" + tab + "]";
   }
 
-  // имя совойства, индексы начинаются с 1
+  // п╦п╪я▐ я│п╬п╡п╬п╧я│я┌п╡п╟, п╦п╫п╢п╣п╨я│я▀ п╫п╟я┤п╦п╫п╟я▌я┌я│я▐ я│ 1
   private String getFrPropName(int tab, int row_num, int col_num)
   {
     return getFrTabPref(tab) + "." + row_num + "." + col_num;
   }
 
-  // по имени свойства определям интедксы
+  // п©п╬ п╦п╪п╣п╫п╦ я│п╡п╬п╧я│я┌п╡п╟ п╬п©я─п╣п╢п╣п╩я▐п╪ п╦п╫я┌п╣п╢п╨я│я▀
   public int[] getTabRowCol(String s)
   {
     int[] res = null;
@@ -214,21 +214,21 @@ public class Settings
       StringBuffer sb;
       char c = 0;
 
-      // читаем номер таблицы
+      // я┤п╦я┌п╟п╣п╪ п╫п╬п╪п╣я─ я┌п╟п╠п╩п╦я├я▀
       while (i < len && !Character.isDigit( c = s.charAt(i) )) i++;
       if (i == len) return res;
       sb = new StringBuffer(String.valueOf( c )); i++;
       while (i < len && Character.isDigit( c = s.charAt(i) )) { sb.append( c ); i++; }
       tab_num = Integer.parseInt(sb.toString());
 
-      // читаем номер строки
+      // я┤п╦я┌п╟п╣п╪ п╫п╬п╪п╣я─ я│я┌я─п╬п╨п╦
       while (i < len && !Character.isDigit( c = s.charAt(i) )) i++;
       if (i == len) return res;
       sb = new StringBuffer(String.valueOf( c )); i++;
       while (i < len && Character.isDigit( c = s.charAt(i) )) { sb.append( c ); i++; }
       row_num = Integer.parseInt(sb.toString());
 
-      // номер колонки
+      // п╫п╬п╪п╣я─ п╨п╬п╩п╬п╫п╨п╦
       while (i < len && !Character.isDigit( c = s.charAt(i) )) i++;
       if (i == len) return res;
       sb = new StringBuffer(String.valueOf( c )); i++;
@@ -288,12 +288,12 @@ public class Settings
     }
   }
 
-  // инициализация свойств (с default значениями)
+  // п╦п╫п╦я├п╦п╟п╩п╦п╥п╟я├п╦я▐ я│п╡п╬п╧я│я┌п╡ (я│ default п╥п╫п╟я┤п╣п╫п╦я▐п╪п╦)
   protected void initDefProps()
   {
-    // новое название свойства
+    // п╫п╬п╡п╬п╣ п╫п╟п╥п╡п╟п╫п╦п╣ я│п╡п╬п╧я│я┌п╡п╟
     cashNumber = getIntegerProperty(allSet.getProperty(P_CASH_NUM));
-    if (cashNumber == null) // для совместимости старое
+    if (cashNumber == null) // п╢п╩я▐ я│п╬п╡п╪п╣я│я┌п╦п╪п╬я│я┌п╦ я│я┌п╟я─п╬п╣
       cashNumber = getIntegerProperty(allSet.getProperty(FM_CASH_NUM));
       
     moneyBoxOpen = getIntegerProperty(allSet.getProperty(FM_OPEN_MONEYBOX, "1"));
@@ -361,12 +361,12 @@ public class Settings
 
     creadit_pay_enabled = getBoolProperty(allSet.getProperty(CREDIT_PAY_ENABLED), DEF_CREDIT_PAY_ENABLED);
 
-    trm_num = allSet.getProperty(TRM_NUM); // при оплате безналом должно быть значение TODO
+    trm_num = allSet.getProperty(TRM_NUM); // п©я─п╦ п╬п©п╩п╟я┌п╣ п╠п╣п╥п╫п╟п╩п╬п╪ п╢п╬п╩п╤п╫п╬ п╠я▀я┌я▄ п╥п╫п╟я┤п╣п╫п╦п╣ TODO
 
     discounts_enabled = getBoolProperty(allSet.getProperty(DISCOUNTS_ENABLED), DEF_DSC_ENABLED);
 
 
-    // правила при регистрации товара 
+    // п©я─п╟п╡п╦п╩п╟ п©я─п╦ я─п╣пЁп╦я│я┌я─п╟я├п╦п╦ я┌п╬п╡п╟я─п╟ 
     Enumeration en = allSet.propertyNames();
     String pn;
     sale_rules = new Vector(1, 10);

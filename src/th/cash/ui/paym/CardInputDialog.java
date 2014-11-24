@@ -25,9 +25,9 @@ import java.awt.event.KeyEvent;
 import th.common.ui.dialog.UserDlg;
 
 /**
- * Для считывания карты
+ * п■п╩я▐ я│я┤п╦я┌я▀п╡п╟п╫п╦я▐ п╨п╟я─я┌я▀
  * 
- * проблема с повторным использованием инстанса этого диалога
+ * п©я─п╬п╠п╩п╣п╪п╟ я│ п©п╬п╡я┌п╬я─п╫я▀п╪ п╦я│п©п╬п╩я▄п╥п╬п╡п╟п╫п╦п╣п╪ п╦п╫я│я┌п╟п╫я│п╟ я█я┌п╬пЁп╬ п╢п╦п╟п╩п╬пЁп╟
  */
 public class CardInputDialog extends JDialog implements KeyListener
 {
@@ -40,11 +40,11 @@ public class CardInputDialog extends JDialog implements KeyListener
   private String track_data, expdate, cnum;
   private Action ok, cancel;
 
-  private int conf_fails = 0; // счетчик количества ошибок подтверждения номера карты
+  private int conf_fails = 0; // я│я┤п╣я┌я┤п╦п╨ п╨п╬п╩п╦я┤п╣я│я┌п╡п╟ п╬я┬п╦п╠п╬п╨ п©п╬п╢я┌п╡п╣я─п╤п╢п╣п╫п╦я▐ п╫п╬п╪п╣я─п╟ п╨п╟я─я┌я▀
   
   public CardInputDialog(Frame owner)
   {
-    super(owner, "Введите карту", true);
+    super(owner, "п▓п╡п╣п╢п╦я┌п╣ п╨п╟я─я┌я┐", true);
 
     init();
 
@@ -78,9 +78,9 @@ public class CardInputDialog extends JDialog implements KeyListener
     JLabel jl_date, jl_f1, jl_fc;
 
 
-    jl_date = new JLabel("Дата:");
-    jl_f1 = new JLabel("Номер:");
-    jl_fc = new JLabel("Последние 4 цифры номера");
+    jl_date = new JLabel("п■п╟я┌п╟:");
+    jl_f1 = new JLabel("п²п╬п╪п╣я─:");
+    jl_fc = new JLabel("п÷п╬я│п╩п╣п╢п╫п╦п╣ 4 я├п╦я└я─я▀ п╫п╬п╪п╣я─п╟");
     
     lbf = jl_date.getFont().deriveFont((float)22);
 
@@ -100,12 +100,12 @@ public class CardInputDialog extends JDialog implements KeyListener
     p1.add(jl_fc, cc.xywh(2, 6, 7, 1));
     p1.add(fc, cc.xy(10, 6));
 
-    ok = new AbstractAction("Ок") 
+    ok = new AbstractAction("п·п╨") 
     {
       public void actionPerformed(ActionEvent e) { do_ok(); }
     };
 
-    cancel = new AbstractAction("Отмена") 
+    cancel = new AbstractAction("п·я┌п╪п╣п╫п╟") 
     {
       public void actionPerformed(ActionEvent e) { do_cancel(); }
     };
@@ -189,12 +189,12 @@ public class CardInputDialog extends JDialog implements KeyListener
       {
         if (conf_fails++ < 3)
         {
-          UserDlg.showError(this, "Подтвердите последние 4 цифры карты");
+          UserDlg.showError(this, "п÷п╬п╢я┌п╡п╣я─п╢п╦я┌п╣ п©п╬я│п╩п╣п╢п╫п╦п╣ 4 я├п╦я└я─я▀ п╨п╟я─я┌я▀");
           fc.setText(""); 
           fc.requestFocus();
         } else
         {
-          UserDlg.showError(this, "Авторизация карты отменена");
+          UserDlg.showError(this, "п░п╡я┌п╬я─п╦п╥п╟я├п╦я▐ п╨п╟я─я┌я▀ п╬я┌п╪п╣п╫п╣п╫п╟");
           do_cancel();
         }
       }

@@ -11,6 +11,6 @@ public interface CardReport
 
   public boolean processReport();
 
-  // что еще ?
+  // я┤я┌п╬ п╣я┴п╣ ?
   
 }

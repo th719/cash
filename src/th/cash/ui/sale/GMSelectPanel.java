@@ -34,7 +34,7 @@ import th.cash.model.*;
 public class GMSelectPanel extends JPanel 
 {
 
-  private final static String[] COL_NAMES = {"Код", "Наименование", "Цена"};
+  private final static String[] COL_NAMES = {"п п╬п╢", "п²п╟п╦п╪п╣п╫п╬п╡п╟п╫п╦п╣", "п╕п╣п╫п╟"};
   private final static int[] COL_WIDTH = new int[]{50, 350, 80};
   private final static Class[] COL_CLASSES = new Class[]{Integer.class, String.class, Double.class};
   
@@ -77,7 +77,7 @@ public class GMSelectPanel extends JPanel
       }
     };
 
-    cancel = new AbstractAction("Отмена")
+    cancel = new AbstractAction("п·я┌п╪п╣п╫п╟")
     {
       public void actionPerformed(ActionEvent e)
       {

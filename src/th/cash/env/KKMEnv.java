@@ -33,35 +33,35 @@ import th.kkm.sa.server.checkLoadUnload;
 public class KKMEnv 
 {
 
-  // конфигурация jdbc
+  // п╨п╬п╫я└п╦пЁя┐я─п╟я├п╦я▐ jdbc
   private DbCfg loginCfg;  
 
-  // модель, контроллер 
+  // п╪п╬п╢п╣п╩я▄, п╨п╬п╫я┌я─п╬п╩п╩п╣я─ 
   private SprModel sprModel;
   private SprController sprController;
 
-  // связано с логином текущий пользователь 
+  // я│п╡я▐п╥п╟п╫п╬ я│ п╩п╬пЁп╦п╫п╬п╪ я┌п╣п╨я┐я┴п╦п╧ п©п╬п╩я▄п╥п╬п╡п╟я┌п╣п╩я▄ 
   private User currentUser = null;
 
-  //     ********      Устройства        *******
-  // фискальник
+  //     ********      пёя│я┌я─п╬п╧я│я┌п╡п╟        *******
+  // я└п╦я│п╨п╟п╩я▄п╫п╦п╨
   private FiscalPrinter fiscal_printer = null;
-  // сканнер (Jpos)
+  // я│п╨п╟п╫п╫п╣я─ (Jpos)
   private Scanner bs = null;
-  // дисплей покупателя
+  // п╢п╦я│п©п╩п╣п╧ п©п╬п╨я┐п©п╟я┌п╣п╩я▐
   private CustDisplay cd = null;
 
-  // поток для обмена данными с сервером
+  // п©п╬я┌п╬п╨ п╢п╩я▐ п╬п╠п╪п╣п╫п╟ п╢п╟п╫п╫я▀п╪п╦ я│ я│п╣я─п╡п╣я─п╬п╪
   private Server exch_thread;
 
-  // коннект для интерфейса, открыт постоянно для записи транзакций
+  // п╨п╬п╫п╫п╣п╨я┌ п╢п╩я▐ п╦п╫я┌п╣я─я└п╣п╧я│п╟, п╬я┌п╨я─я▀я┌ п©п╬я│я┌п╬я▐п╫п╫п╬ п╢п╩я▐ п╥п╟п©п╦я│п╦ я┌я─п╟п╫п╥п╟п╨я├п╦п╧
   private Connection tr_conn;
 
-  // поток для фонового обновления модели и Runnable для него
+  // п©п╬я┌п╬п╨ п╢п╩я▐ я└п╬п╫п╬п╡п╬пЁп╬ п╬п╠п╫п╬п╡п╩п╣п╫п╦я▐ п╪п╬п╢п╣п╩п╦ п╦ Runnable п╢п╩я▐ п╫п╣пЁп╬
   private Thread update_thread = null;   
   private SprUpdater update_run = null;
 
-  // для отображения процесса инициализации
+  // п╢п╩я▐ п╬я┌п╬п╠я─п╟п╤п╣п╫п╦я▐ п©я─п╬я├п╣я│я│п╟ п╦п╫п╦я├п╦п╟п╩п╦п╥п╟я├п╦п╦
   private ProcessShow init_vis;          
 
   // cash module version & build (from manifest)
@@ -74,7 +74,7 @@ public class KKMEnv
 
 
   /**
-   * инициализация справочников
+   * п╦п╫п╦я├п╦п╟п╩п╦п╥п╟я├п╦я▐ я│п©я─п╟п╡п╬я┤п╫п╦п╨п╬п╡
    */
   public void init() throws Exception
   {
@@ -106,7 +106,7 @@ public class KKMEnv
 
 
   /**
-   * параметры подключения к локальной базе
+   * п©п╟я─п╟п╪п╣я┌я─я▀ п©п╬п╢п╨п╩я▌я┤п╣п╫п╦я▐ п╨ п╩п╬п╨п╟п╩я▄п╫п╬п╧ п╠п╟п╥п╣
    */ 
   private void initLoginCfg() throws ClassNotFoundException, IllegalAccessException, InstantiationException, IOException, SQLException
   {
@@ -120,7 +120,7 @@ public class KKMEnv
   }
 
   /**
-   * инициализация справочников и контроллера обновления
+   * п╦п╫п╦я├п╦п╟п╩п╦п╥п╟я├п╦я▐ я│п©я─п╟п╡п╬я┤п╫п╦п╨п╬п╡ п╦ п╨п╬п╫я┌я─п╬п╩п╩п╣я─п╟ п╬п╠п╫п╬п╡п╩п╣п╫п╦я▐
    */
   private void initSpr(Connection c) throws SQLException
   {
@@ -145,7 +145,7 @@ public class KKMEnv
   }
 
   /**
-   * сервер обмена локальных справочников
+   * я│п╣я─п╡п╣я─ п╬п╠п╪п╣п╫п╟ п╩п╬п╨п╟п╩я▄п╫я▀я┘ я│п©я─п╟п╡п╬я┤п╫п╦п╨п╬п╡
    */
   protected void initSprExcServer() 
   {
@@ -194,12 +194,12 @@ public class KKMEnv
   }
 
 
-  // подстройка клавиатуры, переключения фокуса и событий кнопок
+  // п©п╬п╢я│я┌я─п╬п╧п╨п╟ п╨п╩п╟п╡п╦п╟я┌я┐я─я▀, п©п╣я─п╣п╨п╩я▌я┤п╣п╫п╦я▐ я└п╬п╨я┐я│п╟ п╦ я│п╬п╠я▀я┌п╦п╧ п╨п╫п╬п©п╬п╨
   public void initKeyboard()
   {
     log.info("*** Init keyboard: NumLock On ***");
 
-    // NumLock лучше включать при каждом открытии открытии  окна регистрации
+    // NumLock п╩я┐я┤я┬п╣ п╡п╨п╩я▌я┤п╟я┌я▄ п©я─п╦ п╨п╟п╤п╢п╬п╪ п╬я┌п╨я─я▀я┌п╦п╦ п╬я┌п╨я─я▀я┌п╦п╦  п╬п╨п╫п╟ я─п╣пЁп╦я│я┌я─п╟я├п╦п╦
     try {
       Toolkit.getDefaultToolkit().setLockingKeyState(KeyEvent.VK_NUM_LOCK, true);
     } catch (Exception ex)
@@ -250,7 +250,7 @@ public class KKMEnv
 //  {
 //    fiscal_printer.init();
 //
-//    // инициализируем объект состояния  
+//    // п╦п╫п╦я├п╦п╟п╩п╦п╥п╦я─я┐п╣п╪ п╬п╠я┼п╣п╨я┌ я│п╬я│я┌п╬я▐п╫п╦я▐  
 //    fr_state = new FullStateFr();
 //    fr_state.decodeParams(fiscal_printer.getReply());
 //    fr_state.printAll();
@@ -303,8 +303,8 @@ public class KKMEnv
 //    
 //  }
 
-  // временная примочка - копирование настроек в таблицу фискальника
-  // номер таблицы, строки и колонки - из имени свойства
+  // п╡я─п╣п╪п╣п╫п╫п╟я▐ п©я─п╦п╪п╬я┤п╨п╟ - п╨п╬п©п╦я─п╬п╡п╟п╫п╦п╣ п╫п╟я│я┌я─п╬п╣п╨ п╡ я┌п╟п╠п╩п╦я├я┐ я└п╦я│п╨п╟п╩я▄п╫п╦п╨п╟
+  // п╫п╬п╪п╣я─ я┌п╟п╠п╩п╦я├я▀, я│я┌я─п╬п╨п╦ п╦ п╨п╬п╩п╬п╫п╨п╦ - п╦п╥ п╦п╪п╣п╫п╦ я│п╡п╬п╧я│я┌п╡п╟
 //  private void _copyPropToFp(FrKPrinter fp, Properties pr, Class data_class, int sz) throws Exception
 //  {
 //    Enumeration keys;
@@ -328,7 +328,7 @@ public class KKMEnv
 //      else
 //        val = prop;
 //
-////        val = sfmt.getCenterString(prop, ' ', sz); // текст в чеке(по центру)
+////        val = sfmt.getCenterString(prop, ' ', sz); // я┌п╣п╨я│я┌ п╡ я┤п╣п╨п╣(п©п╬ я├п╣п╫я┌я─я┐)
 //        
 //      tidx = getSprModel().getSettings().getTabRowCol(key);
 //
@@ -339,7 +339,7 @@ public class KKMEnv
 //    }
 //  }
 
-  // дисплей покупателя
+  // п╢п╦я│п©п╩п╣п╧ п©п╬п╨я┐п©п╟я┌п╣п╩я▐
   public void initCustomerDisplay(String port) 
   {
     log.info("*** Customer display on " + port);
@@ -353,7 +353,7 @@ public class KKMEnv
       
     } catch (Exception ex)
     {
-      // делаем заглушку, чтобы не проверять null !!!!!!!!!!!
+      // п╢п╣п╩п╟п╣п╪ п╥п╟пЁп╩я┐я┬п╨я┐, я┤я┌п╬п╠я▀ п╫п╣ п©я─п╬п╡п╣я─я▐я┌я▄ null !!!!!!!!!!!
       /*
       cd = new CustDisplay() {
         public void setText(boolean b, String s1, String s2) {
@@ -377,7 +377,7 @@ public class KKMEnv
 
 
   /**
-   * Закрытие устройств, соединений, завершение процессов
+   * п≈п╟п╨я─я▀я┌п╦п╣ я┐я│я┌я─п╬п╧я│я┌п╡, я│п╬п╣п╢п╦п╫п╣п╫п╦п╧, п╥п╟п╡п╣я─я┬п╣п╫п╦п╣ п©я─п╬я├п╣я│я│п╬п╡
    */
   public void close()
   {
@@ -462,7 +462,7 @@ public class KKMEnv
 
 
   //************************************************
-  // поток для обмена через файлы 
+  // п©п╬я┌п╬п╨ п╢п╩я▐ п╬п╠п╪п╣п╫п╟ я┤п╣я─п╣п╥ я└п╟п╧п╩я▀ 
   public Server getExchThread()
   {
     return exch_thread;
@@ -491,7 +491,7 @@ public class KKMEnv
   }
 
   //************************************************
-  // поток обновления справочников в модели
+  // п©п╬я┌п╬п╨ п╬п╠п╫п╬п╡п╩п╣п╫п╦я▐ я│п©я─п╟п╡п╬я┤п╫п╦п╨п╬п╡ п╡ п╪п╬п╢п╣п╩п╦
   public void startUpdThread()
   {
     if (update_thread != null && update_run != null)
@@ -521,7 +521,7 @@ public class KKMEnv
   }
 
   //************************************************
-  // версия и номер сборки основного пакета
+  // п╡п╣я─я│п╦я▐ п╦ п╫п╬п╪п╣я─ я│п╠п╬я─п╨п╦ п╬я│п╫п╬п╡п╫п╬пЁп╬ п©п╟п╨п╣я┌п╟
   protected void setVerAndBuild(String vn, String bn)
   {
     ver = vn; build = bn;

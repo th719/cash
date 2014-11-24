@@ -8,8 +8,8 @@ import javax.swing.SwingUtilities;
 import th.cash.ui.sale.UpdateLocker;
 import th.cash.ui.sale.UsersListDisplayable;
 
-// функционал для потока, который применяет обновления справочника
-// для модели данных
+// я└я┐п╫п╨я├п╦п╬п╫п╟п╩ п╢п╩я▐ п©п╬я┌п╬п╨п╟, п╨п╬я┌п╬я─я▀п╧ п©я─п╦п╪п╣п╫я▐п╣я┌ п╬п╠п╫п╬п╡п╩п╣п╫п╦я▐ я│п©я─п╟п╡п╬я┤п╫п╦п╨п╟
+// п╢п╩я▐ п╪п╬п╢п╣п╩п╦ п╢п╟п╫п╫я▀я┘
 
 public class SprUpdater implements Runnable
 {
@@ -20,11 +20,11 @@ public class SprUpdater implements Runnable
   private SprController contr;
   private SprModel model;
 
-  // обновление элемента интерфейса со списком ползователь
+  // п╬п╠п╫п╬п╡п╩п╣п╫п╦п╣ я█п╩п╣п╪п╣п╫я┌п╟ п╦п╫я┌п╣я─я└п╣п╧я│п╟ я│п╬ я│п©п╦я│п╨п╬п╪ п©п╬п╩п╥п╬п╡п╟я┌п╣п╩я▄
   private UsersListDisplayable observer; 
   private boolean box_notify = false;
 
-  // блокировщик обновления (при открытом чеке)
+  // п╠п╩п╬п╨п╦я─п╬п╡я┴п╦п╨ п╬п╠п╫п╬п╡п╩п╣п╫п╦я▐ (п©я─п╦ п╬я┌п╨я─я▀я┌п╬п╪ я┤п╣п╨п╣)
   private UpdateLocker locker;   
   private boolean lock_enabled = true;
 
@@ -68,14 +68,14 @@ public class SprUpdater implements Runnable
 
     if (lock_enabled)    
     {
-      // применить изменения для модели, с блокировкой
+      // п©я─п╦п╪п╣п╫п╦я┌я▄ п╦п╥п╪п╣п╫п╣п╫п╦я▐ п╢п╩я▐ п╪п╬п╢п╣п╩п╦, я│ п╠п╩п╬п╨п╦я─п╬п╡п╨п╬п╧
       synchronized (locker)
       {
         if (locker.isLocked()) return; else apply();
       }
     } else
     {
-      apply();  // без блокировки
+      apply();  // п╠п╣п╥ п╠п╩п╬п╨п╦я─п╬п╡п╨п╦
     }
 
   }
@@ -84,12 +84,12 @@ public class SprUpdater implements Runnable
   {
     contr.applyChanges();
 
-    if (contr.isDataChanged()) // регистрируем дату последнего обновления 
+    if (contr.isDataChanged()) // я─п╣пЁп╦я│я┌я─п╦я─я┐п╣п╪ п╢п╟я┌я┐ п©п╬я│п╩п╣п╢п╫п╣пЁп╬ п╬п╠п╫п╬п╡п╩п╣п╫п╦я▐ 
     {
       //last_update = new Date();
       //System.out.println("--- SprUpdater " + last_update);
 
-      // оповестить UI со списком пользователей
+      // п╬п©п╬п╡п╣я│я┌п╦я┌я▄ UI я│п╬ я│п©п╦я│п╨п╬п╪ п©п╬п╩я▄п╥п╬п╡п╟я┌п╣п╩п╣п╧
       if (box_notify && contr.isUsersChanged())
         SwingUtilities.invokeLater(new Runnable() 
         {

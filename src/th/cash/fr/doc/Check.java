@@ -18,48 +18,48 @@ import th.cash.model.User;
 import th.common.util.RMath;
 import th.cash.model.FixedDsc;
 
-// чек: продажи или возврата
+// я┤п╣п╨: п©я─п╬п╢п╟п╤п╦ п╦п╩п╦ п╡п╬п╥п╡я─п╟я┌п╟
 public abstract class Check extends FDoc
 {
 
-  // дополнительно для чеков продажи / возврата
-  protected Vector positions = null;   // список позиций
-  protected boolean canceled = false;  // признак отмены чека
+  // п╢п╬п©п╬п╩п╫п╦я┌п╣п╩я▄п╫п╬ п╢п╩я▐ я┤п╣п╨п╬п╡ п©я─п╬п╢п╟п╤п╦ / п╡п╬п╥п╡я─п╟я┌п╟
+  protected Vector positions = null;   // я│п©п╦я│п╬п╨ п©п╬п╥п╦я├п╦п╧
+  protected boolean canceled = false;  // п©я─п╦п╥п╫п╟п╨ п╬я┌п╪п╣п╫я▀ я┤п╣п╨п╟
 
-  // признак того, что транзакции закрытия чека уже добавлены
+  // п©я─п╦п╥п╫п╟п╨ я┌п╬пЁп╬, я┤я┌п╬ я┌я─п╟п╫п╥п╟п╨я├п╦п╦ п╥п╟п╨я─я▀я┌п╦я▐ я┤п╣п╨п╟ я┐п╤п╣ п╢п╬п╠п╟п╡п╩п╣п╫я▀
 //  protected boolean close_tr_added = false; 
 //  protected boolean cancel_tr_added = false;
 
-  // счетчики позиций при печати документа
+  // я│я┤п╣я┌я┤п╦п╨п╦ п©п╬п╥п╦я├п╦п╧ п©я─п╦ п©п╣я┤п╟я┌п╦ п╢п╬п╨я┐п╪п╣п╫я┌п╟
   protected int pr_count = 0; 
 //  protected int pr_section = 0, pr_count = 0; 
-  // pr_section - номер блока, pr_section - номер строки в блоке
-  // номера блоков:
-  // 0 - чек не печатался, 1 - позиции, 2 - сторно, 3 - сумма чека, 
-  // 4 - продажа, 5 - налоги, 6 - закр или отмена
+  // pr_section - п╫п╬п╪п╣я─ п╠п╩п╬п╨п╟, pr_section - п╫п╬п╪п╣я─ я│я┌я─п╬п╨п╦ п╡ п╠п╩п╬п╨п╣
+  // п╫п╬п╪п╣я─п╟ п╠п╩п╬п╨п╬п╡:
+  // 0 - я┤п╣п╨ п╫п╣ п©п╣я┤п╟я┌п╟п╩я│я▐, 1 - п©п╬п╥п╦я├п╦п╦, 2 - я│я┌п╬я─п╫п╬, 3 - я│я┐п╪п╪п╟ я┤п╣п╨п╟, 
+  // 4 - п©я─п╬п╢п╟п╤п╟, 5 - п╫п╟п╩п╬пЁп╦, 6 - п╥п╟п╨я─ п╦п╩п╦ п╬я┌п╪п╣п╫п╟
   
-//  private boolean _pr_rest = true; // признак того, что после ошибки чек допечатывается
+//  private boolean _pr_rest = true; // п©я─п╦п╥п╫п╟п╨ я┌п╬пЁп╬, я┤я┌п╬ п©п╬я│п╩п╣ п╬я┬п╦п╠п╨п╦ я┤п╣п╨ п╢п╬п©п╣я┤п╟я┌я▀п╡п╟п╣я┌я│я▐
 
 
-  // в чеке сумма указывается уже со скидкой (FDoc)
-  // поэтому процент и сумма скидки указывается отдельно
-  private double psum = 0;                        // сумма по позициям
-  private double ch_dsc_pc = 0, ch_dsc_sum = 0;   // если скидка суммой - то процент равен 0
-  private String dsc_check_text = null;           // текст для чека 
+  // п╡ я┤п╣п╨п╣ я│я┐п╪п╪п╟ я┐п╨п╟п╥я▀п╡п╟п╣я┌я│я▐ я┐п╤п╣ я│п╬ я│п╨п╦п╢п╨п╬п╧ (FDoc)
+  // п©п╬я█я┌п╬п╪я┐ п©я─п╬я├п╣п╫я┌ п╦ я│я┐п╪п╪п╟ я│п╨п╦п╢п╨п╦ я┐п╨п╟п╥я▀п╡п╟п╣я┌я│я▐ п╬я┌п╢п╣п╩я▄п╫п╬
+  private double psum = 0;                        // я│я┐п╪п╪п╟ п©п╬ п©п╬п╥п╦я├п╦я▐п╪
+  private double ch_dsc_pc = 0, ch_dsc_sum = 0;   // п╣я│п╩п╦ я│п╨п╦п╢п╨п╟ я│я┐п╪п╪п╬п╧ - я┌п╬ п©я─п╬я├п╣п╫я┌ я─п╟п╡п╣п╫ 0
+  private String dsc_check_text = null;           // я┌п╣п╨я│я┌ п╢п╩я▐ я┤п╣п╨п╟ 
 
-  public void setPercentCheckDsc(double pc)  // установить процентную скидку на чек
+  public void setPercentCheckDsc(double pc)  // я┐я│я┌п╟п╫п╬п╡п╦я┌я▄ п©я─п╬я├п╣п╫я┌п╫я┐я▌ я│п╨п╦п╢п╨я┐ п╫п╟ я┤п╣п╨
   {
     ch_dsc_pc = pc;
     recalkCheckDsc();
   }
 
-  public void setSumCheckDsc(double s)   // установить суммовую скидку на чек 
+  public void setSumCheckDsc(double s)   // я┐я│я┌п╟п╫п╬п╡п╦я┌я▄ я│я┐п╪п╪п╬п╡я┐я▌ я│п╨п╦п╢п╨я┐ п╫п╟ я┤п╣п╨ 
   {
     ch_dsc_sum = s;
     recalkCheckDsc();
   }
 
-  public void cancelCheckDsc()   // отменить скидку на чек
+  public void cancelCheckDsc()   // п╬я┌п╪п╣п╫п╦я┌я▄ я│п╨п╦п╢п╨я┐ п╫п╟ я┤п╣п╨
   {
     ch_dsc_pc = 0;
     ch_dsc_sum = 0;
@@ -67,25 +67,25 @@ public abstract class Check extends FDoc
     recalkCheckDsc();
   }
 
-  // процент скидки на чек
+  // п©я─п╬я├п╣п╫я┌ я│п╨п╦п╢п╨п╦ п╫п╟ я┤п╣п╨
   public double getCheckDscPc() { return ch_dsc_pc; }
 
-  // сумма скидки в чеке 
+  // я│я┐п╪п╪п╟ я│п╨п╦п╢п╨п╦ п╡ я┤п╣п╨п╣ 
   public double getCheckDscSum() { return ch_dsc_sum; }
 
-  // просто сумма позиций в чеке 
+  // п©я─п╬я│я┌п╬ я│я┐п╪п╪п╟ п©п╬п╥п╦я├п╦п╧ п╡ я┤п╣п╨п╣ 
   public double getCheckPosSum() { return psum; }
   
-  // пересчет скидки ()
+  // п©п╣я─п╣я│я┤п╣я┌ я│п╨п╦п╢п╨п╦ ()
   private void recalkCheckDsc()
   { 
-    // если процентная скидка то пересчитываем сумму скидки
+    // п╣я│п╩п╦ п©я─п╬я├п╣п╫я┌п╫п╟я▐ я│п╨п╦п╢п╨п╟ я┌п╬ п©п╣я─п╣я│я┤п╦я┌я▀п╡п╟п╣п╪ я│я┐п╪п╪я┐ я│п╨п╦п╢п╨п╦
     if (ch_dsc_pc != 0) ch_dsc_sum = RMath.round( psum * ch_dsc_pc / 100, 2);
-    // если же скидка суммой - ничего не пересчитваем, так и остается
-    sum = psum - ch_dsc_sum;  // меняем сумму со скидкой
+    // п╣я│п╩п╦ п╤п╣ я│п╨п╦п╢п╨п╟ я│я┐п╪п╪п╬п╧ - п╫п╦я┤п╣пЁп╬ п╫п╣ п©п╣я─п╣я│я┤п╦я┌п╡п╟п╣п╪, я┌п╟п╨ п╦ п╬я│я┌п╟п╣я┌я│я▐
+    sum = psum - ch_dsc_sum;  // п╪п╣п╫я▐п╣п╪ я│я┐п╪п╪я┐ я│п╬ я│п╨п╦п╢п╨п╬п╧
   }
 
-  // установить фиксированную скидку для чека  
+  // я┐я│я┌п╟п╫п╬п╡п╦я┌я▄ я└п╦п╨я│п╦я─п╬п╡п╟п╫п╫я┐я▌ я│п╨п╦п╢п╨я┐ п╢п╩я▐ я┤п╣п╨п╟  
   public void setFixedCheckDiscount(Connection c, FixedDsc fd, User u) 
   {
     boolean is_sum = fd.getIsSum() != null && fd.getIsSum().booleanValue();
@@ -108,7 +108,7 @@ public abstract class Check extends FDoc
     transactions.add(t);*/
   }
 
-  // добавить позицию к чеку
+  // п╢п╬п╠п╟п╡п╦я┌я▄ п©п╬п╥п╦я├п╦я▌ п╨ я┤п╣п╨я┐
   public void addPosition(Position p)
   {
     if (positions == null) positions = new Vector();
@@ -117,13 +117,13 @@ public abstract class Check extends FDoc
 
     if (p.getSum() != null)
     {
-      psum = RMath.round( psum + p.getSum().doubleValue(), 2); // меняем сумму по позициям
-      recalkCheckDsc(); // пересчитываем
+      psum = RMath.round( psum + p.getSum().doubleValue(), 2); // п╪п╣п╫я▐п╣п╪ я│я┐п╪п╪я┐ п©п╬ п©п╬п╥п╦я├п╦я▐п╪
+      recalkCheckDsc(); // п©п╣я─п╣я│я┤п╦я┌я▀п╡п╟п╣п╪
     }
   }
 
   // **************************************************************************
-  // добавить с фиксацией в кеше транзакций
+  // п╢п╬п╠п╟п╡п╦я┌я▄ я│ я└п╦п╨я│п╟я├п╦п╣п╧ п╡ п╨п╣я┬п╣ я┌я─п╟п╫п╥п╟п╨я├п╦п╧
   public void addPos(Connection c, Position p, User u)
     throws SQLException
   {
@@ -146,7 +146,7 @@ public abstract class Check extends FDoc
              quan, sum, 
              p.getGname(), p.getGtaxId());
 
-    // в t нет кода транзакции
+    // п╡ t п╫п╣я┌ п╨п╬п╢п╟ я┌я─п╟п╫п╥п╟п╨я├п╦п╦
     transactions.add(t);
 
 //    saveCurTr(c, t);
@@ -163,7 +163,7 @@ public abstract class Check extends FDoc
     }
   }
 
-  // сторнировать позицию из списка позиций (не путать с транзакциями)
+  // я│я┌п╬я─п╫п╦я─п╬п╡п╟я┌я▄ п©п╬п╥п╦я├п╦я▌ п╦п╥ я│п©п╦я│п╨п╟ п©п╬п╥п╦я├п╦п╧ (п╫п╣ п©я┐я┌п╟я┌я▄ я│ я┌я─п╟п╫п╥п╟п╨я├п╦я▐п╪п╦)
   public void stornoPosition(Position p)
   {
     if (p.getSum() != null) 
@@ -174,7 +174,7 @@ public abstract class Check extends FDoc
   }
 
   // **************************************************************************
-  // используется при интерактивном создании чека !!! ???
+  // п╦я│п©п╬п╩я▄п╥я┐п╣я┌я│я▐ п©я─п╦ п╦п╫я┌п╣я─п╟п╨я┌п╦п╡п╫п╬п╪ я│п╬п╥п╢п╟п╫п╦п╦ я┤п╣п╨п╟ !!! ???
   public void stornoPos(Connection c, Position p, User u)
     throws SQLException
   {
@@ -184,7 +184,7 @@ public abstract class Check extends FDoc
 
     double p_quan = p.getQuantity().doubleValue(), p_sum = p.getSum().doubleValue();
 
-    // если это сторно продажи - то кол-во и сумма с отрицательным знаком
+    // п╣я│п╩п╦ я█я┌п╬ я│я┌п╬я─п╫п╬ п©я─п╬п╢п╟п╤п╦ - я┌п╬ п╨п╬п╩-п╡п╬ п╦ я│я┐п╪п╪п╟ я│ п╬я┌я─п╦я├п╟я┌п╣п╩я▄п╫я▀п╪ п╥п╫п╟п╨п╬п╪
     if (Position.SALE_POS.equals(p.getType()) )
     {
       p_quan = -p_quan; p_sum = -p_sum;
@@ -195,13 +195,13 @@ public abstract class Check extends FDoc
              p.getGoodId().intValue(), 0, p.getPrice().doubleValue(), 
              p_quan, p_sum, p.getGname(), p.getGtaxId());
     
-    // в t нет кода транзакции
+    // п╡ t п╫п╣я┌ п╨п╬п╢п╟ я┌я─п╟п╫п╥п╟п╨я├п╦п╦
     transactions.add(t);
 //    saveCurTr(c, t);
     DbConverter.saveTransToBuf(c, t);
   }
 
-  // установить список позиций в чеке (восстановление чека)
+  // я┐я│я┌п╟п╫п╬п╡п╦я┌я▄ я│п©п╦я│п╬п╨ п©п╬п╥п╦я├п╦п╧ п╡ я┤п╣п╨п╣ (п╡п╬я│я│я┌п╟п╫п╬п╡п╩п╣п╫п╦п╣ я┤п╣п╨п╟)
   protected void setPositions(Vector pos)
   {
     positions = pos;
@@ -218,12 +218,12 @@ public abstract class Check extends FDoc
     transactions = tr;
   }
 
-  // установить номер документа 
+  // я┐я│я┌п╟п╫п╬п╡п╦я┌я▄ п╫п╬п╪п╣я─ п╢п╬п╨я┐п╪п╣п╫я┌п╟ 
   public void setDocNum(int num)
   {
     super.setDocNum(num);
 
-    // проставляем номер во всех транзакциях
+    // п©я─п╬я│я┌п╟п╡п╩я▐п╣п╪ п╫п╬п╪п╣я─ п╡п╬ п╡я│п╣я┘ я┌я─п╟п╫п╥п╟п╨я├п╦я▐я┘
     if (transactions != null)
     {
       Transaction t;
@@ -235,7 +235,7 @@ public abstract class Check extends FDoc
     }
   }
 
-  // пересчет суммы чека
+  // п©п╣я─п╣я│я┤п╣я┌ я│я┐п╪п╪я▀ я┤п╣п╨п╟
   private void recalcSum()
   {
     int i = 0;
@@ -253,7 +253,7 @@ public abstract class Check extends FDoc
     recalkCheckDsc();
   }
 
-  // налоги в чеке (суммы по группам налога)
+  // п╫п╟п╩п╬пЁп╦ п╡ я┤п╣п╨п╣ (я│я┐п╪п╪я▀ п©п╬ пЁя─я┐п©п©п╟п╪ п╫п╟п╩п╬пЁп╟)
   private Vector calkTaxes()
   {
     Vector taxes = null;
@@ -286,21 +286,21 @@ public abstract class Check extends FDoc
         if (taxSum == null)
           taxes.add( taxSum = new TaxSum(gtax_id, p.getTname(), tpc.doubleValue()));
         
-        // добавляем значение налога
+        // п╢п╬п╠п╟п╡п╩я▐п╣п╪ п╥п╫п╟я┤п╣п╫п╦п╣ п╫п╟п╩п╬пЁп╟
         taxSum.setSum(taxSum.getSum() + _calcNalog(p.getSum().doubleValue(), taxSum.getTaxPc())); 
       }
     }
     return taxes;
   }
 
-  // сумма налога в позиции
+  // я│я┐п╪п╪п╟ п╫п╟п╩п╬пЁп╟ п╡ п©п╬п╥п╦я├п╦п╦
   private double _calcNalog(double sum, double pc)
   {
     return RMath.round( sum - sum * 100 / (100 + pc), 2 );
   }
 
 
-  // отметить отмену чека
+  // п╬я┌п╪п╣я┌п╦я┌я▄ п╬я┌п╪п╣п╫я┐ я┤п╣п╨п╟
   public void cancel(User u)
   {
     canceled = true;
@@ -313,7 +313,7 @@ public abstract class Check extends FDoc
     return canceled;
   }
 
-  // удаляет транзакции закрытия чека (нужно для корректной отчены чека)
+  // я┐п╢п╟п╩я▐п╣я┌ я┌я─п╟п╫п╥п╟п╨я├п╦п╦ п╥п╟п╨я─я▀я┌п╦я▐ я┤п╣п╨п╟ (п╫я┐п╤п╫п╬ п╢п╩я▐ п╨п╬я─я─п╣п╨я┌п╫п╬п╧ п╬я┌я┤п╣п╫я▀ я┤п╣п╨п╟)
    /*
   protected void removeCloseData()
   {
@@ -331,8 +331,8 @@ public abstract class Check extends FDoc
   }
   */
 
-  // для removeCloseOrCancelData()
-  // добавлены и транзакции итогов по скидкам
+  // п╢п╩я▐ removeCloseOrCancelData()
+  // п╢п╬п╠п╟п╡п╩п╣п╫я▀ п╦ я┌я─п╟п╫п╥п╟п╨я├п╦п╦ п╦я┌п╬пЁп╬п╡ п©п╬ я│п╨п╦п╢п╨п╟п╪
   private final static int[] CH_ITOG_TR = 
     new int[]{Transaction.PAYMENT, Transaction.CLOSE_CHECK, Transaction.CANCEL_CHECK,
               Transaction.ITOG_DSC_SUM, Transaction.ITOG_DSC_PC, Transaction.CHECK_DSC_DET};
@@ -344,11 +344,11 @@ public abstract class Check extends FDoc
     return i < size;
   }
 
-  // Зачистка итогов в чеке ---
-  // убирает последние транзакции закрытия или отмены чека
-  // нужно для отработки ошибок, когда документ завершен,
-  // но ошибки не позволили зафиксировать его в фискальной 
-  // памяти или в журнале 
+  // п≈п╟я┤п╦я│я┌п╨п╟ п╦я┌п╬пЁп╬п╡ п╡ я┤п╣п╨п╣ ---
+  // я┐п╠п╦я─п╟п╣я┌ п©п╬я│п╩п╣п╢п╫п╦п╣ я┌я─п╟п╫п╥п╟п╨я├п╦п╦ п╥п╟п╨я─я▀я┌п╦я▐ п╦п╩п╦ п╬я┌п╪п╣п╫я▀ я┤п╣п╨п╟
+  // п╫я┐п╤п╫п╬ п╢п╩я▐ п╬я┌я─п╟п╠п╬я┌п╨п╦ п╬я┬п╦п╠п╬п╨, п╨п╬пЁп╢п╟ п╢п╬п╨я┐п╪п╣п╫я┌ п╥п╟п╡п╣я─я┬п╣п╫,
+  // п╫п╬ п╬я┬п╦п╠п╨п╦ п╫п╣ п©п╬п╥п╡п╬п╩п╦п╩п╦ п╥п╟я└п╦п╨я│п╦я─п╬п╡п╟я┌я▄ п╣пЁп╬ п╡ я└п╦я│п╨п╟п╩я▄п╫п╬п╧ 
+  // п©п╟п╪я▐я┌п╦ п╦п╩п╦ п╡ п╤я┐я─п╫п╟п╩п╣ 
               
   protected void removeCloseOrCancelData()
   {
@@ -361,27 +361,27 @@ public abstract class Check extends FDoc
       {
         t = (Transaction)transactions.get(sz - 1);
         to_remove = inList(CH_ITOG_TR, t.getType());
-        if (to_remove) transactions.remove(--sz); // удаляем последний
+        if (to_remove) transactions.remove(--sz); // я┐п╢п╟п╩я▐п╣п╪ п©п╬я│п╩п╣п╢п╫п╦п╧
       }
 //      close_tr_added = false;
-//      cancel_tr_added = false; // в принципе можно обойтись без флажков ... если продумать ...
+//      cancel_tr_added = false; // п╡ п©я─п╦п╫я├п╦п©п╣ п╪п╬п╤п╫п╬ п╬п╠п╬п╧я┌п╦я│я▄ п╠п╣п╥ я└п╩п╟п╤п╨п╬п╡ ... п╣я│п╩п╦ п©я─п╬п╢я┐п╪п╟я┌я▄ ...
 //    }
   }
   
    
   // **************************************************************************
-  // условие печати строк, сделано для возможности отработки ошибок
-  // строка,позиция, или операция закрытия печатается, если чек еще 
-  // не печатался ни разу или если это недопечатанный остаток чека
-  // перед повторной печатью  чек, разумеется, менять нельзя!!!
+  // я┐я│п╩п╬п╡п╦п╣ п©п╣я┤п╟я┌п╦ я│я┌я─п╬п╨, я│п╢п╣п╩п╟п╫п╬ п╢п╩я▐ п╡п╬п╥п╪п╬п╤п╫п╬я│я┌п╦ п╬я┌я─п╟п╠п╬я┌п╨п╦ п╬я┬п╦п╠п╬п╨
+  // я│я┌я─п╬п╨п╟,п©п╬п╥п╦я├п╦я▐, п╦п╩п╦ п╬п©п╣я─п╟я├п╦я▐ п╥п╟п╨я─я▀я┌п╦я▐ п©п╣я┤п╟я┌п╟п╣я┌я│я▐, п╣я│п╩п╦ я┤п╣п╨ п╣я┴п╣ 
+  // п╫п╣ п©п╣я┤п╟я┌п╟п╩я│я▐ п╫п╦ я─п╟п╥я┐ п╦п╩п╦ п╣я│п╩п╦ я█я┌п╬ п╫п╣п╢п╬п©п╣я┤п╟я┌п╟п╫п╫я▀п╧ п╬я│я┌п╟я┌п╬п╨ я┤п╣п╨п╟
+  // п©п╣я─п╣п╢ п©п╬п╡я┌п╬я─п╫п╬п╧ п©п╣я┤п╟я┌я▄я▌  я┤п╣п╨, я─п╟п╥я┐п╪п╣п╣я┌я│я▐, п╪п╣п╫я▐я┌я▄ п╫п╣п╩я▄п╥я▐!!!
   private boolean _pprint(int pc)
   {
     return pc >= pr_count;
   }
   
-  // ширина строки при печати 
+  // я┬п╦я─п╦п╫п╟ я│я┌я─п╬п╨п╦ п©я─п╦ п©п╣я┤п╟я┌п╦ 
   private final static int WCH_NUM = 36;
-  // вопросики по дизайну чека, однако
+  // п╡п╬п©я─п╬я│п╦п╨п╦ п©п╬ п╢п╦п╥п╟п╧п╫я┐ я┤п╣п╨п╟, п╬п╢п╫п╟п╨п╬
   public void print(FiscalPrinter fp) throws Exception
   {
     int pc = 0;
@@ -396,7 +396,7 @@ public abstract class Check extends FDoc
       StrFormat sfmt = new StrFormat();
       Vector storno_pos = null;
 
-      // печатаем как строки все позиции чека
+      // п©п╣я┤п╟я┌п╟п╣п╪ п╨п╟п╨ я│я┌я─п╬п╨п╦ п╡я│п╣ п©п╬п╥п╦я├п╦п╦ я┤п╣п╨п╟
       for (i = 0; i < positions.size();i++)
       {
         p = (Position)positions.get(i);
@@ -413,12 +413,12 @@ public abstract class Check extends FDoc
       }
 
 
-      // отдельно печатаем сторнированные позиции
+      // п╬я┌п╢п╣п╩я▄п╫п╬ п©п╣я┤п╟я┌п╟п╣п╪ я│я┌п╬я─п╫п╦я─п╬п╡п╟п╫п╫я▀п╣ п©п╬п╥п╦я├п╦п╦
       if (storno_pos != null)
       {
 
         if (_pprint(pc))
-          fp.printString( sfmt.getCenterString( "Сторно", ' ', WCH_NUM ));
+          fp.printString( sfmt.getCenterString( "п║я┌п╬я─п╫п╬", ' ', WCH_NUM ));
         pc++;
       
         for (i = 0; i < storno_pos.size(); i++)
@@ -432,19 +432,19 @@ public abstract class Check extends FDoc
       }
 
 
-      // подчек и печатаем строкой итог чека
-      // 2.04.2009 отменено по служебке
+      // п©п╬п╢я┤п╣п╨ п╦ п©п╣я┤п╟я┌п╟п╣п╪ я│я┌я─п╬п╨п╬п╧ п╦я┌п╬пЁ я┤п╣п╨п╟
+      // 2.04.2009 п╬я┌п╪п╣п╫п╣п╫п╬ п©п╬ я│п╩я┐п╤п╣п╠п╨п╣
 /*
       if (_pprint(pc))
         fp.printString(sfmt.getSEString(null, '=', null, WCH_NUM));
       pc++;
 
       if (_pprint(pc))
-        fp.printString(sfmt.getSEString("Всего", '.', sfmt.getMoneyFmt().format(getSum()), WCH_NUM));
+        fp.printString(sfmt.getSEString("п▓я│п╣пЁп╬", '.', sfmt.getMoneyFmt().format(getSum()), WCH_NUM));
       pc++;
 */
 
-      // фиксируем абстрактную операцию продажи или возврата - одну на весь чек
+      // я└п╦п╨я│п╦я─я┐п╣п╪ п╟п╠я│я┌я─п╟п╨я┌п╫я┐я▌ п╬п©п╣я─п╟я├п╦я▌ п©я─п╬п╢п╟п╤п╦ п╦п╩п╦ п╡п╬п╥п╡я─п╟я┌п╟ - п╬п╢п╫я┐ п╫п╟ п╡п╣я│я▄ я┤п╣п╨
       switch (type_fd)
       {
         case FD_SALE_TYPE   : if (_pprint(pc)) fp.salePostition(1, sum, ""); pc++; break;
@@ -452,7 +452,7 @@ public abstract class Check extends FDoc
       }
 
 
-      // печатаем суммы налогов, по каждой из групп
+      // п©п╣я┤п╟я┌п╟п╣п╪ я│я┐п╪п╪я▀ п╫п╟п╩п╬пЁп╬п╡, п©п╬ п╨п╟п╤п╢п╬п╧ п╦п╥ пЁя─я┐п©п©
       if (taxes != null && taxes.size() > 0)
       {
         TaxSum ts; 
@@ -466,14 +466,14 @@ public abstract class Check extends FDoc
         }
       }
 
-      // печатаем информацию о скидке / надбавке
+      // п©п╣я┤п╟я┌п╟п╣п╪ п╦п╫я└п╬я─п╪п╟я├п╦я▌ п╬ я│п╨п╦п╢п╨п╣ / п╫п╟п╢п╠п╟п╡п╨п╣
       if (getCheckDscSum() != 0)
       {
         if (_pprint(pc)) 
             fp.printString(sfmt.getSEString(dsc_check_text, '.', sfmt.getMoneyFmt().format(getCheckDscSum()), WCH_NUM));
       }
 
-      // отмена или закрытие чека
+      // п╬я┌п╪п╣п╫п╟ п╦п╩п╦ п╥п╟п╨я─я▀я┌п╦п╣ я┤п╣п╨п╟
       if (isCanceled())
       {
         if (_pprint(pc)) 

@@ -32,27 +32,27 @@ import java.util.Collections;
 
 public class AbgCardActivator implements CardActivator 
 {
-  // номер терминала, параметр обязательный 
+  // п╫п╬п╪п╣я─ я┌п╣я─п╪п╦п╫п╟п╩п╟, п©п╟я─п╟п╪п╣я┌я─ п╬п╠я▐п╥п╟я┌п╣п╩я▄п╫я▀п╧ 
   private String trm_num;
 
-  // каталоги где находятся файлы транзакций и файлы отчетов
-  // файлы могут иметь последовательную нумерацию 
-  // причем данные в файл отчета дописываются АС
+  // п╨п╟я┌п╟п╩п╬пЁп╦ пЁп╢п╣ п╫п╟я┘п╬п╢я▐я┌я│я▐ я└п╟п╧п╩я▀ я┌я─п╟п╫п╥п╟п╨я├п╦п╧ п╦ я└п╟п╧п╩я▀ п╬я┌я┤п╣я┌п╬п╡
+  // я└п╟п╧п╩я▀ п╪п╬пЁя┐я┌ п╦п╪п╣я┌я▄ п©п╬я│п╩п╣п╢п╬п╡п╟я┌п╣п╩я▄п╫я┐я▌ п╫я┐п╪п╣я─п╟я├п╦я▌ 
+  // п©я─п╦я┤п╣п╪ п╢п╟п╫п╫я▀п╣ п╡ я└п╟п╧п╩ п╬я┌я┤п╣я┌п╟ п╢п╬п©п╦я│я▀п╡п╟я▌я┌я│я▐ п░п║
   private String tr_remote_dir;
 
-  // каталог, где обрабатываются авторизационные файлы 
+  // п╨п╟я┌п╟п╩п╬пЁ, пЁп╢п╣ п╬п╠я─п╟п╠п╟я┌я▀п╡п╟я▌я┌я│я▐ п╟п╡я┌п╬я─п╦п╥п╟я├п╦п╬п╫п╫я▀п╣ я└п╟п╧п╩я▀ 
   private String auth_remote_dir; 
 
-  // каталог для файлика с текущими транзакциями (для закрфтия дня по картам )
+  // п╨п╟я┌п╟п╩п╬пЁ п╢п╩я▐ я└п╟п╧п╩п╦п╨п╟ я│ я┌п╣п╨я┐я┴п╦п╪п╦ я┌я─п╟п╫п╥п╟п╨я├п╦я▐п╪п╦ (п╢п╩я▐ п╥п╟п╨я─я└я┌п╦я▐ п╢п╫я▐ п©п╬ п╨п╟я─я┌п╟п╪ )
   private String cur_tr_dir;      
 
-  // для уже обработанных отчетов локальный каталог 
+  // п╢п╩я▐ я┐п╤п╣ п╬п╠я─п╟п╠п╬я┌п╟п╫п╫я▀я┘ п╬я┌я┤п╣я┌п╬п╡ п╩п╬п╨п╟п╩я▄п╫я▀п╧ п╨п╟я┌п╟п╩п╬пЁ 
   private String arch_dir;        
 
   // ----------------------------------------------------------------------
 
-  // файл, в котором накапливаются транзакции смены
-  // потом делается закрытие дня по банковским картам 
+  // я└п╟п╧п╩, п╡ п╨п╬я┌п╬я─п╬п╪ п╫п╟п╨п╟п©п╩п╦п╡п╟я▌я┌я│я▐ я┌я─п╟п╫п╥п╟п╨я├п╦п╦ я│п╪п╣п╫я▀
+  // п©п╬я┌п╬п╪ п╢п╣п╩п╟п╣я┌я│я▐ п╥п╟п╨я─я▀я┌п╦п╣ п╢п╫я▐ п©п╬ п╠п╟п╫п╨п╬п╡я│п╨п╦п╪ п╨п╟я─я┌п╟п╪ 
   private File tr_buf_file;       
 
 
@@ -72,7 +72,7 @@ public class AbgCardActivator implements CardActivator
   public void setParams(Properties p)
   {
     trm_num = p.getProperty(Settings.TRM_NUM);
-    // здесь же настраиваются и каталоги ... 
+    // п╥п╢п╣я│я▄ п╤п╣ п╫п╟я│я┌я─п╟п╦п╡п╟я▌я┌я│я▐ п╦ п╨п╟я┌п╟п╩п╬пЁп╦ ... 
     tr_remote_dir = p.getProperty(P_TR_REMOTE_DIR);
     auth_remote_dir = p.getProperty(P_AUTH_REMOTE_DIR);
     cur_tr_dir = p.getProperty(P_CUR_TR_DIR);
@@ -87,7 +87,7 @@ public class AbgCardActivator implements CardActivator
 //    return cid.isSelected() ? cid.getTrackData() : null;
 //  }
 
-  // запрос безналичной суммы 
+  // п╥п╟п©я─п╬я│ п╠п╣п╥п╫п╟п╩п╦я┤п╫п╬п╧ я│я┐п╪п╪я▀ 
   public Object requestSum(String card_data, double sum)
   {
     
@@ -155,7 +155,7 @@ public class AbgCardActivator implements CardActivator
         new File(fn_req).delete();
       }
 
-      //ans = req; // временно 
+      //ans = req; // п╡я─п╣п╪п╣п╫п╫п╬ 
 
     } catch  (Exception ex)
     {
@@ -170,13 +170,13 @@ public class AbgCardActivator implements CardActivator
 
 
 
-  // печать банковских чеков ...
+  // п©п╣я┤п╟я┌я▄ п╠п╟п╫п╨п╬п╡я│п╨п╦я┘ я┤п╣п╨п╬п╡ ...
   private final static int WCH_NUM = 36;
 
   public String printBankCheck(FiscalPrinter pr, Object p1) throws Exception
   {
     AuthData d = (AuthData)p1;
-    String a1, a2, a3, a4; // параметры адреса терминала - откуда брать ?
+    String a1, a2, a3, a4; // п©п╟я─п╟п╪п╣я┌я─я▀ п╟п╢я─п╣я│п╟ я┌п╣я─п╪п╦п╫п╟п╩п╟ - п╬я┌п╨я┐п╢п╟ п╠я─п╟я┌я▄ ?
 
     StrFormat fmt = new StrFormat();
     String sd1,sd2;
@@ -197,9 +197,9 @@ public class AbgCardActivator implements CardActivator
     ci2 = fmt.getSEString("XXXX-XXXX-XXXX-" + cnn.substring(12, 16), ' ', cdd.substring(2, 4) + '/' + cdd.substring(0, 2), WCH_NUM);
 
 
-    String  sum_s = fmt.getSEString("СУММА:", ' ', d.getValue(7).trim() + " RUB", 18);
+    String  sum_s = fmt.getSEString("п║пёп°п°п░:", ' ', d.getValue(7).trim() + " RUB", 18);
 
-    String auth_s = fmt.getSEString("Авторизовано:", ' ', d.getValue(12), WCH_NUM);
+    String auth_s = fmt.getSEString("п░п╡я┌п╬я─п╦п╥п╬п╡п╟п╫п╬:", ' ', d.getValue(12), WCH_NUM);
 
     SimpleDateFormat sdf_tr = new SimpleDateFormat("ddMMyyHHmmss");
     String tr_date = d.getValue(8) + d.getValue(9);
@@ -220,7 +220,7 @@ public class AbgCardActivator implements CardActivator
     return null;
 
   }
-   // печать 1 экземпляра
+   // п©п╣я┤п╟я┌я▄ 1 я█п╨п╥п╣п╪п©п╩я▐я─п╟
   private void _printBankCheck(FiscalPrinter pr, String pd1, String pd2, String ci_s1, String ci_s2, 
                                String sum_s, String auth_s, String date_s, FrTable tb, StrFormat fmt) throws Exception
   {
@@ -236,7 +236,7 @@ public class AbgCardActivator implements CardActivator
     
     pr.transportTape(1, true);
 
-    pr.printBoldString("ОПЛАТА");    
+    pr.printBoldString("п·п÷п⌡п░п╒п░");    
     pr.printBoldString(sum_s);    
 
     pr.transportTape(1, true);
@@ -245,29 +245,29 @@ public class AbgCardActivator implements CardActivator
 
     pr.transportTape(1, true);
 
-//    pr.printString("ДЕБЕТУЙТЕ МОЙ СЧЕТ");
-//    pr.printString("ПОДПИСЬ КЛИЕНТА:");
+//    pr.printString("п■п∙п▒п∙п╒пёп≥п╒п∙ п°п·п≥ п║п╖п∙п╒");
+//    pr.printString("п÷п·п■п÷п≤п║п╛ п п⌡п≤п∙п²п╒п░:");
     
     pr.transportTape(2, true);
     pr.printString(fmt.getCenterString("", '_', WCH_NUM));
-    pr.printString(fmt.getCenterString("( подпись кассира )", ' ', WCH_NUM));
+    pr.printString(fmt.getCenterString("( п©п╬п╢п©п╦я│я▄ п╨п╟я│я│п╦я─п╟ )", ' ', WCH_NUM));
 
     pr.transportTape(2, true);
     pr.printString(fmt.getCenterString("", '_', WCH_NUM));
-    pr.printString(fmt.getCenterString("( подпись клиента )", ' ', WCH_NUM));
+    pr.printString(fmt.getCenterString("( п©п╬п╢п©п╦я│я▄ п╨п╩п╦п╣п╫я┌п╟ )", ' ', WCH_NUM));
 
 
     pr.transportTape(1, true);
     pr.printString(fmt.getCenterString(date_s, ' ', WCH_NUM));
     
-    pr.printString(fmt.getCenterString(" СПАСИБО ЗА ПОКУПКУ ", '-', WCH_NUM));
+    pr.printString(fmt.getCenterString(" п║п÷п░п║п≤п▒п· п≈п░ п÷п·п пёп÷п пё ", '-', WCH_NUM));
     pr.transportTape(1, true);
 
     pr.transportTape(4, true);
 
-    pr.cutCheck(); // отрезка
+    pr.cutCheck(); // п╬я┌я─п╣п╥п╨п╟
 
-    // клише для следующего документа 
+    // п╨п╩п╦я┬п╣ п╢п╩я▐ я│п╩п╣п╢я┐я▌я┴п╣пЁп╬ п╢п╬п╨я┐п╪п╣п╫я┌п╟ 
     int i, len = tb.getNumRows();
     for (i = len - 4; i < len; i++)
       if (tb.getValueAt(i, 0) != null) pr.printString(tb.getValueAt(i, 0).toString());
@@ -277,8 +277,8 @@ public class AbgCardActivator implements CardActivator
   
 
   /**
-   * возвращает часть имени файла транзакций. Эта часть представляет собой
-   * дату открытия файла транзакций, те дату начала смены по картам
+   * п╡п╬п╥п╡я─п╟я┴п╟п╣я┌ я┤п╟я│я┌я▄ п╦п╪п╣п╫п╦ я└п╟п╧п╩п╟ я┌я─п╟п╫п╥п╟п╨я├п╦п╧. п╜я┌п╟ я┤п╟я│я┌я▄ п©я─п╣п╢я│я┌п╟п╡п╩я▐п╣я┌ я│п╬п╠п╬п╧
+   * п╢п╟я┌я┐ п╬я┌п╨я─я▀я┌п╦я▐ я└п╟п╧п╩п╟ я┌я─п╟п╫п╥п╟п╨я├п╦п╧, я┌п╣ п╢п╟я┌я┐ п╫п╟я┤п╟п╩п╟ я│п╪п╣п╫я▀ п©п╬ п╨п╟я─я┌п╟п╪
    * YY_MM_DD_HH_MM
    */
   public String getBankShiftFn() throws IOException
@@ -302,11 +302,11 @@ public class AbgCardActivator implements CardActivator
     return s == null ? null : new SimpleDateFormat(TR_FILE_DATE_MASK).parse(s);
   }
 
-  // подготовка файла для отчета по банковским картам
-  // имя файла транзакций сожержит дату открытия смены (первой безналличной транзакции)
-  // если файл отсутствует - то создаем новый 
+  // п©п╬п╢пЁп╬я┌п╬п╡п╨п╟ я└п╟п╧п╩п╟ п╢п╩я▐ п╬я┌я┤п╣я┌п╟ п©п╬ п╠п╟п╫п╨п╬п╡я│п╨п╦п╪ п╨п╟я─я┌п╟п╪
+  // п╦п╪я▐ я└п╟п╧п╩п╟ я┌я─п╟п╫п╥п╟п╨я├п╦п╧ я│п╬п╤п╣я─п╤п╦я┌ п╢п╟я┌я┐ п╬я┌п╨я─я▀я┌п╦я▐ я│п╪п╣п╫я▀ (п©п╣я─п╡п╬п╧ п╠п╣п╥п╫п╟п╩п╩п╦я┤п╫п╬п╧ я┌я─п╟п╫п╥п╟п╨я├п╦п╦)
+  // п╣я│п╩п╦ я└п╟п╧п╩ п╬я┌я│я┐я┌я│я┌п╡я┐п╣я┌ - я┌п╬ я│п╬п╥п╢п╟п╣п╪ п╫п╬п╡я▀п╧ 
 
-  // поиск существующих файлов по шаблону
+  // п©п╬п╦я│п╨ я│я┐я┴п╣я│я┌п╡я┐я▌я┴п╦я┘ я└п╟п╧п╩п╬п╡ п©п╬ я┬п╟п╠п╩п╬п╫я┐
   private File searchTrFile(String dir, String pref) throws IOException
   {
     File tr_dir = new File(dir);
@@ -330,7 +330,7 @@ public class AbgCardActivator implements CardActivator
   }
 
  
-  // создать новый файл транзакций или венруть ссылку на старый, уже открытый
+  // я│п╬п╥п╢п╟я┌я▄ п╫п╬п╡я▀п╧ я└п╟п╧п╩ я┌я─п╟п╫п╥п╟п╨я├п╦п╧ п╦п╩п╦ п╡п╣п╫я─я┐я┌я▄ я│я│я▀п╩п╨я┐ п╫п╟ я│я┌п╟я─я▀п╧, я┐п╤п╣ п╬я┌п╨я─я▀я┌я▀п╧
   private File prepareTrFile() throws IOException
   {
     if (cur_tr_dir == null) return null;
@@ -349,7 +349,7 @@ public class AbgCardActivator implements CardActivator
 
 
   private final static String TR_FILE_DATE_MASK = "yy_MM_dd_HH_mm";
-  // суффикс для нумерации файла по текущему времени
+  // я│я┐я└я└п╦п╨я│ п╢п╩я▐ п╫я┐п╪п╣я─п╟я├п╦п╦ я└п╟п╧п╩п╟ п©п╬ я┌п╣п╨я┐я┴п╣п╪я┐ п╡я─п╣п╪п╣п╫п╦
   private String makeCurTimeMark()
   {
     SimpleDateFormat sdf_fl = new SimpleDateFormat(TR_FILE_DATE_MASK);
@@ -374,7 +374,7 @@ public class AbgCardActivator implements CardActivator
       
   }
 
-  // Запись данных банковской транзакции в строку транзакции
+  // п≈п╟п©п╦я│я▄ п╢п╟п╫п╫я▀я┘ п╠п╟п╫п╨п╬п╡я│п╨п╬п╧ я┌я─п╟п╫п╥п╟п╨я├п╦п╦ п╡ я│я┌я─п╬п╨я┐ я┌я─п╟п╫п╥п╟п╨я├п╦п╦
   public String saveBankTrans(Object d) 
   {
     String result = null;
@@ -401,12 +401,12 @@ public class AbgCardActivator implements CardActivator
           tr_wr.flush();
           tr_wr.close();
         } else
-          result = "Не удалось создать журнал банковских транзакций " + tr_buf_file.getCanonicalPath();
-      } result = "Не определен файл журнала банковских транзакций";
+          result = "п²п╣ я┐п╢п╟п╩п╬я│я▄ я│п╬п╥п╢п╟я┌я▄ п╤я┐я─п╫п╟п╩ п╠п╟п╫п╨п╬п╡я│п╨п╦я┘ я┌я─п╟п╫п╥п╟п╨я├п╦п╧ " + tr_buf_file.getCanonicalPath();
+      } result = "п²п╣ п╬п©я─п╣п╢п╣п╩п╣п╫ я└п╟п╧п╩ п╤я┐я─п╫п╟п╩п╟ п╠п╟п╫п╨п╬п╡я│п╨п╦я┘ я┌я─п╟п╫п╥п╟п╨я├п╦п╧";
     } catch (Exception ex)
     {
       log.error(ex.getMessage(), ex);
-      result = "Ошибка при записи транзакции: " + ex.getMessage();
+      result = "п·я┬п╦п╠п╨п╟ п©я─п╦ п╥п╟п©п╦я│п╦ я┌я─п╟п╫п╥п╟п╨я├п╦п╦: " + ex.getMessage();
     }
 
     return result;
@@ -429,9 +429,9 @@ public class AbgCardActivator implements CardActivator
     os.close();
   }
 
-  // закрыть смену по банковским картам
-  // файлы отчетов обрабатываются и после этого удаляются из рабочего каталога обмена
-  // дополнительно перемещение в локальный архив
+  // п╥п╟п╨я─я▀я┌я▄ я│п╪п╣п╫я┐ п©п╬ п╠п╟п╫п╨п╬п╡я│п╨п╦п╪ п╨п╟я─я┌п╟п╪
+  // я└п╟п╧п╩я▀ п╬я┌я┤п╣я┌п╬п╡ п╬п╠я─п╟п╠п╟я┌я▀п╡п╟я▌я┌я│я▐ п╦ п©п╬я│п╩п╣ я█я┌п╬пЁп╬ я┐п╢п╟п╩я▐я▌я┌я│я▐ п╦п╥ я─п╟п╠п╬я┤п╣пЁп╬ п╨п╟я┌п╟п╩п╬пЁп╟ п╬п╠п╪п╣п╫п╟
+  // п╢п╬п©п╬п╩п╫п╦я┌п╣п╩я▄п╫п╬ п©п╣я─п╣п╪п╣я┴п╣п╫п╦п╣ п╡ п╩п╬п╨п╟п╩я▄п╫я▀п╧ п╟я─я┘п╦п╡
 
   private final static String BFN_PREF = "_buf_tr_";
   private final static String CFN_PREF = "_cur_tr_";
@@ -444,7 +444,7 @@ public class AbgCardActivator implements CardActivator
     log.info("makeReport() start");
     System.out.println("makeReport() start");
 
-    if (cur_tr_dir == null) return "Parameter for Report dir is null"; // фатальная ошибка, каталог отчета не указан
+    if (cur_tr_dir == null) return "Parameter for Report dir is null"; // я└п╟я┌п╟п╩я▄п╫п╟я▐ п╬я┬п╦п╠п╨п╟, п╨п╟я┌п╟п╩п╬пЁ п╬я┌я┤п╣я┌п╟ п╫п╣ я┐п╨п╟п╥п╟п╫
 
     String res = null; 
 
@@ -458,12 +458,12 @@ public class AbgCardActivator implements CardActivator
     
     try
     {
-      // ищем текущий файл транзакций, копию того, что находится на удаленном ресурсе    
+      // п╦я┴п╣п╪ я┌п╣п╨я┐я┴п╦п╧ я└п╟п╧п╩ я┌я─п╟п╫п╥п╟п╨я├п╦п╧, п╨п╬п©п╦я▌ я┌п╬пЁп╬, я┤я┌п╬ п╫п╟я┘п╬п╢п╦я┌я│я▐ п╫п╟ я┐п╢п╟п╩п╣п╫п╫п╬п╪ я─п╣я│я┐я─я│п╣    
       File in_proc_file = searchTrFile(cur_tr_dir, CFN_PREF);
 
       if (in_proc_file == null)
       {
-        // подготовить файл транзакций для обработки
+        // п©п╬п╢пЁп╬я┌п╬п╡п╦я┌я▄ я└п╟п╧п╩ я┌я─п╟п╫п╥п╟п╨я├п╦п╧ п╢п╩я▐ п╬п╠я─п╟п╠п╬я┌п╨п╦
         File buf_file =  searchTrFile(cur_tr_dir, BFN_PREF);
         if (buf_file != null)
         {
@@ -481,30 +481,30 @@ public class AbgCardActivator implements CardActivator
           report_file = new File(tr_remote_dir + File.separator + REP_PREF + dmark);
           
         } else
-         res = "Нет данных для закрытия смены."; // нет транзакций для отчета
+         res = "п²п╣я┌ п╢п╟п╫п╫я▀я┘ п╢п╩я▐ п╥п╟п╨я─я▀я┌п╦я▐ я│п╪п╣п╫я▀."; // п╫п╣я┌ я┌я─п╟п╫п╥п╟п╨я├п╦п╧ п╢п╩я▐ п╬я┌я┤п╣я┌п╟
         
       } else
       {
-        // в локальном каталоге есть копия файла транзакций, который в данный момент на обработке
-        // ищем файл запроса в каталоге АС
+        // п╡ п╩п╬п╨п╟п╩я▄п╫п╬п╪ п╨п╟я┌п╟п╩п╬пЁп╣ п╣я│я┌я▄ п╨п╬п©п╦я▐ я└п╟п╧п╩п╟ я┌я─п╟п╫п╥п╟п╨я├п╦п╧, п╨п╬я┌п╬я─я▀п╧ п╡ п╢п╟п╫п╫я▀п╧ п╪п╬п╪п╣п╫я┌ п╫п╟ п╬п╠я─п╟п╠п╬я┌п╨п╣
+        // п╦я┴п╣п╪ я└п╟п╧п╩ п╥п╟п©я─п╬я│п╟ п╡ п╨п╟я┌п╟п╩п╬пЁп╣ п░п║
         File remote_req_file = searchTrFile(tr_remote_dir, REQ_PREF);
         if (remote_req_file == null || !remote_req_file.exists())
         {
-          // если нет файла запроса ищем отчет
+          // п╣я│п╩п╦ п╫п╣я┌ я└п╟п╧п╩п╟ п╥п╟п©я─п╬я│п╟ п╦я┴п╣п╪ п╬я┌я┤п╣я┌
           File remote_rep_file = searchTrFile(tr_remote_dir, REP_PREF);
           if (remote_rep_file == null || !remote_rep_file.exists())
           {
-            // ни отчета, ни запроса нет на удаленном сервере, ОШИБКА
-            res = "Отчет АС не найден";
+            // п╫п╦ п╬я┌я┤п╣я┌п╟, п╫п╦ п╥п╟п©я─п╬я│п╟ п╫п╣я┌ п╫п╟ я┐п╢п╟п╩п╣п╫п╫п╬п╪ я│п╣я─п╡п╣я─п╣, п·п╗п≤п▒п п░
+            res = "п·я┌я┤п╣я┌ п░п║ п╫п╣ п╫п╟п╧п╢п╣п╫";
           } else
           {
-            // есть отчет
+            // п╣я│я┌я▄ п╬я┌я┤п╣я┌
             parse_report = true;
             report_file = remote_rep_file;
           }
         } else
         {
-          // нужно продолжать ожидать ответ, пока появится отчет
+          // п╫я┐п╤п╫п╬ п©я─п╬п╢п╬п╩п╤п╟я┌я▄ п╬п╤п╦п╢п╟я┌я▄ п╬я┌п╡п╣я┌, п©п╬п╨п╟ п©п╬я▐п╡п╦я┌я│я▐ п╬я┌я┤п╣я┌
           wait_for_report = true;
           String dmark = remote_req_file.getName();
           dmark = dmark.substring(dmark.length() - TR_FILE_DATE_MASK.length() - 4);
@@ -532,7 +532,7 @@ public class AbgCardActivator implements CardActivator
         log.info(i < max_iter ? "Ok" : "No report ...");
 
         if (!parse_report)
-          res = "Ошибка. Файл отчета АС отсутствует";
+          res = "п·я┬п╦п╠п╨п╟. п╓п╟п╧п╩ п╬я┌я┤п╣я┌п╟ п░п║ п╬я┌я│я┐я┌я│я┌п╡я┐п╣я┌";
         
       }
 
@@ -546,40 +546,40 @@ public class AbgCardActivator implements CardActivator
         report_file.renameTo(local_report_file);
 
 
-        // разбираем файл транзакций и файл отчета всесте и перегонаяем все это в кассовые транщакции
+        // я─п╟п╥п╠п╦я─п╟п╣п╪ я└п╟п╧п╩ я┌я─п╟п╫п╥п╟п╨я├п╦п╧ п╦ я└п╟п╧п╩ п╬я┌я┤п╣я┌п╟ п╡я│п╣я│я┌п╣ п╦ п©п╣я─п╣пЁп╬п╫п╟я▐п╣п╪ п╡я│п╣ я█я┌п╬ п╡ п╨п╟я│я│п╬п╡я▀п╣ я┌я─п╟п╫я┴п╟п╨я├п╦п╦
         File cur_tr_file = new File(cur_tr_dir + File.separator + CFN_PREF + dmark);
 
         log.info("Tr - " + cur_tr_file + "   rep_file - " + local_report_file);
  
         parseReport(cur_tr_file, local_report_file, c, kkm_num, cashier_num, log_tr_to_file); // TODO
 
-        // оба файла переносим в архив
+        // п╬п╠п╟ я└п╟п╧п╩п╟ п©п╣я─п╣п╫п╬я│п╦п╪ п╡ п╟я─я┘п╦п╡
 //        copyFile(local_report_file, new File(arch_dir + File.separator + REP_PREF + dmark));
 //        copyFile(cur_tr_file, new File(arch_dir + File.separator + CFN_PREF + dmark));
         local_report_file.renameTo( new File(arch_dir + File.separator + REP_PREF + dmark));
         cur_tr_file.renameTo( new File(arch_dir + File.separator + REQ_PREF + dmark));
       }
     
-        // файл идентифицируется временнОй меткой - и транзакции и отчет
-        // сначала поиск тр. файла в уданном каталоге отчета, он может еще там лежать
+        // я└п╟п╧п╩ п╦п╢п╣п╫я┌п╦я└п╦я├п╦я─я┐п╣я┌я│я▐ п╡я─п╣п╪п╣п╫п╫п·п╧ п╪п╣я┌п╨п╬п╧ - п╦ я┌я─п╟п╫п╥п╟п╨я├п╦п╦ п╦ п╬я┌я┤п╣я┌
+        // я│п╫п╟я┤п╟п╩п╟ п©п╬п╦я│п╨ я┌я─. я└п╟п╧п╩п╟ п╡ я┐п╢п╟п╫п╫п╬п╪ п╨п╟я┌п╟п╩п╬пЁп╣ п╬я┌я┤п╣я┌п╟, п╬п╫ п╪п╬п╤п╣я┌ п╣я┴п╣ я┌п╟п╪ п╩п╣п╤п╟я┌я▄
 
-        // потом поиск самого файла отчета, может быть обработан с прошлого раза
+        // п©п╬я┌п╬п╪ п©п╬п╦я│п╨ я│п╟п╪п╬пЁп╬ я└п╟п╧п╩п╟ п╬я┌я┤п╣я┌п╟, п╪п╬п╤п╣я┌ п╠я▀я┌я▄ п╬п╠я─п╟п╠п╬я┌п╟п╫ я│ п©я─п╬я┬п╩п╬пЁп╬ я─п╟п╥п╟
 
-        // только после этого готовим текущий буфер к обработке
+        // я┌п╬п╩я▄п╨п╬ п©п╬я│п╩п╣ я█я┌п╬пЁп╬ пЁп╬я┌п╬п╡п╦п╪ я┌п╣п╨я┐я┴п╦п╧ п╠я┐я└п╣я─ п╨ п╬п╠я─п╟п╠п╬я┌п╨п╣
 
-        // потом ожидаем ответа 
+        // п©п╬я┌п╬п╪ п╬п╤п╦п╢п╟п╣п╪ п╬я┌п╡п╣я┌п╟ 
 
 
       
     } catch (Exception ex)
     {
       log.error(ex, ex);
-      res = "Ошибка " + ex.getMessage();
+      res = "п·я┬п╦п╠п╨п╟ " + ex.getMessage();
     }
     return res;
   }
 
-  // ЧИТАЕМ файл транзакций
+  // п╖п≤п╒п░п∙п° я└п╟п╧п╩ я┌я─п╟п╫п╥п╟п╨я├п╦п╧
   private void readBankTr(File f, Vector buf) throws IOException, ParseException
   {
     FileInputStream fis = new FileInputStream(f);
@@ -604,7 +604,7 @@ public class AbgCardActivator implements CardActivator
       amount = Double.parseDouble(samount);
       authcode   = line.substring(46, 52).trim();
       msgn       = line.substring(53, 57).trim();
-      stransdate = line.substring(58, 73).trim(); // вместе дата и время
+      stransdate = line.substring(58, 73).trim(); // п╡п╪п╣я│я┌п╣ п╢п╟я┌п╟ п╦ п╡я─п╣п╪я▐
       stt =        line.substring(74, 75);
 
       oper = new BankOper(cardno, edf.parse(expdate), amount, authcode, sdf.parse(stransdate), stt.charAt(0));
@@ -617,7 +617,7 @@ public class AbgCardActivator implements CardActivator
 
  
   private final static int[] RCW = new int[] {1, 4, 19, 4, 12, 9, 8, 8, 9, 15};
-  // разбор отчета по картам
+  // я─п╟п╥п╠п╬я─ п╬я┌я┤п╣я┌п╟ п©п╬ п╨п╟я─я┌п╟п╪
   private void readReport(File f, Vector buf) throws IOException, ParseException
   {
     FileInputStream fis = new FileInputStream(f);
@@ -657,43 +657,43 @@ public class AbgCardActivator implements CardActivator
         oper.setCheckNum(Integer.parseInt(chn));
         buf.add(oper);
 
-        // разделить по типам дебит и кредит
+        // я─п╟п╥п╢п╣п╩п╦я┌я▄ п©п╬ я┌п╦п©п╟п╪ п╢п╣п╠п╦я┌ п╦ п╨я─п╣п╢п╦я┌
       } 
-      // все не подходящее под условия строки данных просто отсеиваем ?
+      // п╡я│п╣ п╫п╣ п©п╬п╢я┘п╬п╢я▐я┴п╣п╣ п©п╬п╢ я┐я│п╩п╬п╡п╦я▐ я│я┌я─п╬п╨п╦ п╢п╟п╫п╫я▀я┘ п©я─п╬я│я┌п╬ п╬я┌я│п╣п╦п╡п╟п╣п╪ ?
 
     }
   }
 
-  // распихиваем данные о оплате по полям транзакции. Схема такова:
+  // я─п╟я│п©п╦я┘п╦п╡п╟п╣п╪ п╢п╟п╫п╫я▀п╣ п╬ п╬п©п╩п╟я┌п╣ п©п╬ п©п╬п╩я▐п╪ я┌я─п╟п╫п╥п╟п╨я├п╦п╦. п║я┘п╣п╪п╟ я┌п╟п╨п╬п╡п╟:
   // id      | default
-  // t_d     | дата транзакции
-  // t_t     | спец. тип транзакции
-  // k_n     | номер кассы (как обычно)
-  // ch_n    | номер чека (из отчета ?)
-  // ca_n    | номер кассира
-  // s_d     | номер карты (размер поля в таблице позволяет)
-  // i_d     | тип транзакции
-  // f1      | код авторизации как double
+  // t_d     | п╢п╟я┌п╟ я┌я─п╟п╫п╥п╟п╨я├п╦п╦
+  // t_t     | я│п©п╣я├. я┌п╦п© я┌я─п╟п╫п╥п╟п╨я├п╦п╦
+  // k_n     | п╫п╬п╪п╣я─ п╨п╟я│я│я▀ (п╨п╟п╨ п╬п╠я▀я┤п╫п╬)
+  // ch_n    | п╫п╬п╪п╣я─ я┤п╣п╨п╟ (п╦п╥ п╬я┌я┤п╣я┌п╟ ?)
+  // ca_n    | п╫п╬п╪п╣я─ п╨п╟я│я│п╦я─п╟
+  // s_d     | п╫п╬п╪п╣я─ п╨п╟я─я┌я▀ (я─п╟п╥п╪п╣я─ п©п╬п╩я▐ п╡ я┌п╟п╠п╩п╦я├п╣ п©п╬п╥п╡п╬п╩я▐п╣я┌)
+  // i_d     | я┌п╦п© я┌я─п╟п╫п╥п╟п╨я├п╦п╦
+  // f1      | п╨п╬п╢ п╟п╡я┌п╬я─п╦п╥п╟я├п╦п╦ п╨п╟п╨ double
   // f2      | numeric(15,3)               | 
-  // f3      | сумма операции
+  // f3      | я│я┐п╪п╪п╟ п╬п©п╣я─п╟я├п╦п╦
   private void parseReport(File trf, File repf, Connection c, int kkm_num, int cashier_num, boolean log_to_file) throws Exception
   {
 
-    Vector trv = new Vector(100, 100);  // трназзакции из запроса
+    Vector trv = new Vector(100, 100);  // я┌я─п╫п╟п╥п╥п╟п╨я├п╦п╦ п╦п╥ п╥п╟п©я─п╬я│п╟
     readBankTr(trf, trv);
     log.info("cash tr count = " + trv.size()); 
     
 
-    Vector repv = new Vector(100, 100);  // ответ АС
+    Vector repv = new Vector(100, 100);  // п╬я┌п╡п╣я┌ п░п║
     readReport(repf, repv);
     log.info("report el count = " + trv.size()); 
 
-    Collections.sort(trv); // по дате, затем авт. коду и тд... 
+    Collections.sort(trv); // п©п╬ п╢п╟я┌п╣, п╥п╟я┌п╣п╪ п╟п╡я┌. п╨п╬п╢я┐ п╦ я┌п╢... 
     Collections.sort(repv);
 
     log.info("Sort vectors"); 
 
-    // Кассовые транзакции , соответствующие разобранным отчетам 
+    // п п╟я│я│п╬п╡я▀п╣ я┌я─п╟п╫п╥п╟п╨я├п╦п╦ , я│п╬п╬я┌п╡п╣я┌я│я┌п╡я┐я▌я┴п╦п╣ я─п╟п╥п╬п╠я─п╟п╫п╫я▀п╪ п╬я┌я┤п╣я┌п╟п╪ 
     Vector tr_to_save = new Vector(100, 100);
 
     int i, sz = trv.size();
@@ -705,7 +705,7 @@ public class AbgCardActivator implements CardActivator
 
       sr = Collections.binarySearch(repv, tr_oper);
 
-      // есть ли в отчете  подтверждение  или нет
+      // п╣я│я┌я▄ п╩п╦ п╡ п╬я┌я┤п╣я┌п╣  п©п╬п╢я┌п╡п╣я─п╤п╢п╣п╫п╦п╣  п╦п╩п╦ п╫п╣я┌
       if (sr >= 0) rep_oper = (BankOper)repv.get(sr); else rep_oper = null; 
 
 
@@ -719,7 +719,7 @@ public class AbgCardActivator implements CardActivator
     log.info("Compare ok, tr count = " + trv.size());
 
     sz = repv.size();
-    // а это для левых транзакций , которых нет в исходном файле 
+    // п╟ я█я┌п╬ п╢п╩я▐ п╩п╣п╡я▀я┘ я┌я─п╟п╫п╥п╟п╨я├п╦п╧ , п╨п╬я┌п╬я─я▀я┘ п╫п╣я┌ п╡ п╦я│я┘п╬п╢п╫п╬п╪ я└п╟п╧п╩п╣ 
     for (i = 0; i < sz; i++)
     {
       rep_oper = (BankOper)repv.get(i);
@@ -727,7 +727,7 @@ public class AbgCardActivator implements CardActivator
 
       if (sr < 0)
       {
-        // нонсенс! транзакция которую мы даже не запрашивали !
+        // п╫п╬п╫я│п╣п╫я│! я┌я─п╟п╫п╥п╟п╨я├п╦я▐ п╨п╬я┌п╬я─я┐я▌ п╪я▀ п╢п╟п╤п╣ п╫п╣ п╥п╟п©я─п╟я┬п╦п╡п╟п╩п╦ !
         Transaction t = new Transaction(-1, rep_oper.getTrDate(), Transaction.BN_TR, kkm_num, 
           rep_oper.getCgeckNum(), cashier_num, rep_oper.getCardNo(), 
           -Integer.parseInt(String.valueOf(rep_oper.getTType())), Double.parseDouble(rep_oper.getAuthCode()), 0, rep_oper.getAmount(), null, null);

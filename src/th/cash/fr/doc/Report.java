@@ -5,15 +5,15 @@ import th.cash.dev.FiscalPrinter;
 
 public abstract class Report extends FDoc 
 {
-  protected int repNum;      // номер отчета
-  protected int pr_cnt = 0;  // счетчик элементов печати
+  protected int repNum;      // п╫п╬п╪п╣я─ п╬я┌я┤п╣я┌п╟
+  protected int pr_cnt = 0;  // я│я┤п╣я┌я┤п╦п╨ я█п╩п╣п╪п╣п╫я┌п╬п╡ п©п╣я┤п╟я┌п╦
 
   public void print(FiscalPrinter fp) throws Exception
   {
     int pc = 0;
     try
     {
-      nalSum = fp.getNalSum(); // сумма наличности в кассе
+      nalSum = fp.getNalSum(); // я│я┐п╪п╪п╟ п╫п╟п╩п╦я┤п╫п╬я│я┌п╦ п╡ п╨п╟я│я│п╣
       sum = fp.getMoneyReg(193) - fp.getMoneyReg(195);
       int tt = 0;
       if (pc <= pr_cnt)
@@ -27,7 +27,7 @@ public abstract class Report extends FDoc
       if (getTypeId() == FD_XREPORT_TYPE)
         repNum = fp.getOperReg(158);
       else 
-        repNum = fp.getOperReg(159); // сие неправильно (не тот регистр)
+        repNum = fp.getOperReg(159); // я│п╦п╣ п╫п╣п©я─п╟п╡п╦п╩я▄п╫п╬ (п╫п╣ я┌п╬я┌ я─п╣пЁп╦я│я┌я─)
 
       Transaction t = new Transaction(-1, null, tt, cashNum, docNum, cashierId, 
         String.valueOf(repNum), 0, nalSum, 0, sum, null, null);

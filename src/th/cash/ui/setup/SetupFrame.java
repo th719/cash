@@ -21,7 +21,7 @@ public class SetupFrame extends JFrame implements WindowListener
   
   public SetupFrame()
   {
-    super("Настройки");
+    super("п²п╟я│я┌я─п╬п╧п╨п╦");
 
     main_panel = new SetupPanel();
 
@@ -97,7 +97,7 @@ public class SetupFrame extends JFrame implements WindowListener
       show();
     } else
     {
-      UserDlg.showError(this, "Недостаточно прав для настройки программы!");
+      UserDlg.showError(this, "п²п╣п╢п╬я│я┌п╟я┌п╬я┤п╫п╬ п©я─п╟п╡ п╢п╩я▐ п╫п╟я│я┌я─п╬п╧п╨п╦ п©я─п╬пЁя─п╟п╪п╪я▀!");
     }
     return res;
   }

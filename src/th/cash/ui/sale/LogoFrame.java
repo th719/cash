@@ -18,13 +18,13 @@ public class LogoFrame extends JFrame implements ProcessShow
 
   public LogoFrame()
   {
-    super("Инициализация");
+    super("п≤п╫п╦я├п╦п╟п╩п╦п╥п╟я├п╦я▐");
     setResizable(false);
     setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 
     jl_title = new JLabel();
 
-    jl_info = new JLabel("Запуск");
+    jl_info = new JLabel("п≈п╟п©я┐я│п╨");
 
     JPanel mp = new JPanel();
 

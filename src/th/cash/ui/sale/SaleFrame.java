@@ -9,14 +9,14 @@ import java.awt.Dimension;
 import java.awt.event.WindowEvent;
 
 import th.cash.env.KKMEnv;
-// обертка для SalePanel
+// п╬п╠п╣я─я┌п╨п╟ п╢п╩я▐ SalePanel
 public class SaleFrame extends JFrame
 {
   private SalePanel mainPanel;
   
   public SaleFrame()
   {
-    super("Регистрация продаж");
+    super("п═п╣пЁп╦я│я┌я─п╟я├п╦я▐ п©я─п╬п╢п╟п╤");
     init();
   }
 

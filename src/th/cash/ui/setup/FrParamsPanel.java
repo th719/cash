@@ -27,11 +27,11 @@ import th.cash.ui.util.UserDlg;
 
 import java.text.SimpleDateFormat;
 
-// Управление фискальником ...
-// дата/время прочитать, установить
-// подтвердить ввод даты 
-// отмена тех. теста 
-// чтение и вывод состояния ФР
+// пёп©я─п╟п╡п╩п╣п╫п╦п╣ я└п╦я│п╨п╟п╩я▄п╫п╦п╨п╬п╪ ...
+// п╢п╟я┌п╟/п╡я─п╣п╪я▐ п©я─п╬я┤п╦я┌п╟я┌я▄, я┐я│я┌п╟п╫п╬п╡п╦я┌я▄
+// п©п╬п╢я┌п╡п╣я─п╢п╦я┌я▄ п╡п╡п╬п╢ п╢п╟я┌я▀ 
+// п╬я┌п╪п╣п╫п╟ я┌п╣я┘. я┌п╣я│я┌п╟ 
+// я┤я┌п╣п╫п╦п╣ п╦ п╡я▀п╡п╬п╢ я│п╬я│я┌п╬я▐п╫п╦я▐ п╓п═
 
 public class FrParamsPanel extends TabSetPanel
 {
@@ -58,7 +58,7 @@ public class FrParamsPanel extends TabSetPanel
   private void init()
   {
 
-    jl_time_2 = new JLabel("ПК");
+    jl_time_2 = new JLabel("п÷п ");
 
     jtf_tm_1 = new JTextField(20);
     jtf_tm_2 = new JTextField(20);
@@ -81,11 +81,11 @@ public class FrParamsPanel extends TabSetPanel
 
     setLayout(fl);
     
-    add(new JLabel("Дата/время ФР"), cc.xy(1, 1));
+    add(new JLabel("п■п╟я┌п╟/п╡я─п╣п╪я▐ п╓п═"), cc.xy(1, 1));
     add(jtf_tm_1, cc.xy(3, 1));
     add(new JButton(time_from_fr), cc.xy(5,1));
 
-    add(new JLabel("Дата/время ПК"), cc.xy(1, 3));
+    add(new JLabel("п■п╟я┌п╟/п╡я─п╣п╪я▐ п÷п "), cc.xy(1, 3));
     add(jtf_tm_2, cc.xy(3, 3));
     add(new JButton(time_from_pk), cc.xy(5,3));
 
@@ -102,7 +102,7 @@ public class FrParamsPanel extends TabSetPanel
 
   private void initActions()
   {
-    time_from_fr = new AbstractAction("Обновить")
+    time_from_fr = new AbstractAction("п·п╠п╫п╬п╡п╦я┌я▄")
     {
       public void actionPerformed(ActionEvent e)
       {
@@ -120,7 +120,7 @@ public class FrParamsPanel extends TabSetPanel
       }
     };
 
-    time_from_pk = new AbstractAction("Обновить")
+    time_from_pk = new AbstractAction("п·п╠п╫п╬п╡п╦я┌я▄")
     {
       public void actionPerformed(ActionEvent e)
       {
@@ -128,7 +128,7 @@ public class FrParamsPanel extends TabSetPanel
       }
     };
 
-    conf_data = new AbstractAction("Подтвердить дату")
+    conf_data = new AbstractAction("п÷п╬п╢я┌п╡п╣я─п╢п╦я┌я▄ п╢п╟я┌я┐")
     {
       public void actionPerformed(ActionEvent e)
       {
@@ -150,7 +150,7 @@ public class FrParamsPanel extends TabSetPanel
       }
     };
 
-    cancel_test = new AbstractAction("Отменить технологический тест")
+    cancel_test = new AbstractAction("п·я┌п╪п╣п╫п╦я┌я▄ я┌п╣я┘п╫п╬п╩п╬пЁп╦я┤п╣я│п╨п╦п╧ я┌п╣я│я┌")
     {
       public void actionPerformed(ActionEvent e)
       {
@@ -166,7 +166,7 @@ public class FrParamsPanel extends TabSetPanel
       }
     };
 
-    refr_state = new AbstractAction("Запрос состояния")
+    refr_state = new AbstractAction("п≈п╟п©я─п╬я│ я│п╬я│я┌п╬я▐п╫п╦я▐")
     {
       public void actionPerformed(ActionEvent e)
       {

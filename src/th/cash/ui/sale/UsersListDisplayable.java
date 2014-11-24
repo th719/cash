@@ -2,7 +2,7 @@ package th.cash.ui.sale;
 
 import java.util.Vector;
 
-// интерфейс, получающий уведомление о использовании списка пользователей
+// п╦п╫я┌п╣я─я└п╣п╧я│, п©п╬п╩я┐я┤п╟я▌я┴п╦п╧ я┐п╡п╣п╢п╬п╪п╩п╣п╫п╦п╣ п╬ п╦я│п©п╬п╩я▄п╥п╬п╡п╟п╫п╦п╦ я│п©п╦я│п╨п╟ п©п╬п╩я▄п╥п╬п╡п╟я┌п╣п╩п╣п╧
 public interface UsersListDisplayable 
 {
   public void setUsers(Vector v);

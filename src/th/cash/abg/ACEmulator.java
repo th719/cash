@@ -45,7 +45,7 @@ public class ACEmulator
         {
           StringBuffer sb = new StringBuffer();
           for (int i = slen; i<len; i++) sb.append(fc);
-          return sb + s; // ×ÙÒÏ×ÎÅÎÏ ÐÏ ÐÒÁ×ÏÍÕ ËÒÁÀ
+          return sb + s; // Ð²Ñ‹Ñ€Ð¾Ð²Ð½ÐµÐ½Ð¾ Ð¿Ð¾ Ð¿Ñ€Ð°Ð²Ð¾Ð¼Ñƒ ÐºÑ€Ð°ÑŽ
         }
    
   }
@@ -110,7 +110,7 @@ public class ACEmulator
               amount = Double.parseDouble(samount);
               authcode = line.substring(46, 52).trim();
               msgn = line.substring(53, 57).trim();
-              stransdate = line.substring(58, 73); // ×ÍÅÓÔÅ ÄÁÔÁ É ×ÒÅÍÑ
+              stransdate = line.substring(58, 73); // Ð²Ð¼ÐµÑÑ‚Ðµ Ð´Ð°Ñ‚Ð° Ð¸ Ð²Ñ€ÐµÐ¼Ñ
               stt = line.substring(74, 75);
 
               d = sdf.parse(stransdate);

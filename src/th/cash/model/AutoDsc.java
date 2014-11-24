@@ -2,7 +2,7 @@ package th.cash.model;
 
 import java.sql.Timestamp;
 
-// подкласс, дескриптор отдльного условия скидки в схеме
+// п©п╬п╢п╨п╩п╟я│я│, п╢п╣я│п╨я─п╦п©я┌п╬я─ п╬я┌п╢п╩я▄п╫п╬пЁп╬ я┐я│п╩п╬п╡п╦я▐ я│п╨п╦п╢п╨п╦ п╡ я│я┘п╣п╪п╣
 public class AutoDsc 
 {
   private Integer s_id;
@@ -15,7 +15,7 @@ public class AutoDsc
   private Double  dsc_value;
   private String  check_text;
 
-  private Timestamp bd, ed;  // вместе со временем
+  private Timestamp bd, ed;  // п╡п╪п╣я│я┌п╣ я│п╬ п╡я─п╣п╪п╣п╫п╣п╪
 
   private String bt, et;
 
@@ -79,7 +79,7 @@ public class AutoDsc
 
   public Integer getWeekStart() { return ws; }
 
-  public Integer getWeekEnd() { return we; } // день недели
+  public Integer getWeekEnd() { return we; } // п╢п╣п╫я▄ п╫п╣п╢п╣п╩п╦
 
   public Double getStartAmount() { return sa; }
 

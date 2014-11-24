@@ -21,7 +21,7 @@ import java.util.Vector;
 import java.util.Locale;
 import org.apache.log4j.Logger;
 
-// текстовая запись транзакции
+// я┌п╣п╨я│я┌п╬п╡п╟я▐ п╥п╟п©п╦я│я▄ я┌я─п╟п╫п╥п╟п╨я├п╦п╦
 public class LogConverter 
 {
 

@@ -21,7 +21,7 @@ public class DbCfg
   private String localURL;
   private String user, password;
 
-  // использовать шифрование пароля
+  // п╦я│п©п╬п╩я▄п╥п╬п╡п╟я┌я▄ я┬п╦я└я─п╬п╡п╟п╫п╦п╣ п©п╟я─п╬п╩я▐
 //  protected static PaswCipher paswCipher = null;
   private boolean use_cr_pass = true;
 

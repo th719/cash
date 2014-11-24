@@ -7,14 +7,14 @@ import javax.swing.*;
 
 public class UserDlg 
 {
-  public final static String[] YES_NO = {"Да", "Нет"};
-  public final static String[] YES_NO_CANCEL = {"Да", "Нет", "Отмена"};
-//  public final static String[] OK_CANCEL = {"Ok", "Отмена"};
-  public final static String SAVE_QW = "Дaнные были изменены. Сохранить?";
-  public final static String SAVE_INF = "Запись в базу прошла успешно";
-  private final static String QW_TEXT = "Вопрос";
-  private final static String ERR_TEXT = "Ошибка";
-  private final static String INF_TEXT = "Информация";
+  public final static String[] YES_NO = {"п■п╟", "п²п╣я┌"};
+  public final static String[] YES_NO_CANCEL = {"п■п╟", "п²п╣я┌", "п·я┌п╪п╣п╫п╟"};
+//  public final static String[] OK_CANCEL = {"Ok", "п·я┌п╪п╣п╫п╟"};
+  public final static String SAVE_QW = "п■aп╫п╫я▀п╣ п╠я▀п╩п╦ п╦п╥п╪п╣п╫п╣п╫я▀. п║п╬я┘я─п╟п╫п╦я┌я▄?";
+  public final static String SAVE_INF = "п≈п╟п©п╦я│я▄ п╡ п╠п╟п╥я┐ п©я─п╬я┬п╩п╟ я┐я│п©п╣я┬п╫п╬";
+  private final static String QW_TEXT = "п▓п╬п©я─п╬я│";
+  private final static String ERR_TEXT = "п·я┬п╦п╠п╨п╟";
+  private final static String INF_TEXT = "п≤п╫я└п╬я─п╪п╟я├п╦я▐";
 
   // ***************************************************************
   public static void setArrowFocusManager()
@@ -89,7 +89,7 @@ public class UserDlg
 
 
   // *******************************************************************
-  // диалог для выбора одно варианта из списка
+  // п╢п╦п╟п╩п╬пЁ п╢п╩я▐ п╡я▀п╠п╬я─п╟ п╬п╢п╫п╬ п╡п╟я─п╦п╟п╫я┌п╟ п╦п╥ я│п©п╦я│п╨п╟
   // return selected variant number or -1, if cancel pressed
 //  public static int showSelectDialog(Component owner, String mes, String title, String[] opt, int def)
 //  {

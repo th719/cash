@@ -1,7 +1,7 @@
 package th.cash.fr.doc;
 
 /**
- * Итог по группе налога
+ * п≤я┌п╬пЁ п©п╬ пЁя─я┐п©п©п╣ п╫п╟п╩п╬пЁп╟
  */
 public class TaxSum 
 {

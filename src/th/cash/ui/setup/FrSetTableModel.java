@@ -12,8 +12,8 @@ import th.cash.fr.table.TabFieldDescr;
 public class FrSetTableModel extends DefaultTableModel//implements TableModel 
 {
 
-  private FrTable src_tab = null; // исходные данные
-  private boolean rotated = false; // признак поворота таблицы (для удобства редактирования)
+  private FrTable src_tab = null; // п╦я│я┘п╬п╢п╫я▀п╣ п╢п╟п╫п╫я▀п╣
+  private boolean rotated = false; // п©я─п╦п╥п╫п╟п╨ п©п╬п╡п╬я─п╬я┌п╟ я┌п╟п╠п╩п╦я├я▀ (п╢п╩я▐ я┐п╢п╬п╠я│я┌п╡п╟ я─п╣п╢п╟п╨я┌п╦я─п╬п╡п╟п╫п╦я▐)
   private boolean editable = true;
 
   public FrSetTableModel()
@@ -50,7 +50,7 @@ public class FrSetTableModel extends DefaultTableModel//implements TableModel
     if (columnIndex == 0) return "N"; else
     if (rotated)
     {
-      if (columnIndex == 1) return "Назначение"; else return "Значение " + String.valueOf(columnIndex - 1);
+      if (columnIndex == 1) return "п²п╟п╥п╫п╟я┤п╣п╫п╦п╣"; else return "п≈п╫п╟я┤п╣п╫п╦п╣ " + String.valueOf(columnIndex - 1);
     } else
     {
       return src_tab.getFieldDescr(columnIndex - 1).getName();
@@ -106,7 +106,7 @@ public class FrSetTableModel extends DefaultTableModel//implements TableModel
     }
   }
 
-  // проверка корректности устанавливаемого значения
+  // п©я─п╬п╡п╣я─п╨п╟ п╨п╬я─я─п╣п╨я┌п╫п╬я│я┌п╦ я┐я│я┌п╟п╫п╟п╡п╩п╦п╡п╟п╣п╪п╬пЁп╬ п╥п╫п╟я┤п╣п╫п╦я▐
   public String checkValue(Object aValue, int rowIndex, int columnIndex)
   {
     String res = null;
@@ -127,19 +127,19 @@ public class FrSetTableModel extends DefaultTableModel//implements TableModel
     {
       if (descr.isBinType())
       {
-        if (aValue == null) res = "Значение параметра отсутствует"; else
+        if (aValue == null) res = "п≈п╫п╟я┤п╣п╫п╦п╣ п©п╟я─п╟п╪п╣я┌я─п╟ п╬я┌я│я┐я┌я│я┌п╡я┐п╣я┌"; else
         {
           Integer ival = (Integer)aValue;
           int i = ival.intValue();
           if (i < descr.getMinVal() || i > descr.getMaxVal())
-            res = "Значение '" + i + "' вне допустимого диапазона [" + descr.getMinVal() + ".." + descr.getMaxVal() + "]";
+            res = "п≈п╫п╟я┤п╣п╫п╦п╣ '" + i + "' п╡п╫п╣ п╢п╬п©я┐я│я┌п╦п╪п╬пЁп╬ п╢п╦п╟п©п╟п╥п╬п╫п╟ [" + descr.getMinVal() + ".." + descr.getMaxVal() + "]";
         }
       } else
       {
         if (aValue != null)
         {
           if (((String)aValue).length() > descr.getSize())
-            res = "Длина строки '" + (String)aValue + "'\n" + " превышена. (Максимум " + descr.getSize() +" симв.)";
+            res = "п■п╩п╦п╫п╟ я│я┌я─п╬п╨п╦ '" + (String)aValue + "'\n" + " п©я─п╣п╡я▀я┬п╣п╫п╟. (п°п╟п╨я│п╦п╪я┐п╪ " + descr.getSize() +" я│п╦п╪п╡.)";
         }
       }
     }

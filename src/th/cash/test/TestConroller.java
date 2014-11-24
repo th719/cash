@@ -1,7 +1,7 @@
 /*
  * TestConroller.java
  *
- * Created on 16 Ноябрь 2007 г., 19:26
+ * Created on 16 п²п╬я▐п╠я─я▄ 2007 пЁ., 19:26
  *
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.

@@ -26,7 +26,7 @@ public class TFDscCashe extends VectorDataCashe
   {
     row.set(NAME, fd.getName());
     row.set(VALUE, fd.getDscValue());
-    row.set(KIND, fd.getIsSum() != null && fd.getIsSum().booleanValue() ? "руб" : "%" );
+    row.set(KIND, fd.getIsSum() != null && fd.getIsSum().booleanValue() ? "я─я┐п╠" : "%" );
     row.set(FDSC, fd);
   }
 

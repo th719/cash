@@ -2,7 +2,7 @@ package th.cash.model;
 /*
  * SearchData.java
  *
- * Created on 16 Ноябрь 2007 г., 13:05
+ * Created on 16 п²п╬я▐п╠я─я▄ 2007 пЁ., 13:05
  *
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.
@@ -11,7 +11,7 @@ package th.cash.model;
 import java.util.Vector;
 
 /**
- * Объект для поиска товара в модели
+ * п·п╠я┼п╣п╨я┌ п╢п╩я▐ п©п╬п╦я│п╨п╟ я┌п╬п╡п╟я─п╟ п╡ п╪п╬п╢п╣п╩п╦
  * @author lazarev
  */
 public class SearchData {
@@ -26,7 +26,7 @@ public class SearchData {
     private Integer good_id = null;
     private Vector goods = null;
     private Vector barcodes = null;
-    private Double quan = null; // для весовых товаров
+    private Double quan = null; // п╢п╩я▐ п╡п╣я│п╬п╡я▀я┘ я┌п╬п╡п╟я─п╬п╡
     
     private int data_type = TYPE_GOOD_ID;
     /** Creates a new instance of SearchData */
@@ -77,7 +77,7 @@ public class SearchData {
         
         
   
-    // результат поиска
+    // я─п╣п╥я┐п╩я▄я┌п╟я┌ п©п╬п╦я│п╨п╟
     public Vector getGoods()
     {
         return goods;
@@ -89,7 +89,7 @@ public class SearchData {
     }
         
     
-    // разобранная строка, код товара
+    // я─п╟п╥п╬п╠я─п╟п╫п╫п╟я▐ я│я┌я─п╬п╨п╟, п╨п╬п╢ я┌п╬п╡п╟я─п╟
     public Integer getGoodId()
     {
         return good_id;

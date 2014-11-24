@@ -36,17 +36,17 @@ import th.common.db.*;
 import th.cash.ui.sale.InputLabel;
 
 /**
- * Панелька для выбора способа оплаты суммы чека ...
- * открывается при явном запросе безналичной оплаты или
- * при закрытии чека суммой меньше итога чека ...
- * (разумеется, если безнал. оплата разрешена настройками )
+ * п÷п╟п╫п╣п╩я▄п╨п╟ п╢п╩я▐ п╡я▀п╠п╬я─п╟ я│п©п╬я│п╬п╠п╟ п╬п©п╩п╟я┌я▀ я│я┐п╪п╪я▀ я┤п╣п╨п╟ ...
+ * п╬я┌п╨я─я▀п╡п╟п╣я┌я│я▐ п©я─п╦ я▐п╡п╫п╬п╪ п╥п╟п©я─п╬я│п╣ п╠п╣п╥п╫п╟п╩п╦я┤п╫п╬п╧ п╬п©п╩п╟я┌я▀ п╦п╩п╦
+ * п©я─п╦ п╥п╟п╨я─я▀я┌п╦п╦ я┤п╣п╨п╟ я│я┐п╪п╪п╬п╧ п╪п╣п╫я▄я┬п╣ п╦я┌п╬пЁп╟ я┤п╣п╨п╟ ...
+ * (я─п╟п╥я┐п╪п╣п╣я┌я│я▐, п╣я│п╩п╦ п╠п╣п╥п╫п╟п╩. п╬п©п╩п╟я┌п╟ я─п╟п╥я─п╣я┬п╣п╫п╟ п╫п╟я│я┌я─п╬п╧п╨п╟п╪п╦ )
  */
 public class PaymentSelectPanel extends JPanel
 {
 
   private InputLabel label;
   private JTable jt_pay_types;
-  private final static String[] COL_NAMES = {"Вид оплаты", "Сумма"};
+  private final static String[] COL_NAMES = {"п▓п╦п╢ п╬п©п╩п╟я┌я▀", "п║я┐п╪п╪п╟"};
 
   private double check_sum, nal_sum, bn_sum; 
 
@@ -54,7 +54,7 @@ public class PaymentSelectPanel extends JPanel
   private JLabel jl_text_rest, jl_rest;
 
   private Dialog owner;
-  private String pay_ks; // обрабытываются кнопки <Enter>, <Esc> и бн. оплата
+  private String pay_ks; // п╬п╠я─п╟п╠я▀я┌я▀п╡п╟я▌я┌я│я▐ п╨п╫п╬п©п╨п╦ <Enter>, <Esc> п╦ п╠п╫. п╬п©п╩п╟я┌п╟
 
   private Action ok, cancel, set_bn;
 
@@ -82,7 +82,7 @@ public class PaymentSelectPanel extends JPanel
     tp.add(label);
 
     VectorDataCashe view = new VectorDataCashe(2, 1);
-    VectorDataModel model = new VectorDataModel(view, view, new String[]{"Вид оплаты", "Сумма"}, 
+    VectorDataModel model = new VectorDataModel(view, view, new String[]{"п▓п╦п╢ п╬п©п╩п╟я┌я▀", "п║я┐п╪п╪п╟"}, 
                                          new Class[] { String.class, Double.class });
 
     model.setEditable(false);                                    
@@ -92,11 +92,11 @@ public class PaymentSelectPanel extends JPanel
     VRow row;
 
     row = view.createNewRow(3);
-    row.set(0, "Наличными");
+    row.set(0, "п²п╟п╩п╦я┤п╫я▀п╪п╦");
     view.add(row);
     
     row = view.createNewRow(3);
-    row.set(0, "Кредитом");
+    row.set(0, "п я─п╣п╢п╦я┌п╬п╪");
     view.add(row);
 
     model.fireTableDataChanged();
@@ -108,12 +108,12 @@ public class PaymentSelectPanel extends JPanel
     JPanel p;
     JPanel bp = new JPanel(new GridLayout(0, 2));
 
-    bp.add(jl_text_check_sum = new JLabel("Сумма чека:"));
+    bp.add(jl_text_check_sum = new JLabel("п║я┐п╪п╪п╟ я┤п╣п╨п╟:"));
     p = new JPanel(new FlowLayout(FlowLayout.RIGHT));
     p.add(jl_check_sum = new JLabel());
     bp.add(p);
 
-    bp.add(jl_text_rest = new JLabel("Остаток:"));
+    bp.add(jl_text_rest = new JLabel("п·я│я┌п╟я┌п╬п╨:"));
     p = new JPanel(new FlowLayout(FlowLayout.RIGHT));
     p.add(jl_rest = new JLabel());
     bp.add(p);
@@ -154,7 +154,7 @@ public class PaymentSelectPanel extends JPanel
 
   private void initActions()
   {
-    ok = new AbstractAction("Оплата")
+    ok = new AbstractAction("п·п©п╩п╟я┌п╟")
     {
       public void actionPerformed(ActionEvent e) 
       {
@@ -163,7 +163,7 @@ public class PaymentSelectPanel extends JPanel
       }
     };
 
-    cancel = new AbstractAction("Отмена")
+    cancel = new AbstractAction("п·я┌п╪п╣п╫п╟")
     { 
       public void actionPerformed(ActionEvent e) 
       {
@@ -171,7 +171,7 @@ public class PaymentSelectPanel extends JPanel
       }
     };
 
-    set_bn = new AbstractAction("Сумма кредита")
+    set_bn = new AbstractAction("п║я┐п╪п╪п╟ п╨я─п╣п╢п╦я┌п╟")
     {
       public void actionPerformed(ActionEvent e) 
       {
@@ -191,7 +191,7 @@ public class PaymentSelectPanel extends JPanel
       }
     };
 
-      // блокируем некоторые сочетания для таблицы
+      // п╠п╩п╬п╨п╦я─я┐п╣п╪ п╫п╣п╨п╬я┌п╬я─я▀п╣ я│п╬я┤п╣я┌п╟п╫п╦я▐ п╢п╩я▐ я┌п╟п╠п╩п╦я├я▀
     jt_pay_types.getInputMap(WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "none");
     jt_pay_types.getInputMap(WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "none");
 
@@ -213,7 +213,7 @@ public class PaymentSelectPanel extends JPanel
   {
     if (bn_sum > 0 && bn_sum > check_sum)
     {
-      String msg = "Сумма оплаты больше итога чека";
+      String msg = "п║я┐п╪п╪п╟ п╬п©п╩п╟я┌я▀ п╠п╬п╩я▄я┬п╣ п╦я┌п╬пЁп╟ я┤п╣п╨п╟";
       //log.error(msg + ":" + money_fmt.format(nal_sum) + "+" + money_fmt.format(bn_sum) + " > " + money_fmt.format(check_sum));
       UserDlg.showError(owner, msg);
       

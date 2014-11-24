@@ -56,7 +56,7 @@ public class CashLoginDialog extends JDialog implements DataListener, UsersListD
   public CashLoginDialog()
   {
     super();
-    setTitle("Авторизация");
+    setTitle("п░п╡я┌п╬я─п╦п╥п╟я├п╦я▐");
     setModal(true);
 
 
@@ -65,7 +65,7 @@ public class CashLoginDialog extends JDialog implements DataListener, UsersListD
 
     p = new JPanel();
 
-    // панелька авторизации
+    // п©п╟п╫п╣п╩я▄п╨п╟ п╟п╡я┌п╬я─п╦п╥п╟я├п╦п╦
     jcb_users = new JComboBox();
     
     jp_pwd = new JPasswordField(15);
@@ -79,33 +79,33 @@ public class CashLoginDialog extends JDialog implements DataListener, UsersListD
 
     CellConstraints cc = new CellConstraints();
     
-    p.add(new JLabel("Пользователь:"), cc.xy(2, 2));
+    p.add(new JLabel("п÷п╬п╩я▄п╥п╬п╡п╟я┌п╣п╩я▄:"), cc.xy(2, 2));
     p.add(jcb_users, cc.xy(4, 2));
-    p.add(new JLabel("Пароль:"), cc.xy(2, 4));
+    p.add(new JLabel("п÷п╟я─п╬п╩я▄:"), cc.xy(2, 4));
     p.add(jp_pwd, cc.xy(4, 4));
 
 
     // actions
 
-    ok = new AbstractAction("Продажи") 
+    ok = new AbstractAction("п÷я─п╬п╢п╟п╤п╦") 
     {
       public void actionPerformed(ActionEvent e) { do_select();}
     };
 
 
-    setup = new AbstractAction("Настройка")
+    setup = new AbstractAction("п²п╟я│я┌я─п╬п╧п╨п╟")
     {
       public void actionPerformed(ActionEvent e) { do_setup(); }
     };
 
 
-    cancel = new AbstractAction("Выключить") 
+    cancel = new AbstractAction("п▓я▀п╨п╩я▌я┤п╦я┌я▄") 
     {
       public void actionPerformed(ActionEvent e) { do_cancel(); }
     };
 
 
-    cancel_system = new AbstractAction("Закрыть")
+    cancel_system = new AbstractAction("п≈п╟п╨я─я▀я┌я▄")
     {
       public void actionPerformed(ActionEvent e) { do_cancel2(); }
     };
@@ -144,7 +144,7 @@ public class CashLoginDialog extends JDialog implements DataListener, UsersListD
   }
 
 
-  // найти пользователя с указанным паролем
+  // п╫п╟п╧я┌п╦ п©п╬п╩я▄п╥п╬п╡п╟я┌п╣п╩я▐ я│ я┐п╨п╟п╥п╟п╫п╫я▀п╪ п©п╟я─п╬п╩п╣п╪
   private User checkPwd(String pwd)
   {
     User res = null;
@@ -160,9 +160,9 @@ public class CashLoginDialog extends JDialog implements DataListener, UsersListD
 
 
   /**
-   * методы для обработки событий
+   * п╪п╣я┌п╬п╢я▀ п╢п╩я▐ п╬п╠я─п╟п╠п╬я┌п╨п╦ я│п╬п╠я▀я┌п╦п╧
    */
-  // по кнопке <Enter>
+  // п©п╬ п╨п╫п╬п©п╨п╣ <Enter>
   private void do_select()
   {
     sel_cmd = SALE_CMD;
@@ -171,30 +171,30 @@ public class CashLoginDialog extends JDialog implements DataListener, UsersListD
     hide();
   }
 
-  // по событию ... setup
+  // п©п╬ я│п╬п╠я▀я┌п╦я▌ ... setup
   private void do_setup()
   {
-    // проверить пользователя и открыть окно настроек
+    // п©я─п╬п╡п╣я─п╦я┌я▄ п©п╬п╩я▄п╥п╬п╡п╟я┌п╣п╩я▐ п╦ п╬я┌п╨я─я▀я┌я▄ п╬п╨п╫п╬ п╫п╟я│я┌я─п╬п╣п╨
     sel_cmd = SETUP_CMD;
     pwd = new String(jp_pwd.getPassword());
     jp_pwd.setText(null);
     hide();
   }
 
-  // выход с кодом 0 (для выключения системы)
+  // п╡я▀я┘п╬п╢ я│ п╨п╬п╢п╬п╪ 0 (п╢п╩я▐ п╡я▀п╨п╩я▌я┤п╣п╫п╦я▐ я│п╦я│я┌п╣п╪я▀)
   private void do_cancel()
   {
-    if (UserDlg.showQuestion(this, "Выключить компьютер?")) 
+    if (UserDlg.showQuestion(this, "п▓я▀п╨п╩я▌я┤п╦я┌я▄ п╨п╬п╪п©я▄я▌я┌п╣я─?")) 
     {
       sel_cmd = EXIT_CMD;
       hide();
     } 
   }
 
-  // для выхода по другому коду...
+  // п╢п╩я▐ п╡я▀я┘п╬п╢п╟ п©п╬ п╢я─я┐пЁп╬п╪я┐ п╨п╬п╢я┐...
   private void do_cancel2()
   {
-    if (UserDlg.showQuestion(this, "Выйти из программы?")) 
+    if (UserDlg.showQuestion(this, "п▓я▀п╧я┌п╦ п╦п╥ п©я─п╬пЁя─п╟п╪п╪я▀?")) 
     {
       sel_cmd = EXIT_SYSTEM_CMD;
       hide();
@@ -213,7 +213,7 @@ public class CashLoginDialog extends JDialog implements DataListener, UsersListD
     jcb_users.setSelectedItem(authUser);
     boolean lflag;
 
-    // включаем сканнер, обновлялки
+    // п╡п╨п╩я▌я┤п╟п╣п╪ я│п╨п╟п╫п╫п╣я─, п╬п╠п╫п╬п╡п╩я▐п╩п╨п╦
     if (scan_switcher == null)
       scan_switcher = new AScannerSwitcher(cashEnv.getScanner(), this);    
 
@@ -232,7 +232,7 @@ public class CashLoginDialog extends JDialog implements DataListener, UsersListD
       jp_pwd.setText(null);
       //jp_pwd.requestFocus();
       bc_accept = true;
-      show(); // здесь определяется sel_cmd (обязательно) и пассворд
+      show(); // п╥п╢п╣я│я▄ п╬п©я─п╣п╢п╣п╩я▐п╣я┌я│я▐ sel_cmd (п╬п╠я▐п╥п╟я┌п╣п╩я▄п╫п╬) п╦ п©п╟я│я│п╡п╬я─п╢
       bc_accept = false;
 
       lflag = true;
@@ -243,7 +243,7 @@ public class CashLoginDialog extends JDialog implements DataListener, UsersListD
         if (authUser == null)
         {
           log.warn("Autorisation fails");
-          UserDlg.showError(null, "Ошибка авторизации");
+          UserDlg.showError(null, "п·я┬п╦п╠п╨п╟ п╟п╡я┌п╬я─п╦п╥п╟я├п╦п╦");
         } else 
         {
           
@@ -262,7 +262,7 @@ public class CashLoginDialog extends JDialog implements DataListener, UsersListD
     } while (lflag);
 
 
-    // выключаем
+    // п╡я▀п╨п╩я▌я┤п╟п╣п╪
     scan_switcher.setScannerEnabled(false);
     scan_switcher.removeDataListener();
     // changed 12.02.2008
@@ -300,7 +300,7 @@ public class CashLoginDialog extends JDialog implements DataListener, UsersListD
   }
 
   // ***********************************************************************
-  // синхронизация !!! TODO
+  // я│п╦п╫я┘я─п╬п╫п╦п╥п╟я├п╦я▐ !!! TODO
   public void setUsers(Vector u)
   {
     users = (Vector)u.clone();

@@ -28,7 +28,7 @@ import th.cash.fr.FrKPrinter;
 import th.cash.ui.util.UserDlg;
 
 
-// таблицы ФР
+// я┌п╟п╠п╩п╦я├я▀ п╓п═
 public class FrTablesPanel extends TabSetPanel
 {
   private JComboBox jcb_tab_num;
@@ -40,14 +40,14 @@ public class FrTablesPanel extends TabSetPanel
   private FiscalPrinter printer;
   
   private final static String[] FR_TAB_NAMES = {
-    "1 Тип и режимы кассы", 
-    "2 Пароли кассиров и администраторов", 
-    "3 Таблица перевода времени", 
-    "4 Текст в чеке", 
-    "5 Наименование типов оплаты", 
-    "6 Налоговые ставки", 
-    "7 Наименование отделов", 
-    "8 Настройки шрифтов"};
+    "1 п╒п╦п© п╦ я─п╣п╤п╦п╪я▀ п╨п╟я│я│я▀", 
+    "2 п÷п╟я─п╬п╩п╦ п╨п╟я│я│п╦я─п╬п╡ п╦ п╟п╢п╪п╦п╫п╦я│я┌я─п╟я┌п╬я─п╬п╡", 
+    "3 п╒п╟п╠п╩п╦я├п╟ п©п╣я─п╣п╡п╬п╢п╟ п╡я─п╣п╪п╣п╫п╦", 
+    "4 п╒п╣п╨я│я┌ п╡ я┤п╣п╨п╣", 
+    "5 п²п╟п╦п╪п╣п╫п╬п╡п╟п╫п╦п╣ я┌п╦п©п╬п╡ п╬п©п╩п╟я┌я▀", 
+    "6 п²п╟п╩п╬пЁп╬п╡я▀п╣ я│я┌п╟п╡п╨п╦", 
+    "7 п²п╟п╦п╪п╣п╫п╬п╡п╟п╫п╦п╣ п╬я┌п╢п╣п╩п╬п╡", 
+    "8 п²п╟я│я┌я─п╬п╧п╨п╦ я┬я─п╦я└я┌п╬п╡"};
   
   public FrTablesPanel()
   {
@@ -60,23 +60,23 @@ public class FrTablesPanel extends TabSetPanel
 
     jcb_tab_num = new JComboBox(FR_TAB_NAMES);
     
-    Action load = new AbstractAction("Прочитать")
+    Action load = new AbstractAction("п÷я─п╬я┤п╦я┌п╟я┌я▄")
     {
       public void actionPerformed(ActionEvent e) {do_load();}
     };
 
-    Action save = new AbstractAction("Записать")
+    Action save = new AbstractAction("п≈п╟п©п╦я│п╟я┌я▄")
     {
       public void actionPerformed(ActionEvent e) {do_save();}
     };
 
-    Action db_save = new AbstractAction("В настройки")
+    Action db_save = new AbstractAction("п▓ п╫п╟я│я┌я─п╬п╧п╨п╦")
     {
       public void actionPerformed(ActionEvent e) {do_db_save();}
     };
     db_save.setEnabled(false);
 
-    ctrlPanel.add(new JLabel("Таб."));
+    ctrlPanel.add(new JLabel("п╒п╟п╠."));
     ctrlPanel.add(jcb_tab_num);
     ctrlPanel.add(new JButton(load));
     ctrlPanel.add(new JButton(save));
@@ -95,7 +95,7 @@ public class FrTablesPanel extends TabSetPanel
     add(scroller, BorderLayout.CENTER);
   }
 
-  // ширина стролбцов (зависит от таблицы)
+  // я┬п╦я─п╦п╫п╟ я│я┌я─п╬п╩п╠я├п╬п╡ (п╥п╟п╡п╦я│п╦я┌ п╬я┌ я┌п╟п╠п╩п╦я├я▀)
   private int[] initColWidth()
   {
     int[] res;
@@ -110,7 +110,7 @@ public class FrTablesPanel extends TabSetPanel
     return res;
   }
 
-  // прочитать выбранную таблицу из фискальника
+  // п©я─п╬я┤п╦я┌п╟я┌я▄ п╡я▀п╠я─п╟п╫п╫я┐я▌ я┌п╟п╠п╩п╦я├я┐ п╦п╥ я└п╦я│п╨п╟п╩я▄п╫п╦п╨п╟
   public void do_load()
   {
     int tab_num = jcb_tab_num.getSelectedIndex() + 1;
@@ -128,7 +128,7 @@ public class FrTablesPanel extends TabSetPanel
     }
   }
 
-  // записать изменения в таблицу
+  // п╥п╟п©п╦я│п╟я┌я▄ п╦п╥п╪п╣п╫п╣п╫п╦я▐ п╡ я┌п╟п╠п╩п╦я├я┐
   public void do_save()
   {
     try

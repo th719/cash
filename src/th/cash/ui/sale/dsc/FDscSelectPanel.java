@@ -66,7 +66,7 @@ public class FDscSelectPanel extends JPanel
       }
     };
 
-    cancel = new AbstractAction("Отмена")
+    cancel = new AbstractAction("п·я┌п╪п╣п╫п╟")
     {
       public void actionPerformed(ActionEvent e)
       {
@@ -77,7 +77,7 @@ public class FDscSelectPanel extends JPanel
 
 
     view = new TFDscCashe();
-    model = new VectorDataModel(view, view, new String[]{"Название", "Значение", "Ед"}, COL_CLASSES);
+    model = new VectorDataModel(view, view, new String[]{"п²п╟п╥п╡п╟п╫п╦п╣", "п≈п╫п╟я┤п╣п╫п╦п╣", "п∙п╢"}, COL_CLASSES);
     model.setEditable(false);
 
     jt_fdsc_list = new JTable(model);

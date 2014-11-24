@@ -7,13 +7,13 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Connection;
 
-// утилита для сохранения настроек в базу
+// я┐я┌п╦п╩п╦я┌п╟ п╢п╩я▐ я│п╬я┘я─п╟п╫п╣п╫п╦я▐ п╫п╟я│я┌я─п╬п╣п╨ п╡ п╠п╟п╥я┐
 public class SetDbUtil 
 {
 
-  // p0 - старый (исходный) набор свойств
-  // p1 - измененные значения
-  // с - сеанс 
+  // p0 - я│я┌п╟я─я▀п╧ (п╦я│я┘п╬п╢п╫я▀п╧) п╫п╟п╠п╬я─ я│п╡п╬п╧я│я┌п╡
+  // p1 - п╦п╥п╪п╣п╫п╣п╫п╫я▀п╣ п╥п╫п╟я┤п╣п╫п╦я▐
+  // я│ - я│п╣п╟п╫я│ 
   public static Properties saveSetProperties(Properties p0, Properties p1, Connection c) throws SQLException
   {
     Properties res = new Properties();
@@ -25,13 +25,13 @@ public class SetDbUtil
 
     arr_keys = keys0.toArray();
     len = arr_keys.length;
-    String key, val0, nval; // ключ, старое значение, новое значение
+    String key, val0, nval; // п╨п╩я▌я┤, я│я┌п╟я─п╬п╣ п╥п╫п╟я┤п╣п╫п╦п╣, п╫п╬п╡п╬п╣ п╥п╫п╟я┤п╣п╫п╦п╣
 
     PreparedStatement dst, ist;
     dst = c.prepareStatement("delete from t_set where set_id = ?");
     ist = c.prepareStatement("insert into t_set(set_id, set_val) values(?, ?)");
 
-    // убираем старые значения и ключи и добавляем измененные
+    // я┐п╠п╦я─п╟п╣п╪ я│я┌п╟я─я▀п╣ п╥п╫п╟я┤п╣п╫п╦я▐ п╦ п╨п╩я▌я┤п╦ п╦ п╢п╬п╠п╟п╡п╩я▐п╣п╪ п╦п╥п╪п╣п╫п╣п╫п╫я▀п╣
     for (int i = 0; i < len; i++)
     {
       key = (String)arr_keys[i];
@@ -55,7 +55,7 @@ public class SetDbUtil
       }
     }
 
-    // находим добавленные ключи (которых не было в исходных настройках)
+    // п╫п╟я┘п╬п╢п╦п╪ п╢п╬п╠п╟п╡п╩п╣п╫п╫я▀п╣ п╨п╩я▌я┤п╦ (п╨п╬я┌п╬я─я▀я┘ п╫п╣ п╠я▀п╩п╬ п╡ п╦я│я┘п╬п╢п╫я▀я┘ п╫п╟я│я┌я─п╬п╧п╨п╟я┘)
     Set keys1 = p1.keySet();
     keys1.removeAll(keys0);
 

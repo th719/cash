@@ -2,7 +2,7 @@ package th.cash.fr.state;
 
 public interface StateConst 
 {
-  // коды состояний именованы константами, чтобы не было неясностей и путаницы
+  // п╨п╬п╢я▀ я│п╬я│я┌п╬я▐п╫п╦п╧ п╦п╪п╣п╫п╬п╡п╟п╫я▀ п╨п╬п╫я│я┌п╟п╫я┌п╟п╪п╦, я┤я┌п╬п╠я▀ п╫п╣ п╠я▀п╩п╬ п╫п╣я▐я│п╫п╬я│я┌п╣п╧ п╦ п©я┐я┌п╟п╫п╦я├я▀
   public final static int M_DATA_TRANSMIT        = 1;
   public final static int M_OPEN_SHIFT_BEF_24    = 2;
   public final static int M_OPEN_SHIFT_AF_24     = 3;
@@ -12,7 +12,7 @@ public interface StateConst
   public final static int M_ENABLE_DEC_POINT     = 7;
   public final static int M_OPENED_DOC           = 8;
 
-    // статусы режимов
+    // я│я┌п╟я┌я┐я│я▀ я─п╣п╤п╦п╪п╬п╡
     public final static int MS_SALE              = 0;
     public final static int MS_PURCHASE          = 1;
     public final static int MS_RET_SALE          = 2;

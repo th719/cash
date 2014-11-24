@@ -10,19 +10,19 @@ public interface FiscalPrinter
 
   public byte[] getReply();
 
-  // установить имя пользователя
+  // я┐я│я┌п╟п╫п╬п╡п╦я┌я▄ п╦п╪я▐ п©п╬п╩я▄п╥п╬п╡п╟я┌п╣п╩я▐
   public void setUserName(String name) throws Exception;
 
 //  public ShortStateFr shortStateRequest() throws Exception;
   
-  // гудок
+  // пЁя┐п╢п╬п╨
   public void beep() throws Exception;
 
-  // синхронизация времени
+  // я│п╦п╫я┘я─п╬п╫п╦п╥п╟я├п╦я▐ п╡я─п╣п╪п╣п╫п╦
   public void setDataTime(Date data) throws Exception;
   public void setDataTime(Date data, StateA state) throws Exception;
 
-  // печать строки (чековая/контрольная лента  переключается в настройках)
+  // п©п╣я┤п╟я┌я▄ я│я┌я─п╬п╨п╦ (я┤п╣п╨п╬п╡п╟я▐/п╨п╬п╫я┌я─п╬п╩я▄п╫п╟я▐ п╩п╣п╫я┌п╟  п©п╣я─п╣п╨п╩я▌я┤п╟п╣я┌я│я▐ п╡ п╫п╟я│я┌я─п╬п╧п╨п╟я┘)
   public void printString(String s) throws Exception;
 
 
@@ -34,10 +34,10 @@ public interface FiscalPrinter
 
   public void transportTape(int num_rows, boolean check_tape) throws Exception;
 
-  // прерывание тестового прогона
+  // п©я─п╣я─я▀п╡п╟п╫п╦п╣ я┌п╣я│я┌п╬п╡п╬пЁп╬ п©я─п╬пЁп╬п╫п╟
   public void interruptTest() throws Exception;
 
-  // чек продажи
+  // я┤п╣п╨ п©я─п╬п╢п╟п╤п╦
   public void openCheck() throws Exception;
 
   public void salePostition(double quan, double price, String text) throws Exception;
@@ -51,16 +51,16 @@ public interface FiscalPrinter
   public double closeCheck(double nal, double bn, String text) throws Exception;
 
 
-  // внесение / выплата
+  // п╡п╫п╣я│п╣п╫п╦п╣ / п╡я▀п©п╩п╟я┌п╟
   public void payInOper(double sum) throws Exception;
 
   public void payOutOper(double sum) throws Exception;
 
 
-  // чтение регистров
+  // я┤я┌п╣п╫п╦п╣ я─п╣пЁп╦я│я┌я─п╬п╡
   public int getLastDocNum() throws Exception;
 
-  // сумма наличности в кассе
+  // я│я┐п╪п╪п╟ п╫п╟п╩п╦я┤п╫п╬я│я┌п╦ п╡ п╨п╟я│я│п╣
   public double getNalSum() throws Exception;
   
   
@@ -68,13 +68,13 @@ public interface FiscalPrinter
   
   public double getMoneyReg(int reg_num) throws Exception;
 
-  // X-отчет
+  // X-п╬я┌я┤п╣я┌
   public void makeXReport() throws Exception;
 
-  // закрытие смены
+  // п╥п╟п╨я─я▀я┌п╦п╣ я│п╪п╣п╫я▀
   public void makeClrZReport() throws Exception;
 
-  // открыть денежный ящик
+  // п╬я┌п╨я─я▀я┌я▄ п╢п╣п╫п╣п╤п╫я▀п╧ я▐я┴п╦п╨
   public void openMoneyBox() throws Exception;
 
   public void continuePrint() throws Exception;

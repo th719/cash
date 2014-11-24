@@ -3,12 +3,12 @@ package th.cash.ui.paym;
 
 import java.util.Date;
 
-// класс - банковская операция
+// п╨п╩п╟я│я│ - п╠п╟п╫п╨п╬п╡я│п╨п╟я▐ п╬п©п╣я─п╟я├п╦я▐
 public class BankOper implements Comparable 
 
 {
 
-  // атрибуты, по которым транзакции сравниваются с отчетом
+  // п╟я┌я─п╦п╠я┐я┌я▀, п©п╬ п╨п╬я┌п╬я─я▀п╪ я┌я─п╟п╫п╥п╟п╨я├п╦п╦ я│я─п╟п╡п╫п╦п╡п╟я▌я┌я│я▐ я│ п╬я┌я┤п╣я┌п╬п╪
   private String card_no;
   private Date exp_date;
 
@@ -47,7 +47,7 @@ public class BankOper implements Comparable
     this.t_type = ttype;
   }
 
-  // это только для транзакций отчета
+  // я█я┌п╬ я┌п╬п╩я▄п╨п╬ п╢п╩я▐ я┌я─п╟п╫п╥п╟п╨я├п╦п╧ п╬я┌я┤п╣я┌п╟
   public void setCheckNum(int val)
   {
     check_num = val;

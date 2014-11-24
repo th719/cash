@@ -12,7 +12,7 @@ public class FrUtil
   private static String _strFromBytes(byte[] buf, int offs, int num) throws UnsupportedEncodingException
   {
     int num2 = 0;
-    // фактическая длина строки
+    // я└п╟п╨я┌п╦я┤п╣я│п╨п╟я▐ п╢п╩п╦п╫п╟ я│я┌я─п╬п╨п╦
     while (num2 < num && buf[offs + num2] != (byte)0x00) num2++;
     return new String(buf, offs, num2, FrConst.FR_STR_ENC);
   }
@@ -24,7 +24,7 @@ public class FrUtil
       return _strFromBytes(buf, offs, num);
     } catch (UnsupportedEncodingException ex)
     {
-      FrException fex = new FrException("Неподдерживаемая кодировка символов", -11, 1);
+      FrException fex = new FrException("п²п╣п©п╬п╢п╢п╣я─п╤п╦п╡п╟п╣п╪п╟я▐ п╨п╬п╢п╦я─п╬п╡п╨п╟ я│п╦п╪п╡п╬п╩п╬п╡", -11, 1);
       fex.setNestedException(ex);
       throw fex;
     }
@@ -101,7 +101,7 @@ public class FrUtil
       buf[offs + i] = bstr[i];
       i++;
     }
-    // остаток до max_len заполняем нулями
+    // п╬я│я┌п╟я┌п╬п╨ п╢п╬ max_len п╥п╟п©п╬п╩п╫я▐п╣п╪ п╫я┐п╩я▐п╪п╦
     while (i < max_len)
     {
       buf[offs + i] = (byte)0;
@@ -117,7 +117,7 @@ public class FrUtil
       _strToBytes(buf, val, max_len, offs);      
     } catch (UnsupportedEncodingException ex)
     {
-      FrException fex = new FrException("Неподдерживаемая кодировка символов", -11, 1);
+      FrException fex = new FrException("п²п╣п©п╬п╢п╢п╣я─п╤п╦п╡п╟п╣п╪п╟я▐ п╨п╬п╢п╦я─п╬п╡п╨п╟ я│п╦п╪п╡п╬п╩п╬п╡", -11, 1);
       fex.setNestedException(ex);
       throw fex;
     }
@@ -136,8 +136,8 @@ public class FrUtil
    * Date
    */
 
-   // date - 3 байта  ДД-ММ-ГГ
-   // time - 3 байта  Время (3 байта) ЧЧ-ММ-СС
+   // date - 3 п╠п╟п╧я┌п╟  п■п■-п°п°-п⌠п⌠
+   // time - 3 п╠п╟п╧я┌п╟  п▓я─п╣п╪я▐ (3 п╠п╟п╧я┌п╟) п╖п╖-п°п°-п║п║
   public static void dateToBytes(Date dt, byte[] date, byte[] time)
   {
     if (dt == null || date == null || time == null) return;
@@ -173,7 +173,7 @@ public class FrUtil
       return _dateFromBytes(date, time);
     } catch (ParseException ex)
     {
-      FrException fex = new FrException("Ошибка при разборе даты", -12, 1);
+      FrException fex = new FrException("п·я┬п╦п╠п╨п╟ п©я─п╦ я─п╟п╥п╠п╬я─п╣ п╢п╟я┌я▀", -12, 1);
       fex.setNestedException(ex);
       throw fex;
     }

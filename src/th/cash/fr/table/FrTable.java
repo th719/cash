@@ -12,8 +12,8 @@ import th.cash.fr.FrException;
 
 import org.apache.log4j.Logger;
 
-// таблица регистратора
-// значиния типа Integer или String
+// я┌п╟п╠п╩п╦я├п╟ я─п╣пЁп╦я│я┌я─п╟я┌п╬я─п╟
+// п╥п╫п╟я┤п╦п╫п╦я▐ я┌п╦п©п╟ Integer п╦п╩п╦ String
 public class FrTable 
 {
 
@@ -22,21 +22,21 @@ public class FrTable
   private int numRows = 0;
   private int numCols = 0;
 
-  // структура и данные
-  private Vector field_descr = null;   // описания полей
-  private Vector rows = null;          // строки в таблице
-  private Vector changed_cells = null; // набор измененных строк
+  // я│я┌я─я┐п╨я┌я┐я─п╟ п╦ п╢п╟п╫п╫я▀п╣
+  private Vector field_descr = null;   // п╬п©п╦я│п╟п╫п╦я▐ п©п╬п╩п╣п╧
+  private Vector rows = null;          // я│я┌я─п╬п╨п╦ п╡ я┌п╟п╠п╩п╦я├п╣
+  private Vector changed_cells = null; // п╫п╟п╠п╬я─ п╦п╥п╪п╣п╫п╣п╫п╫я▀я┘ я│я┌я─п╬п╨
 
   protected final static String LOG_PREF = "FR"; 
   protected Logger log = Logger.getLogger(LOG_PREF + '.' + this.getClass().getName());
   
-  // только номер, остальное читается из фискальника
+  // я┌п╬п╩я▄п╨п╬ п╫п╬п╪п╣я─, п╬я│я┌п╟п╩я▄п╫п╬п╣ я┤п╦я┌п╟п╣я┌я│я▐ п╦п╥ я└п╦я│п╨п╟п╩я▄п╫п╦п╨п╟
   public FrTable(byte tab_num)
   {
     num = tab_num;
   }
 
-  // только чтение
+  // я┌п╬п╩я▄п╨п╬ я┤я┌п╣п╫п╦п╣
   public byte getNum()
   {
     return num;
@@ -57,7 +57,7 @@ public class FrTable
     return numCols;
   }
 
-  // прочитать / сохранить
+  // п©я─п╬я┤п╦я┌п╟я┌я▄ / я│п╬я┘я─п╟п╫п╦я┌я▄
   public void initFromFr(FrDrv fr) throws FrException
   {
     readTabStructure(fr);
@@ -99,14 +99,14 @@ public class FrTable
     changed_cells = null;
   }
 
-  // чтения описаний полей
+  // я┤я┌п╣п╫п╦я▐ п╬п©п╦я│п╟п╫п╦п╧ п©п╬п╩п╣п╧
   public TabFieldDescr getFieldDescr(int colIndex)
   {
     return (TabFieldDescr)field_descr.get(colIndex);
   }
   
 
-  // доступ к атрибутам
+  // п╢п╬я│я┌я┐п© п╨ п╟я┌я─п╦п╠я┐я┌п╟п╪
   public Object getValueAt(int rowIndex, int columnIndex)
   {
     return ((Vector)rows.get(rowIndex)).get(columnIndex);
@@ -114,7 +114,7 @@ public class FrTable
 
   public void setValueAt(Object val, int rowIndex, int columnIndex)
   {
-    if (val == null) return; // значение null не допустимо
+    if (val == null) return; // п╥п╫п╟я┤п╣п╫п╦п╣ null п╫п╣ п╢п╬п©я┐я│я┌п╦п╪п╬
     Object old_val = getValueAt(rowIndex, columnIndex);
     if (!val.equals(old_val))
     {
@@ -198,7 +198,7 @@ public class FrTable
     
     while ( i <= numCols && res == 0 && cmd_res)
     {
-      res = fr.getFieldStructure(getNum(), i); // нумерация полей начинается с 1
+      res = fr.getFieldStructure(getNum(), i); // п╫я┐п╪п╣я─п╟я├п╦я▐ п©п╬п╩п╣п╧ п╫п╟я┤п╦п╫п╟п╣я┌я│я▐ я│ 1
       cmd_res = fr.isCmdOk();
       if (res == 0 && cmd_res)
       {

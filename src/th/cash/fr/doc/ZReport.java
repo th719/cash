@@ -5,7 +5,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
- * Z-отчет
+ * Z-п╬я┌я┤п╣я┌
  */
 public class ZReport extends Report
 {
@@ -15,14 +15,14 @@ public class ZReport extends Report
     setDocType(FD_ZREPORT_TYPE);
   }
 
-  // транзакции заполняются в методе print()
-  // нужно предусмотреть продолжение печати при ошибке 
+  // я┌я─п╟п╫п╥п╟п╨я├п╦п╦ п╥п╟п©п╬п╩п╫я▐я▌я┌я│я▐ п╡ п╪п╣я┌п╬п╢п╣ print()
+  // п╫я┐п╤п╫п╬ п©я─п╣п╢я┐я│п╪п╬я┌я─п╣я┌я▄ п©я─п╬п╢п╬п╩п╤п╣п╫п╦п╣ п©п╣я┤п╟я┌п╦ п©я─п╦ п╬я┬п╦п╠п╨п╣ 
 //  public void print(FiscalPrinter fp) throws Exception
 //  {
 //    int pc = 0;
 //    try
 //    {
-//      nalSum = fp.getNalSum(); // сумма наличности в кассе
+//      nalSum = fp.getNalSum(); // я│я┐п╪п╪п╟ п╫п╟п╩п╦я┤п╫п╬я│я┌п╦ п╡ п╨п╟я│я│п╣
 //      sum = fp.getMoneyReg(193) - fp.getMoneyReg(195);
 //      if (pc <= pr_cnt)
 //        fp.makeClrZReport();

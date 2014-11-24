@@ -2,7 +2,7 @@ package th.cash.fr.doc;
 
 import java.util.Date;
 /**
- * для журнала транзакций
+ * п╢п╩я▐ п╤я┐я─п╫п╟п╩п╟ я┌я─п╟п╫п╥п╟п╨я├п╦п╧
  */
 public class Transaction 
 {

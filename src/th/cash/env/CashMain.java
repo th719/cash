@@ -107,7 +107,7 @@ public class CashMain extends WindowAdapter implements Runnable
   }
 
 
-  // вывод сообщения о нерабочем состоянии
+  // п╡я▀п╡п╬п╢ я│п╬п╬п╠я┴п╣п╫п╦я▐ п╬ п╫п╣я─п╟п╠п╬я┤п╣п╪ я│п╬я│я┌п╬я▐п╫п╦п╦
   private void showLockedTextOnDisplay()
   {
     CustDisplay cd = cashEnv.getCustomerDisplay();
@@ -122,7 +122,7 @@ public class CashMain extends WindowAdapter implements Runnable
   }
 
   private boolean wt;
-  private boolean fld; // отображать окно авторизации
+  private boolean fld; // п╬я┌п╬п╠я─п╟п╤п╟я┌я▄ п╬п╨п╫п╬ п╟п╡я┌п╬я─п╦п╥п╟я├п╦п╦
     
   public void run()
   {
@@ -136,13 +136,13 @@ public class CashMain extends WindowAdapter implements Runnable
         {
           if (login == null) initLogin();
 
-          // вывод сообщения о нерабочем состоянии
+          // п╡я▀п╡п╬п╢ я│п╬п╬п╠я┴п╣п╫п╦я▐ п╬ п╫п╣я─п╟п╠п╬я┤п╣п╪ я│п╬я│я┌п╬я▐п╫п╦п╦
           showLockedTextOnDisplay();
 
-          // отображение окна авторизации
+          // п╬я┌п╬п╠я─п╟п╤п╣п╫п╦п╣ п╬п╨п╫п╟ п╟п╡я┌п╬я─п╦п╥п╟я├п╦п╦
           login.do_login(cashEnv);
 
-          // возможно что то выводить на дисплей
+          // п╡п╬п╥п╪п╬п╤п╫п╬ я┤я┌п╬ я┌п╬ п╡я▀п╡п╬п╢п╦я┌я▄ п╫п╟ п╢п╦я│п©п╩п╣п╧
 
           if (login.getUser() == null) 
           {
@@ -291,11 +291,11 @@ public class CashMain extends WindowAdapter implements Runnable
     {
       cash_main.log.info("Init Cash Env ...");
 
-      // показываем заставку      
+      // п©п╬п╨п╟п╥я▀п╡п╟п╣п╪ п╥п╟я│я┌п╟п╡п╨я┐      
       logoWin.show();
 
-      // инициализация элементов cashEnv      
-      logoWin.setText("Инициализация справочников");
+      // п╦п╫п╦я├п╦п╟п╩п╦п╥п╟я├п╦я▐ я█п╩п╣п╪п╣п╫я┌п╬п╡ cashEnv      
+      logoWin.setText("п≤п╫п╦я├п╦п╟п╩п╦п╥п╟я├п╦я▐ я│п©я─п╟п╡п╬я┤п╫п╦п╨п╬п╡");
       cash_main.cashEnv.init();
       logoWin.addText("Ok");
 
@@ -303,7 +303,7 @@ public class CashMain extends WindowAdapter implements Runnable
       if (scan_dev != null)
       {
         cash_main.log.info("Init Barcode Scanner ...");
-        logoWin.setText("Инициализация сканера Ш/К");
+        logoWin.setText("п≤п╫п╦я├п╦п╟п╩п╦п╥п╟я├п╦я▐ я│п╨п╟п╫п╣я─п╟ п╗/п ");
         cash_main.cashEnv.initScanner(scan_dev);
         logoWin.addText("Ok");
       }
@@ -311,7 +311,7 @@ public class CashMain extends WindowAdapter implements Runnable
       if (cdisp_dev != null)
       {
         cash_main.log.info("Init Customer Display ...");
-        logoWin.setText("Инициализация дисплея покупателя");
+        logoWin.setText("п≤п╫п╦я├п╦п╟п╩п╦п╥п╟я├п╦я▐ п╢п╦я│п©п╩п╣я▐ п©п╬п╨я┐п©п╟я┌п╣п╩я▐");
         cash_main.cashEnv.initCustomerDisplay(cdisp_dev);
         logoWin.addText("Ok");
       }
@@ -324,7 +324,7 @@ public class CashMain extends WindowAdapter implements Runnable
 
 
       cash_main.log.info("Init Fiscal Printer ...");
-      logoWin.setText("Инициализация фискального регистратора");
+      logoWin.setText("п≤п╫п╦я├п╦п╟п╩п╦п╥п╟я├п╦я▐ я└п╦я│п╨п╟п╩я▄п╫п╬пЁп╬ я─п╣пЁп╦я│я┌я─п╟я┌п╬я─п╟");
       cash_main.cashEnv.initFiscalPrinterPort(fp_dev, 100);
       logoWin.addText("Ok");
 
@@ -332,13 +332,13 @@ public class CashMain extends WindowAdapter implements Runnable
       ((JFrame)logoWin).dispose();
       
 
-      // прицепляем обработчик системных событий
+      // п©я─п╦я├п╣п©п╩я▐п╣п╪ п╬п╠я─п╟п╠п╬я┌я┤п╦п╨ я│п╦я│я┌п╣п╪п╫я▀я┘ я│п╬п╠я▀я┌п╦п╧
       cash_main.log.info("Init system signal handler ...");
       cash_main.initSignalHandler();
 
       
         
-      // переключаемся на окно Login
+      // п©п╣я─п╣п╨п╩я▌я┤п╟п╣п╪я│я▐ п╫п╟ п╬п╨п╫п╬ Login
       cash_main.log.info("Show UI login ...");
       //cash_main.a_login.actionPerformed(null);
 

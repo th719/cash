@@ -3,7 +3,7 @@ package th.cash.model;
 import th.cash.fr.Hex;
 
 /**
- * Декодирование пароля кассира
+ * п■п╣п╨п╬п╢п╦я─п╬п╡п╟п╫п╦п╣ п©п╟я─п╬п╩я▐ п╨п╟я│я│п╦я─п╟
  */
 public class PwdUserDecode 
 {

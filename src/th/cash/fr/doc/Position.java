@@ -8,8 +8,8 @@ import th.cash.model.Barcode;
 import th.cash.model.Tax;
 
 /**
- * Класс, определяющий позицию в чеке продажи / возврата
- * данные отображаются в модель таблицы
+ * п п╩п╟я│я│, п╬п©я─п╣п╢п╣п╩я▐я▌я┴п╦п╧ п©п╬п╥п╦я├п╦я▌ п╡ я┤п╣п╨п╣ п©я─п╬п╢п╟п╤п╦ / п╡п╬п╥п╡я─п╟я┌п╟
+ * п╢п╟п╫п╫я▀п╣ п╬я┌п╬п╠я─п╟п╤п╟я▌я┌я│я▐ п╡ п╪п╬п╢п╣п╩я▄ я┌п╟п╠п╩п╦я├я▀
  * User: lazarev
  * Date: 14.11.2007
  * Time: 13:31:22
@@ -22,13 +22,13 @@ public class Position {
   public final static Integer CANCEL_POS = new Integer(2);
   public final static Integer SALE_RET_POS = new Integer(3);
 
-//  пока без продажи
+//  п©п╬п╨п╟ п╠п╣п╥ п©я─п╬п╢п╟п╤п╦
 //  private final static int BUY_POS = 4;
 //  private final static int BUY_RET_POS = 5;
   
-  private Integer num;  // номер в чеке или null
-  private Integer type; // тип - определяется константами см. выше
-  private String gname; // 40 сиволов
+  private Integer num;  // п╫п╬п╪п╣я─ п╡ я┤п╣п╨п╣ п╦п╩п╦ null
+  private Integer type; // я┌п╦п© - п╬п©я─п╣п╢п╣п╩я▐п╣я┌я│я▐ п╨п╬п╫я│я┌п╟п╫я┌п╟п╪п╦ я│п╪. п╡я▀я┬п╣
+  private String gname; // 40 я│п╦п╡п╬п╩п╬п╡
   private Double quantity;
   private Double price;
   private Double sum;
@@ -38,12 +38,12 @@ public class Position {
   private String  barcode;
   private Double  koef;
 
-  private Integer gtaxId;   // группа налога
-  private Double  nalPc;    // процент 
-  private String  tname;    // наименование налога 
-  private Double  taxSum;   // сумма налога
+  private Integer gtaxId;   // пЁя─я┐п©п©п╟ п╫п╟п╩п╬пЁп╟
+  private Double  nalPc;    // п©я─п╬я├п╣п╫я┌ 
+  private String  tname;    // п╫п╟п╦п╪п╣п╫п╬п╡п╟п╫п╦п╣ п╫п╟п╩п╬пЁп╟ 
+  private Double  taxSum;   // я│я┐п╪п╪п╟ п╫п╟п╩п╬пЁп╟
 
-  // TODO еще скидки ... добавить
+  // TODO п╣я┴п╣ я│п╨п╦п╢п╨п╦ ... п╢п╬п╠п╟п╡п╦я┌я▄
 
 
   public Position(Position src)

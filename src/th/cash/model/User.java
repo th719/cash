@@ -14,22 +14,22 @@ public class User implements Comparable{
     private Integer np;
     private String password;
     private String cr_pwd;
-//    private Integer frcode;     // номер пользователя в фискальном устройстве
-                              // инициализируется при записи в таблицу ФР
+//    private Integer frcode;     // п╫п╬п╪п╣я─ п©п╬п╩я▄п╥п╬п╡п╟я┌п╣п╩я▐ п╡ я└п╦я│п╨п╟п╩я▄п╫п╬п╪ я┐я│я┌я─п╬п╧я│я┌п╡п╣
+                              // п╦п╫п╦я├п╦п╟п╩п╦п╥п╦я─я┐п╣я┌я│я▐ п©я─п╦ п╥п╟п©п╦я│п╦ п╡ я┌п╟п╠п╩п╦я├я┐ п╓п═
     private Role role;                           
 
     public User(Integer code, String name, Integer np, String password) {
         this.code = code;
         this.name = name;
         this.np = np;
-        try { // decode в конструкторе объекта
+        try { // decode п╡ п╨п╬п╫я│я┌я─я┐п╨я┌п╬я─п╣ п╬п╠я┼п╣п╨я┌п╟
         this.password = new PwdUserDecode().decode(cr_pwd = password);
         } catch (Exception ex)
         {
           throw new RuntimeException(ex.getMessage());
         }
-        // TODO - где декодировать пароль пользователя ?
-        // при чтении из таблицы или при обмене записвая в таблицу открытый пароль?
+        // TODO - пЁп╢п╣ п╢п╣п╨п╬п╢п╦я─п╬п╡п╟я┌я▄ п©п╟я─п╬п╩я▄ п©п╬п╩я▄п╥п╬п╡п╟я┌п╣п╩я▐ ?
+        // п©я─п╦ я┤я┌п╣п╫п╦п╦ п╦п╥ я┌п╟п╠п╩п╦я├я▀ п╦п╩п╦ п©я─п╦ п╬п╠п╪п╣п╫п╣ п╥п╟п©п╦я│п╡п╟я▐ п╡ я┌п╟п╠п╩п╦я├я┐ п╬я┌п╨я─я▀я┌я▀п╧ п©п╟я─п╬п╩я▄?
     }
 
     public Integer getCode() {

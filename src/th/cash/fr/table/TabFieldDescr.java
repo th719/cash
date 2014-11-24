@@ -1,7 +1,7 @@
 package th.cash.fr.table;
 
 /**
- * описание структуры поля
+ * п╬п©п╦я│п╟п╫п╦п╣ я│я┌я─я┐п╨я┌я┐я─я▀ п©п╬п╩я▐
  */
 public class TabFieldDescr 
 {

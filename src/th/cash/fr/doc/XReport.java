@@ -13,7 +13,7 @@ public class XReport extends Report
 //    int pc = 0;
 //    try
 //    {
-//      nalSum = fp.getNalSum(); // сумма наличности в кассе
+//      nalSum = fp.getNalSum(); // я│я┐п╪п╪п╟ п╫п╟п╩п╦я┤п╫п╬я│я┌п╦ п╡ п╨п╟я│я│п╣
 //      sum = fp.getMoneyReg(193) - fp.getMoneyReg(195);
 //      if (pc <= pr_cnt)
 //        fp.makeXReport();

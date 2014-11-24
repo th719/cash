@@ -17,7 +17,7 @@ public class FDscSelDialog extends JDialog
   
   public FDscSelDialog(Frame owner)
   {
-    super(owner, "Выбор скидки", true);
+    super(owner, "п▓я▀п╠п╬я─ я│п╨п╦п╢п╨п╦", true);
 
     mp = new FDscSelectPanel(this);
 

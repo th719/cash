@@ -1,7 +1,7 @@
 /*
  * FDoc.java
  *
- * Created on 21 Ноябрь 2007 г., 16:17
+ * Created on 21 п²п╬я▐п╠я─я▄ 2007 пЁ., 16:17
  *
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.
@@ -34,12 +34,12 @@ import th.cash.model.Tax;
 import th.cash.model.User;
 
 /**
- * Класс - модель фискального документа
+ * п п╩п╟я│я│ - п╪п╬п╢п╣п╩я▄ я└п╦я│п╨п╟п╩я▄п╫п╬пЁп╬ п╢п╬п╨я┐п╪п╣п╫я┌п╟
  * @author lazarev
  */
 public abstract class FDoc {
     
-    // константы
+    // п╨п╬п╫я│я┌п╟п╫я┌я▀
     public final static int FD_SALE_TYPE    = 1;
     public final static int FD_RETURN_TYPE  = 2;
 
@@ -51,28 +51,28 @@ public abstract class FDoc {
 
     //
     protected final static String[] TYPE_NAMES = 
-      {"Продажа", "Возврат", "Внесение", "Выплата", "Z-отчет","X-отчет"};
+      {"п÷я─п╬п╢п╟п╤п╟", "п▓п╬п╥п╡я─п╟я┌", "п▓п╫п╣я│п╣п╫п╦п╣", "п▓я▀п©п╩п╟я┌п╟", "Z-п╬я┌я┤п╣я┌","X-п╬я┌я┤п╣я┌"};
 
-    // тип документа (продажа/покупка/внесени/выплата/Z-отчет)
+    // я┌п╦п© п╢п╬п╨я┐п╪п╣п╫я┌п╟ (п©я─п╬п╢п╟п╤п╟/п©п╬п╨я┐п©п╨п╟/п╡п╫п╣я│п╣п╫п╦/п╡я▀п©п╩п╟я┌п╟/Z-п╬я┌я┤п╣я┌)
     protected int     type_fd;  
     protected String  tname_fd; 
     
-    protected int     cashNum;        // номер кассы
-    protected int     docNum;           // номер документа
-    protected Date    openDate;       // дата чека (открыт)
-    protected Date    closeDate;      // дата закрытия (формирования) документа
+    protected int     cashNum;        // п╫п╬п╪п╣я─ п╨п╟я│я│я▀
+    protected int     docNum;           // п╫п╬п╪п╣я─ п╢п╬п╨я┐п╪п╣п╫я┌п╟
+    protected Date    openDate;       // п╢п╟я┌п╟ я┤п╣п╨п╟ (п╬я┌п╨я─я▀я┌)
+    protected Date    closeDate;      // п╢п╟я┌п╟ п╥п╟п╨я─я▀я┌п╦я▐ (я└п╬я─п╪п╦я─п╬п╡п╟п╫п╦я▐) п╢п╬п╨я┐п╪п╣п╫я┌п╟
     
-    protected int     cashierId;    // код и имя кассира
+    protected int     cashierId;    // п╨п╬п╢ п╦ п╦п╪я▐ п╨п╟я│я│п╦я─п╟
     protected String  cashierName;  //
     
 
     // --------------------------------------------------------
-    // итог чека
-    protected double sum = 0;       // сумма позиций (со скидками!) 
-    protected double nalSum = 0;    // денег наличными ...
-    protected double change = 0;    // сдача
+    // п╦я┌п╬пЁ я┤п╣п╨п╟
+    protected double sum = 0;       // я│я┐п╪п╪п╟ п©п╬п╥п╦я├п╦п╧ (я│п╬ я│п╨п╦п╢п╨п╟п╪п╦!) 
+    protected double nalSum = 0;    // п╢п╣п╫п╣пЁ п╫п╟п╩п╦я┤п╫я▀п╪п╦ ...
+    protected double change = 0;    // я│п╢п╟я┤п╟
 
-    protected double bnSum = 0;     // сумма по безналу ...
+    protected double bnSum = 0;     // я│я┐п╪п╪п╟ п©п╬ п╠п╣п╥п╫п╟п╩я┐ ...
 
     protected Vector transactions = null;
     
@@ -93,7 +93,7 @@ public abstract class FDoc {
       transactions = new Vector();
     }
 
-    // авторизованная операция !!! важно
+    // п╟п╡я┌п╬я─п╦п╥п╬п╡п╟п╫п╫п╟я▐ п╬п©п╣я─п╟я├п╦я▐ !!! п╡п╟п╤п╫п╬
     public void close(User u) 
     {
       closeDate = new Date();
@@ -103,7 +103,7 @@ public abstract class FDoc {
 
     public abstract void print(FiscalPrinter fp) throws Exception;
 
-    // сохраняем все транзакции и чистим буффер COMMITED !!!
+    // я│п╬я┘я─п╟п╫я▐п╣п╪ п╡я│п╣ я┌я─п╟п╫п╥п╟п╨я├п╦п╦ п╦ я┤п╦я│я┌п╦п╪ п╠я┐я└я└п╣я─ COMMITED !!!
 
     public void save(Connection c, boolean tr_log) throws SQLException
     {

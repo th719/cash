@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-// редактор цифер, как в касире
+// я─п╣п╢п╟п╨я┌п╬я─ я├п╦я└п╣я─, п╨п╟п╨ п╡ п╨п╟я│п╦я─п╣
 public class InputLabel extends JLabel implements KeyListener 
 {
   private final static String DEF_MASK = "0.00";
@@ -12,7 +12,7 @@ public class InputLabel extends JLabel implements KeyListener
   private StringBuffer inpBuf;
   private int dot_pos = 0;
   private boolean dot_typed  = false;
-  private boolean clear_type = false; // режим набора с очисткой пердыдущего текста
+  private boolean clear_type = false; // я─п╣п╤п╦п╪ п╫п╟п╠п╬я─п╟ я│ п╬я┤п╦я│я┌п╨п╬п╧ п©п╣я─п╢я▀п╢я┐я┴п╣пЁп╬ я┌п╣п╨я│я┌п╟
 
   public InputLabel()
   {
@@ -27,7 +27,7 @@ public class InputLabel extends JLabel implements KeyListener
     return min_ins;
   }
 
-  // переинициализация поля ввода
+  // п©п╣я─п╣п╦п╫п╦я├п╦п╟п╩п╦п╥п╟я├п╦я▐ п©п╬п╩я▐ п╡п╡п╬п╢п╟
   private void initInputBuffer()
   {
     inpBuf = new StringBuffer(DEF_MASK);
@@ -102,7 +102,7 @@ public class InputLabel extends JLabel implements KeyListener
           }
         } else
         {
-          int i1 = 0, i2 = 0; // последний 0 и не 0
+          int i1 = 0, i2 = 0; // п©п╬я│п╩п╣п╢п╫п╦п╧ 0 п╦ п╫п╣ 0
 
           while (i2 < len && (inpBuf.charAt(i2) == ZERO || inpBuf.charAt(i2) == DOT))
           {
@@ -111,7 +111,7 @@ public class InputLabel extends JLabel implements KeyListener
           }
 
           if (i2 > 0)
-          { // сдвигаем влево в рамках маски
+          { // я│п╢п╡п╦пЁп╟п╣п╪ п╡п╩п╣п╡п╬ п╡ я─п╟п╪п╨п╟я┘ п╪п╟я│п╨п╦
             int j1 = i1, j2 = i2;
             while (j2 < len)
             {
@@ -121,7 +121,7 @@ public class InputLabel extends JLabel implements KeyListener
             }
             inpBuf.setCharAt(len - 1, c);
           } else
-          {  // двигаем точку вправо;
+          {  // п╢п╡п╦пЁп╟п╣п╪ я┌п╬я┤п╨я┐ п╡п©я─п╟п╡п╬;
             inpBuf.setCharAt(dot_pos, inpBuf.charAt(dot_pos + 1));
             inpBuf.setCharAt(dot_pos + 1, DOT);
             inpBuf.append(c);
@@ -154,7 +154,7 @@ public class InputLabel extends JLabel implements KeyListener
           inpBuf.setCharAt(dot_pos - 1, DOT);
         } else
         {
-          // сдвигаем вправо
+          // я│п╢п╡п╦пЁп╟п╣п╪ п╡п©я─п╟п╡п╬
           int i = 0;
           while (i < len && (inpBuf.charAt(i) == ZERO || inpBuf.charAt(i) == DOT)) i++;
 //          System.out.println("i = "+i);
@@ -189,13 +189,13 @@ public class InputLabel extends JLabel implements KeyListener
     if (clear_type) { clear(); clear_type = false; }
   }
 
-  // возвращает набранную строку
+  // п╡п╬п╥п╡я─п╟я┴п╟п╣я┌ п╫п╟п╠я─п╟п╫п╫я┐я▌ я│я┌я─п╬п╨я┐
   public String getValue()
   {
     return inpBuf.toString();
   }
 
-  // возвращает только цифры из поля ввода
+  // п╡п╬п╥п╡я─п╟я┴п╟п╣я┌ я┌п╬п╩я▄п╨п╬ я├п╦я└я─я▀ п╦п╥ п©п╬п╩я▐ п╡п╡п╬п╢п╟
   public String getValueAsInt()
   {
     StringBuffer res = new StringBuffer();
@@ -213,7 +213,7 @@ public class InputLabel extends JLabel implements KeyListener
   public void keyTyped(KeyEvent e)
   {
     char c = e.getKeyChar();
-//    вариант, с очисткой по любой кнопке
+//    п╡п╟я─п╦п╟п╫я┌, я│ п╬я┤п╦я│я┌п╨п╬п╧ п©п╬ п╩я▌п╠п╬п╧ п╨п╫п╬п©п╨п╣
 //    if (clear_type) { clear(); clear_type = false; }
     if (c == KeyEvent.VK_BACK_SPACE)
     {

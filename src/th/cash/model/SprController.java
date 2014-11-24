@@ -23,7 +23,7 @@ import th.cash.model.User;
 import org.apache.log4j.Logger;
 
 /**
- * Контроллер модели (обновление строк, инициализация из базы)
+ * п п╬п╫я┌я─п╬п╩п╩п╣я─ п╪п╬п╢п╣п╩п╦ (п╬п╠п╫п╬п╡п╩п╣п╫п╦п╣ я│я┌я─п╬п╨, п╦п╫п╦я├п╦п╟п╩п╦п╥п╟я├п╦я▐ п╦п╥ п╠п╟п╥я▀)
  * User: lazarev
  * Date: 15.11.2007
  * Time: 19:41:27
@@ -33,20 +33,20 @@ public class SprController {
     // data model object
     private SprModel model;
 
-    // списки измененных объектов
-    // товары  
+    // я│п©п╦я│п╨п╦ п╦п╥п╪п╣п╫п╣п╫п╫я▀я┘ п╬п╠я┼п╣п╨я┌п╬п╡
+    // я┌п╬п╡п╟я─я▀  
     private LinkedList goodChanges;
     private LinkedList barcodeChanges;
     private LinkedList taxChanges;
-    // пользователи
+    // п©п╬п╩я▄п╥п╬п╡п╟я┌п╣п╩п╦
     private LinkedList userChanges;
-//    private LinkedList roleChanges; // пока использование не оправдано, роли статичны
-    // скидки и дисконтные карты
+//    private LinkedList roleChanges; // п©п╬п╨п╟ п╦я│п©п╬п╩я▄п╥п╬п╡п╟п╫п╦п╣ п╫п╣ п╬п©я─п╟п╡п╢п╟п╫п╬, я─п╬п╩п╦ я│я┌п╟я┌п╦я┤п╫я▀
+    // я│п╨п╦п╢п╨п╦ п╦ п╢п╦я│п╨п╬п╫я┌п╫я▀п╣ п╨п╟я─я┌я▀
     private LinkedList fdscChanges;
     private LinkedList dcardChanges;
     private LinkedList amassDscChanges;
     private LinkedList autoDscChanges;
-    // настройки программы, немного иной механизм
+    // п╫п╟я│я┌я─п╬п╧п╨п╦ п©я─п╬пЁя─п╟п╪п╪я▀, п╫п╣п╪п╫п╬пЁп╬ п╦п╫п╬п╧ п╪п╣я┘п╟п╫п╦п╥п╪
     private Properties paramChanges;
     private Vector params_to_remove;
 
@@ -66,7 +66,7 @@ public class SprController {
 
     private boolean f_param_mdf = false;
 
-    // дата последнего обновления
+    // п╢п╟я┌п╟ п©п╬я│п╩п╣п╢п╫п╣пЁп╬ п╬п╠п╫п╬п╡п╩п╣п╫п╦я▐
     private Date last_update = null;
     
 
@@ -96,7 +96,7 @@ public class SprController {
 
 
    /**
-    * обновление модели из таблиц БД (при старте программы)
+    * п╬п╠п╫п╬п╡п╩п╣п╫п╦п╣ п╪п╬п╢п╣п╩п╦ п╦п╥ я┌п╟п╠п╩п╦я├ п▒п■ (п©я─п╦ я│я┌п╟я─я┌п╣ п©я─п╬пЁя─п╟п╪п╪я▀)
     */
    public void refreshAllModel(Connection c) throws SQLException
    {
@@ -118,7 +118,7 @@ public class SprController {
 
 
 
-     // к пользователям прицепляем роли ... 
+     // п╨ п©п╬п╩я▄п╥п╬п╡п╟я┌п╣п╩я▐п╪ п©я─п╦я├п╣п©п╩я▐п╣п╪ я─п╬п╩п╦ ... 
      Vector users = model.getUsersVector();
      User user;
      for (int i = 0; i < users.size(); i++)
@@ -310,7 +310,7 @@ public class SprController {
     }
  
 
-    // чтение курсоров
+    // я┤я┌п╣п╫п╦п╣ п╨я┐я─я│п╬я─п╬п╡
     // _______________
     private void _refreshGoods(ResultSet rs) throws SQLException
     {
@@ -402,7 +402,7 @@ public class SprController {
             code = new Integer(rs.getInt(++pcnt));
             name = rs.getString(++pcnt);
             np = new Integer(rs.getInt(++pcnt));
-            // TODO пароль кассира  нужно декодировать!
+            // TODO п©п╟я─п╬п╩я▄ п╨п╟я│я│п╦я─п╟  п╫я┐п╤п╫п╬ п╢п╣п╨п╬п╢п╦я─п╬п╡п╟я┌я▄!
             pwd = rs.getString(++pcnt);
             user = new User(code, name, np, pwd);
             users.add(user);
@@ -418,8 +418,8 @@ public class SprController {
       Integer taxId;
       String taxName;
       Integer gtaxId;
-      Double  taxPc;   // ставка налога
-      Integer kkmNum;  // номер в регистраторе
+      Double  taxPc;   // я│я┌п╟п╡п╨п╟ п╫п╟п╩п╬пЁп╟
+      Integer kkmNum;  // п╫п╬п╪п╣я─ п╡ я─п╣пЁп╦я│я┌я─п╟я┌п╬я─п╣
         
       while (rs.next())
       {
@@ -632,7 +632,7 @@ public class SprController {
       {
         pcnt = 0;
 
-        // читаем новую строку
+        // я┤п╦я┌п╟п╣п╪ п╫п╬п╡я┐я▌ я│я┌я─п╬п╨я┐
         s_id = rs.getInt(++pcnt);
         s_name = rs.getString(++pcnt);
         is_uwc = rs.getInt(++pcnt) == 1;
@@ -657,7 +657,7 @@ public class SprController {
 
         if (prev_s_id != s_id)
         {
-          // новая схема
+          // п╫п╬п╡п╟я▐ я│я┘п╣п╪п╟
           _adv = new Vector(5, 5);
           as = new AutoSchem(new Integer(s_id), s_name, new Boolean(is_uwc), _adv);
           _asv.add(as);
@@ -672,18 +672,18 @@ public class SprController {
         
       }
 
-      // линейный ResultSet превращаем в список
+      // п╩п╦п╫п╣п╧п╫я▀п╧ ResultSet п©я─п╣п╡я─п╟я┴п╟п╣п╪ п╡ я│п©п╦я│п╬п╨
     }
 
     /**
-     * добавление набора прав каждому пользователю
+     * п╢п╬п╠п╟п╡п╩п╣п╫п╦п╣ п╫п╟п╠п╬я─п╟ п©я─п╟п╡ п╨п╟п╤п╢п╬п╪я┐ п©п╬п╩я▄п╥п╬п╡п╟я┌п╣п╩я▌
      */
 
 
 
     /** 
-     * применение изменений справочников. В векторе data заменяются/добавляются
-     * элементы из ch
+     * п©я─п╦п╪п╣п╫п╣п╫п╦п╣ п╦п╥п╪п╣п╫п╣п╫п╦п╧ я│п©я─п╟п╡п╬я┤п╫п╦п╨п╬п╡. п▓ п╡п╣п╨я┌п╬я─п╣ data п╥п╟п╪п╣п╫я▐я▌я┌я│я▐/п╢п╬п╠п╟п╡п╩я▐я▌я┌я│я▐
+     * я█п╩п╣п╪п╣п╫я┌я▀ п╦п╥ ch
      */
     private int applyVectorChanges(Vector data, LinkedList ch) 
     {
@@ -718,7 +718,7 @@ public class SprController {
       return cnt;
     }
 
-    // новый метод обновления справочника товаров 
+    // п╫п╬п╡я▀п╧ п╪п╣я┌п╬п╢ п╬п╠п╫п╬п╡п╩п╣п╫п╦я▐ я│п©я─п╟п╡п╬я┤п╫п╦п╨п╟ я┌п╬п╡п╟я─п╬п╡ 
     private int applyGoodsChanges(LinkedList ch)
     {
       int cnt = 0;
@@ -745,8 +745,8 @@ public class SprController {
               gm = (GoodMain)o;
               model.replceGoodMain(gm);
 
-              // делее нужно удалить все ш/к с этим кодом товаром
-              // тупо линейный поиск (  
+              // п╢п╣п╩п╣п╣ п╫я┐п╤п╫п╬ я┐п╢п╟п╩п╦я┌я▄ п╡я│п╣ я┬/п╨ я│ я█я┌п╦п╪ п╨п╬п╢п╬п╪ я┌п╬п╡п╟я─п╬п╪
+              // я┌я┐п©п╬ п╩п╦п╫п╣п╧п╫я▀п╧ п©п╬п╦я│п╨ (  
               if (f_update)
               {
                 int i = 0;
@@ -770,7 +770,7 @@ public class SprController {
     }
 
     /**
-     * применить изменения для списка пользователей
+     * п©я─п╦п╪п╣п╫п╦я┌я▄ п╦п╥п╪п╣п╫п╣п╫п╦я▐ п╢п╩я▐ я│п©п╦я│п╨п╟ п©п╬п╩я▄п╥п╬п╡п╟я┌п╣п╩п╣п╧
      */
     private void applyUserChanges()
     {
@@ -793,7 +793,7 @@ public class SprController {
     }
 
     /**
-     * применить изменение параметров
+     * п©я─п╦п╪п╣п╫п╦я┌я▄ п╦п╥п╪п╣п╫п╣п╫п╦п╣ п©п╟я─п╟п╪п╣я┌я─п╬п╡
      */
     private void applyParamChanges()
     {
@@ -818,7 +818,7 @@ public class SprController {
         if (paramChanges.size() > 0)
         {
           model.getSettings().initDefProps(); 
-          paramChanges.clear();  // очищаем список изменений
+          paramChanges.clear();  // п╬я┤п╦я┴п╟п╣п╪ я│п©п╦я│п╬п╨ п╦п╥п╪п╣п╫п╣п╫п╦п╧
         }
 
         if (params_to_remove.size() > 0) params_to_remove.clear();
@@ -826,7 +826,7 @@ public class SprController {
     }
 
     /**
-     * применить измнения по всем справочникам 
+     * п©я─п╦п╪п╣п╫п╦я┌я▄ п╦п╥п╪п╫п╣п╫п╦я▐ п©п╬ п╡я│п╣п╪ я│п©я─п╟п╡п╬я┤п╫п╦п╨п╟п╪ 
      */
     public void applyChanges()
     {
@@ -845,18 +845,18 @@ public class SprController {
       f_param_mdf = paramChanges.size() > 0;
       
       
-      // товары и ш/к объединить в один метод 
+      // я┌п╬п╡п╟я─я▀ п╦ я┬/п╨ п╬п╠я┼п╣п╢п╦п╫п╦я┌я▄ п╡ п╬п╢п╦п╫ п╪п╣я┌п╬п╢ 
       applyGoodsChanges(goodChanges);
       applyVectorChanges(model.getBarcodesVector(), barcodeChanges);
-      // налоги
+      // п╫п╟п╩п╬пЁп╦
       applyVectorChanges(model.getTaxVector(), taxChanges);
 
-//    роли через справочник не обновляются, только путем обновлений
+//    я─п╬п╩п╦ я┤п╣я─п╣п╥ я│п©я─п╟п╡п╬я┤п╫п╦п╨ п╫п╣ п╬п╠п╫п╬п╡п╩я▐я▌я┌я│я▐, я┌п╬п╩я▄п╨п╬ п©я┐я┌п╣п╪ п╬п╠п╫п╬п╡п╩п╣п╫п╦п╧
 //      applyVectorChanges(model.getRoles(), roleChanges);
       applyUserChanges();
 
       //  added 05.11.2009
-      // скидки, дисконтные карты
+      // я│п╨п╦п╢п╨п╦, п╢п╦я│п╨п╬п╫я┌п╫я▀п╣ п╨п╟я─я┌я▀
       applyVectorChanges(model.getFDsc(), fdscChanges);
       applyVectorChanges(model.getDscCards(), dcardChanges);
       applyVectorChanges(model.getAmassDsc(), amassDscChanges);
@@ -872,10 +872,10 @@ public class SprController {
     }
 
 
-    // признак изменеия пользователей
+    // п©я─п╦п╥п╫п╟п╨ п╦п╥п╪п╣п╫п╣п╦я▐ п©п╬п╩я▄п╥п╬п╡п╟я┌п╣п╩п╣п╧
     public boolean isUsersChanged() { return f_users_mdf; }
 
-    // признак изменения модели 
+    // п©я─п╦п╥п╫п╟п╨ п╦п╥п╪п╣п╫п╣п╫п╦я▐ п╪п╬п╢п╣п╩п╦ 
     public boolean isDataChanged() 
     {
       return 
@@ -885,8 +885,8 @@ public class SprController {
 
     /**
      * ***********************************************************
-     * методы, вызываемые регистрации измененых объектов модели
-     * вызов из потока обмена ...
+     * п╪п╣я┌п╬п╢я▀, п╡я▀п╥я▀п╡п╟п╣п╪я▀п╣ я─п╣пЁп╦я│я┌я─п╟я├п╦п╦ п╦п╥п╪п╣п╫п╣п╫я▀я┘ п╬п╠я┼п╣п╨я┌п╬п╡ п╪п╬п╢п╣п╩п╦
+     * п╡я▀п╥п╬п╡ п╦п╥ п©п╬я┌п╬п╨п╟ п╬п╠п╪п╣п╫п╟ ...
      * ***********************************************************
      */
 

@@ -22,9 +22,9 @@ import th.cash.ui.sale.UserException;
 import javax.swing.SwingUtilities;
 import java.util.ArrayList;
 import java.util.List;
-// класс для обработки ошибок фискального регистратора
-// вынесено в отдельный класс, поскольку ошибки и параметры специфичны 
-// для данной серии устройств
+// п╨п╩п╟я│я│ п╢п╩я▐ п╬п╠я─п╟п╠п╬я┌п╨п╦ п╬я┬п╦п╠п╬п╨ я└п╦я│п╨п╟п╩я▄п╫п╬пЁп╬ я─п╣пЁп╦я│я┌я─п╟я┌п╬я─п╟
+// п╡я▀п╫п╣я│п╣п╫п╬ п╡ п╬я┌п╢п╣п╩я▄п╫я▀п╧ п╨п╩п╟я│я│, п©п╬я│п╨п╬п╩я▄п╨я┐ п╬я┬п╦п╠п╨п╦ п╦ п©п╟я─п╟п╪п╣я┌я─я▀ я│п©п╣я├п╦я└п╦я┤п╫я▀ 
+// п╢п╩я▐ п╢п╟п╫п╫п╬п╧ я│п╣я─п╦п╦ я┐я│я┌я─п╬п╧я│я┌п╡
 public abstract class FrErrHandler 
 {
   private StateA state = null;
@@ -42,13 +42,13 @@ public abstract class FrErrHandler
     try
     {
       
-      psh.setTitle("Инициализация ФР");
-      psh.setText("Поиск устройства...");
+      psh.setTitle("п≤п╫п╦я├п╦п╟п╩п╦п╥п╟я├п╦я▐ п╓п═");
+      psh.setText("п÷п╬п╦я│п╨ я┐я│я┌я─п╬п╧я│я┌п╡п╟...");
       psh.show();
       
       fp.init();
 
-      // инициализируем объект состояния  
+      // п╦п╫п╦я├п╦п╟п╩п╦п╥п╦я─я┐п╣п╪ п╬п╠я┼п╣п╨я┌ я│п╬я│я┌п╬я▐п╫п╦я▐  
       state = new FullStateFr();
       state.decodeParams(fp.getReply());
       state.printAll();
@@ -63,20 +63,20 @@ public abstract class FrErrHandler
     }
   }
 
-  // сбросить счетчик инициализаций
+  // я│п╠я─п╬я│п╦я┌я▄ я│я┤п╣я┌я┤п╦п╨ п╦п╫п╦я├п╦п╟п╩п╦п╥п╟я├п╦п╧
   public void resetInitCnt() { init_cnt = 0; }
 
-  // после первой инициализации пишем данные для таблиц (сохраненные настройки)
+  // п©п╬я│п╩п╣ п©п╣я─п╡п╬п╧ п╦п╫п╦я├п╦п╟п╩п╦п╥п╟я├п╦п╦ п©п╦я┬п╣п╪ п╢п╟п╫п╫я▀п╣ п╢п╩я▐ я┌п╟п╠п╩п╦я├ (я│п╬я┘я─п╟п╫п╣п╫п╫я▀п╣ п╫п╟я│я┌я─п╬п╧п╨п╦)
   public void initFRTables(FiscalPrinter fp) throws FrException
   {
     if (init_cnt == 1 && state != null && !inArr(A_NOT_SET_TABLES, state.getModeNum()))
     {
-      psh.setText("Настройка таблиц...");
+      psh.setText("п²п╟я│я┌я─п╬п╧п╨п╟ я┌п╟п╠п╩п╦я├...");
       initFiscalPrinterParams(fp);
     }
   }
 
-  // программирование таблиц ФР (Режимы, Текст в чеке) (если есть сохраненные данные в db cash)
+  // п©я─п╬пЁя─п╟п╪п╪п╦я─п╬п╡п╟п╫п╦п╣ я┌п╟п╠п╩п╦я├ п╓п═ (п═п╣п╤п╦п╪я▀, п╒п╣п╨я│я┌ п╡ я┤п╣п╨п╣) (п╣я│п╩п╦ п╣я│я┌я▄ я│п╬я┘я─п╟п╫п╣п╫п╫я▀п╣ п╢п╟п╫п╫я▀п╣ п╡ db cash)
   private void initFiscalPrinterParams(FiscalPrinter fp) throws FrException
   {
     FrKPrinter pr = (FrKPrinter)fp;
@@ -90,7 +90,7 @@ public abstract class FrErrHandler
     _copyPropToFp(pr, set, set.getFrCheckText(), String.class, 40);
   }
 
-  // программирование одной из таблиц
+  // п©я─п╬пЁя─п╟п╪п╪п╦я─п╬п╡п╟п╫п╦п╣ п╬п╢п╫п╬п╧ п╦п╥ я┌п╟п╠п╩п╦я├
   private void _copyPropToFp(FrKPrinter fp, Settings set, Properties pr, Class data_class, int sz) throws FrException
   {
     Enumeration keys;
@@ -114,7 +114,7 @@ public abstract class FrErrHandler
       else
         val = prop;
 
-//        val = sfmt.getCenterString(prop, ' ', sz); // текст в чеке(по центру)
+//        val = sfmt.getCenterString(prop, ' ', sz); // я┌п╣п╨я│я┌ п╡ я┤п╣п╨п╣(п©п╬ я├п╣п╫я┌я─я┐)
         
       tidx = set.getTabRowCol(key);
 
@@ -130,18 +130,18 @@ public abstract class FrErrHandler
   private final static int[] NORMAL_MODES = new int[] {2, 3, 4};
   private final static int[] FIXABLE_MODES = new int[] {8, 6, 10};
 
-  // время ожидания допечатки документа после команды продолжения печати
+  // п╡я─п╣п╪я▐ п╬п╤п╦п╢п╟п╫п╦я▐ п╢п╬п©п╣я┤п╟я┌п╨п╦ п╢п╬п╨я┐п╪п╣п╫я┌п╟ п©п╬я│п╩п╣ п╨п╬п╪п╟п╫п╢я▀ п©я─п╬п╢п╬п╩п╤п╣п╫п╦я▐ п©п╣я┤п╟я┌п╦
   private final static long CPRINT_TIMEOUT = 500;
 
-  // проверка и корректировка состояния ФР. Если дальнейшая работа недопустима - 
-  // то возвращает строку с описанием причины (далее кассу нужно блокировать)
-  // Вызывается  после процедуры инициализации устройства (SalePanel.do_open())
-  // TODO - добавить подробное журналирование на уровне WARN
+  // п©я─п╬п╡п╣я─п╨п╟ п╦ п╨п╬я─я─п╣п╨я┌п╦я─п╬п╡п╨п╟ я│п╬я│я┌п╬я▐п╫п╦я▐ п╓п═. п∙я│п╩п╦ п╢п╟п╩я▄п╫п╣п╧я┬п╟я▐ я─п╟п╠п╬я┌п╟ п╫п╣п╢п╬п©я┐я│я┌п╦п╪п╟ - 
+  // я┌п╬ п╡п╬п╥п╡я─п╟я┴п╟п╣я┌ я│я┌я─п╬п╨я┐ я│ п╬п©п╦я│п╟п╫п╦п╣п╪ п©я─п╦я┤п╦п╫я▀ (п╢п╟п╩п╣п╣ п╨п╟я│я│я┐ п╫я┐п╤п╫п╬ п╠п╩п╬п╨п╦я─п╬п╡п╟я┌я▄)
+  // п▓я▀п╥я▀п╡п╟п╣я┌я│я▐  п©п╬я│п╩п╣ п©я─п╬я├п╣п╢я┐я─я▀ п╦п╫п╦я├п╦п╟п╩п╦п╥п╟я├п╦п╦ я┐я│я┌я─п╬п╧я│я┌п╡п╟ (SalePanel.do_open())
+  // TODO - п╢п╬п╠п╟п╡п╦я┌я▄ п©п╬п╢я─п╬п╠п╫п╬п╣ п╤я┐я─п╫п╟п╩п╦я─п╬п╡п╟п╫п╦п╣ п╫п╟ я┐я─п╬п╡п╫п╣ WARN
   public String checkAndFixState(FiscalPrinter fp) throws Exception
   {
-    String res = null;   // сообщение о некорректном состоянии
-    boolean err = false; // ошибка в процессе коррекции состояния
-    int fm;              // номер режима
+    String res = null;   // я│п╬п╬п╠я┴п╣п╫п╦п╣ п╬ п╫п╣п╨п╬я─я─п╣п╨я┌п╫п╬п╪ я│п╬я│я┌п╬я▐п╫п╦п╦
+    boolean err = false; // п╬я┬п╦п╠п╨п╟ п╡ п©я─п╬я├п╣я│я│п╣ п╨п╬я─я─п╣п╨я├п╦п╦ я│п╬я│я┌п╬я▐п╫п╦я▐
+    int fm;              // п╫п╬п╪п╣я─ я─п╣п╤п╦п╪п╟
 
     do
     {
@@ -149,8 +149,8 @@ public abstract class FrErrHandler
       {
         fm = state.getModeNum();
         if (inArr(NORMAL_MODES, fm) && state.getSubModeFr() != 3) // ???
-        // TODO   Кроме корректных режимов есть еще и некорректные подрежимы 
-        // нужно сделать более корректным анализ состояния
+        // TODO   п я─п╬п╪п╣ п╨п╬я─я─п╣п╨я┌п╫я▀я┘ я─п╣п╤п╦п╪п╬п╡ п╣я│я┌я▄ п╣я┴п╣ п╦ п╫п╣п╨п╬я─я─п╣п╨я┌п╫я▀п╣ п©п╬п╢я─п╣п╤п╦п╪я▀ 
+        // п╫я┐п╤п╫п╬ я│п╢п╣п╩п╟я┌я▄ п╠п╬п╩п╣п╣ п╨п╬я─я─п╣п╨я┌п╫я▀п╪ п╟п╫п╟п╩п╦п╥ я│п╬я│я┌п╬я▐п╫п╦я▐
         {
           if (!err && getLog().isDebugEnabled())
             getLog().debug("Initial state Ok: " + state.getModeNumStr());
@@ -159,7 +159,7 @@ public abstract class FrErrHandler
 
           if (!err && fm == 4)
           {
-            res = timeSynchronization(fp, env.getSprModel().getSettings().getTimeDifSec()); // дополнительная синхронизация времени при закрытой смене
+            res = timeSynchronization(fp, env.getSprModel().getSettings().getTimeDifSec()); // п╢п╬п©п╬п╩п╫п╦я┌п╣п╩я▄п╫п╟я▐ я│п╦п╫я┘я─п╬п╫п╦п╥п╟я├п╦я▐ п╡я─п╣п╪п╣п╫п╦ п©я─п╦ п╥п╟п╨я─я▀я┌п╬п╧ я│п╪п╣п╫п╣
             err = res != null;
           }
         } else
@@ -190,7 +190,7 @@ public abstract class FrErrHandler
             stateRequest(fp);
           } else
           {
-            res = "Некорректное состояние фискального регистратора:\n" + state.getModeNumStr();
+            res = "п²п╣п╨п╬я─я─п╣п╨я┌п╫п╬п╣ я│п╬я│я┌п╬я▐п╫п╦п╣ я└п╦я│п╨п╟п╩я▄п╫п╬пЁп╬ я─п╣пЁп╦я│я┌я─п╟я┌п╬я─п╟:\n" + state.getModeNumStr();
             getLog().error("NOT FIXED!!! :" + res);
           }
 
@@ -201,7 +201,7 @@ public abstract class FrErrHandler
         
       } catch (FrException ex)
       {
-        // обрабатывается ошибка отсутствия бумаги
+        // п╬п╠я─п╟п╠п╟я┌я▀п╡п╟п╣я┌я│я▐ п╬я┬п╦п╠п╨п╟ п╬я┌я│я┐я┌я│я┌п╡п╦я▐ п╠я┐п╪п╟пЁп╦
         if (inArr(FR_NO_PAPER_ERR, ex.getErrorCode()))
         {
           err = true;
@@ -209,7 +209,7 @@ public abstract class FrErrHandler
           stateRequest(fp);
         } 
         else
-        // и продолжения печати ... после заправки ленты
+        // п╦ п©я─п╬п╢п╬п╩п╤п╣п╫п╦я▐ п©п╣я┤п╟я┌п╦ ... п©п╬я│п╩п╣ п╥п╟п©я─п╟п╡п╨п╦ п╩п╣п╫я┌я▀
         if (FrErrors.ERR_FR_WAIT_CONTINUE_CMD == ex.getErrorCode())
         {
           err = true;
@@ -217,7 +217,7 @@ public abstract class FrErrHandler
           fp.continuePrint();
           getLog().warn("CMD - continue printing");
           Thread.currentThread().sleep(CPRINT_TIMEOUT);
-          stateRequest(fp); // повторный запрос состояния
+          stateRequest(fp); // п©п╬п╡я┌п╬я─п╫я▀п╧ п╥п╟п©я─п╬я│ я│п╬я│я┌п╬я▐п╫п╦я▐
         }
         else throw ex;
         
@@ -231,7 +231,7 @@ public abstract class FrErrHandler
   
   
 
-  // для отмены чека нужна бумага :-)
+  // п╢п╩я▐ п╬я┌п╪п╣п╫я▀ я┤п╣п╨п╟ п╫я┐п╤п╫п╟ п╠я┐п╪п╟пЁп╟ :-)
 //  private void cancelCheckRollControl(FiscalPrinter fp) throws Exception
 //  {
 //    boolean err = false;
@@ -261,7 +261,7 @@ public abstract class FrErrHandler
 
   //  *************************************************************************
 
-    // проверка состояния ФР перед закрытием фискального документа
+    // п©я─п╬п╡п╣я─п╨п╟ я│п╬я│я┌п╬я▐п╫п╦я▐ п╓п═ п©п╣я─п╣п╢ п╥п╟п╨я─я▀я┌п╦п╣п╪ я└п╦я│п╨п╟п╩я▄п╫п╬пЁп╬ п╢п╬п╨я┐п╪п╣п╫я┌п╟
     public void checkStateBeforeClosing(FiscalPrinter fp, FDoc doc) throws Exception
     {
       state = stateRequest(fp);  
@@ -269,7 +269,7 @@ public abstract class FrErrHandler
       Date cur_date = new Date();
 
       if (checkTime((FullStateFr)state, cur_date, env.getSprModel().getSettings().getWorkLocalDif()))
-        throw new UserException("Критичное расхождение времени ПК и ФР!\n" + createDateErrMsg((FullStateFr)state, cur_date));
+        throw new UserException("п я─п╦я┌п╦я┤п╫п╬п╣ я─п╟я│я┘п╬п╤п╢п╣п╫п╦п╣ п╡я─п╣п╪п╣п╫п╦ п÷п  п╦ п╓п═!\n" + createDateErrMsg((FullStateFr)state, cur_date));
       
       if (env == null ? use_weight_sensors : env.getSprModel().getSettings().isUseWeightSensors())
         checkWeightSensors(state);
@@ -281,7 +281,7 @@ public abstract class FrErrHandler
       if (doc instanceof Pay) checkModeAvail(A_PAY_MODES, state, doc); else
       if (doc instanceof Check) {
         if (state.getModeNum() == 3)
-          throw new UserException(state.getModeNumStr() + ".\n" + "Закройте смену - снимите Z-ОТЧЕТ !!!");
+          throw new UserException(state.getModeNumStr() + ".\n" + "п≈п╟п╨я─п╬п╧я┌п╣ я│п╪п╣п╫я┐ - я│п╫п╦п╪п╦я┌п╣ Z-п·п╒п╖п∙п╒ !!!");
         else
           checkModeAvail(A_CHECK_MODES, state, doc);
       }
@@ -296,8 +296,8 @@ public abstract class FrErrHandler
       return dif > max_dif;
     }
 
-    private final static String ET_NO_CHECK_ROLL = "Закончилась чековая лента!";
-    private final static String ET_NO_LOG_ROLL = "Закончилась котрольная лента!";
+    private final static String ET_NO_CHECK_ROLL = "п≈п╟п╨п╬п╫я┤п╦п╩п╟я│я▄ я┤п╣п╨п╬п╡п╟я▐ п╩п╣п╫я┌п╟!";
+    private final static String ET_NO_LOG_ROLL = "п≈п╟п╨п╬п╫я┤п╦п╩п╟я│я▄ п╨п╬я┌я─п╬п╩я▄п╫п╟я▐ п╩п╣п╫я┌п╟!";
 
     
     private String _checkWeightSensors(StateA st) 
@@ -339,7 +339,7 @@ public abstract class FrErrHandler
     private void checkModeAvail(int[] am, StateA st, FDoc doc) throws UserException
     {
       if (!inArr(am, st.getModeNum()))
-        throw new UserException("Операция \'" + doc.getTypeName() + "\' недоступна в данном режиме:\n" + state.getModeNumStr());
+        throw new UserException("п·п©п╣я─п╟я├п╦я▐ \'" + doc.getTypeName() + "\' п╫п╣п╢п╬я│я┌я┐п©п╫п╟ п╡ п╢п╟п╫п╫п╬п╪ я─п╣п╤п╦п╪п╣:\n" + state.getModeNumStr());
     }
 
     // inner constants
@@ -363,24 +363,24 @@ public abstract class FrErrHandler
 
   private String noPaperText(String err_text)
   {
-    return "Ошибка ФР : " + err_text + "!\nВставьте БУМАГУ и нажмите <ОПЛАТА> для продолжения!";
+    return "п·я┬п╦п╠п╨п╟ п╓п═ : " + err_text + "!\nп▓я│я┌п╟п╡я▄я┌п╣ п▒пёп°п░п⌠пё п╦ п╫п╟п╤п╪п╦я┌п╣ <п·п÷п⌡п░п╒п░> п╢п╩я▐ п©я─п╬п╢п╬п╩п╤п╣п╫п╦я▐!";
   }
 
   private StateA stateRequest(FiscalPrinter fp) throws Exception
   {
     state = fp.stateRequest();
-    fireStateReceived(new StateFrEvent(state)); // оповещение о новом состоянии
+    fireStateReceived(new StateFrEvent(state)); // п╬п©п╬п╡п╣я┴п╣п╫п╦п╣ п╬ п╫п╬п╡п╬п╪ я│п╬я│я┌п╬я▐п╫п╦п╦
     return state;
   }
 
-  // обработка ошибки закрытия документа
-  // например - ошибка печати (регистрации документа), связь с устройством ... 
+  // п╬п╠я─п╟п╠п╬я┌п╨п╟ п╬я┬п╦п╠п╨п╦ п╥п╟п╨я─я▀я┌п╦я▐ п╢п╬п╨я┐п╪п╣п╫я┌п╟
+  // п╫п╟п©я─п╦п╪п╣я─ - п╬я┬п╦п╠п╨п╟ п©п╣я┤п╟я┌п╦ (я─п╣пЁп╦я│я┌я─п╟я├п╦п╦ п╢п╬п╨я┐п╪п╣п╫я┌п╟), я│п╡я▐п╥я▄ я│ я┐я│я┌я─п╬п╧я│я┌п╡п╬п╪ ... 
   
   public boolean handlePrintError(FiscalPrinter pr, FDoc doc, FrException ex)
   {
     last_exc = ex;
-    boolean res = false; // результат обработки ошибки (успешно / нет)
-    boolean lflag = true; // признак продолжения цикла обработки ошибки
+    boolean res = false; // я─п╣п╥я┐п╩я▄я┌п╟я┌ п╬п╠я─п╟п╠п╬я┌п╨п╦ п╬я┬п╦п╠п╨п╦ (я┐я│п©п╣я┬п╫п╬ / п╫п╣я┌)
+    boolean lflag = true; // п©я─п╦п╥п╫п╟п╨ п©я─п╬п╢п╬п╩п╤п╣п╫п╦я▐ я├п╦п╨п╩п╟ п╬п╠я─п╟п╠п╬я┌п╨п╦ п╬я┬п╦п╠п╨п╦
     int code;
 
     psh.hide();
@@ -395,43 +395,43 @@ public abstract class FrErrHandler
         switch (code)
         {
           // ----------------------------------------------------------------
-          // в зависимости от кода ошибки рассматриваются следующие варианты:
+          // п╡ п╥п╟п╡п╦я│п╦п╪п╬я│я┌п╦ п╬я┌ п╨п╬п╢п╟ п╬я┬п╦п╠п╨п╦ я─п╟я│я│п╪п╟я┌я─п╦п╡п╟я▌я┌я│я▐ я│п╩п╣п╢я┐я▌я┴п╦п╣ п╡п╟я─п╦п╟п╫я┌я▀:
 
-          // закончилась чековая или контрольная лента
+          // п╥п╟п╨п╬п╫я┤п╦п╩п╟я│я▄ я┤п╣п╨п╬п╡п╟я▐ п╦п╩п╦ п╨п╬п╫я┌я─п╬п╩я▄п╫п╟я▐ п╩п╣п╫я┌п╟
           case FrErrors.ERR_NO_CHECK_ROLL:
           case FrErrors.ERR_NO_LOG_ROLL :
 
-            // нет ленты - продолжение печати и повторная печать документа с места прерывания ...
+            // п╫п╣я┌ п╩п╣п╫я┌я▀ - п©я─п╬п╢п╬п╩п╤п╣п╫п╦п╣ п©п╣я┤п╟я┌п╦ п╦ п©п╬п╡я┌п╬я─п╫п╟я▐ п©п╣я┤п╟я┌я▄ п╢п╬п╨я┐п╪п╣п╫я┌п╟ я│ п╪п╣я│я┌п╟ п©я─п╣я─я▀п╡п╟п╫п╦я▐ ...
             showError(noPaperText(last_exc.getMessage()), last_exc);
             state = stateRequest(pr);
             
             break;
 
-          // ошибка связи с устройством
+          // п╬я┬п╦п╠п╨п╟ я│п╡я▐п╥п╦ я│ я┐я│я┌я─п╬п╧я│я┌п╡п╬п╪
           case FrErrors.ERR_DEV_NOT_FINDED :
           case FrErrors.ERR_TIMEOUT_READ :
           case FrErrors.ERR_IO_STREAM :
           case FrErrors.ERR_READ_DATA :
           case FrErrors.ERR_READ_CMDC :
 
-            showError("Ошибка ФР : Нет связи с устройством!", last_exc);
-            if (showQuestion("Повторить попытку подключения ФР?"))
+            showError("п·я┬п╦п╠п╨п╟ п╓п═ : п²п╣я┌ я│п╡я▐п╥п╦ я│ я┐я│я┌я─п╬п╧я│я┌п╡п╬п╪!", last_exc);
+            if (showQuestion("п÷п╬п╡я┌п╬я─п╦я┌я▄ п©п╬п©я▀я┌п╨я┐ п©п╬п╢п╨п╩я▌я┤п╣п╫п╦я▐ п╓п═?"))
             {
               initFiscalPrinterDevice(pr);
             } else
             {
-              res = false; lflag = false; // выход - ошибка не исправлена
+              res = false; lflag = false; // п╡я▀я┘п╬п╢ - п╬я┬п╦п╠п╨п╟ п╫п╣ п╦я│п©я─п╟п╡п╩п╣п╫п╟
             }
             break;
 
-          // не хватает наличности в кассе   
+          // п╫п╣ я┘п╡п╟я┌п╟п╣я┌ п╫п╟п╩п╦я┤п╫п╬я│я┌п╦ п╡ п╨п╟я│я│п╣   
           case FrErrors.ERR_NO_SUCH_NAL_MONEY :
           
             if (doc instanceof ReturnCheck)
             {
               showError(ex);
 
-              if ( showQuestion("Отменить чек возврата ?") )
+              if ( showQuestion("п·я┌п╪п╣п╫п╦я┌я▄ я┤п╣п╨ п╡п╬п╥п╡я─п╟я┌п╟ ?") )
               {
                 ((ReturnCheck)doc).cancel(env.getCurrentUser());
                 pr.calcelCheck();
@@ -442,14 +442,14 @@ public abstract class FrErrHandler
 
             break;
 
-          // ожидание команды продолжения печати
+          // п╬п╤п╦п╢п╟п╫п╦п╣ п╨п╬п╪п╟п╫п╢я▀ п©я─п╬п╢п╬п╩п╤п╣п╫п╦я▐ п©п╣я┤п╟я┌п╦
           case FrErrors.ERR_FR_WAIT_CONTINUE_CMD :
             showError(last_exc);
             pr.continuePrint();
             Thread.currentThread().sleep(CPRINT_TIMEOUT);
             break;
 
-          // идет печать предыдущей команды
+          // п╦п╢п╣я┌ п©п╣я┤п╟я┌я▄ п©я─п╣п╢я▀п╢я┐я┴п╣п╧ п╨п╬п╪п╟п╫п╢я▀
           case FrErrors.ERR_PRINTING_PROCESS :
             showError(last_exc);
             break;
@@ -457,17 +457,17 @@ public abstract class FrErrHandler
           default : res = false; lflag = false; 
         }
 
-        // продолжение обработки ошибки
+        // п©я─п╬п╢п╬п╩п╤п╣п╫п╦п╣ п╬п╠я─п╟п╠п╬я┌п╨п╦ п╬я┬п╦п╠п╨п╦
         if (lflag)
         {
           stateRequest(pr); // added 28.01.2009
-          // если ФР ожидает команду продолжения печати 
+          // п╣я│п╩п╦ п╓п═ п╬п╤п╦п╢п╟п╣я┌ п╨п╬п╪п╟п╫п╢я┐ п©я─п╬п╢п╬п╩п╤п╣п╫п╦я▐ п©п╣я┤п╟я┌п╦ 
           if (state.getSubModeFr() == (byte)3) 
           {
             pr.continuePrint();
             Thread.currentThread().sleep(CPRINT_TIMEOUT);
           }
-          // если есть незавершенный документ - допечатываем
+          // п╣я│п╩п╦ п╣я│я┌я▄ п╫п╣п╥п╟п╡п╣я─я┬п╣п╫п╫я▀п╧ п╢п╬п╨я┐п╪п╣п╫я┌ - п╢п╬п©п╣я┤п╟я┌я▀п╡п╟п╣п╪
           if (doc != null) doc.print(pr); 
           res = true; lflag = false;
         }
@@ -490,21 +490,21 @@ public abstract class FrErrHandler
 
 
 
-  // печать документа с обработкой некорректных подрежимов ФР
+  // п©п╣я┤п╟я┌я▄ п╢п╬п╨я┐п╪п╣п╫я┌п╟ я│ п╬п╠я─п╟п╠п╬я┌п╨п╬п╧ п╫п╣п╨п╬я─я─п╣п╨я┌п╫я▀я┘ п©п╬п╢я─п╣п╤п╦п╪п╬п╡ п╓п═
   // changed 29.01.2009
   // changed 04.08.2011
   public void printDoc(FiscalPrinter fp, FDoc doc) throws Exception
   {
     try
-    { // *** собственно печать ***
+    { // *** я│п╬п╠я│я┌п╡п╣п╫п╫п╬ п©п╣я┤п╟я┌я▄ ***
       doc.print(fp);
 
-      // для отчетов делаем паузу, ожидая переход в новое состояние 
+      // п╢п╩я▐ п╬я┌я┤п╣я┌п╬п╡ п╢п╣п╩п╟п╣п╪ п©п╟я┐п╥я┐, п╬п╤п╦п╢п╟я▐ п©п╣я─п╣я┘п╬п╢ п╡ п╫п╬п╡п╬п╣ я│п╬я│я┌п╬я▐п╫п╦п╣ 
       if (doc instanceof Report)
       {
         Thread.currentThread().sleep(CPRINT_TIMEOUT); 
 
-        // после печати документа, проверяем состояние (подрежим)
+        // п©п╬я│п╩п╣ п©п╣я┤п╟я┌п╦ п╢п╬п╨я┐п╪п╣п╫я┌п╟, п©я─п╬п╡п╣я─я▐п╣п╪ я│п╬я│я┌п╬я▐п╫п╦п╣ (п©п╬п╢я─п╣п╤п╦п╪)
       
         int submode;
         do {
@@ -517,23 +517,23 @@ public abstract class FrErrHandler
           {
             case StateConst.SM_PAPER_OK : break;
 
-            // если нет бумаги - проверяем датчики чековой и контрольной ленты            
+            // п╣я│п╩п╦ п╫п╣я┌ п╠я┐п╪п╟пЁп╦ - п©я─п╬п╡п╣я─я▐п╣п╪ п╢п╟я┌я┤п╦п╨п╦ я┤п╣п╨п╬п╡п╬п╧ п╦ п╨п╬п╫я┌я─п╬п╩я▄п╫п╬п╧ п╩п╣п╫я┌я▀            
             case StateConst.SM_ACTIV_NO_PAPER : case StateConst.SM_PASS_NO_PAPER : 
               String s = _checkOpticalSensors(state);
               if (s != null)  showError(noPaperText(s));
             break;
 
-            // если устройство ждет команду продолжения печати -
+            // п╣я│п╩п╦ я┐я│я┌я─п╬п╧я│я┌п╡п╬ п╤п╢п╣я┌ п╨п╬п╪п╟п╫п╢я┐ п©я─п╬п╢п╬п╩п╤п╣п╫п╦я▐ п©п╣я┤п╟я┌п╦ -
             case StateConst.SM_WAIT_REPEAT :          
               fp.continuePrint(); 
               Thread.currentThread().sleep(CPRINT_TIMEOUT); 
             break;
 
-            // на остальные подрежимы - ожидание и повторный запрос состояния
+            // п╫п╟ п╬я│я┌п╟п╩я▄п╫я▀п╣ п©п╬п╢я─п╣п╤п╦п╪я▀ - п╬п╤п╦п╢п╟п╫п╦п╣ п╦ п©п╬п╡я┌п╬я─п╫я▀п╧ п╥п╟п©я─п╬я│ я│п╬я│я┌п╬я▐п╫п╦я▐
             default :  
               Thread.currentThread().sleep(CPRINT_TIMEOUT);
             /*
-            case 4 : case 5 :  // если идет печать, то ждем, ждем ...
+            case 4 : case 5 :  // п╣я│п╩п╦ п╦п╢п╣я┌ п©п╣я┤п╟я┌я▄, я┌п╬ п╤п╢п╣п╪, п╤п╢п╣п╪ ...
               Thread.currentThread().sleep(CPRINT_TIMEOUT);
             break;
             */
@@ -541,9 +541,9 @@ public abstract class FrErrHandler
               
         } while (submode != StateConst.SM_PAPER_OK );  // added 04.08.11, 
 
-        // дополнительно ожидание для задумчивых отчетов 
+        // п╢п╬п©п╬п╩п╫п╦я┌п╣п╩я▄п╫п╬ п╬п╤п╦п╢п╟п╫п╦п╣ п╢п╩я▐ п╥п╟п╢я┐п╪я┤п╦п╡я▀я┘ п╬я┌я┤п╣я┌п╬п╡ 
         Thread.currentThread().sleep(2 * CPRINT_TIMEOUT);  
-        stateRequest(fp); // обновляем текущее состояние
+        stateRequest(fp); // п╬п╠п╫п╬п╡п╩я▐п╣п╪ я┌п╣п╨я┐я┴п╣п╣ я│п╬я│я┌п╬я▐п╫п╦п╣
       }      
             
     } catch (FrException ex)
@@ -554,10 +554,10 @@ public abstract class FrErrHandler
   }
 
 
-  // установить текущее время на фискальнике
-  // 26.01.2009 добавлена возможность отката на дату из отчета состояния фискальника
-  // ошибки обрабатываются внутри метода
-  // результат - если null, коррекция времени успешна, not null - текст сообщения об ошибке
+  // я┐я│я┌п╟п╫п╬п╡п╦я┌я▄ я┌п╣п╨я┐я┴п╣п╣ п╡я─п╣п╪я▐ п╫п╟ я└п╦я│п╨п╟п╩я▄п╫п╦п╨п╣
+  // 26.01.2009 п╢п╬п╠п╟п╡п╩п╣п╫п╟ п╡п╬п╥п╪п╬п╤п╫п╬я│я┌я▄ п╬я┌п╨п╟я┌п╟ п╫п╟ п╢п╟я┌я┐ п╦п╥ п╬я┌я┤п╣я┌п╟ я│п╬я│я┌п╬я▐п╫п╦я▐ я└п╦я│п╨п╟п╩я▄п╫п╦п╨п╟
+  // п╬я┬п╦п╠п╨п╦ п╬п╠я─п╟п╠п╟я┌я▀п╡п╟я▌я┌я│я▐ п╡п╫я┐я┌я─п╦ п╪п╣я┌п╬п╢п╟
+  // я─п╣п╥я┐п╩я▄я┌п╟я┌ - п╣я│п╩п╦ null, п╨п╬я─я─п╣п╨я├п╦я▐ п╡я─п╣п╪п╣п╫п╦ я┐я│п©п╣я┬п╫п╟, not null - я┌п╣п╨я│я┌ я│п╬п╬п╠я┴п╣п╫п╦я▐ п╬п╠ п╬я┬п╦п╠п╨п╣
   public String timeSynchronization(FiscalPrinter fp, int time_dif)
   {
     String emsg = null;
@@ -588,24 +588,24 @@ public abstract class FrErrHandler
 
     } catch (Exception ex)
     {
-      getLog().error("Time syncronisation Error", ex); // подробно в журнал
+      getLog().error("Time syncronisation Error", ex); // п©п╬п╢я─п╬п╠п╫п╬ п╡ п╤я┐я─п╫п╟п╩
 
       // rem uved 12.04.10
-//      emsg = "Ошибка синхронизации времени Фискального регистратора.\n" +
-//      "Причина: '" + ex.getMessage() + "'\n";
-      // если ошибка в расхождении времени (сброс времени на компе)
+//      emsg = "п·я┬п╦п╠п╨п╟ я│п╦п╫я┘я─п╬п╫п╦п╥п╟я├п╦п╦ п╡я─п╣п╪п╣п╫п╦ п╓п╦я│п╨п╟п╩я▄п╫п╬пЁп╬ я─п╣пЁп╦я│я┌я─п╟я┌п╬я─п╟.\n" +
+//      "п÷я─п╦я┤п╦п╫п╟: '" + ex.getMessage() + "'\n";
+      // п╣я│п╩п╦ п╬я┬п╦п╠п╨п╟ п╡ я─п╟я│я┘п╬п╤п╢п╣п╫п╦п╦ п╡я─п╣п╪п╣п╫п╦ (я│п╠я─п╬я│ п╡я─п╣п╪п╣п╫п╦ п╫п╟ п╨п╬п╪п©п╣)
       if (ex instanceof FrException && 
         ((FrException)ex).getErrorCode() == FrErrors.ERR_CURDATE_LESS_DATE_FM);
       {
         // added here 12.04.10
-        emsg = "Ошибка синхронизации времени Фискального регистратора.\n" +
-              "Причина: '" + ex.getMessage() + "'\n" + 
+        emsg = "п·я┬п╦п╠п╨п╟ я│п╦п╫я┘я─п╬п╫п╦п╥п╟я├п╦п╦ п╡я─п╣п╪п╣п╫п╦ п╓п╦я│п╨п╟п╩я▄п╫п╬пЁп╬ я─п╣пЁп╦я│я┌я─п╟я┌п╬я─п╟.\n" +
+              "п÷я─п╦я┤п╦п╫п╟: '" + ex.getMessage() + "'\n" + 
                createDateErrMsg((FullStateFr)state, cur_date);
       }    
 //      {
 //        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
-//        emsg = emsg + "Дата ПК: " + sdf.format(cur_date) + "   Дата ФР: " + sdf.format(((FullStateFr)state).getCurDate()) + "\n"+
-//        "Перезагрузите компьютер. Если ошибка повторится -\nОбратитесь в службу технической поддержки";
+//        emsg = emsg + "п■п╟я┌п╟ п÷п : " + sdf.format(cur_date) + "   п■п╟я┌п╟ п╓п═: " + sdf.format(((FullStateFr)state).getCurDate()) + "\n"+
+//        "п÷п╣я─п╣п╥п╟пЁя─я┐п╥п╦я┌п╣ п╨п╬п╪п©я▄я▌я┌п╣я─. п∙я│п╩п╦ п╬я┬п╦п╠п╨п╟ п©п╬п╡я┌п╬я─п╦я┌я│я▐ -\nп·п╠я─п╟я┌п╦я┌п╣я│я▄ п╡ я│п╩я┐п╤п╠я┐ я┌п╣я┘п╫п╦я┤п╣я│п╨п╬п╧ п©п╬п╢п╢п╣я─п╤п╨п╦";
 //      }
 
       //showError(emsg);
@@ -616,8 +616,8 @@ public abstract class FrErrHandler
   private String createDateErrMsg(FullStateFr st, Date cur_date)
   {
     SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH.mm");
-    return "Дата ПК: " + sdf.format(cur_date) + "   Дата ФР: " + sdf.format(((FullStateFr)state).getCurDate()) + "\n"+
-     "Перезагрузите компьютер. Если ошибка повторится -\nОбратитесь в службу технической поддержки";
+    return "п■п╟я┌п╟ п÷п : " + sdf.format(cur_date) + "   п■п╟я┌п╟ п╓п═: " + sdf.format(((FullStateFr)state).getCurDate()) + "\n"+
+     "п÷п╣я─п╣п╥п╟пЁя─я┐п╥п╦я┌п╣ п╨п╬п╪п©я▄я▌я┌п╣я─. п∙я│п╩п╦ п╬я┬п╦п╠п╨п╟ п©п╬п╡я┌п╬я─п╦я┌я│я▐ -\nп·п╠я─п╟я┌п╦я┌п╣я│я▄ п╡ я│п╩я┐п╤п╠я┐ я┌п╣я┘п╫п╦я┤п╣я│п╨п╬п╧ п©п╬п╢п╢п╣я─п╤п╨п╦";
   }
 
 
@@ -633,7 +633,7 @@ public abstract class FrErrHandler
 
   public FrException getLastException() { return last_exc; }
   
-  // вызов UI интерфейса, при обработке ошибки
+  // п╡я▀п╥п╬п╡ UI п╦п╫я┌п╣я─я└п╣п╧я│п╟, п©я─п╦ п╬п╠я─п╟п╠п╬я┌п╨п╣ п╬я┬п╦п╠п╨п╦
 //  public abstract void showMessage(String msg);
 
   public abstract void showError(String msg);

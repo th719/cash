@@ -1,7 +1,7 @@
 package th.cash.ui.setup;
 import java.util.Properties;
 
-// сохраненные настройки ФР
+// я│п╬я┘я─п╟п╫п╣п╫п╫я▀п╣ п╫п╟я│я┌я─п╬п╧п╨п╦ п╓п═
 public class FrSetPanel extends TabSetPanel
 {
   public FrSetPanel()

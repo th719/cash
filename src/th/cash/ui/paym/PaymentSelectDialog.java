@@ -16,7 +16,7 @@ public class PaymentSelectDialog extends JDialog implements PaymentSelector
   
   public PaymentSelectDialog(Frame owner, String pay_ks, Logger log)
   {
-    super(owner, "Ô–Ã¡‘¡", true);
+    super(owner, "–û–ø–ª–∞—Ç–∞", true);
 
     mp = new PaymentSelectPanel(this, pay_ks, log);
 

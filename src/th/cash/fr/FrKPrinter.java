@@ -8,7 +8,7 @@ import th.common.util.RMath;
 
 /**
  * 
- * Реализация интерфейса FiscalPrinter
+ * п═п╣п╟п╩п╦п╥п╟я├п╦я▐ п╦п╫я┌п╣я─я└п╣п╧я│п╟ FiscalPrinter
  * 
  */
 public class FrKPrinter implements FiscalPrinter 
@@ -16,7 +16,7 @@ public class FrKPrinter implements FiscalPrinter
 
   private FrDrv fr;
 
-  private boolean text_on_ctype = false; // печать текста на контрольной ленте
+  private boolean text_on_ctype = false; // п©п╣я┤п╟я┌я▄ я┌п╣п╨я│я┌п╟ п╫п╟ п╨п╬п╫я┌я─п╬п╩я▄п╫п╬п╧ п╩п╣п╫я┌п╣
   private int def_section = 0;
   private final static byte ZERO = (byte)0;
   
@@ -49,7 +49,7 @@ public class FrKPrinter implements FiscalPrinter
     return Math.round(d);
   }
 
-  // сокращенная команда для записи имени пользователя
+  // я│п╬п╨я─п╟я┴п╣п╫п╫п╟я▐ п╨п╬п╪п╟п╫п╢п╟ п╢п╩я▐ п╥п╟п©п╦я│п╦ п╦п╪п╣п╫п╦ п©п╬п╩я▄п╥п╬п╡п╟я┌п╣п╩я▐
   public void setUserName(String name) throws FrException
   {
     fr.setTabData((byte)2, 30, 2,  name, 21);
@@ -84,7 +84,7 @@ public class FrKPrinter implements FiscalPrinter
     fr.confirmDate(dt);
   }
 
-  // с подтверждением предыдущей даты , если ошибка ...
+  // я│ п©п╬п╢я┌п╡п╣я─п╤п╢п╣п╫п╦п╣п╪ п©я─п╣п╢я▀п╢я┐я┴п╣п╧ п╢п╟я┌я▀ , п╣я│п╩п╦ п╬я┬п╦п╠п╨п╟ ...
   public void setDataTime(Date data, StateA state) throws FrException
   {
     byte[] dt = new byte[3];
@@ -100,7 +100,7 @@ public class FrKPrinter implements FiscalPrinter
     {
       if (ex.getErrorCode() == FrErrors.ERR_CURDATE_LESS_DATE_FM)
       {
-        // если некоректна дата, то подтверждаем предыдущую
+        // п╣я│п╩п╦ п╫п╣п╨п╬я─п╣п╨я┌п╫п╟ п╢п╟я┌п╟, я┌п╬ п©п╬п╢я┌п╡п╣я─п╤п╢п╟п╣п╪ п©я─п╣п╢я▀п╢я┐я┴я┐я▌
         FrUtil.dateToBytes(((FullStateFr)state).getCurDate(), dt, tm);
         fr.confirmDate(dt);
       }
@@ -151,7 +151,7 @@ public class FrKPrinter implements FiscalPrinter
     fr.openCheck((byte)0);
   }
 
-  // количество в штуках или килограммах, цена в рублях
+  // п╨п╬п╩п╦я┤п╣я│я┌п╡п╬ п╡ я┬я┌я┐п╨п╟я┘ п╦п╩п╦ п╨п╦п╩п╬пЁя─п╟п╪п╪п╟я┘, я├п╣п╫п╟ п╡ я─я┐п╠п╩я▐я┘
   public void salePostition(double quan, double price, String text) throws FrException
   {
     fr.salePosition(doubleToLong(quan * 1000), doubleToLong(price * 100), def_section, ZERO, ZERO, ZERO, ZERO, text);
@@ -172,7 +172,7 @@ public class FrKPrinter implements FiscalPrinter
     fr.calcelCheck();
   }
 
-  // оплата наличными 
+  // п╬п©п╩п╟я┌п╟ п╫п╟п╩п╦я┤п╫я▀п╪п╦ 
   public double closeCheck(double nal, String text) throws FrException
   {
     return closeCheck(nal, 0, text);
@@ -208,7 +208,7 @@ public class FrKPrinter implements FiscalPrinter
     return getMoneyReg(241);
   }
 
-  // пока не определены
+  // п©п╬п╨п╟ п╫п╣ п╬п©я─п╣п╢п╣п╩п╣п╫я▀
   public int getOperReg(int reg_num) throws FrException
   {
     fr.getOperReg((byte)(reg_num & 0x000000FF));

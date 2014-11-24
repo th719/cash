@@ -17,8 +17,8 @@ import java.util.Date;
 import java.util.Vector;
 
 /**
- * Класс для сохранения/чтения документов
- * методы статические, не синхронизированы ... вызывать аккуратно!
+ * п п╩п╟я│я│ п╢п╩я▐ я│п╬я┘я─п╟п╫п╣п╫п╦я▐/я┤я┌п╣п╫п╦я▐ п╢п╬п╨я┐п╪п╣п╫я┌п╬п╡
+ * п╪п╣я┌п╬п╢я▀ я│я┌п╟я┌п╦я┤п╣я│п╨п╦п╣, п╫п╣ я│п╦п╫я┘я─п╬п╫п╦п╥п╦я─п╬п╡п╟п╫я▀ ... п╡я▀п╥я▀п╡п╟я┌я▄ п╟п╨п╨я┐я─п╟я┌п╫п╬!
  * 
  */
 public class DbConverter 
@@ -26,7 +26,7 @@ public class DbConverter
 
 
   /**
-   * Сохраняет все транзакции документа и чистим буффер COMMITED !!!
+   * п║п╬я┘я─п╟п╫я▐п╣я┌ п╡я│п╣ я┌я─п╟п╫п╥п╟п╨я├п╦п╦ п╢п╬п╨я┐п╪п╣п╫я┌п╟ п╦ я┤п╦я│я┌п╦п╪ п╠я┐я└я└п╣я─ COMMITED !!!
    */
 
   private final static String SAVE_TR_STMT = 
@@ -48,9 +48,9 @@ public class DbConverter
     if (trv != null && trv.size() > 0)
     {
       
-      // чистим буффер
-      // Z, X -отчет может закрываться и при открытом чеке,
-      // поэтому очистку не делаем
+      // я┤п╦я│я┌п╦п╪ п╠я┐я└я└п╣я─
+      // Z, X -п╬я┌я┤п╣я┌ п╪п╬п╤п╣я┌ п╥п╟п╨я─я▀п╡п╟я┌я▄я│я▐ п╦ п©я─п╦ п╬я┌п╨я─я▀я┌п╬п╪ я┤п╣п╨п╣,
+      // п©п╬я█я┌п╬п╪я┐ п╬я┤п╦я│я┌п╨я┐ п╫п╣ п╢п╣п╩п╟п╣п╪
       if (doc.getTypeId() != FDoc.FD_ZREPORT_TYPE && doc.getTypeId() != FDoc.FD_XREPORT_TYPE)
       {
         Statement st = c.createStatement();
@@ -63,7 +63,7 @@ public class DbConverter
 
   }
 
-  // метод без commit !
+  // п╪п╣я┌п╬п╢ п╠п╣п╥ commit !
   public static void saveTrVector(Connection c, Vector trv, boolean tr_log) throws SQLException
   {
 
@@ -74,7 +74,7 @@ public class DbConverter
 
       LogConverter lconv = null;
       if (tr_log) lconv = new LogConverter();
-      // сохраняем транзакции
+      // я│п╬я┘я─п╟п╫я▐п╣п╪ я┌я─п╟п╫п╥п╟п╨я├п╦п╦
       Statement sel_seq = c.createStatement();
       ResultSet rs;
         
@@ -92,7 +92,7 @@ public class DbConverter
         id = rs.getInt(1);
         rs.close();
 
-        if (t.getType() != t.REG_VALUE) // 24 - игнорируется
+        if (t.getType() != t.REG_VALUE) // 24 - п╦пЁп╫п╬я─п╦я─я┐п╣я┌я│я▐
         {
           setTransParams(tr_pst, id, t);
           tr_pst.executeUpdate();
@@ -112,11 +112,11 @@ public class DbConverter
   }
 
   /**
-   * сохраняет одну транзакцию ... COMMITED!
+   * я│п╬я┘я─п╟п╫я▐п╣я┌ п╬п╢п╫я┐ я┌я─п╟п╫п╥п╟п╨я├п╦я▌ ... COMMITED!
    */
   public static void saveTransaction(Connection c, Transaction t, boolean tr_log) throws SQLException
   {
-    // читаем номер транзакции
+    // я┤п╦я┌п╟п╣п╪ п╫п╬п╪п╣я─ я┌я─п╟п╫п╥п╟п╨я├п╦п╦
     Statement sel_seq = c.createStatement();
     ResultSet rs = sel_seq.executeQuery(SEQ_VAL_STMT);
     rs.next();
@@ -127,11 +127,11 @@ public class DbConverter
     PreparedStatement tr_pst = c.prepareStatement(SAVE_TR_STMT);
     PreparedStatement tr_arch_pst = c.prepareStatement(SAVE_ARCH_STMT);
 
-    // пишем в таблицу обмена
+    // п©п╦я┬п╣п╪ п╡ я┌п╟п╠п╩п╦я├я┐ п╬п╠п╪п╣п╫п╟
     setTransParams(tr_pst, id, t);
     tr_pst.executeUpdate();
 
-    // пишем в архив
+    // п©п╦я┬п╣п╪ п╡ п╟я─я┘п╦п╡
     setTransParams(tr_arch_pst, id, t);
     tr_arch_pst.executeUpdate();
 
@@ -145,7 +145,7 @@ public class DbConverter
 
 
   /**
-   * Подстановка параметров в выражение для сохранения транзакции
+   * п÷п╬п╢я│я┌п╟п╫п╬п╡п╨п╟ п©п╟я─п╟п╪п╣я┌я─п╬п╡ п╡ п╡я▀я─п╟п╤п╣п╫п╦п╣ п╢п╩я▐ я│п╬я┘я─п╟п╫п╣п╫п╦я▐ я┌я─п╟п╫п╥п╟п╨я├п╦п╦
    */
   private static void setTransParams(PreparedStatement pst, int id, Transaction t) throws SQLException
   {
@@ -164,7 +164,7 @@ public class DbConverter
   }
 
   /**
-   * сохраняем в буффер текущую транзакцию  COMMITED!
+   * я│п╬я┘я─п╟п╫я▐п╣п╪ п╡ п╠я┐я└я└п╣я─ я┌п╣п╨я┐я┴я┐я▌ я┌я─п╟п╫п╥п╟п╨я├п╦я▌  COMMITED!
    */
   private final static String SAVE_CHECK_BF = 
       "insert into t_check_bf(t_d,t_t,k_n,ch_n,ca_n,s_d,i_d,f1,f2,f3,gname) values(?,?,?,?,?,?,?,?,?,?,?)";
@@ -195,7 +195,7 @@ public class DbConverter
 
 
   /**
-   * восстанавливает не закрытый  чек продажи или возврата
+   * п╡п╬я│я│я┌п╟п╫п╟п╡п╩п╦п╡п╟п╣я┌ п╫п╣ п╥п╟п╨я─я▀я┌я▀п╧  я┤п╣п╨ п©я─п╬п╢п╟п╤п╦ п╦п╩п╦ п╡п╬п╥п╡я─п╟я┌п╟
    */
   public static FDoc createFDocFromBuf(Connection c, SprModel model) throws SQLException
   {
@@ -206,7 +206,7 @@ public class DbConverter
     FDoc res; 
     Transaction t;
 
-    // определяем тип документа по первой транзакции
+    // п╬п©я─п╣п╢п╣п╩я▐п╣п╪ я┌п╦п© п╢п╬п╨я┐п╪п╣п╫я┌п╟ п©п╬ п©п╣я─п╡п╬п╧ я┌я─п╟п╫п╥п╟п╨я├п╦п╦
     t = (Transaction)tr.get(0);
 
     switch (t.getType())
@@ -218,9 +218,9 @@ public class DbConverter
 
     if (res != null)
     {
-      Vector ch_pos = new Vector(); // заполняем позиции в чеке
+      Vector ch_pos = new Vector(); // п╥п╟п©п╬п╩п╫я▐п╣п╪ п©п╬п╥п╦я├п╦п╦ п╡ я┤п╣п╨п╣
 
-      // код кассира для чека должен ставиться при закрытии
+      // п╨п╬п╢ п╨п╟я│я│п╦я─п╟ п╢п╩я▐ я┤п╣п╨п╟ п╢п╬п╩п╤п╣п╫ я│я┌п╟п╡п╦я┌я▄я│я▐ п©я─п╦ п╥п╟п╨я─я▀я┌п╦п╦
       //res.setCashierId();
       //res.setCashierName();
       res.setCashNum(t.getKkmNum());
@@ -230,9 +230,9 @@ public class DbConverter
       Position p = null;
 
       // var
-      Integer good_id; // код товара
+      Integer good_id; // п╨п╬п╢ я┌п╬п╡п╟я─п╟
       String gname;
-      Integer ptype; // тип позиции
+      Integer ptype; // я┌п╦п© п©п╬п╥п╦я├п╦п╦
       Double price;
       Double quan;
 
@@ -248,12 +248,12 @@ public class DbConverter
 
         if (t.getType() == t.REG_POS || t.getType() == t.RET_POS || t.getType() == t.STORNO_POS)
         {
-          // разбор транзакции (одинаков для регистрации, возврата и сторно)
-          good_id = new Integer(t.getStr()); // код
-          gname = t.getGname();              // наим. товара
-          price = new Double(t.getD10());    // цена
-          quan = new Double(t.getD11());     // количество 
-          gtaxId = t.getGtaxId();            // налог 
+          // я─п╟п╥п╠п╬я─ я┌я─п╟п╫п╥п╟п╨я├п╦п╦ (п╬п╢п╦п╫п╟п╨п╬п╡ п╢п╩я▐ я─п╣пЁп╦я│я┌я─п╟я├п╦п╦, п╡п╬п╥п╡я─п╟я┌п╟ п╦ я│я┌п╬я─п╫п╬)
+          good_id = new Integer(t.getStr()); // п╨п╬п╢
+          gname = t.getGname();              // п╫п╟п╦п╪. я┌п╬п╡п╟я─п╟
+          price = new Double(t.getD10());    // я├п╣п╫п╟
+          quan = new Double(t.getD11());     // п╨п╬п╩п╦я┤п╣я│я┌п╡п╬ 
+          gtaxId = t.getGtaxId();            // п╫п╟п╩п╬пЁ 
 
           if (gtaxId != null)
           {
@@ -273,27 +273,27 @@ public class DbConverter
           switch (t.getType())
           {
 
-            case Transaction.REG_POS : // регистрация 
+            case Transaction.REG_POS : // я─п╣пЁп╦я│я┌я─п╟я├п╦я▐ 
                 ch_pos.add( p = new Position(null, ptype = Position.SALE_POS, gname,
                             quan, price, good_id, null, null, gtaxId, nalPc, tname) ); 
               break;
 
-            case Transaction.RET_POS : // возврат продажи
+            case Transaction.RET_POS : // п╡п╬п╥п╡я─п╟я┌ п©я─п╬п╢п╟п╤п╦
                 ch_pos.add( p = new Position(null, ptype = Position.SALE_RET_POS, gname,
                             quan = new Double(-quan.doubleValue()), price, good_id, null, null, gtaxId, nalPc, tname) ); 
               break;
 
-            case Transaction.STORNO_POS : // сторно какой то из позиций
-                int st_pos_index = 0; // индекс позиции которую будем сторнировать
+            case Transaction.STORNO_POS : // я│я┌п╬я─п╫п╬ п╨п╟п╨п╬п╧ я┌п╬ п╦п╥ п©п╬п╥п╦я├п╦п╧
+                int st_pos_index = 0; // п╦п╫п╢п╣п╨я│ п©п╬п╥п╦я├п╦п╦ п╨п╬я┌п╬я─я┐я▌ п╠я┐п╢п╣п╪ я│я┌п╬я─п╫п╦я─п╬п╡п╟я┌я▄
                 boolean finded = false;
-                // в чеке продажи, в сторно отр. кол-во, в возврате продажи - положительное
+                // п╡ я┤п╣п╨п╣ п©я─п╬п╢п╟п╤п╦, п╡ я│я┌п╬я─п╫п╬ п╬я┌я─. п╨п╬п╩-п╡п╬, п╡ п╡п╬п╥п╡я─п╟я┌п╣ п©я─п╬п╢п╟п╤п╦ - п©п╬п╩п╬п╤п╦я┌п╣п╩я▄п╫п╬п╣
                 quan = new Double( (res instanceof SaleCheck) ? -quan.doubleValue() : quan.doubleValue()); 
-                // по коду товара, цене и количеству из транзакции ищем позицию
+                // п©п╬ п╨п╬п╢я┐ я┌п╬п╡п╟я─п╟, я├п╣п╫п╣ п╦ п╨п╬п╩п╦я┤п╣я│я┌п╡я┐ п╦п╥ я┌я─п╟п╫п╥п╟п╨я├п╦п╦ п╦я┴п╣п╪ п©п╬п╥п╦я├п╦я▌
                 while (st_pos_index < ch_pos.size() && !finded)
                 {
                   p = (Position)ch_pos.get( st_pos_index );
 
-                  // если это не сторно - сравниваем 
+                  // п╣я│п╩п╦ я█я┌п╬ п╫п╣ я│я┌п╬я─п╫п╬ - я│я─п╟п╡п╫п╦п╡п╟п╣п╪ 
                   if ( !Position.CANCEL_POS.equals(p.getType()))
                     finded = good_id.equals(p.getGoodId()) && price.equals(p.getPrice()) && quan.equals(p.getQuantity());
                   if (!finded) st_pos_index++;
@@ -307,8 +307,8 @@ public class DbConverter
             
         } else
 
-        if (t.getType() == t.REG_VALUE) // если регистрация единицы, добавляем ш/к
-                                        // для предыдущей в списке
+        if (t.getType() == t.REG_VALUE) // п╣я│п╩п╦ я─п╣пЁп╦я│я┌я─п╟я├п╦я▐ п╣п╢п╦п╫п╦я├я▀, п╢п╬п╠п╟п╡п╩я▐п╣п╪ я┬/п╨
+                                        // п╢п╩я▐ п©я─п╣п╢я▀п╢я┐я┴п╣п╧ п╡ я│п©п╦я│п╨п╣
         {
           int pos_index = -1;
           if (ch_pos.size() > 0) pos_index = ch_pos.size() - 1;
@@ -322,9 +322,9 @@ public class DbConverter
         i++;
       }
 
-      // транзакции
+      // я┌я─п╟п╫п╥п╟п╨я├п╦п╦
       ((Check)res).setTranscactions(tr);
-      // позиции
+      // п©п╬п╥п╦я├п╦п╦
       ((Check)res).setPositions(ch_pos);
     }
     
@@ -334,7 +334,7 @@ public class DbConverter
 
 
   /**
-   * Чтение транзакций из временной таблицы
+   * п╖я┌п╣п╫п╦п╣ я┌я─п╟п╫п╥п╟п╨я├п╦п╧ п╦п╥ п╡я─п╣п╪п╣п╫п╫п╬п╧ я┌п╟п╠п╩п╦я├я▀
    */
   private final static String SEL_TR = 
     "select id,t_d,t_t,k_n,ch_n,ca_n,s_d,i_d,f1,f2,f3,gname,gt_id from t_check_bf order by id";

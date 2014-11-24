@@ -21,7 +21,7 @@ import th.kkm.sa.server.Server;
 
 public class SetupPanel extends JPanel
 {
-//  private final static String UI_SET = "Основные";
+//  private final static String UI_SET = "п·я│п╫п╬п╡п╫я▀п╣";
 
   private TabSetPanel[] tabPanels;
   private FrTablesPanel fr_panel;
@@ -45,11 +45,11 @@ public class SetupPanel extends JPanel
     mtab = new JTabbedPane();
 
     int pcnt = 0;
-    mtab.add("Общие", tabPanels[pcnt++] = new UISetPanel() );
-    mtab.add("Обмен", tabPanels[pcnt++] = new ExchSetPanel() );
+    mtab.add("п·п╠я┴п╦п╣", tabPanels[pcnt++] = new UISetPanel() );
+    mtab.add("п·п╠п╪п╣п╫", tabPanels[pcnt++] = new ExchSetPanel() );
 //    mtab.add("Fr",   tabPanels[pcnt++] = new FrSetPanel() );
-    mtab.add("Таблицы ФР", tabPanels[pcnt++] = fr_panel = new FrTablesPanel() );
-    mtab.add("Параметры ФР", tabPanels[pcnt++] = fr_panel2 = new FrParamsPanel());
+    mtab.add("п╒п╟п╠п╩п╦я├я▀ п╓п═", tabPanels[pcnt++] = fr_panel = new FrTablesPanel() );
+    mtab.add("п÷п╟я─п╟п╪п╣я┌я─я▀ п╓п═", tabPanels[pcnt++] = fr_panel2 = new FrParamsPanel());
 
     setLayout(new BorderLayout());
     add(mtab, BorderLayout.CENTER);
@@ -64,7 +64,7 @@ public class SetupPanel extends JPanel
     this.env = env;
   }
 
-  // обновляем каждую закладку через список совойств
+  // п╬п╠п╫п╬п╡п╩я▐п╣п╪ п╨п╟п╤п╢я┐я▌ п╥п╟п╨п╩п╟п╢п╨я┐ я┤п╣я─п╣п╥ я│п©п╦я│п╬п╨ я│п╬п╡п╬п╧я│я┌п╡
   private void refreshData(Properties p)
   {
     for (int i = 0; i < tabPanels.length; i++) tabPanels[i].refreshData(p);
@@ -85,7 +85,7 @@ public class SetupPanel extends JPanel
     Properties p1 = new Properties();
 
     int i = 0; 
-    // опрас всех панелек на сохранение данных
+    // п╬п©я─п╟я│ п╡я│п╣я┘ п©п╟п╫п╣п╩п╣п╨ п╫п╟ я│п╬я┘я─п╟п╫п╣п╫п╦п╣ п╢п╟п╫п╫я▀я┘
     while (i < tabPanels.length && pres == null) 
     {
       TabSetPanel tsp = tabPanels[i];
@@ -151,7 +151,7 @@ public class SetupPanel extends JPanel
 
       if (exch_params_changed)
       {
-        // оповещение потока обмена данными
+        // п╬п©п╬п╡п╣я┴п╣п╫п╦п╣ п©п╬я┌п╬п╨п╟ п╬п╠п╪п╣п╫п╟ п╢п╟п╫п╫я▀п╪п╦
         synchronized (env.getExchThread().getExchSettings())
         {
           env.getExchThread().getExchSettings().init(env.getSprModel().getSettings());
@@ -164,9 +164,9 @@ public class SetupPanel extends JPanel
     return res;
   }
 
-  public final static String APPLY_S = "Применить";
-  public final static String SAVE_S = "Сохранить";
-  public final static String CANCEL_S = "Отмена";
+  public final static String APPLY_S = "п÷я─п╦п╪п╣п╫п╦я┌я▄";
+  public final static String SAVE_S = "п║п╬я┘я─п╟п╫п╦я┌я▄";
+  public final static String CANCEL_S = "п·я┌п╪п╣п╫п╟";
   
   
 }

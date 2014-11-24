@@ -1,7 +1,7 @@
 /*
  * SalePanel.java
  *
- * Created on 19 Ноябрь 2007 г., 13:34
+ * Created on 19 п²п╬я▐п╠я─я▄ 2007 пЁ., 13:34
  *
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.
@@ -84,7 +84,7 @@ import th.cash.dev.CustDisplay;
 import th.cash.ui.paym.CardInputDialog;
 import th.cash.fr.state.*;
 /**
- * Окно формирования чека, главная панель
+ * п·п╨п╫п╬ я└п╬я─п╪п╦я─п╬п╡п╟п╫п╦я▐ я┤п╣п╨п╟, пЁп╩п╟п╡п╫п╟я▐ п©п╟п╫п╣п╩я▄
  * @author lazarev
  */
 public class SalePanel extends JPanel implements ListSelectionListener, DataListener, StateFrListener, UpdateLocker {
@@ -92,30 +92,30 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
     // **************************    
     private Font def_font, labels_font, values_font, large_val_font, edit_font, sum_font, quan_font, table_font;
     
-    private JLabel jl_urole;                      // название набора прав
-    private JLabel jl_user;                       // имя пользователя
-    private JLabel jl_text_weight, jl_weight;     // вес (текст/значение)
-    private JLabel jl_text_quan, jl_quantity;     // количество (текст/значение)
+    private JLabel jl_urole;                      // п╫п╟п╥п╡п╟п╫п╦п╣ п╫п╟п╠п╬я─п╟ п©я─п╟п╡
+    private JLabel jl_user;                       // п╦п╪я▐ п©п╬п╩я▄п╥п╬п╡п╟я┌п╣п╩я▐
+    private JLabel jl_text_weight, jl_weight;     // п╡п╣я│ (я┌п╣п╨я│я┌/п╥п╫п╟я┤п╣п╫п╦п╣)
+    private JLabel jl_text_quan, jl_quantity;     // п╨п╬п╩п╦я┤п╣я│я┌п╡п╬ (я┌п╣п╨я│я┌/п╥п╫п╟я┤п╣п╫п╦п╣)
     
-    private JLabel jl_oper_type;                  // состояние чека
+    private JLabel jl_oper_type;                  // я│п╬я│я┌п╬я▐п╫п╦п╣ я┤п╣п╨п╟
     
-//    private JLabel jl_text_check_num1, jl_text_check_num2, jl_check_num;    // номер чека 
-    private JLabel jl_text_check_num, jl_check_num; // номер чека (текст/значение)
-    private JLabel jl_dsc_percent;                // процент скидки на чек (только значение)
-    private JLabel jl_text_sum1, jl_text_sum2, jl_sum;  // пром. итог (текст в 2 строки) (сумма со скидкой)
+//    private JLabel jl_text_check_num1, jl_text_check_num2, jl_check_num;    // п╫п╬п╪п╣я─ я┤п╣п╨п╟ 
+    private JLabel jl_text_check_num, jl_check_num; // п╫п╬п╪п╣я─ я┤п╣п╨п╟ (я┌п╣п╨я│я┌/п╥п╫п╟я┤п╣п╫п╦п╣)
+    private JLabel jl_dsc_percent;                // п©я─п╬я├п╣п╫я┌ я│п╨п╦п╢п╨п╦ п╫п╟ я┤п╣п╨ (я┌п╬п╩я▄п╨п╬ п╥п╫п╟я┤п╣п╫п╦п╣)
+    private JLabel jl_text_sum1, jl_text_sum2, jl_sum;  // п©я─п╬п╪. п╦я┌п╬пЁ (я┌п╣п╨я│я┌ п╡ 2 я│я┌я─п╬п╨п╦) (я│я┐п╪п╪п╟ я│п╬ я│п╨п╦п╢п╨п╬п╧)
     
-    // для информационной панели
-    private JLabel jl_text_code, jl_code;         // код товара  
-    private JLabel jl_text_gname, jl_gname;       // название товара
-    private JLabel jl_text_bc, jl_barcode;        // штрих - код
+    // п╢п╩я▐ п╦п╫я└п╬я─п╪п╟я├п╦п╬п╫п╫п╬п╧ п©п╟п╫п╣п╩п╦
+    private JLabel jl_text_code, jl_code;         // п╨п╬п╢ я┌п╬п╡п╟я─п╟  
+    private JLabel jl_text_gname, jl_gname;       // п╫п╟п╥п╡п╟п╫п╦п╣ я┌п╬п╡п╟я─п╟
+    private JLabel jl_text_bc, jl_barcode;        // я┬я┌я─п╦я┘ - п╨п╬п╢
 
 //    private JLabel jl_text_dsc_percent;
-//    private JLabel jl_text_dsc_sum, jl_dsc_sum;      // сумма скидки
-//    private JLabel jl_text_full_sum, jl_full_sum;     // сумма без скидки
-    private JLabel jl_text_fsum_and_dsc, jl_fsum_and_dsc; // всесте полная сумма чека и скидка на чек
+//    private JLabel jl_text_dsc_sum, jl_dsc_sum;      // я│я┐п╪п╪п╟ я│п╨п╦п╢п╨п╦
+//    private JLabel jl_text_full_sum, jl_full_sum;     // я│я┐п╪п╪п╟ п╠п╣п╥ я│п╨п╦п╢п╨п╦
+    private JLabel jl_text_fsum_and_dsc, jl_fsum_and_dsc; // п╡я│п╣я│я┌п╣ п©п╬п╩п╫п╟я▐ я│я┐п╪п╪п╟ я┤п╣п╨п╟ п╦ я│п╨п╦п╢п╨п╟ п╫п╟ я┤п╣п╨
 
 
-    // для строки состояния
+    // п╢п╩я▐ я│я┌я─п╬п╨п╦ я│п╬я│я┌п╬я▐п╫п╦я▐
     private JLabel jl_knum;
     private JLabel jl_ver, jl_bld;
     
@@ -123,19 +123,19 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
     private JLabel jl_check_roll;
     private JLabel jl_eklz;
     
-    private JLabel jl_msg;          // сообщение в панели состояния
-    private JLabel jl_time;         // для отображения системного времени
+    private JLabel jl_msg;          // я│п╬п╬п╠я┴п╣п╫п╦п╣ п╡ п©п╟п╫п╣п╩п╦ я│п╬я│я┌п╬я▐п╫п╦я▐
+    private JLabel jl_time;         // п╢п╩я▐ п╬я┌п╬п╠я─п╟п╤п╣п╫п╦я▐ я│п╦я│я┌п╣п╪п╫п╬пЁп╬ п╡я─п╣п╪п╣п╫п╦
 
 
-    private InputLabel jl_input;     // поле ввода
+    private InputLabel jl_input;     // п©п╬п╩п╣ п╡п╡п╬п╢п╟
 
-    // ************  параметры фискального документа **************
-    private Double quan        = null;             // количество 
-    private Integer check_num  = null;             // номер   
-//    private Double dsc_pc      = null;             // процент скидки на чек
+    // ************  п©п╟я─п╟п╪п╣я┌я─я▀ я└п╦я│п╨п╟п╩я▄п╫п╬пЁп╬ п╢п╬п╨я┐п╪п╣п╫я┌п╟ **************
+    private Double quan        = null;             // п╨п╬п╩п╦я┤п╣я│я┌п╡п╬ 
+    private Integer check_num  = null;             // п╫п╬п╪п╣я─   
+//    private Double dsc_pc      = null;             // п©я─п╬я├п╣п╫я┌ я│п╨п╦п╢п╨п╦ п╫п╟ я┤п╣п╨
     private FixedDsc fixed_dsc = null;
-    private Double weight      = null;             // вес текущей позиции
-    private Double itog        = null;             // пром. итог чека   
+    private Double weight      = null;             // п╡п╣я│ я┌п╣п╨я┐я┴п╣п╧ п©п╬п╥п╦я├п╦п╦
+    private Double itog        = null;             // п©я─п╬п╪. п╦я┌п╬пЁ я┤п╣п╨п╟   
     
 
     private NumberFormat inp_quan_fmt, out_quan_fmt, money_fmt, dsc_pc_fmt;
@@ -154,14 +154,14 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
     private KKMEnv cashEnv;
 
     // ---------------------------
-    private boolean doc_locking = false;   // для блокировки открытого чека (UpdateLocker)
+    private boolean doc_locking = false;   // п╢п╩я▐ п╠п╩п╬п╨п╦я─п╬п╡п╨п╦ п╬я┌п╨я─я▀я┌п╬пЁп╬ я┤п╣п╨п╟ (UpdateLocker)
     
     
-    private final static String[] COL_NAMES = {" ","N","Наименование", "Кол-во", "Цена", "Сумма"};
+    private final static String[] COL_NAMES = {" ","N","п²п╟п╦п╪п╣п╫п╬п╡п╟п╫п╦п╣", "п п╬п╩-п╡п╬", "п╕п╣п╫п╟", "п║я┐п╪п╪п╟"};
     private final static Class[] COL_CLASSES = new Class[]{Integer.class, Integer.class, String.class, Double.class, Double.class, Double.class};
     private final static int[] COL_WIDTH = new int[] {24, 36, 800, 100, 120, 140};
 
-    private AScannerSwitcher scan_switch; // переключатель событий сканнера Ш/К
+    private AScannerSwitcher scan_switch; // п©п╣я─п╣п╨п╩я▌я┤п╟я┌п╣п╩я▄ я│п╬п╠я▀я┌п╦п╧ я│п╨п╟п╫п╫п╣я─п╟ п╗/п 
 
     private TimerRunnable timer;
 
@@ -176,7 +176,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
 
     private FDscSelDialog fdsc_dialog = null;
 
-    // последний статус переполнения ЭКЛЗ
+    // п©п╬я│п╩п╣п╢п╫п╦п╧ я│я┌п╟я┌я┐я│ п©п╣я─п╣п©п╬п╩п╫п╣п╫п╦я▐ п╜п п⌡п≈
     private boolean prev_eklz_full = false;
 
     /** Creates a new instance of SalePanel */
@@ -184,7 +184,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
       init();
     }
 
-    // инициализация шрифтов для отдельных элементов интерфейса
+    // п╦п╫п╦я├п╦п╟п╩п╦п╥п╟я├п╦я▐ я┬я─п╦я└я┌п╬п╡ п╢п╩я▐ п╬я┌п╢п╣п╩я▄п╫я▀я┘ я█п╩п╣п╪п╣п╫я┌п╬п╡ п╦п╫я┌п╣я─я└п╣п╧я│п╟
     private void initFonts()
     {
       JLabel tmp = new JLabel();
@@ -272,7 +272,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
       jl_urole = new JLabel();
       jl_user = new JLabel();
         
-      jl_text_weight = new JLabel("Масса");
+      jl_text_weight = new JLabel("п°п╟я│я│п╟");
       jl_weight = new JLabel();
         
       jl_text_quan = new JLabel("X");
@@ -283,34 +283,34 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
       jl_oper_type = new JLabel();
 
       jl_text_check_num = new JLabel("N");
-//      jl_text_check_num1 = new JLabel("Номер");
-//      jl_text_check_num2 = new JLabel("чека");
+//      jl_text_check_num1 = new JLabel("п²п╬п╪п╣я─");
+//      jl_text_check_num2 = new JLabel("я┤п╣п╨п╟");
       jl_check_num = new JLabel();
         
 //      jl_text_dsc_percent = new JLabel();
       jl_dsc_percent = new JLabel();
         
-//      jl_text_sum = new JLabel("Пром.итог");
-      jl_text_sum1 = new JLabel("Пром.");
-      jl_text_sum2 = new JLabel("итог");
+//      jl_text_sum = new JLabel("п÷я─п╬п╪.п╦я┌п╬пЁ");
+      jl_text_sum1 = new JLabel("п÷я─п╬п╪.");
+      jl_text_sum2 = new JLabel("п╦я┌п╬пЁ");
       jl_sum = new JLabel();
 
 
-      // детализация позиции в чеке
-      jl_text_code = new JLabel("Код:");
-      jl_code = new JLabel();         // код товара 
-      jl_text_gname = new JLabel("Товар:");
-      jl_gname = new JLabel();        // название товара
-      jl_text_bc = new JLabel("Ш/К:");
-      jl_barcode = new JLabel();      // штрих - код
-//      jl_text_dsc_sum = new JLabel("Сумма скидки:");
-//      jl_dsc_sum = new JLabel();      // сумма скидки
-//      jl_text_full_sum = new JLabel("Всего без скидки:");
-//      jl_full_sum = new JLabel();     // сумма без скидки
-      jl_text_fsum_and_dsc = new JLabel("Всего/скидка:");
-      jl_fsum_and_dsc = new JLabel();     // сумма без скидки
+      // п╢п╣я┌п╟п╩п╦п╥п╟я├п╦я▐ п©п╬п╥п╦я├п╦п╦ п╡ я┤п╣п╨п╣
+      jl_text_code = new JLabel("п п╬п╢:");
+      jl_code = new JLabel();         // п╨п╬п╢ я┌п╬п╡п╟я─п╟ 
+      jl_text_gname = new JLabel("п╒п╬п╡п╟я─:");
+      jl_gname = new JLabel();        // п╫п╟п╥п╡п╟п╫п╦п╣ я┌п╬п╡п╟я─п╟
+      jl_text_bc = new JLabel("п╗/п :");
+      jl_barcode = new JLabel();      // я┬я┌я─п╦я┘ - п╨п╬п╢
+//      jl_text_dsc_sum = new JLabel("п║я┐п╪п╪п╟ я│п╨п╦п╢п╨п╦:");
+//      jl_dsc_sum = new JLabel();      // я│я┐п╪п╪п╟ я│п╨п╦п╢п╨п╦
+//      jl_text_full_sum = new JLabel("п▓я│п╣пЁп╬ п╠п╣п╥ я│п╨п╦п╢п╨п╦:");
+//      jl_full_sum = new JLabel();     // я│я┐п╪п╪п╟ п╠п╣п╥ я│п╨п╦п╢п╨п╦
+      jl_text_fsum_and_dsc = new JLabel("п▓я│п╣пЁп╬/я│п╨п╦п╢п╨п╟:");
+      jl_fsum_and_dsc = new JLabel();     // я│я┐п╪п╪п╟ п╠п╣п╥ я│п╨п╦п╢п╨п╦
         
-      // для строки состояния
+      // п╢п╩я▐ я│я┌я─п╬п╨п╦ я│п╬я│я┌п╬я▐п╫п╦я▐
       jl_knum = new JLabel();
       jl_ver = new JLabel();
       jl_bld = new JLabel();
@@ -550,7 +550,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
 
        initFormat();
 
-       // события
+       // я│п╬п╠я▀я┌п╦я▐
        // new !!! added 15.02.2008
        initActions();
 
@@ -574,12 +574,12 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
 
        ehandler.addStateFrListener(this);
 
-       pr_show = new ProgressFrame("Инициализация");
+       pr_show = new ProgressFrame("п≤п╫п╦я├п╦п╟п╩п╦п╥п╟я├п╦я▐");
 
        ehandler.setProgress(pr_show);
     }
 
-    // контейнер, на котором находится панелька
+    // п╨п╬п╫я┌п╣п╧п╫п╣я─, п╫п╟ п╨п╬я┌п╬я─п╬п╪ п╫п╟я┘п╬п╢п╦я┌я│я▐ п©п╟п╫п╣п╩я▄п╨п╟
     public void setOwner(Window w)
     {
       owner = w;
@@ -632,7 +632,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
      *                              ACTIONS 
      * 
      */
-    // Символические имена команд
+    // п║п╦п╪п╡п╬п╩п╦я┤п╣я│п╨п╦п╣ п╦п╪п╣п╫п╟ п╨п╬п╪п╟п╫п╢
     private final static String OPEN           = "open";
     private final static String REG_QUANTITY   = "regQuantity";
     private final static String BY_CODE        = "byCode";
@@ -658,37 +658,37 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
     private final static String CANCEL_DSC     = "cancelDsc";
     private final static String EXIT           = "exitProgram";
 
-    // таблица - actionCommand, actionKey, actionName
+    // я┌п╟п╠п╩п╦я├п╟ - actionCommand, actionKey, actionName
     private final static String[][] ACTION_DEF = 
     {
       { OPEN,           null,            "Open" },
-      { REG_QUANTITY,   "MULTIPLY",      "Количество"},
-      { BY_CODE,        "F5",            "Регистрация по коду"},
-      { BY_BARCODE,     "F6",            "Регистрация по Ш/К"},
-      { STORNO_POS,     "SUBTRACT",      "Сторно"},
-      { REPEAT_POS,     "control Y",     "Повтор продажи"},
-      { CLOSE_CHECK,    "ENTER",         "Закрытие чека"},
-      { CANCEL_CHECK,   "control F5",    "Отмена чека"},
-      { RETURN_CHECK,   "alt F2",        "Возврат"},
-      { IN_PAY,         "shift F7",      "Внесение"},
-      { OUT_PAY,        "shift F8",      "Выплата"},
-      { BANK_REPORT,    "F9",            "Отчет по банк. картам"},
-      { Z_REPORT,       "control F9",    "Z-отчет"},
-      { X_REPORT,       "shift F6",      "X-отчет"},
-      { RESET,          "F12",           "Сброс"},
-      { LOCK,           "alt F1",        "Блок."},
-      { OPEN_MONEY_BOX, "control F6",    "Открытие денежного ящика"},
-      { PR_ITOG,        "DIVIDE",        "Пром. итог"},
-      { BN_PAY,         "control ENTER", "Вид оплаты 2"},
-      { CANCEL_DSC,     "alt F9",        "Отмена скидки"},
-      { FIXED_DSC,      "shift F2",      "Фикс.скидка"},
-      { EXIT,           "ESCAPE",        "Выход"}
+      { REG_QUANTITY,   "MULTIPLY",      "п п╬п╩п╦я┤п╣я│я┌п╡п╬"},
+      { BY_CODE,        "F5",            "п═п╣пЁп╦я│я┌я─п╟я├п╦я▐ п©п╬ п╨п╬п╢я┐"},
+      { BY_BARCODE,     "F6",            "п═п╣пЁп╦я│я┌я─п╟я├п╦я▐ п©п╬ п╗/п "},
+      { STORNO_POS,     "SUBTRACT",      "п║я┌п╬я─п╫п╬"},
+      { REPEAT_POS,     "control Y",     "п÷п╬п╡я┌п╬я─ п©я─п╬п╢п╟п╤п╦"},
+      { CLOSE_CHECK,    "ENTER",         "п≈п╟п╨я─я▀я┌п╦п╣ я┤п╣п╨п╟"},
+      { CANCEL_CHECK,   "control F5",    "п·я┌п╪п╣п╫п╟ я┤п╣п╨п╟"},
+      { RETURN_CHECK,   "alt F2",        "п▓п╬п╥п╡я─п╟я┌"},
+      { IN_PAY,         "shift F7",      "п▓п╫п╣я│п╣п╫п╦п╣"},
+      { OUT_PAY,        "shift F8",      "п▓я▀п©п╩п╟я┌п╟"},
+      { BANK_REPORT,    "F9",            "п·я┌я┤п╣я┌ п©п╬ п╠п╟п╫п╨. п╨п╟я─я┌п╟п╪"},
+      { Z_REPORT,       "control F9",    "Z-п╬я┌я┤п╣я┌"},
+      { X_REPORT,       "shift F6",      "X-п╬я┌я┤п╣я┌"},
+      { RESET,          "F12",           "п║п╠я─п╬я│"},
+      { LOCK,           "alt F1",        "п▒п╩п╬п╨."},
+      { OPEN_MONEY_BOX, "control F6",    "п·я┌п╨я─я▀я┌п╦п╣ п╢п╣п╫п╣п╤п╫п╬пЁп╬ я▐я┴п╦п╨п╟"},
+      { PR_ITOG,        "DIVIDE",        "п÷я─п╬п╪. п╦я┌п╬пЁ"},
+      { BN_PAY,         "control ENTER", "п▓п╦п╢ п╬п©п╩п╟я┌я▀ 2"},
+      { CANCEL_DSC,     "alt F9",        "п·я┌п╪п╣п╫п╟ я│п╨п╦п╢п╨п╦"},
+      { FIXED_DSC,      "shift F2",      "п╓п╦п╨я│.я│п╨п╦п╢п╨п╟"},
+      { EXIT,           "ESCAPE",        "п▓я▀я┘п╬п╢"}
     };
 
 
     private void initActions()
     {
-       // внешний конфиг для корячих клавиш обработки событий
+       // п╡п╫п╣я┬п╫п╦п╧ п╨п╬п╫я└п╦пЁ п╢п╩я▐ п╨п╬я─я▐я┤п╦я┘ п╨п╩п╟п╡п╦я┬ п╬п╠я─п╟п╠п╬я┌п╨п╦ я│п╬п╠я▀я┌п╦п╧
        Properties kpr = new Properties();
        try
        {
@@ -701,7 +701,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
            log.debug("Use default keyboard configuration");
        }
 
-      // блокируем некоторые сочетания для таблицы
+      // п╠п╩п╬п╨п╦я─я┐п╣п╪ п╫п╣п╨п╬я┌п╬я─я▀п╣ я│п╬я┤п╣я┌п╟п╫п╦я▐ п╢п╩я▐ я┌п╟п╠п╩п╦я├я▀
       table.getInputMap(WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "none");
       table.getInputMap(WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "none");
 
@@ -711,7 +711,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
       
     }
 
-    // создает событие по таблице ACTION_DEF
+    // я│п╬п╥п╢п╟п╣я┌ я│п╬п╠я▀я┌п╦п╣ п©п╬ я┌п╟п╠п╩п╦я├п╣ ACTION_DEF
     private Action createInstallAction(int index, Properties keycfg)
     {
       
@@ -743,7 +743,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
       return res;
     }
 
-    // поиск по имени события
+    // п©п╬п╦я│п╨ п©п╬ п╦п╪п╣п╫п╦ я│п╬п╠я▀я┌п╦я▐
     private int getCmdIndex(String cmd)
     {
       int res = -1;
@@ -775,7 +775,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
 
 
     private final static int ERR_INCORRECT_STATE = -1000;
-    // отображение ошибки
+    // п╬я┌п╬п╠я─п╟п╤п╣п╫п╦п╣ п╬я┬п╦п╠п╨п╦
     // msg
     private void showError(String msg, Exception ex)
     {  // modified 12.04.10
@@ -789,15 +789,15 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
         log.error(s + ex.getMessage(), ex);
       }
 
-      if (stext == null) stext = "Ошибка";
+      if (stext == null) stext = "п·я┬п╦п╠п╨п╟";
       
 //      SwingUtilities.invokeLater(new TextMsgRunnable(stext));  
       UserDlg.showError(this, stext);
     }
 
-    // общий метод обработка ошибки
-    // результат - возможность дальнейшей работы ...
-    // те критические ошибки БД или ФР должны блокировать дальнейшую работу
+    // п╬п╠я┴п╦п╧ п╪п╣я┌п╬п╢ п╬п╠я─п╟п╠п╬я┌п╨п╟ п╬я┬п╦п╠п╨п╦
+    // я─п╣п╥я┐п╩я▄я┌п╟я┌ - п╡п╬п╥п╪п╬п╤п╫п╬я│я┌я▄ п╢п╟п╩я▄п╫п╣п╧я┬п╣п╧ я─п╟п╠п╬я┌я▀ ...
+    // я┌п╣ п╨я─п╦я┌п╦я┤п╣я│п╨п╦п╣ п╬я┬п╦п╠п╨п╦ п▒п■ п╦п╩п╦ п╓п═ п╢п╬п╩п╤п╫я▀ п╠п╩п╬п╨п╦я─п╬п╡п╟я┌я▄ п╢п╟п╩я▄п╫п╣п╧я┬я┐я▌ я─п╟п╠п╬я┌я┐
     private boolean handleError(Exception ex)
     {
       return handleError(null, ex);
@@ -821,7 +821,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
       } else
 
       if (ex instanceof SQLException) { 
-        showError("Ошибка работы с БД!" + '\n' + MSG_SALE_MODE_NOT_AVAIL, ex); 
+        showError("п·я┬п╦п╠п╨п╟ я─п╟п╠п╬я┌я▀ я│ п▒п■!" + '\n' + MSG_SALE_MODE_NOT_AVAIL, ex); 
         res = false; 
       } 
 
@@ -880,7 +880,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
      * *************************************************************************
      * *************************************************************************
      */
-    // слушатель событий сканера ш/к
+    // я│п╩я┐я┬п╟я┌п╣п╩я▄ я│п╬п╠я▀я┌п╦п╧ я│п╨п╟п╫п╣я─п╟ я┬/п╨
     // DataListener implementation
     public void dataOccurred(DataEvent p0)
     {
@@ -905,7 +905,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
       }
     }
 
-    // Runnable для обработки события чтения ш/к  
+    // Runnable п╢п╩я▐ п╬п╠я─п╟п╠п╬я┌п╨п╦ я│п╬п╠я▀я┌п╦я▐ я┤я┌п╣п╫п╦я▐ я┬/п╨  
     class RegBarcode implements Runnable{
 
       private String bs;
@@ -918,7 +918,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
       {
         bc_accept = false;
         do_reg_by_barcode(bs, false);
-        //scan_switch.setScannerEnabled(true);  // включаем события от сканнера
+        //scan_switch.setScannerEnabled(true);  // п╡п╨п╩я▌я┤п╟п╣п╪ я│п╬п╠я▀я┌п╦я▐ п╬я┌ я│п╨п╟п╫п╫п╣я─п╟
         bc_accept = true;
       }
     }
@@ -946,12 +946,12 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
      */
 
     // TODO
-    // здесь нужно сбрасывать результаты предыдущего документа !!!
+    // п╥п╢п╣я│я▄ п╫я┐п╤п╫п╬ я│п╠я─п╟я│я▀п╡п╟я┌я▄ я─п╣п╥я┐п╩я▄я┌п╟я┌я▀ п©я─п╣п╢я▀п╢я┐я┴п╣пЁп╬ п╢п╬п╨я┐п╪п╣п╫я┌п╟ !!!
     private void initFiscalDoc(int type) throws Exception
     {
       // *************************************
       // TODO temporary !!!
-      // применяем обновления справочников !!!
+      // п©я─п╦п╪п╣п╫я▐п╣п╪ п╬п╠п╫п╬п╡п╩п╣п╫п╦я▐ я│п©я─п╟п╡п╬я┤п╫п╦п╨п╬п╡ !!!
       // removed 14.02.2008
       //cashEnv.getSprUpdater().work();
     
@@ -995,7 +995,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
         res.open();
 
         // added 08.02.2008 
-        synchronized (this) { doc_locking = true; } // блокирование при любом документе
+        synchronized (this) { doc_locking = true; } // п╠п╩п╬п╨п╦я─п╬п╡п╟п╫п╦п╣ п©я─п╦ п╩я▌п╠п╬п╪ п╢п╬п╨я┐п╪п╣п╫я┌п╣
       }
       return res;
     }
@@ -1016,22 +1016,22 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
 
     // * *************************************************************************
 
-    // общий метод для закрытия фискального документа
+    // п╬п╠я┴п╦п╧ п╪п╣я┌п╬п╢ п╢п╩я▐ п╥п╟п╨я─я▀я┌п╦я▐ я└п╦я│п╨п╟п╩я▄п╫п╬пЁп╬ п╢п╬п╨я┐п╪п╣п╫я┌п╟
     private void closeFiscalDoc(FDoc doc) throws Exception
     {
       if (doc == null) return;
 
-      // проверка состояния перед печатью документа
+      // п©я─п╬п╡п╣я─п╨п╟ я│п╬я│я┌п╬я▐п╫п╦я▐ п©п╣я─п╣п╢ п©п╣я┤п╟я┌я▄я▌ п╢п╬п╨я┐п╪п╣п╫я┌п╟
       ehandler.checkStateBeforeClosing(cashEnv.getFiscalPrinter(), doc);
 
-      // закрываем документ
+      // п╥п╟п╨я─я▀п╡п╟п╣п╪ п╢п╬п╨я┐п╪п╣п╫я┌
       if ( !(doc instanceof Check && ((Check)doc).isCanceled())) 
         doc.close(getCurUser());
 
-      // печатаем с контролем завершения ленты и выкл. устройства
-      ehandler.printDoc(cashEnv.getFiscalPrinter(), doc);  // чек возврата может быть отменен
+      // п©п╣я┤п╟я┌п╟п╣п╪ я│ п╨п╬п╫я┌я─п╬п╩п╣п╪ п╥п╟п╡п╣я─я┬п╣п╫п╦я▐ п╩п╣п╫я┌я▀ п╦ п╡я▀п╨п╩. я┐я│я┌я─п╬п╧я│я┌п╡п╟
+      ehandler.printDoc(cashEnv.getFiscalPrinter(), doc);  // я┤п╣п╨ п╡п╬п╥п╡я─п╟я┌п╟ п╪п╬п╤п╣я┌ п╠я▀я┌я▄ п╬я┌п╪п╣п╫п╣п╫
 
-      // пишем транзакции для обмена и в журнал
+      // п©п╦я┬п╣п╪ я┌я─п╟п╫п╥п╟п╨я├п╦п╦ п╢п╩я▐ п╬п╠п╪п╣п╫п╟ п╦ п╡ п╤я┐я─п╫п╟п╩
       doc.save(cashEnv.getTrConnection(), cashEnv.getSprModel().getSettings().isLogTransToFile());
 
       // added 08.02.2008
@@ -1046,11 +1046,11 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
 
     private boolean bc_accept = false;
     private boolean in_handle = false; 
-    // обработка всех событий, определенных через ActionEvent 
-    // открытие окна по команде OPEN, закрытие - по флажку exit
+    // п╬п╠я─п╟п╠п╬я┌п╨п╟ п╡я│п╣я┘ я│п╬п╠я▀я┌п╦п╧, п╬п©я─п╣п╢п╣п╩п╣п╫п╫я▀я┘ я┤п╣я─п╣п╥ ActionEvent 
+    // п╬я┌п╨я─я▀я┌п╦п╣ п╬п╨п╫п╟ п©п╬ п╨п╬п╪п╟п╫п╢п╣ OPEN, п╥п╟п╨я─я▀я┌п╦п╣ - п©п╬ я└п╩п╟п╤п╨я┐ exit
     protected synchronized void handleActionEvent(ActionEvent e)
     {
-//    in_handle - признак обработки кнопки ... в начале метода устанавливается, в конце - сброс
+//    in_handle - п©я─п╦п╥п╫п╟п╨ п╬п╠я─п╟п╠п╬я┌п╨п╦ п╨п╫п╬п©п╨п╦ ... п╡ п╫п╟я┤п╟п╩п╣ п╪п╣я┌п╬п╢п╟ я┐я│я┌п╟п╫п╟п╡п╩п╦п╡п╟п╣я┌я│я▐, п╡ п╨п╬п╫я├п╣ - я│п╠я─п╬я│
       if (in_handle) return;
       in_handle = true;
 
@@ -1106,7 +1106,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
 
       if (LOCK.equals(cmd)) exit = true; else 
       if (EXIT.equals(cmd)) 
-        exit = UserDlg.showQuestion(this, "Выйти из режима регистрации?"); 
+        exit = UserDlg.showQuestion(this, "п▓я▀п╧я┌п╦ п╦п╥ я─п╣п╤п╦п╪п╟ я─п╣пЁп╦я│я┌я─п╟я├п╦п╦?"); 
       else ;
       
       
@@ -1140,7 +1140,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
       return owner.isVisible();
     }
 
-    // отобразить документ 
+    // п╬я┌п╬п╠я─п╟п╥п╦я┌я▄ п╢п╬п╨я┐п╪п╣п╫я┌ 
     private void displayCheck(FDoc doc)
     {
       if (doc != null)
@@ -1206,14 +1206,14 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
         double q = new_quan.doubleValue();  
 
         if (q < 0.001)
-          throw new UserException("Количество должно быть больше нуля");
+          throw new UserException("п п╬п╩п╦я┤п╣я│я┌п╡п╬ п╢п╬п╩п╤п╫п╬ п╠я▀я┌я▄ п╠п╬п╩я▄я┬п╣ п╫я┐п╩я▐");
 
         Settings set = cashEnv.getSprModel().getSettings();
         
         double max_quan = (isFracQuan(new_quan)) ? set.getMaxDoubleQuan() : set.getMaxIntQuan();
 
         if (q > max_quan)
-          throw new UserException("Значение количества слишком велико");
+          throw new UserException("п≈п╫п╟я┤п╣п╫п╦п╣ п╨п╬п╩п╦я┤п╣я│я┌п╡п╟ я│п╩п╦я┬п╨п╬п╪ п╡п╣п╩п╦п╨п╬");
 
 
         quan = new_quan;
@@ -1228,7 +1228,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
       }
     }
 
-    // вывод на дисплей покупателя позиции и итога
+    // п╡я▀п╡п╬п╢ п╫п╟ п╢п╦я│п©п╩п╣п╧ п©п╬п╨я┐п©п╟я┌п╣п╩я▐ п©п╬п╥п╦я├п╦п╦ п╦ п╦я┌п╬пЁп╟
     private void showOnDisplay(String str1, double d1, String str2, double d2)
     {
       CustDisplay cd = cashEnv.getCustomerDisplay();
@@ -1242,7 +1242,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
       }
     }
 
-    // вывод сообщения о переходе в режим продаж
+    // п╡я▀п╡п╬п╢ я│п╬п╬п╠я┴п╣п╫п╦я▐ п╬ п©п╣я─п╣я┘п╬п╢п╣ п╡ я─п╣п╤п╦п╪ п©я─п╬п╢п╟п╤
     private void showInSaleTextOnDisplay()
     {
       CustDisplay cd = cashEnv.getCustomerDisplay();
@@ -1260,10 +1260,10 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
 
     /**
      * *************************************************************************
-     * проверка полномочий пользователя на выполение операций
+     * п©я─п╬п╡п╣я─п╨п╟ п©п╬п╩п╫п╬п╪п╬я┤п╦п╧ п©п╬п╩я▄п╥п╬п╡п╟я┌п╣п╩я▐ п╫п╟ п╡я▀п©п╬п╩п╣п╫п╦п╣ п╬п©п╣я─п╟я├п╦п╧
      * 
      */
-    // найти набор прав на работу с данным документом продажи или возврата (Check)
+    // п╫п╟п╧я┌п╦ п╫п╟п╠п╬я─ п©я─п╟п╡ п╫п╟ я─п╟п╠п╬я┌я┐ я│ п╢п╟п╫п╫я▀п╪ п╢п╬п╨я┐п╪п╣п╫я┌п╬п╪ п©я─п╬п╢п╟п╤п╦ п╦п╩п╦ п╡п╬п╥п╡я─п╟я┌п╟ (Check)
     private CheckPerm getCheckPerm(FDoc doc)
     {
       if (doc != null && !(doc instanceof Check)) return null;
@@ -1317,7 +1317,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
         while ( i < gr.size())
         {
           rule = (SecSaleRule)gr.get(i++);
-          if (!rule.isSaleEnabled(gm))  // любое из правил продажи может вызвать ошибку
+          if (!rule.isSaleEnabled(gm))  // п╩я▌п╠п╬п╣ п╦п╥ п©я─п╟п╡п╦п╩ п©я─п╬п╢п╟п╤п╦ п╪п╬п╤п╣я┌ п╡я▀п╥п╡п╟я┌я▄ п╬я┬п╦п╠п╨я┐
             throw new UserException("[" + gm.getGoodId() + "] " + gm.getName() + '\n' + rule.getComent());
         }
       }
@@ -1326,7 +1326,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
     
 
     /**
-     * Регистрация товара по коду
+     * п═п╣пЁп╦я│я┌я─п╟я├п╦я▐ я┌п╬п╡п╟я─п╟ п©п╬ п╨п╬п╢я┐
      */
     private void do_reg_by_code()
     {
@@ -1335,16 +1335,16 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
 
       try
       {
-        // находим права на операцию с чеком
+        // п╫п╟я┘п╬п╢п╦п╪ п©я─п╟п╡п╟ п╫п╟ п╬п©п╣я─п╟я├п╦я▌ я│ я┤п╣п╨п╬п╪
         CheckPerm cp = getCheckPerm(curDoc);
 
-        // проверка права на открытие чека продажи 
+        // п©я─п╬п╡п╣я─п╨п╟ п©я─п╟п╡п╟ п╫п╟ п╬я┌п╨я─я▀я┌п╦п╣ я┤п╣п╨п╟ п©я─п╬п╢п╟п╤п╦ 
         if (!cp.isOpen()) throw new PermException();
 
-        // проверка права ввода кода товара
+        // п©я─п╬п╡п╣я─п╨п╟ п©я─п╟п╡п╟ п╡п╡п╬п╢п╟ п╨п╬п╢п╟ я┌п╬п╡п╟я─п╟
         if (!cp.isTypeCode()) throw new PermException();
         
-        // поиск по коду из jl_input
+        // п©п╬п╦я│п╨ п©п╬ п╨п╬п╢я┐ п╦п╥ jl_input
         String in_str = jl_input.getValueAsInt();
 
         SearchData sd = new SearchData(in_str);
@@ -1355,43 +1355,43 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
           res = cashEnv.getSprModel().searchGood(sd, true);
         } catch (NumberFormatException ex)
         {
-          throw new UserException("Неправильный код товара");
+          throw new UserException("п²п╣п©я─п╟п╡п╦п╩я▄п╫я▀п╧ п╨п╬п╢ я┌п╬п╡п╟я─п╟");
         }
 
-        // если не найдено - ошибка
+        // п╣я│п╩п╦ п╫п╣ п╫п╟п╧п╢п╣п╫п╬ - п╬я┬п╦п╠п╨п╟
         if (res == null || res.size() == 0)
-          throw new UserException("Товар не найден по коду '"+ sd.getGoodId() + "'", true);
+          throw new UserException("п╒п╬п╡п╟я─ п╫п╣ п╫п╟п╧п╢п╣п╫ п©п╬ п╨п╬п╢я┐ '"+ sd.getGoodId() + "'", true);
         
 
         GoodMain g = (GoodMain)res.get(0);
         boolean frac_quan = isFracQuan(quan);
 
         if (frac_quan && !g.getWeightControl().booleanValue())
-          throw new UserException("Запрещен ввод дробного количества для товара");
+          throw new UserException("п≈п╟п©я─п╣я┴п╣п╫ п╡п╡п╬п╢ п╢я─п╬п╠п╫п╬пЁп╬ п╨п╬п╩п╦я┤п╣я│я┌п╡п╟ п╢п╩я▐ я┌п╬п╡п╟я─п╟");
 
 
         checkSaleRule(g);
           
         Tax t = null;
 
-        // ищем налог для товара
+        // п╦я┴п╣п╪ п╫п╟п╩п╬пЁ п╢п╩я▐ я┌п╬п╡п╟я─п╟
         if (g.getNalGroup() != null)
           t = cashEnv.getSprModel().searchTax(g.getNalGroup());
 
-        // тип чека (продажа / возврат)
+        // я┌п╦п© я┤п╣п╨п╟ (п©я─п╬п╢п╟п╤п╟ / п╡п╬п╥п╡я─п╟я┌)
         int doc_type = curDoc == null ? FDoc.FD_SALE_TYPE : curDoc.getTypeId();
         
-        // инициализируем позицию
+        // п╦п╫п╦я├п╦п╟п╩п╦п╥п╦я─я┐п╣п╪ п©п╬п╥п╦я├п╦я▌
         Integer pos_type = doc_type == FDoc.FD_RETURN_TYPE ? Position.SALE_RET_POS : Position.SALE_POS;
         Position p = new Position(pos_type, quan, g, null, t);
 
-        // проверяем сумму чека
+        // п©я─п╬п╡п╣я─я▐п╣п╪ я│я┐п╪п╪я┐ я┤п╣п╨п╟
         doSumControl((Check)curDoc, p);        
 
-        // инициализируем документ продажи
+        // п╦п╫п╦я├п╦п╟п╩п╦п╥п╦я─я┐п╣п╪ п╢п╬п╨я┐п╪п╣п╫я┌ п©я─п╬п╢п╟п╤п╦
         if (curDoc == null) initFiscalDoc(FDoc.FD_SALE_TYPE);
 
-        // пишем в базу и отображаем 
+        // п©п╦я┬п╣п╪ п╡ п╠п╟п╥я┐ п╦ п╬я┌п╬п╠я─п╟п╤п╟п╣п╪ 
         regInDbAndDisplayPos(p, g.getWeightControl().booleanValue());
 
         t = null; g = null; sd = null; // 
@@ -1404,45 +1404,45 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
       
     }
 
-    // контроль на превышение суммы чека
+    // п╨п╬п╫я┌я─п╬п╩я▄ п╫п╟ п©я─п╣п╡я▀я┬п╣п╫п╦п╣ я│я┐п╪п╪я▀ я┤п╣п╨п╟
     private void doSumControl(Check doc, Position p) throws UserException
     {
       double _sum;
       _sum = doc == null ? 0 : doc.getSum();
       if (_sum + p.getSum().doubleValue() > cashEnv.getSprModel().getSettings().getMaxCheckSum())
-        throw new UserException("Сумма чека слишком велика");
+        throw new UserException("п║я┐п╪п╪п╟ я┤п╣п╨п╟ я│п╩п╦я┬п╨п╬п╪ п╡п╣п╩п╦п╨п╟");
     }
 
-    // регистрирует позицию в буффере (БД) и отображает в интерфейсе
+    // я─п╣пЁп╦я│я┌я─п╦я─я┐п╣я┌ п©п╬п╥п╦я├п╦я▌ п╡ п╠я┐я└я└п╣я─п╣ (п▒п■) п╦ п╬я┌п╬п╠я─п╟п╤п╟п╣я┌ п╡ п╦п╫я┌п╣я─я└п╣п╧я│п╣
     private void regInDbAndDisplayPos(Position p, boolean pos_weight) throws Exception
     {
-      // проставляем номер позиции
+      // п©я─п╬я│я┌п╟п╡п╩я▐п╣п╪ п╫п╬п╪п╣я─ п©п╬п╥п╦я├п╦п╦
       int new_num = view.getNumPos();
       p.setNum(new Integer(new_num));
 
-      // фиксируем позицию в базе
+      // я└п╦п╨я│п╦я─я┐п╣п╪ п©п╬п╥п╦я├п╦я▌ п╡ п╠п╟п╥п╣
       ((Check)curDoc).addPos(cashEnv.getTrConnection(), p, getCurUser());
 
       // update table
       VRow row = view.createNewRow_();
       view.initRowByPos(row, p); 
       model.insert(row);
-      int sz = view.size(); // количество строк
+      int sz = view.size(); // п╨п╬п╩п╦я┤п╣я│я┌п╡п╬ я│я┌я─п╬п╨
       model.fireTableRowsInserted(sz - 1, sz - 1);
       TableSearch.selectRow(table, sz - 1);
 
-      // пром итог
+      // п©я─п╬п╪ п╦я┌п╬пЁ
       itog = new Double(curDoc.getSum());
       displayItog();
 
-      // вес - сие неправильно, нужно по GoodMain.isWeightControl()
+      // п╡п╣я│ - я│п╦п╣ п╫п╣п©я─п╟п╡п╦п╩я▄п╫п╬, п╫я┐п╤п╫п╬ п©п╬ GoodMain.isWeightControl()
       weight = pos_weight ? p.getQuantity() : null;
       displayWeight();
 
       do_reset_input(); 
 
-      // инф. для дисплея
-      showOnDisplay(p.getGname(), p.getSum().doubleValue(), "ПРОМ. ИТОГ", curDoc.getSum());
+      // п╦п╫я└. п╢п╩я▐ п╢п╦я│п©п╩п╣я▐
+      showOnDisplay(p.getGname(), p.getSum().doubleValue(), "п÷п═п·п°. п≤п╒п·п⌠", curDoc.getSum());
       
     }
 
@@ -1458,8 +1458,8 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
     }
 
     /**
-     * Регистрация товара по штрих-коду
-     * typed - признак того, что ш/к введен вручную
+     * п═п╣пЁп╦я│я┌я─п╟я├п╦я▐ я┌п╬п╡п╟я─п╟ п©п╬ я┬я┌я─п╦я┘-п╨п╬п╢я┐
+     * typed - п©я─п╦п╥п╫п╟п╨ я┌п╬пЁп╬, я┤я┌п╬ я┬/п╨ п╡п╡п╣п╢п╣п╫ п╡я─я┐я┤п╫я┐я▌
      */
     private void do_reg_by_barcode(String bc, boolean typed)
     {
@@ -1470,56 +1470,56 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
       {
         CheckPerm cp = getCheckPerm(curDoc);
 
-        // проверка права на открытие чека продажи 
+        // п©я─п╬п╡п╣я─п╨п╟ п©я─п╟п╡п╟ п╫п╟ п╬я┌п╨я─я▀я┌п╦п╣ я┤п╣п╨п╟ п©я─п╬п╢п╟п╤п╦ 
         if (!cp.isOpen()) throw new PermException();
 
-        // проверка права читать/сканировать ш/к
+        // п©я─п╬п╡п╣я─п╨п╟ п©я─п╟п╡п╟ я┤п╦я┌п╟я┌я▄/я│п╨п╟п╫п╦я─п╬п╡п╟я┌я▄ я┬/п╨
         if (!(typed && cp.isTypeBc() || !typed && cp.isScanCode())) throw new PermException();
 
 
-        // поиск по ш/к
+        // п©п╬п╦я│п╨ п©п╬ я┬/п╨
         SearchData sd = new SearchData(bc);
 
         Vector res = cashEnv.getSprModel().searchGood(sd, false);
 
-        // если ничего не найдено - exception
+        // п╣я│п╩п╦ п╫п╦я┤п╣пЁп╬ п╫п╣ п╫п╟п╧п╢п╣п╫п╬ - exception
         if (res == null || res.size() == 0) 
-          throw new UserException("Товар не найден по ш/к '" + bc + "'", true);
+          throw new UserException("п╒п╬п╡п╟я─ п╫п╣ п╫п╟п╧п╢п╣п╫ п©п╬ я┬/п╨ '" + bc + "'", true);
 
 
-        // поиск и разбор результатов
+        // п©п╬п╦я│п╨ п╦ я─п╟п╥п╠п╬я─ я─п╣п╥я┐п╩я▄я┌п╟я┌п╬п╡
         GoodMain g;
         Barcode b = null;
         Tax t = null;
 
-        // 12.01.09 (добавляется выбор товара, если по ш/к найдено 2 и более) 
+        // 12.01.09 (п╢п╬п╠п╟п╡п╩я▐п╣я┌я│я▐ п╡я▀п╠п╬я─ я┌п╬п╡п╟я─п╟, п╣я│п╩п╦ п©п╬ я┬/п╨ п╫п╟п╧п╢п╣п╫п╬ 2 п╦ п╠п╬п╩п╣п╣) 
 //        log.info("res.size()=" + res.size());
         if (res.size() == 1)
           g = (GoodMain)res.get(0);
         else
-          g = userSelectGM("Штрих-код '" + bc + "', выберите товар:", res); // выбор товара по коду, если ш/к совпадают
+          g = userSelectGM("п╗я┌я─п╦я┘-п╨п╬п╢ '" + bc + "', п╡я▀п╠п╣я─п╦я┌п╣ я┌п╬п╡п╟я─:", res); // п╡я▀п╠п╬я─ я┌п╬п╡п╟я─п╟ п©п╬ п╨п╬п╢я┐, п╣я│п╩п╦ я┬/п╨ я│п╬п╡п©п╟п╢п╟я▌я┌
 
         if (g != null)          
         {
 
-          // changed 28.02.2008 (проверка весовых ш/к)
-          // проверка количества для штучного товара
+          // changed 28.02.2008 (п©я─п╬п╡п╣я─п╨п╟ п╡п╣я│п╬п╡я▀я┘ я┬/п╨)
+          // п©я─п╬п╡п╣я─п╨п╟ п╨п╬п╩п╦я┤п╣я│я┌п╡п╟ п╢п╩я▐ я┬я┌я┐я┤п╫п╬пЁп╬ я┌п╬п╡п╟я─п╟
           boolean frac_quan = sd.isWeight() || isFracQuan(quan);
 
           if (frac_quan && !g.getWeightControl().booleanValue())
-            throw new UserException("Запрещен ввод дробного количества для товара");
+            throw new UserException("п≈п╟п©я─п╣я┴п╣п╫ п╡п╡п╬п╢ п╢я─п╬п╠п╫п╬пЁп╬ п╨п╬п╩п╦я┤п╣я│я┌п╡п╟ п╢п╩я▐ я┌п╬п╡п╟я─п╟");
 
           checkSaleRule(g);
 
 
-          // определяемся с количеством
+          // п╬п©я─п╣п╢п╣п╩я▐п╣п╪я│я▐ я│ п╨п╬п╩п╦я┤п╣я│я┌п╡п╬п╪
           if (sd.isWeight()) 
           {
-            // весовой товар
+            // п╡п╣я│п╬п╡п╬п╧ я┌п╬п╡п╟я─
             quan = sd.getQuantity();
           } else
           {
-            // штучный товар
+            // я┬я┌я┐я┤п╫я▀п╧ я┌п╬п╡п╟я─
             if (sd.getBarcodes() != null) 
             {
               b = (Barcode)sd.getBarcodes().get(0);
@@ -1527,23 +1527,23 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
             }
           }
 
-          // ищем налог для товара
+          // п╦я┴п╣п╪ п╫п╟п╩п╬пЁ п╢п╩я▐ я┌п╬п╡п╟я─п╟
           if (g.getNalGroup() != null)
             t = cashEnv.getSprModel().searchTax(g.getNalGroup());
 
           int doc_type = curDoc == null ? FDoc.FD_SALE_TYPE : curDoc.getTypeId();
 
-          // формирование позиции и документа
+          // я└п╬я─п╪п╦я─п╬п╡п╟п╫п╦п╣ п©п╬п╥п╦я├п╦п╦ п╦ п╢п╬п╨я┐п╪п╣п╫я┌п╟
           Integer pos_type = doc_type == FDoc.FD_RETURN_TYPE ? Position.SALE_RET_POS : Position.SALE_POS;
           Position p = new Position(pos_type, quan, g, b, t);
 
-          // проверка суммы чека
+          // п©я─п╬п╡п╣я─п╨п╟ я│я┐п╪п╪я▀ я┤п╣п╨п╟
           doSumControl((Check)curDoc, p);
 
-          // текущий документ - продажа, если раннее не инициализировано 
+          // я┌п╣п╨я┐я┴п╦п╧ п╢п╬п╨я┐п╪п╣п╫я┌ - п©я─п╬п╢п╟п╤п╟, п╣я│п╩п╦ я─п╟п╫п╫п╣п╣ п╫п╣ п╦п╫п╦я├п╦п╟п╩п╦п╥п╦я─п╬п╡п╟п╫п╬ 
           if (curDoc == null) initFiscalDoc(FDoc.FD_SALE_TYPE);
 
-          // пишем в базу и отображаем
+          // п©п╦я┬п╣п╪ п╡ п╠п╟п╥я┐ п╦ п╬я┌п╬п╠я─п╟п╤п╟п╣п╪
           regInDbAndDisplayPos(p, g.getWeightControl().booleanValue());
         } else do_reset_input();
 
@@ -1557,7 +1557,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
     }
 
     /**
-     * Инициировать чек возврата
+     * п≤п╫п╦я├п╦п╦я─п╬п╡п╟я┌я▄ я┤п╣п╨ п╡п╬п╥п╡я─п╟я┌п╟
      */
     private void do_return_check()
     {
@@ -1583,14 +1583,14 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
     private boolean sumToLow(double d) { return Math.abs(d) < 0.01;  }
 
     /**
-     * Закрыть чек продажи/возврата
-     *   bn_key_pressed - признак того, что чек будет полностью оплачен по безналу
-     *   false - оплата наличными из строки ввода + безналично (остальное), 
+     * п≈п╟п╨я─я▀я┌я▄ я┤п╣п╨ п©я─п╬п╢п╟п╤п╦/п╡п╬п╥п╡я─п╟я┌п╟
+     *   bn_key_pressed - п©я─п╦п╥п╫п╟п╨ я┌п╬пЁп╬, я┤я┌п╬ я┤п╣п╨ п╠я┐п╢п╣я┌ п©п╬п╩п╫п╬я│я┌я▄я▌ п╬п©п╩п╟я┤п╣п╫ п©п╬ п╠п╣п╥п╫п╟п╩я┐
+     *   false - п╬п©п╩п╟я┌п╟ п╫п╟п╩п╦я┤п╫я▀п╪п╦ п╦п╥ я│я┌я─п╬п╨п╦ п╡п╡п╬п╢п╟ + п╠п╣п╥п╫п╟п╩п╦я┤п╫п╬ (п╬я│я┌п╟п╩я▄п╫п╬п╣), 
      */
     private PaymentSelector paySelector = null;
     private CardActivator cardActivator = null;
 
-    // неявная инициализация классов ... 
+    // п╫п╣я▐п╡п╫п╟я▐ п╦п╫п╦я├п╦п╟п╩п╦п╥п╟я├п╦я▐ п╨п╩п╟я│я│п╬п╡ ... 
     private PaymentSelector getPaymentSelector() throws Exception
     {
       if (paySelector == null)
@@ -1625,24 +1625,24 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
         if (cp.isClose())
         {
           if (sumToLow(curDoc.getSum())) 
-            throw new UserException("Закрытие нулевого чека запрещено");
+            throw new UserException("п≈п╟п╨я─я▀я┌п╦п╣ п╫я┐п╩п╣п╡п╬пЁп╬ я┤п╣п╨п╟ п╥п╟п©я─п╣я┴п╣п╫п╬");
         
 //          Double in_sum = parseInput(jl_input.getValue());
           // changed 21.01.08
-          Double in_sum = checkInputSum(false);    // сумма, введенная пользователем
+          Double in_sum = checkInputSum(false);    // я│я┐п╪п╪п╟, п╡п╡п╣п╢п╣п╫п╫п╟я▐ п©п╬п╩я▄п╥п╬п╡п╟я┌п╣п╩п╣п╪
 
 
           
-          // заполнено ли сумма наличных от клиента
+          // п╥п╟п©п╬п╩п╫п╣п╫п╬ п╩п╦ я│я┐п╪п╪п╟ п╫п╟п╩п╦я┤п╫я▀я┘ п╬я┌ п╨п╩п╦п╣п╫я┌п╟
           boolean money_nal = !sumToLow(in_sum);
 
           boolean credit_enabled = cashEnv.getSprModel().getSettings().isCreditPayEnabled()
             && getCurUser().getRole().isBn();
           //log.info("credit_enabled=" + credit_enabled);
 
-          boolean fin_closing = true; // завершить закрытие чека 
+          boolean fin_closing = true; // п╥п╟п╡п╣я─я┬п╦я┌я▄ п╥п╟п╨я─я▀я┌п╦п╣ я┤п╣п╨п╟ 
 
-          // если запрошена оплата польностью по безналу
+          // п╣я│п╩п╦ п╥п╟п©я─п╬я┬п╣п╫п╟ п╬п©п╩п╟я┌п╟ п©п╬п╩я▄п╫п╬я│я┌я▄я▌ п©п╬ п╠п╣п╥п╫п╟п╩я┐
           if (bn_key_pressed)
           {
             fin_closing = credit_enabled && getPaymentSelector().selPaymentTypes(curDoc.getSum(), 0, curDoc.getSum());
@@ -1658,9 +1658,9 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
             if (money_nal)
             {
               if (curDoc.getSum() > in_sum.doubleValue())
-              {  // наличных не хватает 
+              {  // п╫п╟п╩п╦я┤п╫я▀я┘ п╫п╣ я┘п╡п╟я┌п╟п╣я┌ 
                 if (credit_enabled)
-                { // остаток можно заплатить по кредиту 
+                { // п╬я│я┌п╟я┌п╬п╨ п╪п╬п╤п╫п╬ п╥п╟п©п╩п╟я┌п╦я┌я▄ п©п╬ п╨я─п╣п╢п╦я┌я┐ 
                   fin_closing = getPaymentSelector().selPaymentTypes(
                     curDoc.getSum(), in_sum.doubleValue(), curDoc.getSum() - in_sum.doubleValue());
                   if (fin_closing)
@@ -1669,18 +1669,18 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
                     curDoc.setBNSum(getPaymentSelector().getBnSum());
                   }
                 } else
-                  throw new UserException("Не хватает суммы для оплаты");
+                  throw new UserException("п²п╣ я┘п╡п╟я┌п╟п╣я┌ я│я┐п╪п╪я▀ п╢п╩я▐ п╬п©п╩п╟я┌я▀");
               }
               else
-                // наличных больше чем сумма чека -> сдача
+                // п╫п╟п╩п╦я┤п╫я▀я┘ п╠п╬п╩я▄я┬п╣ я┤п╣п╪ я│я┐п╪п╪п╟ я┤п╣п╨п╟ -> я│п╢п╟я┤п╟
                 curDoc.setNalSum(in_sum.doubleValue());
-            } else // без сдачи
+            } else // п╠п╣п╥ я│п╢п╟я┤п╦
               curDoc.setNalSum(curDoc.getSum());
           }
 
 
-          // Здесь с оплатами отпределились, результат в fin_closing и curDoc 
-          if (!fin_closing) return; // TODO - проверить, правильно ли ...
+          // п≈п╢п╣я│я▄ я│ п╬п©п╩п╟я┌п╟п╪п╦ п╬я┌п©я─п╣п╢п╣п╩п╦п╩п╦я│я▄, я─п╣п╥я┐п╩я▄я┌п╟я┌ п╡ fin_closing п╦ curDoc 
+          if (!fin_closing) return; // TODO - п©я─п╬п╡п╣я─п╦я┌я▄, п©я─п╟п╡п╦п╩я▄п╫п╬ п╩п╦ ...
 
           Object btr_data = null;
           if (curDoc.getBnSum() > 0)
@@ -1691,8 +1691,8 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
             if (cid.isSelected())
             {
 
-              pr_show.setTitle("Запрос авторизации");
-              pr_show.setText("Выполняется запрос авторизации...");
+              pr_show.setTitle("п≈п╟п©я─п╬я│ п╟п╡я┌п╬я─п╦п╥п╟я├п╦п╦");
+              pr_show.setText("п▓я▀п©п╬п╩п╫я▐п╣я┌я│я▐ п╥п╟п©я─п╬я│ п╟п╡я┌п╬я─п╦п╥п╟я├п╦п╦...");
               pr_show.show();
 
               btr_data =  getCardActivator().requestSum(cid.getTrackData(), curDoc.getBnSum());
@@ -1700,16 +1700,16 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
               pr_show.hide();
               
               if (btr_data == null)
-                throw new UserException("Операция безналичной оплаты не выполнена!"); else
+                throw new UserException("п·п©п╣я─п╟я├п╦я▐ п╠п╣п╥п╫п╟п╩п╦я┤п╫п╬п╧ п╬п©п╩п╟я┌я▀ п╫п╣ п╡я▀п©п╬п╩п╫п╣п╫п╟!"); else
               if (btr_data instanceof String)
                 throw new Exception((String)btr_data);
               ((SaleCheck)curDoc).setAuthCode(btr_data.toString());
             } else
-              throw new UserException("Закрытие чека отменено");
+              throw new UserException("п≈п╟п╨я─я▀я┌п╦п╣ я┤п╣п╨п╟ п╬я┌п╪п╣п╫п╣п╫п╬");
           }
 
 
-          // TODO - закрытие чека разными видами оплаты
+          // TODO - п╥п╟п╨я─я▀я┌п╦п╣ я┤п╣п╨п╟ я─п╟п╥п╫я▀п╪п╦ п╡п╦п╢п╟п╪п╦ п╬п©п╩п╟я┌я▀
           closeFiscalDoc(curDoc);
 
           Thread.currentThread().sleep(500);
@@ -1727,27 +1727,27 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
 
           if (((Check)curDoc).isCanceled())
           {
-            jl_oper_type.setText("Чек отменен");
+            jl_oper_type.setText("п╖п╣п╨ п╬я┌п╪п╣п╫п╣п╫");
             if (cashEnv.getCustomerDisplay() != null)
-              cashEnv.getCustomerDisplay().setText(true, "", "Чек отменен");
+              cashEnv.getCustomerDisplay().setText(true, "", "п╖п╣п╨ п╬я┌п╪п╣п╫п╣п╫");
           } else
           {
-            // отображение 
+            // п╬я┌п╬п╠я─п╟п╤п╣п╫п╦п╣ 
             if (curDoc.getChange() > 0/*money_nal*/)        
             {
               jl_input.setText(money_fmt.format(curDoc.getChange()));
-              jl_oper_type.setText("Сдача");
+              jl_oper_type.setText("п║п╢п╟я┤п╟");
             } else
             {
               jl_input.setText(money_fmt.format(curDoc.getSum()));
-              jl_oper_type.setText("Итого");
+              jl_oper_type.setText("п≤я┌п╬пЁп╬");
             }
 
-            // TODO - не всегда есть сдача
-            showOnDisplay("СДАЧА", curDoc.getChange(), "ПРОМ. ИТОГ", curDoc.getSum());
+            // TODO - п╫п╣ п╡я│п╣пЁп╢п╟ п╣я│я┌я▄ я│п╢п╟я┤п╟
+            showOnDisplay("п║п■п░п╖п░", curDoc.getChange(), "п÷п═п·п°. п≤п╒п·п⌠", curDoc.getSum());
           }
 
-          // режим сброса при начала ввода данных
+          // я─п╣п╤п╦п╪ я│п╠я─п╬я│п╟ п©я─п╦ п╫п╟я┤п╟п╩п╟ п╡п╡п╬п╢п╟ п╢п╟п╫п╫я▀я┘
           jl_input.setClearTyping();
         
           //do_reset_input();
@@ -1791,7 +1791,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
             do_reset_input();
             do_clear_check_det();
 
-            jl_oper_type.setText("Отмена чека");
+            jl_oper_type.setText("п·я┌п╪п╣п╫п╟ я┤п╣п╨п╟");
           
             curDoc = null;
           } else throw new PermException();
@@ -1805,7 +1805,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
 
     /**
      * *********************************************************************
-     * Финансовые операции: ВНЕСЕНИЕ / ВЫПЛАТА
+     * п╓п╦п╫п╟п╫я│п╬п╡я▀п╣ п╬п©п╣я─п╟я├п╦п╦: п▓п²п∙п║п∙п²п≤п∙ / п▓п╚п÷п⌡п░п╒п░
      * *********************************************************************
      */ 
     private void do_in_pay() { _do_pay(FDoc.FD_PAY_IN_TYPE); }
@@ -1846,7 +1846,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
 
     /**
      * *********************************************************************
-     * Отчет по банковским картам
+     * п·я┌я┤п╣я┌ п©п╬ п╠п╟п╫п╨п╬п╡я│п╨п╦п╪ п╨п╟я─я┌п╟п╪
      * *********************************************************************
      */
 
@@ -1855,10 +1855,10 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
        try
        {
          checkBankReportPerm();
-         if (!UserDlg.showQuestion(this, "Выполнить закрытие смены по банковским картам?")) return;
+         if (!UserDlg.showQuestion(this, "п▓я▀п©п╬п╩п╫п╦я┌я▄ п╥п╟п╨я─я▀я┌п╦п╣ я│п╪п╣п╫я▀ п©п╬ п╠п╟п╫п╨п╬п╡я│п╨п╦п╪ п╨п╟я─я┌п╟п╪?")) return;
 
-         pr_show.setTitle("Закрытие сменв по картам");
-         pr_show.setText("Выполняется запрос ...");
+         pr_show.setTitle("п≈п╟п╨я─я▀я┌п╦п╣ я│п╪п╣п╫п╡ п©п╬ п╨п╟я─я┌п╟п╪");
+         pr_show.setText("п▓я▀п©п╬п╩п╫я▐п╣я┌я│я▐ п╥п╟п©я─п╬я│ ...");
          pr_show.show();
 
 
@@ -1870,7 +1870,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
 
 
          if (res == null)
-           UserDlg.showInfo(this, "Закрытие смены по банковским картам\nуспешно завершено!");
+           UserDlg.showInfo(this, "п≈п╟п╨я─я▀я┌п╦п╣ я│п╪п╣п╫я▀ п©п╬ п╠п╟п╫п╨п╬п╡я│п╨п╦п╪ п╨п╟я─я┌п╟п╪\nя┐я│п©п╣я┬п╫п╬ п╥п╟п╡п╣я─я┬п╣п╫п╬!");
          else
            throw new Exception(res);
        } catch (Exception ex)
@@ -1882,28 +1882,28 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
 
     /**
      * *********************************************************************
-     * Отчеты: Z-отчет / X-отчет
+     * п·я┌я┤п╣я┌я▀: Z-п╬я┌я┤п╣я┌ / X-п╬я┌я┤п╣я┌
      * *********************************************************************
      */ 
-    // Z-отчет регистрируется в "обход" переменной curDoc !
+    // Z-п╬я┌я┤п╣я┌ я─п╣пЁп╦я│я┌я─п╦я─я┐п╣я┌я│я▐ п╡ "п╬п╠я┘п╬п╢" п©п╣я─п╣п╪п╣п╫п╫п╬п╧ curDoc !
     private void do_zreport() { _do_report(FDoc.FD_ZREPORT_TYPE); }
 
-    // X-отчет, тоже без curDoc
+    // X-п╬я┌я┤п╣я┌, я┌п╬п╤п╣ п╠п╣п╥ curDoc
     private void do_xreport() { _do_report(FDoc.FD_XREPORT_TYPE); }
 
     private void _do_report(int dt)
     {
       try
       {
-        // проверка полномочий
+        // п©я─п╬п╡п╣я─п╨п╟ п©п╬п╩п╫п╬п╪п╬я┤п╦п╧
         checkReportPermissions(dt);
 
         boolean is_zrep = dt == FDoc.FD_ZREPORT_TYPE;
 
-        // подтверждение пользователя
-        if (!UserDlg.showQuestion(this, is_zrep ? "Снять отчет с гашением?" : "Снять отчет с без гашения?")) return;
+        // п©п╬п╢я┌п╡п╣я─п╤п╢п╣п╫п╦п╣ п©п╬п╩я▄п╥п╬п╡п╟я┌п╣п╩я▐
+        if (!UserDlg.showQuestion(this, is_zrep ? "п║п╫я▐я┌я▄ п╬я┌я┤п╣я┌ я│ пЁп╟я┬п╣п╫п╦п╣п╪?" : "п║п╫я▐я┌я▄ п╬я┌я┤п╣я┌ я│ п╠п╣п╥ пЁп╟я┬п╣п╫п╦я▐?")) return;
 
-        // инициализируем документ 
+        // п╦п╫п╦я├п╦п╟п╩п╦п╥п╦я─я┐п╣п╪ п╢п╬п╨я┐п╪п╣п╫я┌ 
         FDoc rep = createFDoc(dt);
 
         displayCheckNum();
@@ -1912,30 +1912,30 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
         if (is_zrep)
         {
           pr_show.setTitle(rep.getTypeName());
-          pr_show.setText("Обработка отчета с гашением...");
+          pr_show.setText("п·п╠я─п╟п╠п╬я┌п╨п╟ п╬я┌я┤п╣я┌п╟ я│ пЁп╟я┬п╣п╫п╦п╣п╪...");
           pr_show.show();
         }
 
-        // печать
+        // п©п╣я┤п╟я┌я▄
         closeFiscalDoc(rep);
         rep = null;
 
-        // попытка синхронизации времени после Z-отчета
+        // п©п╬п©я▀я┌п╨п╟ я│п╦п╫я┘я─п╬п╫п╦п╥п╟я├п╦п╦ п╡я─п╣п╪п╣п╫п╦ п©п╬я│п╩п╣ Z-п╬я┌я┤п╣я┌п╟
         String sync_res = null;
         // ** changed 23.08.11
         if (is_zrep && ehandler.getFrState().getModeNum() == StateConst.M_CLOSED_SHIFT) 
         {
-          // синхронизация времени в устройстве
+          // я│п╦п╫я┘я─п╬п╫п╦п╥п╟я├п╦я▐ п╡я─п╣п╪п╣п╫п╦ п╡ я┐я│я┌я─п╬п╧я│я┌п╡п╣
           sync_res = ehandler.timeSynchronization(cashEnv.getFiscalPrinter(), cashEnv.getSprModel().getSettings().getTimeDifSec());
         }
 
-        // обновляем номер у открытого документа (если таковой есть)
+        // п╬п╠п╫п╬п╡п╩я▐п╣п╪ п╫п╬п╪п╣я─ я┐ п╬я┌п╨я─я▀я┌п╬пЁп╬ п╢п╬п╨я┐п╪п╣п╫я┌п╟ (п╣я│п╩п╦ я┌п╟п╨п╬п╡п╬п╧ п╣я│я┌я▄)
         reinitDocNum(); 
 
         if (is_zrep) pr_show.hide();
 
-        // если была ошибка синхронизации времени, то показываем сообщение
-        // TODO - блокировать работу!
+        // п╣я│п╩п╦ п╠я▀п╩п╟ п╬я┬п╦п╠п╨п╟ я│п╦п╫я┘я─п╬п╫п╦п╥п╟я├п╦п╦ п╡я─п╣п╪п╣п╫п╦, я┌п╬ п©п╬п╨п╟п╥я▀п╡п╟п╣п╪ я│п╬п╬п╠я┴п╣п╫п╦п╣
+        // TODO - п╠п╩п╬п╨п╦я─п╬п╡п╟я┌я▄ я─п╟п╠п╬я┌я┐!
         if (sync_res != null) 
           throw new UserException(sync_res);
 //  12.04.10      showError(sync_res);
@@ -1946,7 +1946,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
         handleError(ex); // showError(ex);
       } 
 
-      // добавлено для отчета по банковским картам 
+      // п╢п╬п╠п╟п╡п╩п╣п╫п╬ п╢п╩я▐ п╬я┌я┤п╣я┌п╟ п©п╬ п╠п╟п╫п╨п╬п╡я│п╨п╦п╪ п╨п╟я─я┌п╟п╪ 
       try
       {
         Settings set = getCashEnv().getSprModel().getSettings();
@@ -1964,12 +1964,12 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
       } 
     }
 
-    // возвращаемся к документу, который был открыт ранее, меняем номер документов
+    // п╡п╬п╥п╡я─п╟я┴п╟п╣п╪я│я▐ п╨ п╢п╬п╨я┐п╪п╣п╫я┌я┐, п╨п╬я┌п╬я─я▀п╧ п╠я▀п╩ п╬я┌п╨я─я▀я┌ я─п╟п╫п╣п╣, п╪п╣п╫я▐п╣п╪ п╫п╬п╪п╣я─ п╢п╬п╨я┐п╪п╣п╫я┌п╬п╡
     private void reinitDocNum() throws Exception
     {
       if (curDoc != null)
       {
-        /// вернемся к старому чеку ...
+        /// п╡п╣я─п╫п╣п╪я│я▐ п╨ я│я┌п╟я─п╬п╪я┐ я┤п╣п╨я┐ ...
         int new_num = initDocNum();
         curDoc.setDocNum(new_num);
         displayCheckNum();
@@ -1980,7 +1980,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
 
     /**
      * *********************************************************************
-     * Cторно. Работает только в чеке продажи
+     * Cя┌п╬я─п╫п╬. п═п╟п╠п╬я┌п╟п╣я┌ я┌п╬п╩я▄п╨п╬ п╡ я┤п╣п╨п╣ п©я─п╬п╢п╟п╤п╦
      * *********************************************************************
      */
     private void do_storno_pos()
@@ -1999,7 +1999,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
             int sr = table.getSelectedRow();
             if (sr >= 0 && sr < view.size())
             {
-              // здесь нужно проверить права пользователя для выполнения сторно!!!
+              // п╥п╢п╣я│я▄ п╫я┐п╤п╫п╬ п©я─п╬п╡п╣я─п╦я┌я▄ п©я─п╟п╡п╟ п©п╬п╩я▄п╥п╬п╡п╟я┌п╣п╩я▐ п╢п╩я▐ п╡я▀п©п╬п╩п╫п╣п╫п╦я▐ я│я┌п╬я─п╫п╬!!!
         
               VRow row = (VRow)view.get(sr);
               Integer type = (Integer)row.get(DocCashe.OPER_TYPE);
@@ -2007,10 +2007,10 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
               {
                 Position p = (Position)row.get(DocCashe.POS_DATA);
 
-                // сторнируем и сохраняем
+                // я│я┌п╬я─п╫п╦я─я┐п╣п╪ п╦ я│п╬я┘я─п╟п╫я▐п╣п╪
                 ((Check)curDoc).stornoPos(cashEnv.getTrConnection(), p, getCurUser());
 
-                // изменения для интерфейса
+                // п╦п╥п╪п╣п╫п╣п╫п╦я▐ п╢п╩я▐ п╦п╫я┌п╣я─я└п╣п╧я│п╟
                 p.setType(Position.CANCEL_POS);
                 row.set(DocCashe.OPER_TYPE, Position.CANCEL_POS);
                 p.setNum(null);
@@ -2023,8 +2023,8 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
                 itog = new Double(curDoc.getSum());
                 displayItog();
 
-                // инф. для дисплея
-                showOnDisplay("Сторно - " + p.getGname(), p.getSum().doubleValue(), "ПРОМ. ИТОГ", curDoc.getSum());
+                // п╦п╫я└. п╢п╩я▐ п╢п╦я│п©п╩п╣я▐
+                showOnDisplay("п║я┌п╬я─п╫п╬ - " + p.getGname(), p.getSum().doubleValue(), "п÷п═п·п°. п≤п╒п·п⌠", curDoc.getSum());
             
               }
             }
@@ -2037,7 +2037,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
     }
 
     /**
-     * Потор продажи
+     * п÷п╬я┌п╬я─ п©я─п╬п╢п╟п╤п╦
      */
     private void do_repeat_pos()
     {
@@ -2046,9 +2046,9 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
       try
       {
         CheckPerm perm = getCheckPerm(curDoc);
-        if (perm.isRepeat()) // проверка полномочий
+        if (perm.isRepeat()) // п©я─п╬п╡п╣я─п╨п╟ п©п╬п╩п╫п╬п╪п╬я┤п╦п╧
         {
-          // определяем позицию повтора
+          // п╬п©я─п╣п╢п╣п╩я▐п╣п╪ п©п╬п╥п╦я├п╦я▌ п©п╬п╡я┌п╬я─п╟
           Position prev = null;
           int num_pos = view.size();
           
@@ -2061,13 +2061,13 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
 
           if (prev != null) 
           {
-            // копия предыдущей позиции
+            // п╨п╬п©п╦я▐ п©я─п╣п╢я▀п╢я┐я┴п╣п╧ п©п╬п╥п╦я├п╦п╦
             Position p = new Position(prev);
 
-            // проверка суммы чека
+            // п©я─п╬п╡п╣я─п╨п╟ я│я┐п╪п╪я▀ я┤п╣п╨п╟
             doSumControl((Check)curDoc, p);
 
-            // запись в базу и отображение
+            // п╥п╟п©п╦я│я▄ п╡ п╠п╟п╥я┐ п╦ п╬я┌п╬п╠я─п╟п╤п╣п╫п╦п╣
             regInDbAndDisplayPos(p, false);
           }
           
@@ -2082,7 +2082,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
 
 
     /**
-     * Открыть денежный ящик, операция требует доступа и фиксируется транзакцией
+     * п·я┌п╨я─я▀я┌я▄ п╢п╣п╫п╣п╤п╫я▀п╧ я▐я┴п╦п╨, п╬п©п╣я─п╟я├п╦я▐ я┌я─п╣п╠я┐п╣я┌ п╢п╬я│я┌я┐п©п╟ п╦ я└п╦п╨я│п╦я─я┐п╣я┌я│я▐ я┌я─п╟п╫п╥п╟п╨я├п╦п╣п╧
      */
     private void do_open_moneybox()
     {
@@ -2106,18 +2106,18 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
     }
 
     /**
-     * Отобразить промежуточный итог чека
+     * п·я┌п╬п╠я─п╟п╥п╦я┌я▄ п©я─п╬п╪п╣п╤я┐я┌п╬я┤п╫я▀п╧ п╦я┌п╬пЁ я┤п╣п╨п╟
      */ 
     private void do_show_promitog()
     {
       if (itog != null) {
         jl_input.setText(money_fmt.format(itog));
-        jl_oper_type.setText("Пром. итог");
+        jl_oper_type.setText("п÷я─п╬п╪. п╦я┌п╬пЁ");
       }
     }
 
     /**
-     * Сделать фиксированную скидку на чек 
+     * п║п╢п╣п╩п╟я┌я▄ я└п╦п╨я│п╦я─п╬п╡п╟п╫п╫я┐я▌ я│п╨п╦п╢п╨я┐ п╫п╟ я┤п╣п╨ 
      */
     private void do_fixed_dsc()
     {
@@ -2154,7 +2154,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
     }
 
     /**
-     * Отменить скидку 
+     * п·я┌п╪п╣п╫п╦я┌я▄ я│п╨п╦п╢п╨я┐ 
      */
     private void do_cancel_dsc()
     {
@@ -2181,8 +2181,8 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
     }
 
     // *************************************************************************
-    // выполнить проверку/инициализацию фискальника, показать окно
-    // вызывается из firstLogin() через общий обработчик событий
+    // п╡я▀п©п╬п╩п╫п╦я┌я▄ п©я─п╬п╡п╣я─п╨я┐/п╦п╫п╦я├п╦п╟п╩п╦п╥п╟я├п╦я▌ я└п╦я│п╨п╟п╩я▄п╫п╦п╨п╟, п©п╬п╨п╟п╥п╟я┌я▄ п╬п╨п╫п╬
+    // п╡я▀п╥я▀п╡п╟п╣я┌я│я▐ п╦п╥ firstLogin() я┤п╣я─п╣п╥ п╬п╠я┴п╦п╧ п╬п╠я─п╟п╠п╬я┌я┤п╦п╨ я│п╬п╠я▀я┌п╦п╧
     private boolean do_open()
     {
       boolean err = false;
@@ -2191,26 +2191,26 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
       {
         try
         {
-          // проверяем наличие незавершенного документа  
+          // п©я─п╬п╡п╣я─я▐п╣п╪ п╫п╟п╩п╦я┤п╦п╣ п╫п╣п╥п╟п╡п╣я─я┬п╣п╫п╫п╬пЁп╬ п╢п╬п╨я┐п╪п╣п╫я┌п╟  
           curDoc = DbConverter.createFDocFromBuf(cashEnv.getTrConnection(), cashEnv.getSprModel());
 
-          // инициализация скорости устройства (отображается ProcessShow)
+          // п╦п╫п╦я├п╦п╟п╩п╦п╥п╟я├п╦я▐ я│п╨п╬я─п╬я│я┌п╦ я┐я│я┌я─п╬п╧я│я┌п╡п╟ (п╬я┌п╬п╠я─п╟п╤п╟п╣я┌я│я▐ ProcessShow)
           ehandler.initFiscalPrinterDevice(cashEnv.getFiscalPrinter());
 
-          // состояния устройства после инициализации
+          // я│п╬я│я┌п╬я▐п╫п╦я▐ я┐я│я┌я─п╬п╧я│я┌п╡п╟ п©п╬я│п╩п╣ п╦п╫п╦я├п╦п╟п╩п╦п╥п╟я├п╦п╦
           //StateA state = ehandler.getFrState();
 
-          // проверка состояния, операции по его "исправлению" если возможно
-          // если же дальнейшая работа невозможна - sr - описание ошибки
+          // п©я─п╬п╡п╣я─п╨п╟ я│п╬я│я┌п╬я▐п╫п╦я▐, п╬п©п╣я─п╟я├п╦п╦ п©п╬ п╣пЁп╬ "п╦я│п©я─п╟п╡п╩п╣п╫п╦я▌" п╣я│п╩п╦ п╡п╬п╥п╪п╬п╤п╫п╬
+          // п╣я│п╩п╦ п╤п╣ п╢п╟п╩я▄п╫п╣п╧я┬п╟я▐ я─п╟п╠п╬я┌п╟ п╫п╣п╡п╬п╥п╪п╬п╤п╫п╟ - sr - п╬п©п╦я│п╟п╫п╦п╣ п╬я┬п╦п╠п╨п╦
           String sr = ehandler.checkAndFixState(cashEnv.getFiscalPrinter());
 
           if (sr == null) 
           {
 
-            // если есть старый документ и режим открытого чека
+            // п╣я│п╩п╦ п╣я│я┌я▄ я│я┌п╟я─я▀п╧ п╢п╬п╨я┐п╪п╣п╫я┌ п╦ я─п╣п╤п╦п╪ п╬я┌п╨я─я▀я┌п╬пЁп╬ я┤п╣п╨п╟
             if (curDoc != null && curDoc instanceof Check)  
             {
-              // отменяем чек
+              // п╬я┌п╪п╣п╫я▐п╣п╪ я┤п╣п╨
               if (ehandler.getFrState().getModeNum() == 8)
               {
                 ((Check)curDoc).cancel(getCurUser());
@@ -2225,10 +2225,10 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
               }
             } 
 
-            // назначенная ранее фиксированная скидка отменяется
+            // п╫п╟п╥п╫п╟я┤п╣п╫п╫п╟я▐ я─п╟п╫п╣п╣ я└п╦п╨я│п╦я─п╬п╡п╟п╫п╫п╟я▐ я│п╨п╦п╢п╨п╟ п╬я┌п╪п╣п╫я▐п╣я┌я│я▐
             fixed_dsc = null;
             displayDscPc();
-            // отображаем текущий чек
+            // п╬я┌п╬п╠я─п╟п╤п╟п╣п╪ я┌п╣п╨я┐я┴п╦п╧ я┤п╣п╨
             displayCheck(curDoc);
 
 
@@ -2251,7 +2251,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
 
           showInSaleTextOnDisplay();
 
-          // вывод сообщения о нерабочем состоянии
+          // п╡я▀п╡п╬п╢ я│п╬п╬п╠я┴п╣п╫п╦я▐ п╬ п╫п╣я─п╟п╠п╬я┤п╣п╪ я│п╬я│я┌п╬я▐п╫п╦п╦
           if (getCashEnv().getCustomerDisplay() != null)
           {
             Settings set = getCashEnv().getSprModel().getSettings();
@@ -2271,7 +2271,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
 //          if (ex instanceof SQLException)
 //          {
 //            exit = true;
-//            emsg = "Ошибка работы с базой данных!" + MSG_SALE_MODE_NOT_AVAIL;
+//            emsg = "п·я┬п╦п╠п╨п╟ я─п╟п╠п╬я┌я▀ я│ п╠п╟п╥п╬п╧ п╢п╟п╫п╫я▀я┘!" + MSG_SALE_MODE_NOT_AVAIL;
 //          }
 //
 //          if (ex instanceof FrException)
@@ -2286,7 +2286,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
           exit = !handleError(null, ex);
   
           if (!exit)
-            exit = !UserDlg.showQuestion(owner, "Повторить попытку подключения ФР?");
+            exit = !UserDlg.showQuestion(owner, "п÷п╬п╡я┌п╬я─п╦я┌я▄ п©п╬п©я▀я┌п╨я┐ п©п╬п╢п╨п╩я▌я┤п╣п╫п╦я▐ п╓п═?");
           
         }
       } while (err && !exit);
@@ -2294,11 +2294,11 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
       return exit;
     }
 
-    private final static String MSG_SALE_MODE_NOT_AVAIL = "\nРежим регистрации продаж недоступен!";
+    private final static String MSG_SALE_MODE_NOT_AVAIL = "\nп═п╣п╤п╦п╪ я─п╣пЁп╦я│я┌я─п╟я├п╦п╦ п©я─п╬п╢п╟п╤ п╫п╣п╢п╬я│я┌я┐п©п╣п╫!";
 
 
 
-    // проверить корректность введенной суммы
+    // п©я─п╬п╡п╣я─п╦я┌я▄ п╨п╬я─я─п╣п╨я┌п╫п╬я│я┌я▄ п╡п╡п╣п╢п╣п╫п╫п╬п╧ я│я┐п╪п╪я▀
     private Double checkInputSum(boolean check_zero) throws UserException
     {
       Double res = null;
@@ -2307,18 +2307,18 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
         Double in_sum = parseInput(jl_input.getValue());
         
         if (check_zero && in_sum.doubleValue() < 0.01)
-          throw new UserException("Сумма должна быть больше нуля");
-//          showError("Сумма должна быть больше нуля");
+          throw new UserException("п║я┐п╪п╪п╟ п╢п╬п╩п╤п╫п╟ п╠я▀я┌я▄ п╠п╬п╩я▄я┬п╣ п╫я┐п╩я▐");
+//          showError("п║я┐п╪п╪п╟ п╢п╬п╩п╤п╫п╟ п╠я▀я┌я▄ п╠п╬п╩я▄я┬п╣ п╫я┐п╩я▐");
         else if (in_sum.doubleValue() > cashEnv.getSprModel().getSettings().getMaxMoneySum()) 
-          throw new UserException("Сумма слишком велика");
-//          showError("Сумма слишком велика");
+          throw new UserException("п║я┐п╪п╪п╟ я│п╩п╦я┬п╨п╬п╪ п╡п╣п╩п╦п╨п╟");
+//          showError("п║я┐п╪п╪п╟ я│п╩п╦я┬п╨п╬п╪ п╡п╣п╩п╦п╨п╟");
         else 
           res = in_sum;
 
       } catch (ParseException ex)
       {
-        throw new UserException("Некорректное значение для числа");
-//        showError("Некорректное значение для числа");
+        throw new UserException("п²п╣п╨п╬я─я─п╣п╨я┌п╫п╬п╣ п╥п╫п╟я┤п╣п╫п╦п╣ п╢п╩я▐ я┤п╦я│п╩п╟");
+//        showError("п²п╣п╨п╬я─я─п╣п╨я┌п╫п╬п╣ п╥п╫п╟я┤п╣п╫п╦п╣ п╢п╩я▐ я┤п╦я│п╩п╟");
       }
 
       return res;      
@@ -2372,7 +2372,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
       {
         boolean is_dsc = fixed_dsc.getIsDsc() != null && fixed_dsc.getIsDsc().booleanValue();
         boolean is_sum = fixed_dsc.getIsSum() != null && fixed_dsc.getIsSum().booleanValue();
-        s = (is_dsc ? "Сч" : "Нч") + " " + dsc_pc_fmt.format(fixed_dsc.getDscValue()) + (is_sum ? "руб" : "%");
+        s = (is_dsc ? "п║я┤" : "п²я┤") + " " + dsc_pc_fmt.format(fixed_dsc.getDscValue()) + (is_sum ? "я─я┐п╠" : "%");
       }
 
       jl_dsc_percent.setText(s);  
@@ -2381,8 +2381,8 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
     private void displayItog()
     {
       jl_sum.setText( itog == null ? null : money_fmt.format(itog) );
-      // на нижней панели отображаем сумму без скидки и скидку
-      // этот контрол не зависит от позиции и актуален только для чека
+      // п╫п╟ п╫п╦п╤п╫п╣п╧ п©п╟п╫п╣п╩п╦ п╬я┌п╬п╠я─п╟п╤п╟п╣п╪ я│я┐п╪п╪я┐ п╠п╣п╥ я│п╨п╦п╢п╨п╦ п╦ я│п╨п╦п╢п╨я┐
+      // я█я┌п╬я┌ п╨п╬п╫я┌я─п╬п╩ п╫п╣ п╥п╟п╡п╦я│п╦я┌ п╬я┌ п©п╬п╥п╦я├п╦п╦ п╦ п╟п╨я┌я┐п╟п╩п╣п╫ я┌п╬п╩я▄п╨п╬ п╢п╩я▐ я┤п╣п╨п╟
       String s = null;
       if (curDoc != null && curDoc instanceof Check)
         s = money_fmt.format(((Check)curDoc).getCheckPosSum()) + "/" + 
@@ -2427,7 +2427,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
 
     // *************************************************************************
 
-    // инициализация всех элементов
+    // п╦п╫п╦я├п╦п╟п╩п╦п╥п╟я├п╦я▐ п╡я│п╣я┘ я█п╩п╣п╪п╣п╫я┌п╬п╡
     public void initData()
     {
       quan = new Double(1);
@@ -2467,7 +2467,7 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
     displayInInfoPanel(row);
   }
 
-   // информационная панель (контролы для текущей позиции )
+   // п╦п╫я└п╬я─п╪п╟я├п╦п╬п╫п╫п╟я▐ п©п╟п╫п╣п╩я▄ (п╨п╬п╫я┌я─п╬п╩я▀ п╢п╩я▐ я┌п╣п╨я┐я┴п╣п╧ п©п╬п╥п╦я├п╦п╦ )
    private void displayInInfoPanel(VRow row)
    {
      if (row == null)
@@ -2498,16 +2498,16 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
   
 
   // StateFrListener implementation
-  // обновление строки состояния ... 
+  // п╬п╠п╫п╬п╡п╩п╣п╫п╦п╣ я│я┌я─п╬п╨п╦ я│п╬я│я┌п╬я▐п╫п╦я▐ ... 
   public void stateReceived(StateFrEvent e)
   {
     StateA state = e.getState();
-    jl_check_roll.setText("ЧЛ");
+    jl_check_roll.setText("п╖п⌡");
     boolean wsc = state.isFFrRollCheck();
     boolean osc = state.isFFrOptSensorCheck();
     jl_check_roll.setForeground( wsc && osc ? Color.white : Color.red );
 
-    jl_log_roll.setText("КЛ");
+    jl_log_roll.setText("п п⌡");
     boolean wsl = state.isFFrRollLog();
     boolean osl = state.isFFrOptSensorLog();
     jl_log_roll.setForeground( wsl && osl ? Color.white : Color.red );
@@ -2515,12 +2515,12 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
 
     boolean has_eklz = state.isFFrEKLZ();
     boolean eklz_full = state.isFFrEKLZFull();
-    jl_eklz.setText( has_eklz ? "ЭКЛЗ" : "" );
+    jl_eklz.setText( has_eklz ? "п╜п п⌡п≈" : "" );
     jl_eklz.setForeground( eklz_full ? Color.red : Color.white );
 
 
-    // добавлено, 30.03.09, транзакция диагностики заполнения ЭКЛЗ, предупреждение
-    // обрабатывается пока здесь, в методе обработки состояния ФР
+    // п╢п╬п╠п╟п╡п╩п╣п╫п╬, 30.03.09, я┌я─п╟п╫п╥п╟п╨я├п╦я▐ п╢п╦п╟пЁп╫п╬я│я┌п╦п╨п╦ п╥п╟п©п╬п╩п╫п╣п╫п╦я▐ п╜п п⌡п≈, п©я─п╣п╢я┐п©я─п╣п╤п╢п╣п╫п╦п╣
+    // п╬п╠я─п╟п╠п╟я┌я▀п╡п╟п╣я┌я│я▐ п©п╬п╨п╟ п╥п╢п╣я│я▄, п╡ п╪п╣я┌п╬п╢п╣ п╬п╠я─п╟п╠п╬я┌п╨п╦ я│п╬я│я┌п╬я▐п╫п╦я▐ п╓п═
     if (cashEnv.getSprModel().getSettings().isDiagnEKLZFull() && has_eklz)
     {
       if (!prev_eklz_full && eklz_full)
@@ -2547,13 +2547,13 @@ public class SalePanel extends JPanel implements ListSelectionListener, DataList
   }
 
   // added 12.01.09 
-  // пользователь выбирает товар из списка
-  // res - вектор элементов GoodMain
+  // п©п╬п╩я▄п╥п╬п╡п╟я┌п╣п╩я▄ п╡я▀п╠п╦я─п╟п╣я┌ я┌п╬п╡п╟я─ п╦п╥ я│п©п╦я│п╨п╟
+  // res - п╡п╣п╨я┌п╬я─ я█п╩п╣п╪п╣п╫я┌п╬п╡ GoodMain
   private GoodMain userSelectGM(String msg, Vector res)
   {
     if (gmDialog == null)
     {
-      gmDialog = new JDialog((javax.swing.JFrame)owner, "Выбор товара", true);
+      gmDialog = new JDialog((javax.swing.JFrame)owner, "п▓я▀п╠п╬я─ я┌п╬п╡п╟я─п╟", true);
 
       gmPanel = new GMSelectPanel(gmDialog);
       gmPanel.initTable(tb_colors, table_font);

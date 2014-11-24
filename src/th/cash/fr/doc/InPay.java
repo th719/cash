@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import th.cash.model.User;
 
 /**
- * Внесение
+ * п▓п╫п╣я│п╣п╫п╦п╣
  */
 
 public class InPay extends Pay

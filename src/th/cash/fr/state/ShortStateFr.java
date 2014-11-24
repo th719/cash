@@ -10,15 +10,15 @@ import th.cash.fr.FrException;
 public class ShortStateFr extends StateA
 {
 
-//  private byte   operNum;            // Порядковый номер оператора (1 байт) 1?30
-//  private int    flagsFr;            // Флаги ФР (2 байта) 
-//  private byte   modeFr;             // Режим ФР (1 байт) 
-//  private byte   subModeFr;          // Подрежим ФР (1 байт)
-  private byte operInCheck;          // Количество операций в чеке (1 байт)
-  private byte reserveBatVoltage;    // Напряжение резервной батареи (1 байт)
-  private byte powerVoltage;         // Напряжение источника питания (1 байт)
-  private byte errCodeFp;            // Код ошибки ФП (1 байт)
-  private byte errCodeEKLZ;          // Код ошибки ЭКЛЗ (1 байт)
+//  private byte   operNum;            // п÷п╬я─я▐п╢п╨п╬п╡я▀п╧ п╫п╬п╪п╣я─ п╬п©п╣я─п╟я┌п╬я─п╟ (1 п╠п╟п╧я┌) 1?30
+//  private int    flagsFr;            // п╓п╩п╟пЁп╦ п╓п═ (2 п╠п╟п╧я┌п╟) 
+//  private byte   modeFr;             // п═п╣п╤п╦п╪ п╓п═ (1 п╠п╟п╧я┌) 
+//  private byte   subModeFr;          // п÷п╬п╢я─п╣п╤п╦п╪ п╓п═ (1 п╠п╟п╧я┌)
+  private byte operInCheck;          // п п╬п╩п╦я┤п╣я│я┌п╡п╬ п╬п©п╣я─п╟я├п╦п╧ п╡ я┤п╣п╨п╣ (1 п╠п╟п╧я┌)
+  private byte reserveBatVoltage;    // п²п╟п©я─я▐п╤п╣п╫п╦п╣ я─п╣п╥п╣я─п╡п╫п╬п╧ п╠п╟я┌п╟я─п╣п╦ (1 п╠п╟п╧я┌)
+  private byte powerVoltage;         // п²п╟п©я─я▐п╤п╣п╫п╦п╣ п╦я│я┌п╬я┤п╫п╦п╨п╟ п©п╦я┌п╟п╫п╦я▐ (1 п╠п╟п╧я┌)
+  private byte errCodeFp;            // п п╬п╢ п╬я┬п╦п╠п╨п╦ п╓п÷ (1 п╠п╟п╧я┌)
+  private byte errCodeEKLZ;          // п п╬п╢ п╬я┬п╦п╠п╨п╦ п╜п п⌡п≈ (1 п╠п╟п╧я┌)
   
 
 
@@ -46,19 +46,19 @@ public class ShortStateFr extends StateA
 
   public void printAll()
   {
-    debug("{******************** Короткий запрос состояния ФР ***********************");
-    debug("Номер оператора" + TAB + operNum);
+    debug("{******************** п п╬я─п╬я┌п╨п╦п╧ п╥п╟п©я─п╬я│ я│п╬я│я┌п╬я▐п╫п╦я▐ п╓п═ ***********************");
+    debug("п²п╬п╪п╣я─ п╬п©п╣я─п╟я┌п╬я─п╟" + TAB + operNum);
 
     printFlags();
     printModes();
     
     debug("operInCheck" + TAB + operInCheck);
-    debug("Напр. резервной батареи" + TAB + (0x000000FF & reserveBatVoltage));
-    debug("Напряжение питания" + TAB + (0x000000FF & powerVoltage));
-    debug("Код ошибки ФП" + TAB + errCodeFp);
+    debug("п²п╟п©я─. я─п╣п╥п╣я─п╡п╫п╬п╧ п╠п╟я┌п╟я─п╣п╦" + TAB + (0x000000FF & reserveBatVoltage));
+    debug("п²п╟п©я─я▐п╤п╣п╫п╦п╣ п©п╦я┌п╟п╫п╦я▐" + TAB + (0x000000FF & powerVoltage));
+    debug("п п╬п╢ п╬я┬п╦п╠п╨п╦ п╓п÷" + TAB + errCodeFp);
 
-    debug("Код ошибки ЭКЛЗ" + TAB + errCodeEKLZ);
-    debug("******************** Короткий запрос состояния ФР ***********************}");
+    debug("п п╬п╢ п╬я┬п╦п╠п╨п╦ п╜п п⌡п≈" + TAB + errCodeEKLZ);
+    debug("******************** п п╬я─п╬я┌п╨п╦п╧ п╥п╟п©я─п╬я│ я│п╬я│я┌п╬я▐п╫п╦я▐ п╓п═ ***********************}");
      
   }
   

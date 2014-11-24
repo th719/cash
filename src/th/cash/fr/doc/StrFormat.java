@@ -4,7 +4,7 @@ import java.util.Locale;
 import java.text.NumberFormat;
 
 /**
- * Форматирование строк текста для вывода на POS устройства
+ * п╓п╬я─п╪п╟я┌п╦я─п╬п╡п╟п╫п╦п╣ я│я┌я─п╬п╨ я┌п╣п╨я│я┌п╟ п╢п╩я▐ п╡я▀п╡п╬п╢п╟ п╫п╟ POS я┐я│я┌я─п╬п╧я│я┌п╡п╟
  */
 public class StrFormat 
 {
@@ -32,7 +32,7 @@ public class StrFormat
     return getSEString(p.getGname(), ' ', getQPSString(p), max_len);
   }
 
-  // расшифровка: количество X цена = сумма
+  // я─п╟я│я┬п╦я└я─п╬п╡п╨п╟: п╨п╬п╩п╦я┤п╣я│я┌п╡п╬ X я├п╣п╫п╟ = я│я┐п╪п╪п╟
   public String getQPSString(Position p)
   {
     String res;
@@ -48,7 +48,7 @@ public class StrFormat
     return res;
   }
 
-  // строка с заполнением, размешенная по центру
+  // я│я┌я─п╬п╨п╟ я│ п╥п╟п©п╬п╩п╫п╣п╫п╦п╣п╪, я─п╟п╥п╪п╣я┬п╣п╫п╫п╟я▐ п©п╬ я├п╣п╫я┌я─я┐
   public String getCenterString(String s, char fc, int max_len)
   {
     if (s == null) s = "";
@@ -68,8 +68,8 @@ public class StrFormat
     return sb.toString();
   }
 
-  // сборка строки из 2-х, 1-я наименование , далее заполнитель, 2-я значение 
-  // причем первая строке может быть укорочена
+  // я│п╠п╬я─п╨п╟ я│я┌я─п╬п╨п╦ п╦п╥ 2-я┘, 1-я▐ п╫п╟п╦п╪п╣п╫п╬п╡п╟п╫п╦п╣ , п╢п╟п╩п╣п╣ п╥п╟п©п╬п╩п╫п╦я┌п╣п╩я▄, 2-я▐ п╥п╫п╟я┤п╣п╫п╦п╣ 
+  // п©я─п╦я┤п╣п╪ п©п╣я─п╡п╟я▐ я│я┌я─п╬п╨п╣ п╪п╬п╤п╣я┌ п╠я▀я┌я▄ я┐п╨п╬я─п╬я┤п╣п╫п╟
   public String getSEString(String s1, char fc, String s2, int max_len)
   {
     int s1_len = s1 == null ? 0 : s1.length();

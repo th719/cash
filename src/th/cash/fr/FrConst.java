@@ -12,7 +12,7 @@ public interface FrConst
   public final static byte NAK = 21;
 
   // ------------------------------
-  // состояния ФР
+  // я│п╬я│я┌п╬я▐п╫п╦я▐ п╓п═
   public final static int S_NO_LINK = 1;
   public final static int S_FR_WAIT_CMD  = 3;
   public final static int S_FR_SEND_DATA = 4;
@@ -31,20 +31,20 @@ public interface FrConst
   public final static int MAX_SPD_CODE = 6;
 
 
-  // --------------   элементы протокола   -------------------  
-  // параметр для настройки последовательного порта (enableReceiveTimeout())
+  // --------------   я█п╩п╣п╪п╣п╫я┌я▀ п©я─п╬я┌п╬п╨п╬п╩п╟   -------------------  
+  // п©п╟я─п╟п╪п╣я┌я─ п╢п╩я▐ п╫п╟я│я┌я─п╬п╧п╨п╦ п©п╬я│п╩п╣п╢п╬п╡п╟я┌п╣п╩я▄п╫п╬пЁп╬ п©п╬я─я┌п╟ (enableReceiveTimeout())
   public final static int DEF_RECEIVE_TIMEOUT = 100; // ms
 
-  // итервал между попытками чтения из потока порта
+  // п╦я┌п╣я─п╡п╟п╩ п╪п╣п╤п╢я┐ п©п╬п©я▀я┌п╨п╟п╪п╦ я┤я┌п╣п╫п╦я▐ п╦п╥ п©п╬я┌п╬п╨п╟ п©п╬я─я┌п╟
   public final static long DEF_WAIT_TIME = 10;     // ms
 
-  // количество попыток чтения управляющего символа
+  // п╨п╬п╩п╦я┤п╣я│я┌п╡п╬ п©п╬п©я▀я┌п╬п╨ я┤я┌п╣п╫п╦я▐ я┐п©я─п╟п╡п╩я▐я▌я┴п╣пЁп╬ я│п╦п╪п╡п╬п╩п╟
   public final static int DEF_SPEC_BYTE_READ_LIMIT = 100; 
 
-  // количество попыток чтения байтов сообщения
+  // п╨п╬п╩п╦я┤п╣я│я┌п╡п╬ п©п╬п©я▀я┌п╬п╨ я┤я┌п╣п╫п╦я▐ п╠п╟п╧я┌п╬п╡ я│п╬п╬п╠я┴п╣п╫п╦я▐
   public final static int DEF_DATA_BYTE_READ_LIMIT = 2000;
 
-  // кодировка строковых данных
+  // п╨п╬п╢п╦я─п╬п╡п╨п╟ я│я┌я─п╬п╨п╬п╡я▀я┘ п╢п╟п╫п╫я▀я┘
   public final static String FR_STR_ENC = "Cp1251";
  
   

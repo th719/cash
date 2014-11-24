@@ -46,7 +46,7 @@ public class Barcode implements Comparable{
 //        return barcode.compareTo(((Barcode)o).getBarcode());
 
         // new search condition 15/01/09
-        // сравниваем по ш/к, если равны - то по коду товара
+        // я│я─п╟п╡п╫п╦п╡п╟п╣п╪ п©п╬ я┬/п╨, п╣я│п╩п╦ я─п╟п╡п╫я▀ - я┌п╬ п©п╬ п╨п╬п╢я┐ я┌п╬п╡п╟я─п╟
         Barcode b = (Barcode)o;
         int res = barcode.compareTo(b.getBarcode());
         if (res == 0 && goodId != null && b.getGoodId() != null) 

@@ -3,7 +3,7 @@ package th.cash.model;
 import java.util.StringTokenizer;
 
 /**
- * Набор прав (роль)
+ * п²п╟п╠п╬я─ п©я─п╟п╡ (я─п╬п╩я▄)
  */
 public class Role implements Comparable
 {
@@ -19,13 +19,13 @@ public class Role implements Comparable
 
   private final static int NUM_FLAGS = 25;
 
-  // пустой шаблон, если роль для пользователя отсутствует
+  // п©я┐я│я┌п╬п╧ я┬п╟п╠п╩п╬п╫, п╣я│п╩п╦ я─п╬п╩я▄ п╢п╩я▐ п©п╬п╩я▄п╥п╬п╡п╟я┌п╣п╩я▐ п╬я┌я│я┐я┌я│я┌п╡я┐п╣я┌
   public Role()
   {
     this(null, null, null);
   }
 
-  // код , имя пользователя и строковое представление набора флагов 
+  // п╨п╬п╢ , п╦п╪я▐ п©п╬п╩я▄п╥п╬п╡п╟я┌п╣п╩я▐ п╦ я│я┌я─п╬п╨п╬п╡п╬п╣ п©я─п╣п╢я│я┌п╟п╡п╩п╣п╫п╦п╣ п╫п╟п╠п╬я─п╟ я└п╩п╟пЁп╬п╡ 
   public Role(Integer id, String name, String descr)
   {
     this.id = id;
@@ -53,21 +53,21 @@ public class Role implements Comparable
     return flags;
   }
 
-// флаги для чека:
+// я└п╩п╟пЁп╦ п╢п╩я▐ я┤п╣п╨п╟:
 // <open>,<type_code>,<scan_bc>,<type_bc>,<storno>,<repeat>,<cancel>,<close>
 
-// Шаблон
+// п╗п╟п╠п╩п╬п╫
 // ------------------+---------------+---------------+-------+-------+
-// 1      Полный      1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 
-// 3      Кассир      1,1,1,1,0,0,0,1,0,0,0,0,0,0,0,0,1,1,1,0,1,1,1,0,1 
-// 4      Контроллер  0,0,0,0,1,0,0,1,1,1,1,1,0,0,0,1,0,0,0,0,0,1,0,0,0 
+// 1      п÷п╬п╩п╫я▀п╧      1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 
+// 3      п п╟я│я│п╦я─      1,1,1,1,0,0,0,1,0,0,0,0,0,0,0,0,1,1,1,0,1,1,1,0,1 
+// 4      п п╬п╫я┌я─п╬п╩п╩п╣я─  0,0,0,0,1,0,0,1,1,1,1,1,0,0,0,1,0,0,0,0,0,1,0,0,0 
 
 
                       
   private void init(boolean[] flags)
   {
     int fcnt = 0;
-    // 7 флажков на вид чека 
+    // 7 я└п╩п╟п╤п╨п╬п╡ п╫п╟ п╡п╦п╢ я┤п╣п╨п╟ 
     // 0 - 6
     sale_perm = new CheckPerm(
       getFlag(flags, fcnt++), getFlag(flags, fcnt++), getFlag(flags, fcnt++), getFlag(flags, fcnt++), 
@@ -111,35 +111,35 @@ public class Role implements Comparable
 
   public String getName() { return name; }
 
-  // внесение / выплата
+  // п╡п╫п╣я│п╣п╫п╦п╣ / п╡я▀п©п╩п╟я┌п╟
   public boolean isInPay() { return f_in_pay; }
 
   public boolean isOutPay() { return f_out_pay; }
 
-  // отчеты
+  // п╬я┌я┤п╣я┌я▀
   public boolean isZReport() { return f_zreport; }
 
   public boolean isXReport() { return f_xreport; }
 
-  // закрытие дня по картам
+  // п╥п╟п╨я─я▀я┌п╦п╣ п╢п╫я▐ п©п╬ п╨п╟я─я┌п╟п╪
   public boolean isCloseDay() { return f_close_day; }
 
-  // открытие денежного ящика
+  // п╬я┌п╨я─я▀я┌п╦п╣ п╢п╣п╫п╣п╤п╫п╬пЁп╬ я▐я┴п╦п╨п╟
   public boolean isMoneybox() { return f_moneybox; }
 
-  // безналичная оплата 
+  // п╠п╣п╥п╫п╟п╩п╦я┤п╫п╟я▐ п╬п©п╩п╟я┌п╟ 
   public boolean isBn() { return f_bn; }
 
-  // настройки
+  // п╫п╟я│я┌я─п╬п╧п╨п╦
   public boolean isSetup() { return f_setup; }
 
-  // фиксированные скидки
+  // я└п╦п╨я│п╦я─п╬п╡п╟п╫п╫я▀п╣ я│п╨п╦п╢п╨п╦
   public boolean isFixedDsc() { return f_fixed_dsc; }
 
-  // права на чек продажи
+  // п©я─п╟п╡п╟ п╫п╟ я┤п╣п╨ п©я─п╬п╢п╟п╤п╦
   public CheckPerm getSaleCheckPerm() { return sale_perm; }
 
-  // права на чек возврата
+  // п©я─п╟п╡п╟ п╫п╟ я┤п╣п╨ п╡п╬п╥п╡я─п╟я┌п╟
   public CheckPerm getReturnCheckPerm() { return ret_perm; }
 
 

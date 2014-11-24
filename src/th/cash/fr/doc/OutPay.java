@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import th.cash.model.User;
 
 /**
- * Выплата
+ * п▓я▀п©п╩п╟я┌п╟
  */
 public class OutPay extends Pay
 {

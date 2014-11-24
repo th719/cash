@@ -22,8 +22,8 @@ public class ChTest
 //      pr.makeClrZReport();
 //      pr.getFrDrv().calcelCheck();
       
-      pr.getFrDrv().salePosition(1000, 1, 0, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, "тестовая позиция");
-      pr.getFrDrv().closeCheck(1, 0, 0, 0, 0, ZERO_BYTE,ZERO_BYTE,ZERO_BYTE,ZERO_BYTE, "закрытие");
+      pr.getFrDrv().salePosition(1000, 1, 0, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, "я┌п╣я│я┌п╬п╡п╟я▐ п©п╬п╥п╦я├п╦я▐");
+      pr.getFrDrv().closeCheck(1, 0, 0, 0, 0, ZERO_BYTE,ZERO_BYTE,ZERO_BYTE,ZERO_BYTE, "п╥п╟п╨я─я▀я┌п╦п╣");
       
 
       pr.close();    

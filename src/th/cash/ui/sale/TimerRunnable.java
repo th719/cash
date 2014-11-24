@@ -8,7 +8,7 @@ import javax.swing.SwingUtilities;
 import java.text.SimpleDateFormat;
 
 /**
- * Часики :-)
+ * п╖п╟я│п╦п╨п╦ :-)
  */
 public class TimerRunnable implements Runnable
 {

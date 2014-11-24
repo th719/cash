@@ -97,7 +97,7 @@ public class TestFr
 
         Thread.currentThread().sleep(CPRINT_TIMEOUT); 
 
-        // после печати документа, проверяем состояние (подрежим)
+        // п©п╬я│п╩п╣ п©п╣я┤п╟я┌п╦ п╢п╬п╨я┐п╪п╣п╫я┌п╟, п©я─п╬п╡п╣я─я▐п╣п╪ я│п╬я│я┌п╬я▐п╫п╦п╣ (п©п╬п╢я─п╣п╤п╦п╪)
       
         int submode;
         do {
@@ -111,23 +111,23 @@ public class TestFr
           {
             case StateConst.SM_PAPER_OK : break;
 
-            // если нет бумаги - проверяем датчики чековой и контрольной ленты            
+            // п╣я│п╩п╦ п╫п╣я┌ п╠я┐п╪п╟пЁп╦ - п©я─п╬п╡п╣я─я▐п╣п╪ п╢п╟я┌я┤п╦п╨п╦ я┤п╣п╨п╬п╡п╬п╧ п╦ п╨п╬п╫я┌я─п╬п╩я▄п╫п╬п╧ п╩п╣п╫я┌я▀            
             case StateConst.SM_ACTIV_NO_PAPER : case StateConst.SM_PASS_NO_PAPER : 
               String s = null; //_checkOpticalSensors(state);
-              if (s != null)  System.out.println("Нет бумаги");;
+              if (s != null)  System.out.println("п²п╣я┌ п╠я┐п╪п╟пЁп╦");;
             break;
 
-            // если устройство ждет команду продолжения печати -
+            // п╣я│п╩п╦ я┐я│я┌я─п╬п╧я│я┌п╡п╬ п╤п╢п╣я┌ п╨п╬п╪п╟п╫п╢я┐ п©я─п╬п╢п╬п╩п╤п╣п╫п╦я▐ п©п╣я┤п╟я┌п╦ -
             case StateConst.SM_WAIT_REPEAT :          
               pr.continuePrint(); 
               Thread.currentThread().sleep(CPRINT_TIMEOUT); 
             break;
 
-            // на остальные подрежимы - ожидание и повторный запрос состояния
+            // п╫п╟ п╬я│я┌п╟п╩я▄п╫я▀п╣ п©п╬п╢я─п╣п╤п╦п╪я▀ - п╬п╤п╦п╢п╟п╫п╦п╣ п╦ п©п╬п╡я┌п╬я─п╫я▀п╧ п╥п╟п©я─п╬я│ я│п╬я│я┌п╬я▐п╫п╦я▐
             default :  
               Thread.currentThread().sleep(CPRINT_TIMEOUT);
             /*
-            case 4 : case 5 :  // если идет печать, то ждем, ждем ...
+            case 4 : case 5 :  // п╣я│п╩п╦ п╦п╢п╣я┌ п©п╣я┤п╟я┌я▄, я┌п╬ п╤п╢п╣п╪, п╤п╢п╣п╪ ...
               Thread.currentThread().sleep(CPRINT_TIMEOUT);
             break;
             */
@@ -135,7 +135,7 @@ public class TestFr
               
         } while (submode != StateConst.SM_PAPER_OK);  // added 04.08.11, 
 
-        // дополнительно ожидание для задумчивых отчетов 
+        // п╢п╬п©п╬п╩п╫п╦я┌п╣п╩я▄п╫п╬ п╬п╤п╦п╢п╟п╫п╦п╣ п╢п╩я▐ п╥п╟п╢я┐п╪я┤п╦п╡я▀я┘ п╬я┌я┤п╣я┌п╬п╡ 
         Thread.currentThread().sleep(2 * CPRINT_TIMEOUT);  
             
 
@@ -183,7 +183,7 @@ public class TestFr
 //        sm = state.getSubModeFr();
 //        System.out.println("Fr mode = " + state.getModeNum() + "  submode = " + sm);
 //
-//        if (sm == 1 || sm == 2) UserDlg.showError(null, "Закончилась бумага"); else
+//        if (sm == 1 || sm == 2) UserDlg.showError(null, "п≈п╟п╨п╬п╫я┤п╦п╩п╟я│я▄ п╠я┐п╪п╟пЁп╟"); else
 //        if (sm == 3) pr.continuePrint();
 //      } while (sm != 0);
 
@@ -199,7 +199,7 @@ public class TestFr
 //      ft.initFromFr(fr);
 //      ft.printAll();
 
-//      fr.printString("печать тестовой строки___" , true, true) ;
+//      fr.printString("п©п╣я┤п╟я┌я▄ я┌п╣я│я┌п╬п╡п╬п╧ я│я┌я─п╬п╨п╦___" , true, true) ;
 
 //      TimeSync ts = new TimeSync();
 //      ts.setTimeInCash(fr);
@@ -231,7 +231,7 @@ public class TestFr
 //      fr.setTabData((byte)4, 4, 1, "String 4", 40);
 //      fr.setTabData((byte)4, 5, 1, "String 5", 40);
 //      fr.setTabData((byte)4, 6, 1, "String 6", 40);
-//      fr.setTabData((byte)4, 8, 1, "Строка 2", 40);
+//      fr.setTabData((byte)4, 8, 1, "п║я┌я─п╬п╨п╟ 2", 40);
 
 
 //      Thread.currentThread().sleep(3000);
@@ -246,13 +246,13 @@ public class TestFr
         fr.getOperReg((byte)152);
         System.out.println("chek num =" + FrUtil.intFromBytes(fr.getReplyParams(), 1, 2)); 
  
-      fr.salePosition(3000, 1540, 0, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, "14706 МИНЕРАЛЬНАЯ ВОДА МАЙСКАЯ ХРУСТАЛЬНАЯ 1.5Л ГАЗИРОВАННАЯ ПЛ/Б [РОССИЯ]");
-      fr.salePosition(1000, 12540, 0, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, "16776       КОФЕ NESCAFE GOLD 95Г НАТУРАЛЬНЫЙ РАСТВОРИМЫЙ СУБЛИМИРОВАННЫЙ СТ/Б [РОССИЯ]");
-      fr.salePosition(2000, 3300, 0, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, "66585 ЧАЙ МАЙСКИЙ ЗОЛОТЫЕ ЛЕПЕСТКИ 2Г*25 ЦЕЙЛОНСКИЙ ЧЕРНЫЙ В ПАКЕТИКАХ [РОССИЯ]");
-      fr.salePosition(1000, 3360, 0, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, "67852       БИОЙОГУРТ ONKEN 100Г ЛЮКС 8%ЖИРНОСТЬ МАЛИНА АБРИКОС МАНГО [РОССИЯ]");
-      fr.salePosition(2000, 3300, 0, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, "5900        ХЛЕБ ЖИТО РАЙПО 400Г [РОССИЯ]");
-      fr.salePosition(3000, 3300, 0, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, "2200        ВЕТЧИНА РОЖДЕСТВЕНСКАЯ МИКОЯН 1КГ ВАРЕНАЯ [РОССИЯ]");
-      fr.closeCheck(100000, 0, 0, 0, 500, ZERO_BYTE,ZERO_BYTE,ZERO_BYTE,ZERO_BYTE, "закрываем");
+      fr.salePosition(3000, 1540, 0, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, "14706 п°п≤п²п∙п═п░п⌡п╛п²п░п╞ п▓п·п■п░ п°п░п≥п║п п░п╞ п╔п═пёп║п╒п░п⌡п╛п²п░п╞ 1.5п⌡ п⌠п░п≈п≤п═п·п▓п░п²п²п░п╞ п÷п⌡/п▒ [п═п·п║п║п≤п╞]");
+      fr.salePosition(1000, 12540, 0, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, "16776       п п·п╓п∙ NESCAFE GOLD 95п⌠ п²п░п╒пёп═п░п⌡п╛п²п╚п≥ п═п░п║п╒п▓п·п═п≤п°п╚п≥ п║пёп▒п⌡п≤п°п≤п═п·п▓п░п²п²п╚п≥ п║п╒/п▒ [п═п·п║п║п≤п╞]");
+      fr.salePosition(2000, 3300, 0, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, "66585 п╖п░п≥ п°п░п≥п║п п≤п≥ п≈п·п⌡п·п╒п╚п∙ п⌡п∙п÷п∙п║п╒п п≤ 2п⌠*25 п╕п∙п≥п⌡п·п²п║п п≤п≥ п╖п∙п═п²п╚п≥ п▓ п÷п░п п∙п╒п≤п п░п╔ [п═п·п║п║п≤п╞]");
+      fr.salePosition(1000, 3360, 0, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, "67852       п▒п≤п·п≥п·п⌠пёп═п╒ ONKEN 100п⌠ п⌡п╝п п║ 8%п√п≤п═п²п·п║п╒п╛ п°п░п⌡п≤п²п░ п░п▒п═п≤п п·п║ п°п░п²п⌠п· [п═п·п║п║п≤п╞]");
+      fr.salePosition(2000, 3300, 0, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, "5900        п╔п⌡п∙п▒ п√п≤п╒п· п═п░п≥п÷п· 400п⌠ [п═п·п║п║п≤п╞]");
+      fr.salePosition(3000, 3300, 0, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, "2200        п▓п∙п╒п╖п≤п²п░ п═п·п√п■п∙п║п╒п▓п∙п²п║п п░п╞ п°п≤п п·п╞п² 1п п⌠ п▓п░п═п∙п²п░п╞ [п═п·п║п║п≤п╞]");
+      fr.closeCheck(100000, 0, 0, 0, 500, ZERO_BYTE,ZERO_BYTE,ZERO_BYTE,ZERO_BYTE, "п╥п╟п╨я─я▀п╡п╟п╣п╪");
 */
 //        fr.getOperReg((byte)152);
 //        System.out.println("chek num =" + FrUtil.intFromBytes(fr.getReplyParams(), 1, 2)); 

@@ -45,11 +45,11 @@ public class SprModel {
         fdsc = new Vector(5, 5);
         autosch = new Vector(5, 5);
         amassdsc = new Vector(5, 5);
-        dcards = new Vector(5, 1000); // при использовани нужно обязательно пересматривать
-                                      // параметры инициализации вектора
+        dcards = new Vector(5, 1000); // п©я─п╦ п╦я│п©п╬п╩я▄п╥п╬п╡п╟п╫п╦ п╫я┐п╤п╫п╬ п╬п╠я▐п╥п╟я┌п╣п╩я▄п╫п╬ п©п╣я─п╣я│п╪п╟я┌я─п╦п╡п╟я┌я▄
+                                      // п©п╟я─п╟п╪п╣я┌я─я▀ п╦п╫п╦я├п╦п╟п╩п╦п╥п╟я├п╦п╦ п╡п╣п╨я┌п╬я─п╟
     }
 
-    // быстродействие
+    // п╠я▀я│я┌я─п╬п╢п╣п╧я│я┌п╡п╦п╣
 
 
     // ***********************************
@@ -83,12 +83,12 @@ public class SprModel {
       return roles;
     }
     // ---------------------------------------------
-    public Vector getFDsc() // фиксированные скидки
+    public Vector getFDsc() // я└п╦п╨я│п╦я─п╬п╡п╟п╫п╫я▀п╣ я│п╨п╦п╢п╨п╦
     {
       return fdsc;
     }
 
-    public Vector getAmassDsc() // скидки накопительные
+    public Vector getAmassDsc() // я│п╨п╦п╢п╨п╦ п╫п╟п╨п╬п©п╦я┌п╣п╩я▄п╫я▀п╣
     {
       return amassdsc;
     }
@@ -134,7 +134,7 @@ public class SprModel {
     public void replaceUser(User u)
     {
       replaceObject(users, u);
-      findUserRole(u); // заменяем роль
+      findUserRole(u); // п╥п╟п╪п╣п╫я▐п╣п╪ я─п╬п╩я▄
     }
 
     public void addTax(Tax tax)
@@ -215,7 +215,7 @@ public class SprModel {
     // ******************8
     
     /**
-     *  Поиск в векторе товаров по КОДУ
+     *  п÷п╬п╦я│п╨ п╡ п╡п╣п╨я┌п╬я─п╣ я┌п╬п╡п╟я─п╬п╡ п©п╬ п п·п■пё
      */
     public GoodMain searchGoodMain(Integer id)
     {
@@ -229,8 +229,8 @@ public class SprModel {
     }
 
     /**
-     * Поиск в векторе штрих-кодов по строке ШТРИХ-КОДА, возвращает набор
-     * элементов Barcode, один или несколько, тк. штрих-код может повторяться
+     * п÷п╬п╦я│п╨ п╡ п╡п╣п╨я┌п╬я─п╣ я┬я┌я─п╦я┘-п╨п╬п╢п╬п╡ п©п╬ я│я┌я─п╬п╨п╣ п╗п╒п═п≤п╔-п п·п■п░, п╡п╬п╥п╡я─п╟я┴п╟п╣я┌ п╫п╟п╠п╬я─
+     * я█п╩п╣п╪п╣п╫я┌п╬п╡ Barcode, п╬п╢п╦п╫ п╦п╩п╦ п╫п╣я│п╨п╬п╩я▄п╨п╬, я┌п╨. я┬я┌я─п╦я┘-п╨п╬п╢ п╪п╬п╤п╣я┌ п©п╬п╡я┌п╬я─я▐я┌я▄я│я▐
      */
     public Vector searchBarcode(String bc)
     {
@@ -238,16 +238,16 @@ public class SprModel {
         Vector res = null;
         Barcode sbc = new Barcode(bc);
 
-        // начальный поиск в списке ш/к (), по упорядоченному списку 
+        // п╫п╟я┤п╟п╩я▄п╫я▀п╧ п©п╬п╦я│п╨ п╡ я│п©п╦я│п╨п╣ я┬/п╨ (), п©п╬ я┐п©п╬я─я▐п╢п╬я┤п╣п╫п╫п╬п╪я┐ я│п©п╦я│п╨я┐ 
         index = Collections.binarySearch(barcodes, sbc/*, new BCComparator()*/);
 
         if (index >= 0)
         {
-          // выбираем диапазон, первый элемен
+          // п╡я▀п╠п╦я─п╟п╣п╪ п╢п╦п╟п©п╟п╥п╬п╫, п©п╣я─п╡я▀п╧ я█п╩п╣п╪п╣п╫
           int i1 = index;
           while (i1 > 0 && ((Barcode)barcodes.get(i1-1)).getBarcode().compareTo(bc) == 0) i1--;
 
-          // последний элемент
+          // п©п╬я│п╩п╣п╢п╫п╦п╧ я█п╩п╣п╪п╣п╫я┌
           int i2 = index;
           while (i2 < barcodes.size() && ((Barcode)barcodes.get(i2+1)).getBarcode().compareTo(bc) == 0) i2++;
         
@@ -257,13 +257,13 @@ public class SprModel {
   //            Barcode fbc;
   //            fbc = (Barcode)barcodes.get(index);
   //            res.add(fbc);
-  //            // последовательный перебор следующих ш/к, т.к. в упорядоченном списке 
-  //            // повторяющиеся позиции будут идти следом
+  //            // п©п╬я│п╩п╣п╢п╬п╡п╟я┌п╣п╩я▄п╫я▀п╧ п©п╣я─п╣п╠п╬я─ я│п╩п╣п╢я┐я▌я┴п╦я┘ я┬/п╨, я┌.п╨. п╡ я┐п©п╬я─я▐п╢п╬я┤п╣п╫п╫п╬п╪ я│п©п╦я│п╨п╣ 
+  //            // п©п╬п╡я┌п╬я─я▐я▌я┴п╦п╣я│я▐ п©п╬п╥п╦я├п╦п╦ п╠я┐п╢я┐я┌ п╦п╢я┌п╦ я│п╩п╣п╢п╬п╪
   //            while (++index < barcodes.size() && (fbc = (Barcode)barcodes.get(index)).getBarcode().compareTo(bc) ==0)
   //              res.add(fbc);
   //        }
 
-          // "собираем" элементы по найденным индекса, по порядку сортировки
+          // "я│п╬п╠п╦я─п╟п╣п╪" я█п╩п╣п╪п╣п╫я┌я▀ п©п╬ п╫п╟п╧п╢п╣п╫п╫я▀п╪ п╦п╫п╢п╣п╨я│п╟, п©п╬ п©п╬я─я▐п╢п╨я┐ я│п╬я─я┌п╦я─п╬п╡п╨п╦
           res = new Vector(5, 5);
           for (index = i1; index <= i2; index++) res.add(barcodes.get(index));
         }
@@ -271,8 +271,8 @@ public class SprModel {
         return res;
     }
 
-    // тупо поиск позиции в векторе ш/к по коду товара 
-    // sp - начальная позиция 
+    // я┌я┐п©п╬ п©п╬п╦я│п╨ п©п╬п╥п╦я├п╦п╦ п╡ п╡п╣п╨я┌п╬я─п╣ я┬/п╨ п©п╬ п╨п╬п╢я┐ я┌п╬п╡п╟я─п╟ 
+    // sp - п╫п╟я┤п╟п╩я▄п╫п╟я▐ п©п╬п╥п╦я├п╦я▐ 
     public int searchNextBarcode(int sp, Integer good_id)
     {
       int i = sp;
@@ -284,7 +284,7 @@ public class SprModel {
       return i;
     }
     
-    // возвращает .... вектор GoodMain ?
+    // п╡п╬п╥п╡я─п╟я┴п╟п╣я┌ .... п╡п╣п╨я┌п╬я─ GoodMain ?
     public Vector searchGood(SearchData sd, boolean by_code)
     {
         long s_time, e_time;

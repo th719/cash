@@ -18,12 +18,12 @@ import th.cash.fr.FrUtil;
 import th.cash.fr.FrException;
 
 
-// протокол v.1.4
+// п©я─п╬я┌п╬п╨п╬п╩ v.1.4
 
 public class FrDrv implements FrConst
 {
   // common data buffer
-  private final static int С_BUF_SIZE = 256;
+  private final static int п║_BUF_SIZE = 256;
 
   // COMM port streams
   private InputStream  port_is = null;
@@ -34,18 +34,18 @@ public class FrDrv implements FrConst
 
 
   // data buffers
-  private byte[] c_buf = new byte[С_BUF_SIZE]; // буффер для данных
-  private byte[] b_buf = new byte[1];        // буффер для байтов запроса/ответа
+  private byte[] c_buf = new byte[п║_BUF_SIZE]; // п╠я┐я└я└п╣я─ п╢п╩я▐ п╢п╟п╫п╫я▀я┘
+  private byte[] b_buf = new byte[1];        // п╠я┐я└я└п╣я─ п╢п╩я▐ п╠п╟п╧я┌п╬п╡ п╥п╟п©я─п╬я│п╟/п╬я┌п╡п╣я┌п╟
 
-  // текущее состояние ФР
+  // я┌п╣п╨я┐я┴п╣п╣ я│п╬я│я┌п╬я▐п╫п╦п╣ п╓п═
   private int fr_state = S_NO_LINK;
 
-  // данные полученные от устройства
+  // п╢п╟п╫п╫я▀п╣ п©п╬п╩я┐я┤п╣п╫п╫я▀п╣ п╬я┌ я┐я│я┌я─п╬п╧я│я┌п╡п╟
   private byte rcmd = 0;
   private byte err_code = 0;
   private byte[] rpar = null;
 
-  // данные для отправки устройству
+  // п╢п╟п╫п╫я▀п╣ п╢п╩я▐ п╬я┌п©я─п╟п╡п╨п╦ я┐я│я┌я─п╬п╧я│я┌п╡я┐
   private byte scmd = 0;
   private byte[] spar = null;
 
@@ -54,17 +54,17 @@ public class FrDrv implements FrConst
 
   // ----------------------------------------------------
 
-  // время ожидания между проверками байта во входном потоке
-  private long wait_sleep_time = DEF_WAIT_TIME;// 10; // мс
-  // число проверок чтения управляющего байта 
+  // п╡я─п╣п╪я▐ п╬п╤п╦п╢п╟п╫п╦я▐ п╪п╣п╤п╢я┐ п©я─п╬п╡п╣я─п╨п╟п╪п╦ п╠п╟п╧я┌п╟ п╡п╬ п╡я┘п╬п╢п╫п╬п╪ п©п╬я┌п╬п╨п╣
+  private long wait_sleep_time = DEF_WAIT_TIME;// 10; // п╪я│
+  // я┤п╦я│п╩п╬ п©я─п╬п╡п╣я─п╬п╨ я┤я┌п╣п╫п╦я▐ я┐п©я─п╟п╡п╩я▐я▌я┴п╣пЁп╬ п╠п╟п╧я┌п╟ 
   private int  spec_byte_limit = DEF_SPEC_BYTE_READ_LIMIT;
-  // число проверок чтения байтов данных из потока порта
+  // я┤п╦я│п╩п╬ п©я─п╬п╡п╣я─п╬п╨ я┤я┌п╣п╫п╦я▐ п╠п╟п╧я┌п╬п╡ п╢п╟п╫п╫я▀я┘ п╦п╥ п©п╬я┌п╬п╨п╟ п©п╬я─я┌п╟
   private int  data_byte_limit = DEF_DATA_BYTE_READ_LIMIT;
   // ----------------------------------------------------
 
-  private long pwd_oper = 30;  // пароль оператора
+  private long pwd_oper = 30;  // п©п╟я─п╬п╩я▄ п╬п©п╣я─п╟я┌п╬я─п╟
 
-  private boolean dbg = true; // режим отладки
+  private boolean dbg = true; // я─п╣п╤п╦п╪ п╬я┌п╩п╟п╢п╨п╦
 
   private String pref_dbg = "*** FrDrv: ";
 
@@ -80,12 +80,12 @@ public class FrDrv implements FrConst
     CommPort cp = cpid.open("FrDrv", timeout);
 
     if (cp instanceof SerialPort) serial_port = (SerialPort)cp;
-      else throw new Exception("Запрошенное устройство не является последовательным портом");
+      else throw new Exception("п≈п╟п©я─п╬я┬п╣п╫п╫п╬п╣ я┐я│я┌я─п╬п╧я│я┌п╡п╬ п╫п╣ я▐п╡п╩я▐п╣я┌я│я▐ п©п╬я│п╩п╣п╢п╬п╡п╟я┌п╣п╩я▄п╫я▀п╪ п©п╬я─я┌п╬п╪");
 
   }
 
   // *************************************************************************
-  //     Доступ к данным
+  //     п■п╬я│я┌я┐п© п╨ п╢п╟п╫п╫я▀п╪
   public void setDebug(boolean debug)
   {
     dbg = debug;
@@ -120,7 +120,7 @@ public class FrDrv implements FrConst
    
 
   /**
-   * Инициализировать порт на заданной скорости обмена
+   * п≤п╫п╦я├п╦п╟п╩п╦п╥п╦я─п╬п╡п╟я┌я▄ п©п╬я─я┌ п╫п╟ п╥п╟п╢п╟п╫п╫п╬п╧ я│п╨п╬я─п╬я│я┌п╦ п╬п╠п╪п╣п╫п╟
    * @param spd
    * @throws IOException
    * @throws UnsupportedCommOperationException
@@ -140,8 +140,8 @@ public class FrDrv implements FrConst
   }
 
   /**
-   * Найти скорость работы порта, и установить оптимальную ...
-   * при отсутствии ошибки результат - короткий запрос состояния
+   * п²п╟п╧я┌п╦ я│п╨п╬я─п╬я│я┌я▄ я─п╟п╠п╬я┌я▀ п©п╬я─я┌п╟, п╦ я┐я│я┌п╟п╫п╬п╡п╦я┌я▄ п╬п©я┌п╦п╪п╟п╩я▄п╫я┐я▌ ...
+   * п©я─п╦ п╬я┌я│я┐я┌я│я┌п╡п╦п╦ п╬я┬п╦п╠п╨п╦ я─п╣п╥я┐п╩я▄я┌п╟я┌ - п╨п╬я─п╬я┌п╨п╦п╧ п╥п╟п©я─п╬я│ я│п╬я│я┌п╬я▐п╫п╦я▐
    * @throws IOException
    * @throws UnsupportedCommOperationException
    */
@@ -173,7 +173,7 @@ public class FrDrv implements FrConst
           log.debug( pref_dbg + "Ok" );
         
         err = false;
-      } catch (Exception ex) // определенный тип ошибки
+      } catch (Exception ex) // п╬п©я─п╣п╢п╣п╩п╣п╫п╫я▀п╧ я┌п╦п© п╬я┬п╦п╠п╨п╦
       {
         last_ex = ex;
         i++;
@@ -190,23 +190,23 @@ public class FrDrv implements FrConst
     {
       log.error( pref_dbg + "No available speed !!!" );
 
-      FrException res_ex = new FrException("Фискальный регистратор не обнаружен", FrErrors.ERR_DEV_NOT_FINDED, 1);
+      FrException res_ex = new FrException("п╓п╦я│п╨п╟п╩я▄п╫я▀п╧ я─п╣пЁп╦я│я┌я─п╟я┌п╬я─ п╫п╣ п╬п╠п╫п╟я─я┐п╤п╣п╫", FrErrors.ERR_DEV_NOT_FINDED, 1);
       res_ex.setNestedException(last_ex);
-      throw res_ex;  // устройство не работает ни на одной скорости
+      throw res_ex;  // я┐я│я┌я─п╬п╧я│я┌п╡п╬ п╫п╣ я─п╟п╠п╬я┌п╟п╣я┌ п╫п╦ п╫п╟ п╬п╢п╫п╬п╧ я│п╨п╬я─п╬я│я┌п╦
     }
     else
     {
       log.info( pref_dbg + "Ok. Device speed = " + dev_spd );
 
-      // spd_id - номер режима в котором запрос прошел успешно
-      // пытаемся выставить максимальную скорость
+      // spd_id - п╫п╬п╪п╣я─ я─п╣п╤п╦п╪п╟ п╡ п╨п╬я┌п╬я─п╬п╪ п╥п╟п©я─п╬я│ п©я─п╬я┬п╣п╩ я┐я│п©п╣я┬п╫п╬
+      // п©я▀я┌п╟п╣п╪я│я▐ п╡я▀я│я┌п╟п╡п╦я┌я▄ п╪п╟п╨я│п╦п╪п╟п╩я▄п╫я┐я▌ я│п╨п╬я─п╬я│я┌я▄
       int optimal_spd_id = MAX_SPD_CODE;
       if (spd_id != optimal_spd_id)
       {
         boolean optimal_set_ok = false;
         try
         {
-          // пробуем максимальную скорость
+          // п©я─п╬п╠я┐п╣п╪ п╪п╟п╨я│п╦п╪п╟п╩я▄п╫я┐я▌ я│п╨п╬я─п╬я│я┌я▄
           log.info( pref_dbg + "Trying to set maximum speed = " + AVAIL_SPD[optimal_spd_id]);
           
           setLinkParams((byte)optimal_spd_id, (byte)100);
@@ -215,7 +215,7 @@ public class FrDrv implements FrConst
           //shortStateRequest();
           stateRequest();
 
-          // все успешно - прописываем параметры
+          // п╡я│п╣ я┐я│п©п╣я┬п╫п╬ - п©я─п╬п©п╦я│я▀п╡п╟п╣п╪ п©п╟я─п╟п╪п╣я┌я─я▀
           dev_spd = AVAIL_SPD[optimal_spd_id];
           spd_id = optimal_spd_id;
           err = false;
@@ -228,7 +228,7 @@ public class FrDrv implements FrConst
           log.warn( pref_dbg + "Error on maximum speed !");
         }
 
-        // если на максимуме не пошло
+        // п╣я│п╩п╦ п╫п╟ п╪п╟п╨я│п╦п╪я┐п╪п╣ п╫п╣ п©п╬я┬п╩п╬
         if (err)
         {
           try
@@ -243,7 +243,7 @@ public class FrDrv implements FrConst
           {
              
             log.error( pref_dbg + "Error!!! Device unavailable.", ex);
-            FrException new_ex = new FrException("Ошибка подключения фискального регистратора", FrErrors.ERR_DEV_NOT_FINDED);
+            FrException new_ex = new FrException("п·я┬п╦п╠п╨п╟ п©п╬п╢п╨п╩я▌я┤п╣п╫п╦я▐ я└п╦я│п╨п╟п╩я▄п╫п╬пЁп╬ я─п╣пЁп╦я│я┌я─п╟я┌п╬я─п╟", FrErrors.ERR_DEV_NOT_FINDED);
             new_ex.setNestedException(ex);
             throw new_ex;
           }
@@ -255,17 +255,17 @@ public class FrDrv implements FrConst
 
 
   /**
-   * Заполнить буффер данных сообщения
-   * @param buf    - байтовый буффер
-   * @param cmd    - код команды
-   * @param params - параметры команды
+   * п≈п╟п©п╬п╩п╫п╦я┌я▄ п╠я┐я└я└п╣я─ п╢п╟п╫п╫я▀я┘ я│п╬п╬п╠я┴п╣п╫п╦я▐
+   * @param buf    - п╠п╟п╧я┌п╬п╡я▀п╧ п╠я┐я└я└п╣я─
+   * @param cmd    - п╨п╬п╢ п╨п╬п╪п╟п╫п╢я▀
+   * @param params - п©п╟я─п╟п╪п╣я┌я─я▀ п╨п╬п╪п╟п╫п╢я▀
    */
   private void makeMsg(byte[] buf, byte cmd, byte[] params)
   {
-    byte cs;                       // контрольная сумма
+    byte cs;                       // п╨п╬п╫я┌я─п╬п╩я▄п╫п╟я▐ я│я┐п╪п╪п╟
     byte len = (byte)(1 + params.length);
     buf[0] = STX;                  // 0
-    buf[1] = len;                  // длина тела сообщения (N)
+    buf[1] = len;                  // п╢п╩п╦п╫п╟ я┌п╣п╩п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐ (N)
     cs = buf[1];
     buf[2] = cmd;
     cs = (byte)(cs ^ buf[2]);
@@ -277,7 +277,7 @@ public class FrDrv implements FrConst
     buf[3 + params.length] = cs;
   }
 
-  //********* разбор тела сообщения *************
+  //********* я─п╟п╥п╠п╬я─ я┌п╣п╩п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐ *************
   // TODO
   private void parseMsg(byte[] buf)
   {
@@ -296,9 +296,9 @@ public class FrDrv implements FrConst
   // *************************************************************************************
 
   /**
-   * Ожидани и чтение специального байта подтверждения(ACK/NAK), данные в b_buf[0]
-   * @param max_cnt - число попыток чтения
-   * @return        - количество прочитанных байт (-1 - ошибка timeout)
+   * п·п╤п╦п╢п╟п╫п╦ п╦ я┤я┌п╣п╫п╦п╣ я│п©п╣я├п╦п╟п╩я▄п╫п╬пЁп╬ п╠п╟п╧я┌п╟ п©п╬п╢я┌п╡п╣я─п╤п╢п╣п╫п╦я▐(ACK/NAK), п╢п╟п╫п╫я▀п╣ п╡ b_buf[0]
+   * @param max_cnt - я┤п╦я│п╩п╬ п©п╬п©я▀я┌п╬п╨ я┤я┌п╣п╫п╦я▐
+   * @return        - п╨п╬п╩п╦я┤п╣я│я┌п╡п╬ п©я─п╬я┤п╦я┌п╟п╫п╫я▀я┘ п╠п╟п╧я┌ (-1 - п╬я┬п╦п╠п╨п╟ timeout)
    * @throws IOException
    */
   private int readSpecByte(int max_cnt) throws IOException
@@ -319,11 +319,11 @@ public class FrDrv implements FrConst
   }
 
   /**
-   * Ожидпние / чтения байтов данных сообщения (no debug)
-   * @param buf  - массив буффера данных
-   * @param offs - смещение в массиве, куда будут записаны прочитанные данные
-   * @param ml   - максимальное количество байт из потока
-   * @return     - количество прочитанных байт (-1 - ошибка timeout)
+   * п·п╤п╦п╢п©п╫п╦п╣ / я┤я┌п╣п╫п╦я▐ п╠п╟п╧я┌п╬п╡ п╢п╟п╫п╫я▀я┘ я│п╬п╬п╠я┴п╣п╫п╦я▐ (no debug)
+   * @param buf  - п╪п╟я│я│п╦п╡ п╠я┐я└я└п╣я─п╟ п╢п╟п╫п╫я▀я┘
+   * @param offs - я│п╪п╣я┴п╣п╫п╦п╣ п╡ п╪п╟я│я│п╦п╡п╣, п╨я┐п╢п╟ п╠я┐п╢я┐я┌ п╥п╟п©п╦я│п╟п╫я▀ п©я─п╬я┤п╦я┌п╟п╫п╫я▀п╣ п╢п╟п╫п╫я▀п╣
+   * @param ml   - п╪п╟п╨я│п╦п╪п╟п╩я▄п╫п╬п╣ п╨п╬п╩п╦я┤п╣я│я┌п╡п╬ п╠п╟п╧я┌ п╦п╥ п©п╬я┌п╬п╨п╟
+   * @return     - п╨п╬п╩п╦я┤п╣я│я┌п╡п╬ п©я─п╬я┤п╦я┌п╟п╫п╫я▀я┘ п╠п╟п╧я┌ (-1 - п╬я┬п╦п╠п╨п╟ timeout)
    * @throws IOException
    */
   private int readDataByte(byte[] buf, int offs, int ml) throws IOException
@@ -338,14 +338,14 @@ public class FrDrv implements FrConst
         try {Thread.currentThread().sleep(wait_sleep_time);} catch (InterruptedException ex) {}
         cnt++;
       }
-    } while (res <= 0 && cnt < data_byte_limit);  /*6000 100  итого 20с*/ 
+    } while (res <= 0 && cnt < data_byte_limit);  /*6000 100  п╦я┌п╬пЁп╬ 20я│*/ 
 
     return res;
   }
 
   /**
-   * Запись контрольного байта протокола, используется b_buf
-   * @param b - байт данных
+   * п≈п╟п©п╦я│я▄ п╨п╬п╫я┌я─п╬п╩я▄п╫п╬пЁп╬ п╠п╟п╧я┌п╟ п©я─п╬я┌п╬п╨п╬п╩п╟, п╦я│п©п╬п╩я▄п╥я┐п╣я┌я│я▐ b_buf
+   * @param b - п╠п╟п╧я┌ п╢п╟п╫п╫я▀я┘
    * @throws IOException
    */
   private void writeSpecByte(byte b) throws IOException
@@ -357,10 +357,10 @@ public class FrDrv implements FrConst
   }
 
   /**
-   * Запись данных сообщения из буффера
-   * @param buf  - буффер данных
-   * @param offs - смещение в буффере
-   * @param ml   - количество байт для записи
+   * п≈п╟п©п╦я│я▄ п╢п╟п╫п╫я▀я┘ я│п╬п╬п╠я┴п╣п╫п╦я▐ п╦п╥ п╠я┐я└я└п╣я─п╟
+   * @param buf  - п╠я┐я└я└п╣я─ п╢п╟п╫п╫я▀я┘
+   * @param offs - я│п╪п╣я┴п╣п╫п╦п╣ п╡ п╠я┐я└я└п╣я─п╣
+   * @param ml   - п╨п╬п╩п╦я┤п╣я│я┌п╡п╬ п╠п╟п╧я┌ п╢п╩я▐ п╥п╟п©п╦я│п╦
    * @throws IOException
    */
   private void writeDataByte(byte[] buf, int offs, int ml) throws IOException
@@ -370,8 +370,8 @@ public class FrDrv implements FrConst
 
   // *******************************************************************
   /**
-   * Проверка текущего состояния ФР, просылка ENQ и анализ ответа
-   * @return - код текущего состояния ФР (по протоколу)
+   * п÷я─п╬п╡п╣я─п╨п╟ я┌п╣п╨я┐я┴п╣пЁп╬ я│п╬я│я┌п╬я▐п╫п╦я▐ п╓п═, п©я─п╬я│я▀п╩п╨п╟ ENQ п╦ п╟п╫п╟п╩п╦п╥ п╬я┌п╡п╣я┌п╟
+   * @return - п╨п╬п╢ я┌п╣п╨я┐я┴п╣пЁп╬ я│п╬я│я┌п╬я▐п╫п╦я▐ п╓п═ (п©п╬ п©я─п╬я┌п╬п╨п╬п╩я┐)
    * @throws IOException
    */
   private int checkCurState() throws IOException
@@ -383,8 +383,8 @@ public class FrDrv implements FrConst
   }
 
   /**
-   * Установить состояние по байту ответа на ENQ
-   * @param answer - байт ответа
+   * пёя│я┌п╟п╫п╬п╡п╦я┌я▄ я│п╬я│я┌п╬я▐п╫п╦п╣ п©п╬ п╠п╟п╧я┌я┐ п╬я┌п╡п╣я┌п╟ п╫п╟ ENQ
+   * @param answer - п╠п╟п╧я┌ п╬я┌п╡п╣я┌п╟
    */
   private void setFrState(byte answer)
   {
@@ -396,8 +396,8 @@ public class FrDrv implements FrConst
     }
   }
   /**
-   * Значение текущего состояния
-   * @return - код значения
+   * п≈п╫п╟я┤п╣п╫п╦п╣ я┌п╣п╨я┐я┴п╣пЁп╬ я│п╬я│я┌п╬я▐п╫п╦я▐
+   * @return - п╨п╬п╢ п╥п╫п╟я┤п╣п╫п╦я▐
    */
   public int getFrState()
   {
@@ -405,8 +405,8 @@ public class FrDrv implements FrConst
   }
 
   /**
-   * Получить строковое представление состояния по коду (для отладки)
-   * @return - строка, соот. имени константы
+   * п÷п╬п╩я┐я┤п╦я┌я▄ я│я┌я─п╬п╨п╬п╡п╬п╣ п©я─п╣п╢я│я┌п╟п╡п╩п╣п╫п╦п╣ я│п╬я│я┌п╬я▐п╫п╦я▐ п©п╬ п╨п╬п╢я┐ (п╢п╩я▐ п╬я┌п╩п╟п╢п╨п╦)
+   * @return - я│я┌я─п╬п╨п╟, я│п╬п╬я┌. п╦п╪п╣п╫п╦ п╨п╬п╫я│я┌п╟п╫я┌я▀
    */
   public String getFrStateStr()
   {
@@ -420,7 +420,7 @@ public class FrDrv implements FrConst
   }
 
   // *******************************************************************
-  // ответ устройства (корректный по протоколу), содержащий код ошибки, отличный от 0
+  // п╬я┌п╡п╣я┌ я┐я│я┌я─п╬п╧я│я┌п╡п╟ (п╨п╬я─я─п╣п╨я┌п╫я▀п╧ п©п╬ п©я─п╬я┌п╬п╨п╬п╩я┐), я│п╬п╢п╣я─п╤п╟я┴п╦п╧ п╨п╬п╢ п╬я┬п╦п╠п╨п╦, п╬я┌п╩п╦я┤п╫я▀п╧ п╬я┌ 0
   private final static int ERROR_REPLY = -4;
 
 
@@ -428,8 +428,8 @@ public class FrDrv implements FrConst
   private final static int MAX_READ_CNT = 3;
   private final static int MAX_WRITE_CNT = 3;
   /**
-   * Выполнить сеанс обмена данными с ФР
-   * @return - результат (по протоколу)
+   * п▓я▀п©п╬п╩п╫п╦я┌я▄ я│п╣п╟п╫я│ п╬п╠п╪п╣п╫п╟ п╢п╟п╫п╫я▀п╪п╦ я│ п╓п═
+   * @return - я─п╣п╥я┐п╩я▄я┌п╟я┌ (п©п╬ п©я─п╬я┌п╬п╨п╬п╩я┐)
    * @throws IOException
    */
   private int _execSession() throws IOException
@@ -438,10 +438,10 @@ public class FrDrv implements FrConst
 //      System.out.println("* _execSession() start");
     if (log.isDebugEnabled()) log.debug("* _execSession() start");
 
-    // проверяем тек состояние фискальника
+    // п©я─п╬п╡п╣я─я▐п╣п╪ я┌п╣п╨ я│п╬я│я┌п╬я▐п╫п╦п╣ я└п╦я│п╨п╟п╩я▄п╫п╦п╨п╟
     checkCurState();
     if (getFrState() == S_NO_LINK || getFrState() == S_FR_UNKNOWN)
-      return WRITE_ERR; //или Exception
+      return WRITE_ERR; //п╦п╩п╦ Exception
 
 //    if (dbg)
 //      System.out.println("--- fr_state=" + getFrStateStr());
@@ -457,7 +457,7 @@ public class FrDrv implements FrConst
 //        if (dbg) System.out.println("** receive data start");
         if (log.isDebugEnabled()) log.debug("** receive data start");
 
-        // принимаем данные
+        // п©я─п╦п╫п╦п╪п╟п╣п╪ п╢п╟п╫п╫я▀п╣
         int read_cnt = 0;
         int read_res;
         // ACK
@@ -475,7 +475,7 @@ public class FrDrv implements FrConst
 
         if (read_res == READ_OK)
         {
-          // разбираем буффер c_buf
+          // я─п╟п╥п╠п╦я─п╟п╣п╪ п╠я┐я└я└п╣я─ c_buf
           parseMsg(c_buf);
 
           // debug print
@@ -487,9 +487,9 @@ public class FrDrv implements FrConst
 //            else printMsg(rcmd, rpar);
 //          }
 
-          // проверка состояния
+          // п©я─п╬п╡п╣я─п╨п╟ я│п╬я│я┌п╬я▐п╫п╦я▐
           checkCurState();
-          // анализ логического состояния
+          // п╟п╫п╟п╩п╦п╥ п╩п╬пЁп╦я┤п╣я│п╨п╬пЁп╬ я│п╬я│я┌п╬я▐п╫п╦я▐
           if (cur_cmd_sended)
           {
             if (scmd != rcmd) read_res = FrErrors.ERR_READ_CMDC; else
@@ -520,7 +520,7 @@ public class FrDrv implements FrConst
 //            System.out.println("** send data start");
           if (log.isDebugEnabled())
             log.debug("** send data start");
-          // пишем данные
+          // п©п╦я┬п╣п╪ п╢п╟п╫п╫я▀п╣
           int write_cnt = 0;
           int write_res;
           do {
@@ -530,11 +530,11 @@ public class FrDrv implements FrConst
             write_res = writeMsg(c_buf);
           } while (write_res == WRITE_ERR && write_cnt < MAX_WRITE_CNT);
 
-          if (write_res == WRITE_OK) // был ответ ACK
+          if (write_res == WRITE_OK) // п╠я▀п╩ п╬я┌п╡п╣я┌ ACK
           {
-            // переходим в состояние чтения данных (ответа)
+            // п©п╣я─п╣я┘п╬п╢п╦п╪ п╡ я│п╬я│я┌п╬я▐п╫п╦п╣ я┤я┌п╣п╫п╦я▐ п╢п╟п╫п╫я▀я┘ (п╬я┌п╡п╣я┌п╟)
             fr_state = S_FR_SEND_DATA;
-            cur_cmd_sended = true; // команда передана и нужно ждать ответное сообщение
+            cur_cmd_sended = true; // п╨п╬п╪п╟п╫п╢п╟ п©п╣я─п╣п╢п╟п╫п╟ п╦ п╫я┐п╤п╫п╬ п╤п╢п╟я┌я▄ п╬я┌п╡п╣я┌п╫п╬п╣ я│п╬п╬п╠я┴п╣п╫п╦п╣
           }
 
           if (write_res == WRITE_ERR) write_res = NO_LINK_READ; // ???
@@ -571,12 +571,12 @@ public class FrDrv implements FrConst
   private final static int NO_LINK_READ = FrErrors.ERR_TIMEOUT_READ;
 //  private final static int READ_ERR = FrErrors.ERR_READ_DATA;
   /**
-   * Прочитать сообщение от ФР, с обратным подтверждением
-   * @param buf   - буффер для полученного сообщения
-   * @return - результат
-   *   READ_OK  - чтение успешно, данные корректны
-   *   READ_ERR - ошибка чтения, данные некорректы
-   *   NO_LINK_READ - ошибка, превышен таймаут ответа
+   * п÷я─п╬я┤п╦я┌п╟я┌я▄ я│п╬п╬п╠я┴п╣п╫п╦п╣ п╬я┌ п╓п═, я│ п╬п╠я─п╟я┌п╫я▀п╪ п©п╬п╢я┌п╡п╣я─п╤п╢п╣п╫п╦п╣п╪
+   * @param buf   - п╠я┐я└я└п╣я─ п╢п╩я▐ п©п╬п╩я┐я┤п╣п╫п╫п╬пЁп╬ я│п╬п╬п╠я┴п╣п╫п╦я▐
+   * @return - я─п╣п╥я┐п╩я▄я┌п╟я┌
+   *   READ_OK  - я┤я┌п╣п╫п╦п╣ я┐я│п©п╣я┬п╫п╬, п╢п╟п╫п╫я▀п╣ п╨п╬я─я─п╣п╨я┌п╫я▀
+   *   READ_ERR - п╬я┬п╦п╠п╨п╟ я┤я┌п╣п╫п╦я▐, п╢п╟п╫п╫я▀п╣ п╫п╣п╨п╬я─я─п╣п╨я┌я▀
+   *   NO_LINK_READ - п╬я┬п╦п╠п╨п╟, п©я─п╣п╡я▀я┬п╣п╫ я┌п╟п╧п╪п╟я┐я┌ п╬я┌п╡п╣я┌п╟
    * @throws IOException
    */
   private int readMsg(byte[] buf) throws IOException
@@ -592,14 +592,14 @@ public class FrDrv implements FrConst
 
     if (buf[0] == STX)
     {
-      // читаем длину
+      // я┤п╦я┌п╟п╣п╪ п╢п╩п╦п╫я┐
       read_res = readDataByte(buf, offs, 1);
       if (read_res < 0) return NO_LINK_READ; //READ_ERR; // ?????????
       offs += read_res;
       len = buf[1];
       cs =  buf[1];
 
-      // читаем само сообщение
+      // я┤п╦я┌п╟п╣п╪ я│п╟п╪п╬ я│п╬п╬п╠я┴п╣п╫п╦п╣
       while (offs < len + 2)
       {
         read_res = readDataByte(buf, offs, 1);
@@ -608,12 +608,12 @@ public class FrDrv implements FrConst
         cs = (byte) (cs ^ buf[offs - 1]);
       }
 
-      // читаем контрольную сумму
+      // я┤п╦я┌п╟п╣п╪ п╨п╬п╫я┌я─п╬п╩я▄п╫я┐я▌ я│я┐п╪п╪я┐
       read_res = readDataByte(buf, offs, 1);
       if (read_res < 0) return NO_LINK_READ;//READ_ERR;  // ???????????
       offs += read_res;
 
-      // если Control Sum совпадает
+      // п╣я│п╩п╦ Control Sum я│п╬п╡п©п╟п╢п╟п╣я┌
       if (buf[len + 2] == cs)
       {
         writeSpecByte(ACK);
@@ -631,12 +631,12 @@ public class FrDrv implements FrConst
   private final static int WRITE_OK = 0;
   private final static int WRITE_ERR = -2;
   /**
-   * Передача команды для ФР (no debug)
-   * @param buf - буффер команды
+   * п÷п╣я─п╣п╢п╟я┤п╟ п╨п╬п╪п╟п╫п╢я▀ п╢п╩я▐ п╓п═ (no debug)
+   * @param buf - п╠я┐я└я└п╣я─ п╨п╬п╪п╟п╫п╢я▀
    * @return
-   *   WRITE_OK  - данные переданы и подтверждены ACK
-   *   WRITE_ERR - данные не подтверждены (ответ NAK)
-   *   NO_LINK_READ - ошибка, истек таймаут подтверждения
+   *   WRITE_OK  - п╢п╟п╫п╫я▀п╣ п©п╣я─п╣п╢п╟п╫я▀ п╦ п©п╬п╢я┌п╡п╣я─п╤п╢п╣п╫я▀ ACK
+   *   WRITE_ERR - п╢п╟п╫п╫я▀п╣ п╫п╣ п©п╬п╢я┌п╡п╣я─п╤п╢п╣п╫я▀ (п╬я┌п╡п╣я┌ NAK)
+   *   NO_LINK_READ - п╬я┬п╦п╠п╨п╟, п╦я│я┌п╣п╨ я┌п╟п╧п╪п╟я┐я┌ п©п╬п╢я┌п╡п╣я─п╤п╢п╣п╫п╦я▐
    * @throws IOException
    */
   private int writeMsg(byte[] buf) throws IOException
@@ -652,7 +652,7 @@ public class FrDrv implements FrConst
       if (port_is.available() > 0)
       {
         read_res = readSpecByte( spec_byte_limit );  // defined by const
-        has_answer = true; // был ответ фискальника
+        has_answer = true; // п╠я▀п╩ п╬я┌п╡п╣я┌ я└п╦я│п╨п╟п╩я▄п╫п╦п╨п╟
         if (read_res < 0) write_res = NO_LINK_READ;
         if (b_buf[0] == NAK) write_res = WRITE_ERR;
         if (b_buf[0] == ACK) write_res = WRITE_OK;
@@ -660,18 +660,18 @@ public class FrDrv implements FrConst
     } while (write_res == WRITE_OK && bcnt < len + 3 );
 
     if (write_res == WRITE_OK)
-    { // если данные были записаны без ошибки
-      // то разбираемся с ответом
-      if (!has_answer) // если не бло ответа фискальника
+    { // п╣я│п╩п╦ п╢п╟п╫п╫я▀п╣ п╠я▀п╩п╦ п╥п╟п©п╦я│п╟п╫я▀ п╠п╣п╥ п╬я┬п╦п╠п╨п╦
+      // я┌п╬ я─п╟п╥п╠п╦я─п╟п╣п╪я│я▐ я│ п╬я┌п╡п╣я┌п╬п╪
+      if (!has_answer) // п╣я│п╩п╦ п╫п╣ п╠п╩п╬ п╬я┌п╡п╣я┌п╟ я└п╦я│п╨п╟п╩я▄п╫п╦п╨п╟
       {
-        // ждем подтверждения ACK
+        // п╤п╢п╣п╪ п©п╬п╢я┌п╡п╣я─п╤п╢п╣п╫п╦я▐ ACK
         read_res = readSpecByte( spec_byte_limit );
         if (read_res < 0) write_res = NO_LINK_READ;
         if (b_buf[0] == NAK) write_res = WRITE_ERR;
         if (b_buf[0] == ACK) write_res = WRITE_OK;
       }
 
-      // все ли сообщение передано
+      // п╡я│п╣ п╩п╦ я│п╬п╬п╠я┴п╣п╫п╦п╣ п©п╣я─п╣п╢п╟п╫п╬
       if (write_res == WRITE_OK && bcnt != len + 3) write_res = WRITE_ERR;
     }
     return write_res;
@@ -679,7 +679,7 @@ public class FrDrv implements FrConst
 
   // **********************************************************************************
   /**
-   * Открыть сеанс (пока ничего не делает)
+   * п·я┌п╨я─я▀я┌я▄ я│п╣п╟п╫я│ (п©п╬п╨п╟ п╫п╦я┤п╣пЁп╬ п╫п╣ п╢п╣п╩п╟п╣я┌)
    * @throws IOException
    */
   public void open() throws IOException
@@ -687,7 +687,7 @@ public class FrDrv implements FrConst
 
   }
   /**
-   * закрыть сеанс (порт)
+   * п╥п╟п╨я─я▀я┌я▄ я│п╣п╟п╫я│ (п©п╬я─я┌)
    * @throws IOException
    */
   public void close() throws IOException
@@ -698,9 +698,9 @@ public class FrDrv implements FrConst
   //************************************************************************************
   // DEBUG output functions
   /**
-   * Печать сообщения
-   * @param cmd  - код команды
-   * @param args - параметры
+   * п÷п╣я┤п╟я┌я▄ я│п╬п╬п╠я┴п╣п╫п╦я▐
+   * @param cmd  - п╨п╬п╢ п╨п╬п╪п╟п╫п╢я▀
+   * @param args - п©п╟я─п╟п╪п╣я┌я─я▀
    */
 
   private void printTimeoutErr()
@@ -709,8 +709,8 @@ public class FrDrv implements FrConst
   }
   /**
    *
-   * @param cmd  - код команды
-   * @param args - параметры
+   * @param cmd  - п╨п╬п╢ п╨п╬п╪п╟п╫п╢я▀
+   * @param args - п©п╟я─п╟п╪п╣я┌я─я▀
    */
   private void printSendData(byte cmd, byte[] args)
   {
@@ -718,9 +718,9 @@ public class FrDrv implements FrConst
       "   arg = " + (args == null ? "null" : Hex.byteArrayToHexString(args)) );
   }
   /**
-   * вывод прочитанного сообщения ФР
-   * @param cmd  - код команды
-   * @param args - аргументы
+   * п╡я▀п╡п╬п╢ п©я─п╬я┤п╦я┌п╟п╫п╫п╬пЁп╬ я│п╬п╬п╠я┴п╣п╫п╦я▐ п╓п═
+   * @param cmd  - п╨п╬п╢ п╨п╬п╪п╟п╫п╢я▀
+   * @param args - п╟я─пЁя┐п╪п╣п╫я┌я▀
    */
   private void printReadData(byte cmd, byte[] args)
   {
@@ -734,11 +734,11 @@ public class FrDrv implements FrConst
     log.debug("***<<< " + Hex.byteArrayToHexString(c_buf, 0, len + 3) );
   }
 
-  // печать прием/передачи служебного байта
+  // п©п╣я┤п╟я┌я▄ п©я─п╦п╣п╪/п©п╣я─п╣п╢п╟я┤п╦ я│п╩я┐п╤п╣п╠п╫п╬пЁп╬ п╠п╟п╧я┌п╟
   /**
-   * Вывод данных - спец. байт протокола
-   * @param b        - байт
-   * @param was_read - прочита (true), записан - false
+   * п▓я▀п╡п╬п╢ п╢п╟п╫п╫я▀я┘ - я│п©п╣я├. п╠п╟п╧я┌ п©я─п╬я┌п╬п╨п╬п╩п╟
+   * @param b        - п╠п╟п╧я┌
+   * @param was_read - п©я─п╬я┤п╦я┌п╟ (true), п╥п╟п©п╦я│п╟п╫ - false
    */
   private void printSpecByte(byte b, boolean was_read)
   {
@@ -746,9 +746,9 @@ public class FrDrv implements FrConst
   }
 
   /**
-   * Строковое представление служебного байта протокола
-   * @param b - байт
-   * @return  - символьное представление
+   * п║я┌я─п╬п╨п╬п╡п╬п╣ п©я─п╣п╢я│я┌п╟п╡п╩п╣п╫п╦п╣ я│п╩я┐п╤п╣п╠п╫п╬пЁп╬ п╠п╟п╧я┌п╟ п©я─п╬я┌п╬п╨п╬п╩п╟
+   * @param b - п╠п╟п╧я┌
+   * @return  - я│п╦п╪п╡п╬п╩я▄п╫п╬п╣ п©я─п╣п╢я│я┌п╟п╡п╩п╣п╫п╦п╣
    */
   private String getSpecByteStr(byte b)
   {
@@ -766,10 +766,10 @@ public class FrDrv implements FrConst
 
 
   /**
-   * Добавить байт данных в буффер
-   * @param buf  - буффер
-   * @param val  - байт
-   * @param offs - смещение в буффере
+   * п■п╬п╠п╟п╡п╦я┌я▄ п╠п╟п╧я┌ п╢п╟п╫п╫я▀я┘ п╡ п╠я┐я└я└п╣я─
+   * @param buf  - п╠я┐я└я└п╣я─
+   * @param val  - п╠п╟п╧я┌
+   * @param offs - я│п╪п╣я┴п╣п╫п╦п╣ п╡ п╠я┐я└я└п╣я─п╣
    */
   private void byteToBuf(byte[] buf, byte val, int offs)
   {
@@ -778,11 +778,11 @@ public class FrDrv implements FrConst
   }
 
   /**
-   * Добавить байты целого числа в буффер
-   * @param buf  - буффер
-   * @param val  - число (int)
-   * @param nb   - число байт (начиная с младшего)
-   * @param offs - смещение в буффере
+   * п■п╬п╠п╟п╡п╦я┌я▄ п╠п╟п╧я┌я▀ я├п╣п╩п╬пЁп╬ я┤п╦я│п╩п╟ п╡ п╠я┐я└я└п╣я─
+   * @param buf  - п╠я┐я└я└п╣я─
+   * @param val  - я┤п╦я│п╩п╬ (int)
+   * @param nb   - я┤п╦я│п╩п╬ п╠п╟п╧я┌ (п╫п╟я┤п╦п╫п╟я▐ я│ п╪п╩п╟п╢я┬п╣пЁп╬)
+   * @param offs - я│п╪п╣я┴п╣п╫п╦п╣ п╡ п╠я┐я└я└п╣я─п╣
    */
   private void intToBuf(byte[] buf, int val, int nb, int offs)
   {
@@ -790,11 +790,11 @@ public class FrDrv implements FrConst
   }
 
   /**
-   * Добавить байты целого числа в буффер
-   * @param buf  - буффер
-   * @param val  - число (long)
-   * @param nb   - число байт (начиная с младшего)
-   * @param offs - смещение в буффере
+   * п■п╬п╠п╟п╡п╦я┌я▄ п╠п╟п╧я┌я▀ я├п╣п╩п╬пЁп╬ я┤п╦я│п╩п╟ п╡ п╠я┐я└я└п╣я─
+   * @param buf  - п╠я┐я└я└п╣я─
+   * @param val  - я┤п╦я│п╩п╬ (long)
+   * @param nb   - я┤п╦я│п╩п╬ п╠п╟п╧я┌ (п╫п╟я┤п╦п╫п╟я▐ я│ п╪п╩п╟п╢я┬п╣пЁп╬)
+   * @param offs - я│п╪п╣я┴п╣п╫п╦п╣ п╡ п╠я┐я└я└п╣я─п╣
    */
   private void longToBuf(byte[] buf, long val, int nb, int offs)
   {
@@ -803,10 +803,10 @@ public class FrDrv implements FrConst
 
   /**
    *
-   * @param buf     - буффер
-   * @param val     - строка
-   * @param max_len - ограничение длины (будет скопировано не более max_len байт)
-   * @param offs    - смещение в буффере
+   * @param buf     - п╠я┐я└я└п╣я─
+   * @param val     - я│я┌я─п╬п╨п╟
+   * @param max_len - п╬пЁя─п╟п╫п╦я┤п╣п╫п╦п╣ п╢п╩п╦п╫я▀ (п╠я┐п╢п╣я┌ я│п╨п╬п©п╦я─п╬п╡п╟п╫п╬ п╫п╣ п╠п╬п╩п╣п╣ max_len п╠п╟п╧я┌)
+   * @param offs    - я│п╪п╣я┴п╣п╫п╦п╣ п╡ п╠я┐я└я└п╣я─п╣
    * @throws FrException with incapsulate UnsupportedEncodingException
    */
   private void strToBuf(byte[] buf, String val, int max_len, int offs) throws FrException
@@ -815,10 +815,10 @@ public class FrDrv implements FrConst
   }
 
   /**
-   * Выполнить команду для ФР (со сборкой буффера данных)
-   * @param cmd  - команда
-   * @param args - аргументы
-   * @return     - результат операции
+   * п▓я▀п©п╬п╩п╫п╦я┌я▄ п╨п╬п╪п╟п╫п╢я┐ п╢п╩я▐ п╓п═ (я│п╬ я│п╠п╬я─п╨п╬п╧ п╠я┐я└я└п╣я─п╟ п╢п╟п╫п╫я▀я┘)
+   * @param cmd  - п╨п╬п╪п╟п╫п╢п╟
+   * @param args - п╟я─пЁя┐п╪п╣п╫я┌я▀
+   * @return     - я─п╣п╥я┐п╩я▄я┌п╟я┌ п╬п©п╣я─п╟я├п╦п╦
    * @throws IOException
    */
   private int execCmd(byte cmd, byte[] args) throws FrException
@@ -826,7 +826,7 @@ public class FrDrv implements FrConst
     scmd = cmd;
     spar = args;
 
-    // сброс результатов предыдущей команды
+    // я│п╠я─п╬я│ я─п╣п╥я┐п╩я▄я┌п╟я┌п╬п╡ п©я─п╣п╢я▀п╢я┐я┴п╣п╧ п╨п╬п╪п╟п╫п╢я▀
     rcmd = 0;
     rpar = null;
     err_code = 0;
@@ -840,15 +840,15 @@ public class FrDrv implements FrConst
       res = _execSession();
     } catch (IOException ex)
     {
-      FrException fex = new FrException("Ошибка в/в", FrErrors.ERR_IO_STREAM, 1);
+      FrException fex = new FrException("п·я┬п╦п╠п╨п╟ п╡/п╡", FrErrors.ERR_IO_STREAM, 1);
       fex.setNestedException(ex);
       throw fex;
     }
 
     switch (res) {  
-      case NO_LINK_READ : throw new FrException("Истек таймаут ожидания", FrErrors.ERR_TIMEOUT_READ, 1);
-      case FrErrors.ERR_READ_DATA : throw new FrException("Ошибка чтения данных", FrErrors.ERR_READ_DATA, 1);
-      case FrErrors.ERR_READ_CMDC : throw new FrException("Ошибка кода команды в ответе", FrErrors.ERR_READ_CMDC, 1);
+      case NO_LINK_READ : throw new FrException("п≤я│я┌п╣п╨ я┌п╟п╧п╪п╟я┐я┌ п╬п╤п╦п╢п╟п╫п╦я▐", FrErrors.ERR_TIMEOUT_READ, 1);
+      case FrErrors.ERR_READ_DATA : throw new FrException("п·я┬п╦п╠п╨п╟ я┤я┌п╣п╫п╦я▐ п╢п╟п╫п╫я▀я┘", FrErrors.ERR_READ_DATA, 1);
+      case FrErrors.ERR_READ_CMDC : throw new FrException("п·я┬п╦п╠п╨п╟ п╨п╬п╢п╟ п╨п╬п╪п╟п╫п╢я▀ п╡ п╬я┌п╡п╣я┌п╣", FrErrors.ERR_READ_CMDC, 1);
 
       case ERROR_REPLY : throw FrErrors.createFrException(err_code);
     }
@@ -857,11 +857,11 @@ public class FrDrv implements FrConst
   }
 
   /**
-   * Выполнить команду для ФР (со сборкой буффера данных), отдельно пароль оператора
-   * @param cmd  - команда
-   * @param pwd  - пароль оператора
-   * @param args - аргументы
-   * @return     - результат операции
+   * п▓я▀п©п╬п╩п╫п╦я┌я▄ п╨п╬п╪п╟п╫п╢я┐ п╢п╩я▐ п╓п═ (я│п╬ я│п╠п╬я─п╨п╬п╧ п╠я┐я└я└п╣я─п╟ п╢п╟п╫п╫я▀я┘), п╬я┌п╢п╣п╩я▄п╫п╬ п©п╟я─п╬п╩я▄ п╬п©п╣я─п╟я┌п╬я─п╟
+   * @param cmd  - п╨п╬п╪п╟п╫п╢п╟
+   * @param pwd  - п©п╟я─п╬п╩я▄ п╬п©п╣я─п╟я┌п╬я─п╟
+   * @param args - п╟я─пЁя┐п╪п╣п╫я┌я▀
+   * @return     - я─п╣п╥я┐п╩я▄я┌п╟я┌ п╬п©п╣я─п╟я├п╦п╦
    * @throws IOException
    */
   private int execCmd(byte cmd, long pwd, byte[] args) throws FrException
@@ -886,39 +886,39 @@ public class FrDrv implements FrConst
 
   /*
    * **************************************************************************
-   *                             Базовые команды
+   *                             п▒п╟п╥п╬п╡я▀п╣ п╨п╬п╪п╟п╫п╢я▀
    * **************************************************************************
-   * Здесь пока нет разбора параметров
-   * Также нужны дополнительный запросы для получения контрольных данных
-   * для кассовой программы
+   * п≈п╢п╣я│я▄ п©п╬п╨п╟ п╫п╣я┌ я─п╟п╥п╠п╬я─п╟ п©п╟я─п╟п╪п╣я┌я─п╬п╡
+   * п╒п╟п╨п╤п╣ п╫я┐п╤п╫я▀ п╢п╬п©п╬п╩п╫п╦я┌п╣п╩я▄п╫я▀п╧ п╥п╟п©я─п╬я│я▀ п╢п╩я▐ п©п╬п╩я┐я┤п╣п╫п╦я▐ п╨п╬п╫я┌я─п╬п╩я▄п╫я▀я┘ п╢п╟п╫п╫я▀я┘
+   * п╢п╩я▐ п╨п╟я│я│п╬п╡п╬п╧ п©я─п╬пЁя─п╟п╪п╪я▀
    */
 
-  // 10h - Короткий запрос состояния ФР
-  //  Команда:  10H. Длина сообщения: 5 байт. 
-  //  ? Пароль оператора (4 байта) 
-  //  Ответ:    10H. Длина сообщения: 16 байт. 
+  // 10h - п п╬я─п╬я┌п╨п╦п╧ п╥п╟п©я─п╬я│ я│п╬я│я┌п╬я▐п╫п╦я▐ п╓п═
+  //  п п╬п╪п╟п╫п╢п╟:  10H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 5 п╠п╟п╧я┌. 
+  //  ? п÷п╟я─п╬п╩я▄ п╬п©п╣я─п╟я┌п╬я─п╟ (4 п╠п╟п╧я┌п╟) 
+  //  п·я┌п╡п╣я┌:    10H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 16 п╠п╟п╧я┌. 
   public int shortStateRequest() throws FrException
   {
     return execCmd((byte)0x10, pwd_oper, null);
   }
 
-  // 11h - Запрос состояния ФР
-  //  Команда:  11H. Длина сообщения: 5 байт. 
-  //  ? Пароль оператора (4 байта) 
-  //  Ответ:    11H. Длина сообщения: 48 байт. 
+  // 11h - п≈п╟п©я─п╬я│ я│п╬я│я┌п╬я▐п╫п╦я▐ п╓п═
+  //  п п╬п╪п╟п╫п╢п╟:  11H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 5 п╠п╟п╧я┌. 
+  //  ? п÷п╟я─п╬п╩я▄ п╬п©п╣я─п╟я┌п╬я─п╟ (4 п╠п╟п╧я┌п╟) 
+  //  п·я┌п╡п╣я┌:    11H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 48 п╠п╟п╧я┌. 
   public int stateRequest() throws FrException
   {
     return execCmd((byte)0x11, pwd_oper, null);
   }
 
-  //Печать жирной строки
-  //   Команда:     12H. Длина сообщения: 26 байт.
-  //        ? Пароль оператора (4 байта)
-  //        ? Флаги (1 байт) Бит 0 ? контрольная лента, Бит 1 ? чековая лента.
-  //        ? Печатаемые символы (20 байт)
-  //   Ответ:       12H. Длина сообщения: 3 байта.
-  //        ? Код ошибки (1 байт)
-  //        ? Порядковый номер оператора (1 байт) 1...30
+  //п÷п╣я┤п╟я┌я▄ п╤п╦я─п╫п╬п╧ я│я┌я─п╬п╨п╦
+  //   п п╬п╪п╟п╫п╢п╟:     12H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 26 п╠п╟п╧я┌.
+  //        ? п÷п╟я─п╬п╩я▄ п╬п©п╣я─п╟я┌п╬я─п╟ (4 п╠п╟п╧я┌п╟)
+  //        ? п╓п╩п╟пЁп╦ (1 п╠п╟п╧я┌) п▒п╦я┌ 0 ? п╨п╬п╫я┌я─п╬п╩я▄п╫п╟я▐ п╩п╣п╫я┌п╟, п▒п╦я┌ 1 ? я┤п╣п╨п╬п╡п╟я▐ п╩п╣п╫я┌п╟.
+  //        ? п÷п╣я┤п╟я┌п╟п╣п╪я▀п╣ я│п╦п╪п╡п╬п╩я▀ (20 п╠п╟п╧я┌)
+  //   п·я┌п╡п╣я┌:       12H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 3 п╠п╟п╧я┌п╟.
+  //        ? п п╬п╢ п╬я┬п╦п╠п╨п╦ (1 п╠п╟п╧я┌)
+  //        ? п÷п╬я─я▐п╢п╨п╬п╡я▀п╧ п╫п╬п╪п╣я─ п╬п©п╣я─п╟я┌п╬я─п╟ (1 п╠п╟п╧я┌) 1...30
 
   public int printBoldString(String s, boolean kt, boolean ct) throws FrException
   {
@@ -933,12 +933,12 @@ public class FrDrv implements FrConst
   }
   
   /**
-   * 13H - Гудок
-   *  Команда:  13H. Длина сообщения: 5 байт.
-   *  ? Пароль оператора (4 байта)
-   *  Ответ:    13H. Длина сообщения: 3 байта.
-   *  ? Код ошибки (1 байт)
-   *  ? Порядковый номер оператора (1 байт) 1?30
+   * 13H - п⌠я┐п╢п╬п╨
+   *  п п╬п╪п╟п╫п╢п╟:  13H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 5 п╠п╟п╧я┌.
+   *  ? п÷п╟я─п╬п╩я▄ п╬п©п╣я─п╟я┌п╬я─п╟ (4 п╠п╟п╧я┌п╟)
+   *  п·я┌п╡п╣я┌:    13H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 3 п╠п╟п╧я┌п╟.
+   *  ? п п╬п╢ п╬я┬п╦п╠п╨п╦ (1 п╠п╟п╧я┌)
+   *  ? п÷п╬я─я▐п╢п╨п╬п╡я▀п╧ п╫п╬п╪п╣я─ п╬п©п╣я─п╟я┌п╬я─п╟ (1 п╠п╟п╧я┌) 1?30
    *
    * @return
    * @throws IOException
@@ -950,16 +950,16 @@ public class FrDrv implements FrConst
 
    /**
     *
-    * 14H - Установка параметров обмена
-    *    Команда:  14H. Длина сообщения: 8 байт.
-    *    ? Пароль системного администратора (4 байта)
+    * 14H - пёя│я┌п╟п╫п╬п╡п╨п╟ п©п╟я─п╟п╪п╣я┌я─п╬п╡ п╬п╠п╪п╣п╫п╟
+    *    п п╬п╪п╟п╫п╢п╟:  14H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 8 п╠п╟п╧я┌.
+    *    ? п÷п╟я─п╬п╩я▄ я│п╦я│я┌п╣п╪п╫п╬пЁп╬ п╟п╢п╪п╦п╫п╦я│я┌я─п╟я┌п╬я─п╟ (4 п╠п╟п╧я┌п╟)
     *      15
-    *      Спецификация
-    *    ? Номер порта (1 байт) 0?255
-    *    ? Код скорости обмена (1 байт) 0?6
-    *   ? Тайм аут приема байта (1 байт) 0?255
-    *  Ответ:    14H. Длина сообщения: 2 байта.
-    *  ? Код ошибки (1 байт)
+    *      п║п©п╣я├п╦я└п╦п╨п╟я├п╦я▐
+    *    ? п²п╬п╪п╣я─ п©п╬я─я┌п╟ (1 п╠п╟п╧я┌) 0?255
+    *    ? п п╬п╢ я│п╨п╬я─п╬я│я┌п╦ п╬п╠п╪п╣п╫п╟ (1 п╠п╟п╧я┌) 0?6
+    *   ? п╒п╟п╧п╪ п╟я┐я┌ п©я─п╦п╣п╪п╟ п╠п╟п╧я┌п╟ (1 п╠п╟п╧я┌) 0?255
+    *  п·я┌п╡п╣я┌:    14H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 2 п╠п╟п╧я┌п╟.
+    *  ? п п╬п╢ п╬я┬п╦п╠п╨п╦ (1 п╠п╟п╧я┌)
     * @param spd_code
     * @param byte_timeout
     * @return
@@ -971,28 +971,28 @@ public class FrDrv implements FrConst
     return execCmd((byte)0x14, pwd_oper, new byte[] {port, spd_code, byte_timeout});
   }
 
-  // 15H - Чтение параметров отбмена
-//    Команда:  15H. Длина сообщения: 6 байт. 
-//    ? Пароль системного администратора (4 байта) 
-//    ? Номер порта (1 байт) 0?255 
-//    Ответ:    15H. Длина сообщения: 4 байта. 
-//    ? Код ошибки (1 байт) 
-//    ? Код скорости обмена (1 байт) 0?6 
-//    ? Тайм аут приема байта (1 байт) 0?255   
+  // 15H - п╖я┌п╣п╫п╦п╣ п©п╟я─п╟п╪п╣я┌я─п╬п╡ п╬я┌п╠п╪п╣п╫п╟
+//    п п╬п╪п╟п╫п╢п╟:  15H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 6 п╠п╟п╧я┌. 
+//    ? п÷п╟я─п╬п╩я▄ я│п╦я│я┌п╣п╪п╫п╬пЁп╬ п╟п╢п╪п╦п╫п╦я│я┌я─п╟я┌п╬я─п╟ (4 п╠п╟п╧я┌п╟) 
+//    ? п²п╬п╪п╣я─ п©п╬я─я┌п╟ (1 п╠п╟п╧я┌) 0?255 
+//    п·я┌п╡п╣я┌:    15H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 4 п╠п╟п╧я┌п╟. 
+//    ? п п╬п╢ п╬я┬п╦п╠п╨п╦ (1 п╠п╟п╧я┌) 
+//    ? п п╬п╢ я│п╨п╬я─п╬я│я┌п╦ п╬п╠п╪п╣п╫п╟ (1 п╠п╟п╧я┌) 0?6 
+//    ? п╒п╟п╧п╪ п╟я┐я┌ п©я─п╦п╣п╪п╟ п╠п╟п╧я┌п╟ (1 п╠п╟п╧я┌) 0?255   
   public int getLinkParams() throws FrException
   {
     byte port = 0;
     return execCmd((byte)0x15, pwd_oper, new byte[] {port});
   }
 
-//    Печать строки 
-//    Команда:  17H. Длина сообщения: 46 байт. 
-//    ? Пароль оператора (4 байта) 
-//    ? Флаги (1 байт) Бит 0 ? контрольная лента, Бит 1 ? чековая лента. 
-//    ? Печатаемые символы (40 байт) 
-//    Ответ:    17H. Длина сообщения: 3 байта. 
-//    ? Код ошибки (1 байт) 
-//    ? Порядковый номер оператора (1 байт) 1?30 
+//    п÷п╣я┤п╟я┌я▄ я│я┌я─п╬п╨п╦ 
+//    п п╬п╪п╟п╫п╢п╟:  17H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 46 п╠п╟п╧я┌. 
+//    ? п÷п╟я─п╬п╩я▄ п╬п©п╣я─п╟я┌п╬я─п╟ (4 п╠п╟п╧я┌п╟) 
+//    ? п╓п╩п╟пЁп╦ (1 п╠п╟п╧я┌) п▒п╦я┌ 0 ? п╨п╬п╫я┌я─п╬п╩я▄п╫п╟я▐ п╩п╣п╫я┌п╟, п▒п╦я┌ 1 ? я┤п╣п╨п╬п╡п╟я▐ п╩п╣п╫я┌п╟. 
+//    ? п÷п╣я┤п╟я┌п╟п╣п╪я▀п╣ я│п╦п╪п╡п╬п╩я▀ (40 п╠п╟п╧я┌) 
+//    п·я┌п╡п╣я┌:    17H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 3 п╠п╟п╧я┌п╟. 
+//    ? п п╬п╢ п╬я┬п╦п╠п╨п╦ (1 п╠п╟п╧я┌) 
+//    ? п÷п╬я─я▐п╢п╨п╬п╡я▀п╧ п╫п╬п╪п╣я─ п╬п©п╣я─п╟я┌п╬я─п╟ (1 п╠п╟п╧я┌) 1?30 
   public int printString(String s, boolean kt, boolean ct) throws FrException
   {
     byte[] par = new byte[45];
@@ -1007,15 +1007,15 @@ public class FrDrv implements FrConst
   }
 
 
-  //Печать заголовка документа
-  //   Команда:    18H. Длина сообщения: 37 байт.
-  //        ? Пароль оператора (4 байта)
-  //        ? Наименование документа (30 байт)
-  //        ? Номер документа (2 байта)
-  //   Ответ:      18H. Длина сообщения: 5 байт.
-  //        ? Код ошибки (1 байт)
-  //        ? Порядковый номер оператора (1 байт) 1...30
-  //        ? Сквозной номер документа (2 байта)
+  //п÷п╣я┤п╟я┌я▄ п╥п╟пЁп╬п╩п╬п╡п╨п╟ п╢п╬п╨я┐п╪п╣п╫я┌п╟
+  //   п п╬п╪п╟п╫п╢п╟:    18H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 37 п╠п╟п╧я┌.
+  //        ? п÷п╟я─п╬п╩я▄ п╬п©п╣я─п╟я┌п╬я─п╟ (4 п╠п╟п╧я┌п╟)
+  //        ? п²п╟п╦п╪п╣п╫п╬п╡п╟п╫п╦п╣ п╢п╬п╨я┐п╪п╣п╫я┌п╟ (30 п╠п╟п╧я┌)
+  //        ? п²п╬п╪п╣я─ п╢п╬п╨я┐п╪п╣п╫я┌п╟ (2 п╠п╟п╧я┌п╟)
+  //   п·я┌п╡п╣я┌:      18H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 5 п╠п╟п╧я┌.
+  //        ? п п╬п╢ п╬я┬п╦п╠п╨п╦ (1 п╠п╟п╧я┌)
+  //        ? п÷п╬я─я▐п╢п╨п╬п╡я▀п╧ п╫п╬п╪п╣я─ п╬п©п╣я─п╟я┌п╬я─п╟ (1 п╠п╟п╧я┌) 1...30
+  //        ? п║п╨п╡п╬п╥п╫п╬п╧ п╫п╬п╪п╣я─ п╢п╬п╨я┐п╪п╣п╫я┌п╟ (2 п╠п╟п╧я┌п╟)
 
   public int printDocHeader(String s, int doc_num) throws FrException
   {
@@ -1026,14 +1026,14 @@ public class FrDrv implements FrConst
     return execCmd((byte)0x18, par);
   }
   
-//    Запрос денежного регистра 
-//    Команда: 1AH. Длина сообщения: 6 байт.  
-//    ? Пароль оператора (4 байта) 
-//    ? Номер регистра (1 байт) 0? 255 
-//    Ответ:   1AH. Длина сообщения: 9 байт. 
-//    ? Код ошибки (1 байт) 
-//    ? Порядковый номер оператора (1 байт) 1?30 
-//    ? Содержимое регистра (6 байт) 
+//    п≈п╟п©я─п╬я│ п╢п╣п╫п╣п╤п╫п╬пЁп╬ я─п╣пЁп╦я│я┌я─п╟ 
+//    п п╬п╪п╟п╫п╢п╟: 1AH. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 6 п╠п╟п╧я┌.  
+//    ? п÷п╟я─п╬п╩я▄ п╬п©п╣я─п╟я┌п╬я─п╟ (4 п╠п╟п╧я┌п╟) 
+//    ? п²п╬п╪п╣я─ я─п╣пЁп╦я│я┌я─п╟ (1 п╠п╟п╧я┌) 0? 255 
+//    п·я┌п╡п╣я┌:   1AH. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 9 п╠п╟п╧я┌. 
+//    ? п п╬п╢ п╬я┬п╦п╠п╨п╦ (1 п╠п╟п╧я┌) 
+//    ? п÷п╬я─я▐п╢п╨п╬п╡я▀п╧ п╫п╬п╪п╣я─ п╬п©п╣я─п╟я┌п╬я─п╟ (1 п╠п╟п╧я┌) 1?30 
+//    ? п║п╬п╢п╣я─п╤п╦п╪п╬п╣ я─п╣пЁп╦я│я┌я─п╟ (6 п╠п╟п╧я┌) 
   public int getMoneyReg(byte reg_num) throws FrException
   {
     return execCmd((byte)0x1A, pwd_oper, new byte[] {reg_num});
@@ -1041,28 +1041,28 @@ public class FrDrv implements FrConst
 
   
 
-//    Запрос операционного регистра 
-//    Команда: 1BH. Длина сообщения: 6 байт.  
-//    ? Пароль оператора (4 байта) 
-//    ? Номер регистра (1 байт) 0? 255 
-//    Ответ:   1BH. Длина сообщения: 5 байт. 
-//    ? Код ошибки (1 байт) 
-//    ? Порядковый номер оператора (1 байт) 1?30 
-//    ? Содержимое регистра (2 байта)   
+//    п≈п╟п©я─п╬я│ п╬п©п╣я─п╟я├п╦п╬п╫п╫п╬пЁп╬ я─п╣пЁп╦я│я┌я─п╟ 
+//    п п╬п╪п╟п╫п╢п╟: 1BH. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 6 п╠п╟п╧я┌.  
+//    ? п÷п╟я─п╬п╩я▄ п╬п©п╣я─п╟я┌п╬я─п╟ (4 п╠п╟п╧я┌п╟) 
+//    ? п²п╬п╪п╣я─ я─п╣пЁп╦я│я┌я─п╟ (1 п╠п╟п╧я┌) 0? 255 
+//    п·я┌п╡п╣я┌:   1BH. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 5 п╠п╟п╧я┌. 
+//    ? п п╬п╢ п╬я┬п╦п╠п╨п╦ (1 п╠п╟п╧я┌) 
+//    ? п÷п╬я─я▐п╢п╨п╬п╡я▀п╧ п╫п╬п╪п╣я─ п╬п©п╣я─п╟я┌п╬я─п╟ (1 п╠п╟п╧я┌) 1?30 
+//    ? п║п╬п╢п╣я─п╤п╦п╪п╬п╣ я─п╣пЁп╦я│я┌я─п╟ (2 п╠п╟п╧я┌п╟)   
   public int getOperReg(byte reg_num) throws FrException
   {
     return execCmd((byte)0x1B, pwd_oper, new byte[] {reg_num});
   }
 
-  // 1Eh - Запись таблицы
-//    Команда:  1EH. Длина сообщения: (9+X) байт. 
-//    ? Пароль системного администратора (4 байта) 
-//    ? Таблица (1 байт) 
-//    ? Ряд (2 байта) 
-//    ? Поле (1 байт) 
-//    ? Значение (X байт) до 40 байт 
-//    Ответ:    1EH. Длина сообщения: 2 байта. 
-//    ? Код ошибки (1 байт)   
+  // 1Eh - п≈п╟п©п╦я│я▄ я┌п╟п╠п╩п╦я├я▀
+//    п п╬п╪п╟п╫п╢п╟:  1EH. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: (9+X) п╠п╟п╧я┌. 
+//    ? п÷п╟я─п╬п╩я▄ я│п╦я│я┌п╣п╪п╫п╬пЁп╬ п╟п╢п╪п╦п╫п╦я│я┌я─п╟я┌п╬я─п╟ (4 п╠п╟п╧я┌п╟) 
+//    ? п╒п╟п╠п╩п╦я├п╟ (1 п╠п╟п╧я┌) 
+//    ? п═я▐п╢ (2 п╠п╟п╧я┌п╟) 
+//    ? п÷п╬п╩п╣ (1 п╠п╟п╧я┌) 
+//    ? п≈п╫п╟я┤п╣п╫п╦п╣ (X п╠п╟п╧я┌) п╢п╬ 40 п╠п╟п╧я┌ 
+//    п·я┌п╡п╣я┌:    1EH. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 2 п╠п╟п╧я┌п╟. 
+//    ? п п╬п╢ п╬я┬п╦п╠п╨п╦ (1 п╠п╟п╧я┌)   
 
   // CHANGED 20.12.07  
   // CHANGED 23.12.07 Object data (String or Integer)
@@ -1081,15 +1081,15 @@ public class FrDrv implements FrConst
     
   }
 
-  // 1Fh - Чтение таблицы
-//    Команда:  1FH. Длина сообщения: 9 байт. 
-//    ? Пароль системного администратора (4 байта) 
-//    ? Таблица (1 байт) 
-//    ? Ряд (2 байта) 
-//    ? Поле (1 байт) 
-//    Ответ:    1FH. Длина сообщения: (2+X) байт. 
-//    ? Код ошибки (1 байт) 
-//    ? Значение (X байт) до 40 байт   
+  // 1Fh - п╖я┌п╣п╫п╦п╣ я┌п╟п╠п╩п╦я├я▀
+//    п п╬п╪п╟п╫п╢п╟:  1FH. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 9 п╠п╟п╧я┌. 
+//    ? п÷п╟я─п╬п╩я▄ я│п╦я│я┌п╣п╪п╫п╬пЁп╬ п╟п╢п╪п╦п╫п╦я│я┌я─п╟я┌п╬я─п╟ (4 п╠п╟п╧я┌п╟) 
+//    ? п╒п╟п╠п╩п╦я├п╟ (1 п╠п╟п╧я┌) 
+//    ? п═я▐п╢ (2 п╠п╟п╧я┌п╟) 
+//    ? п÷п╬п╩п╣ (1 п╠п╟п╧я┌) 
+//    п·я┌п╡п╣я┌:    1FH. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: (2+X) п╠п╟п╧я┌. 
+//    ? п п╬п╢ п╬я┬п╦п╠п╨п╦ (1 п╠п╟п╧я┌) 
+//    ? п≈п╫п╟я┤п╣п╫п╦п╣ (X п╠п╟п╧я┌) п╢п╬ 40 п╠п╟п╧я┌   
   public int getTabData(byte tab_num, int row_num, int field_num) throws FrException
   {
     byte[] par = new byte[8];
@@ -1100,7 +1100,7 @@ public class FrDrv implements FrConst
     return execCmd((byte)0x1F, par);
   }
 
-    // дополнительно (дата / время)
+    // п╢п╬п©п╬п╩п╫п╦я┌п╣п╩я▄п╫п╬ (п╢п╟я┌п╟ / п╡я─п╣п╪я▐)
     public int perfDataTimeCmd(byte cmd, byte b1, byte b2, byte b3) throws FrException
     {
       byte[] par = new byte[7];
@@ -1110,12 +1110,12 @@ public class FrDrv implements FrConst
       byteToBuf(par, b3, 6);
       return execCmd(cmd, par);
     }
-  // 21H - Программирование времени
-//    Команда:  21H. Длина сообщения: 8 байт. 
-//    ? Пароль системного администратора (4 байта) 
-//    ? Время (3 байта) ЧЧ-ММ-СС 
-//    Ответ:    21H. Длина сообщения: 2 байта. 
-//    ? Код ошибки (1 байт)   
+  // 21H - п÷я─п╬пЁя─п╟п╪п╪п╦я─п╬п╡п╟п╫п╦п╣ п╡я─п╣п╪п╣п╫п╦
+//    п п╬п╪п╟п╫п╢п╟:  21H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 8 п╠п╟п╧я┌. 
+//    ? п÷п╟я─п╬п╩я▄ я│п╦я│я┌п╣п╪п╫п╬пЁп╬ п╟п╢п╪п╦п╫п╦я│я┌я─п╟я┌п╬я─п╟ (4 п╠п╟п╧я┌п╟) 
+//    ? п▓я─п╣п╪я▐ (3 п╠п╟п╧я┌п╟) п╖п╖-п°п°-п║п║ 
+//    п·я┌п╡п╣я┌:    21H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 2 п╠п╟п╧я┌п╟. 
+//    ? п п╬п╢ п╬я┬п╦п╠п╨п╦ (1 п╠п╟п╧я┌)   
   public int setTime(byte hh, byte mm, byte ss) throws FrException
   {
     return perfDataTimeCmd((byte)0x21, hh, mm, ss);
@@ -1126,12 +1126,12 @@ public class FrDrv implements FrConst
   }
   
 
-  // 22H - Программирование даты
-//    Команда:  22H. Длина сообщения: 8 байт. 
-//    ? Пароль системного администратора (4 байта) 
-//    ? Дата (3 байта) ДД-ММ-ГГ 
-//    Ответ:    22H. Длина сообщения: 2 байта. 
-//    ? Код ошибки (1 байт) 
+  // 22H - п÷я─п╬пЁя─п╟п╪п╪п╦я─п╬п╡п╟п╫п╦п╣ п╢п╟я┌я▀
+//    п п╬п╪п╟п╫п╢п╟:  22H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 8 п╠п╟п╧я┌. 
+//    ? п÷п╟я─п╬п╩я▄ я│п╦я│я┌п╣п╪п╫п╬пЁп╬ п╟п╢п╪п╦п╫п╦я│я┌я─п╟я┌п╬я─п╟ (4 п╠п╟п╧я┌п╟) 
+//    ? п■п╟я┌п╟ (3 п╠п╟п╧я┌п╟) п■п■-п°п°-п⌠п⌠ 
+//    п·я┌п╡п╣я┌:    22H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 2 п╠п╟п╧я┌п╟. 
+//    ? п п╬п╢ п╬я┬п╦п╠п╨п╦ (1 п╠п╟п╧я┌) 
   public int setDate(byte dd, byte mm, byte yy) throws FrException
   {
     return perfDataTimeCmd((byte)0x22, dd, mm, yy);
@@ -1143,12 +1143,12 @@ public class FrDrv implements FrConst
 
   
 
-  // 23H - Подтверждение программирования даты
-//    Команда:  23H. Длина сообщения: 8 байт. 
-//    ? Пароль системного администратора (4 байта) 
-//    ? Дата (3 байта) ДД-ММ-ГГ 
-//    Ответ:    23H. Длина сообщения: 2 байта. 
-//    ? Код ошибки (1 байт) 
+  // 23H - п÷п╬п╢я┌п╡п╣я─п╤п╢п╣п╫п╦п╣ п©я─п╬пЁя─п╟п╪п╪п╦я─п╬п╡п╟п╫п╦я▐ п╢п╟я┌я▀
+//    п п╬п╪п╟п╫п╢п╟:  23H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 8 п╠п╟п╧я┌. 
+//    ? п÷п╟я─п╬п╩я▄ я│п╦я│я┌п╣п╪п╫п╬пЁп╬ п╟п╢п╪п╦п╫п╦я│я┌я─п╟я┌п╬я─п╟ (4 п╠п╟п╧я┌п╟) 
+//    ? п■п╟я┌п╟ (3 п╠п╟п╧я┌п╟) п■п■-п°п°-п⌠п⌠ 
+//    п·я┌п╡п╣я┌:    23H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 2 п╠п╟п╧я┌п╟. 
+//    ? п п╬п╢ п╬я┬п╦п╠п╨п╦ (1 п╠п╟п╧я┌) 
   public int confirmDate(byte dd, byte mm, byte yy) throws FrException
   {
     return perfDataTimeCmd((byte)0x23, dd, mm, yy);
@@ -1159,13 +1159,13 @@ public class FrDrv implements FrConst
   }
 
 
-  //Отрезка чека
-  //   Команда:     25H. Длина сообщения: 6 байт.
-  //        ? Пароль оператора (4 байта)
-  //        ? Тип отрезки (1 байт) ?0? ? полная, ?1? ? неполная
-  //   Ответ:       25H. Длина сообщения: 3 байта.
-  //        ? Код ошибки (1 байт)
-  //        ? Порядковый номер оператора (1 байт) 1...30
+  //п·я┌я─п╣п╥п╨п╟ я┤п╣п╨п╟
+  //   п п╬п╪п╟п╫п╢п╟:     25H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 6 п╠п╟п╧я┌.
+  //        ? п÷п╟я─п╬п╩я▄ п╬п©п╣я─п╟я┌п╬я─п╟ (4 п╠п╟п╧я┌п╟)
+  //        ? п╒п╦п© п╬я┌я─п╣п╥п╨п╦ (1 п╠п╟п╧я┌) ?0? ? п©п╬п╩п╫п╟я▐, ?1? ? п╫п╣п©п╬п╩п╫п╟я▐
+  //   п·я┌п╡п╣я┌:       25H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 3 п╠п╟п╧я┌п╟.
+  //        ? п п╬п╢ п╬я┬п╦п╠п╨п╦ (1 п╠п╟п╧я┌)
+  //        ? п÷п╬я─я▐п╢п╨п╬п╡я▀п╧ п╫п╬п╪п╣я─ п╬п©п╣я─п╟я┌п╬я─п╟ (1 п╠п╟п╧я┌) 1...30
   public int cutCheck(boolean full)  throws FrException
   {
     byte[] par = new byte[5];
@@ -1174,13 +1174,13 @@ public class FrDrv implements FrConst
     return execCmd((byte)0x25, par);
   }
 
-  // 28H - Открыть денежный ящик 
-//    Команда:  28H. Длина сообщения: 6 байт. 
-//    ? Пароль оператора (4 байта) 
-//    ? Номер денежного ящика (1 байт) 0?255 
-//    Ответ:    28H. Длина сообщения: 3 байта. 
-//    ? Код ошибки (1 байт) 
-//    ? Порядковый номер оператора (1 байт) 1?30 
+  // 28H - п·я┌п╨я─я▀я┌я▄ п╢п╣п╫п╣п╤п╫я▀п╧ я▐я┴п╦п╨ 
+//    п п╬п╪п╟п╫п╢п╟:  28H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 6 п╠п╟п╧я┌. 
+//    ? п÷п╟я─п╬п╩я▄ п╬п©п╣я─п╟я┌п╬я─п╟ (4 п╠п╟п╧я┌п╟) 
+//    ? п²п╬п╪п╣я─ п╢п╣п╫п╣п╤п╫п╬пЁп╬ я▐я┴п╦п╨п╟ (1 п╠п╟п╧я┌) 0?255 
+//    п·я┌п╡п╣я┌:    28H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 3 п╠п╟п╧я┌п╟. 
+//    ? п п╬п╢ п╬я┬п╦п╠п╨п╦ (1 п╠п╟п╧я┌) 
+//    ? п÷п╬я─я▐п╢п╨п╬п╡я▀п╧ п╫п╬п╪п╣я─ п╬п©п╣я─п╟я┌п╬я─п╟ (1 п╠п╟п╧я┌) 1?30 
   public int openMoneyBox(byte box_num) throws FrException
   {
     byte[] par = new byte[5];
@@ -1189,16 +1189,16 @@ public class FrDrv implements FrConst
     return execCmd((byte)0x28, par);
   }
 
-//  Протяжка
-//     Команда:     29H. Длина сообщения: 7 байт.
-//          ? Пароль оператора (4 байта)
-//          ? Флаги (1 байт) Бит 0 ? контрольная лента, Бит 1 ? чековая лента, Бит 2 ?
-//            подкладной документ.
-//          ? Количество строк (1 байт) 1...255 ? максимальное количество строк
-//            ограничивается размером буфера печати, но не превышает 255
-//     Ответ:       29H. Длина сообщения: 3 байта.
-//          ? Код ошибки (1 байт)
-//          ? Порядковый номер оператора (1 байт) 1...30
+//  п÷я─п╬я┌я▐п╤п╨п╟
+//     п п╬п╪п╟п╫п╢п╟:     29H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 7 п╠п╟п╧я┌.
+//          ? п÷п╟я─п╬п╩я▄ п╬п©п╣я─п╟я┌п╬я─п╟ (4 п╠п╟п╧я┌п╟)
+//          ? п╓п╩п╟пЁп╦ (1 п╠п╟п╧я┌) п▒п╦я┌ 0 ? п╨п╬п╫я┌я─п╬п╩я▄п╫п╟я▐ п╩п╣п╫я┌п╟, п▒п╦я┌ 1 ? я┤п╣п╨п╬п╡п╟я▐ п╩п╣п╫я┌п╟, п▒п╦я┌ 2 ?
+//            п©п╬п╢п╨п╩п╟п╢п╫п╬п╧ п╢п╬п╨я┐п╪п╣п╫я┌.
+//          ? п п╬п╩п╦я┤п╣я│я┌п╡п╬ я│я┌я─п╬п╨ (1 п╠п╟п╧я┌) 1...255 ? п╪п╟п╨я│п╦п╪п╟п╩я▄п╫п╬п╣ п╨п╬п╩п╦я┤п╣я│я┌п╡п╬ я│я┌я─п╬п╨
+//            п╬пЁя─п╟п╫п╦я┤п╦п╡п╟п╣я┌я│я▐ я─п╟п╥п╪п╣я─п╬п╪ п╠я┐я└п╣я─п╟ п©п╣я┤п╟я┌п╦, п╫п╬ п╫п╣ п©я─п╣п╡я▀я┬п╟п╣я┌ 255
+//     п·я┌п╡п╣я┌:       29H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 3 п╠п╟п╧я┌п╟.
+//          ? п п╬п╢ п╬я┬п╦п╠п╨п╦ (1 п╠п╟п╧я┌)
+//          ? п÷п╬я─я▐п╢п╨п╬п╡я▀п╧ п╫п╬п╪п╣я─ п╬п©п╣я─п╟я┌п╬я─п╟ (1 п╠п╟п╧я┌) 1...30
   public int transportTape(int num_rows, boolean c_t) throws FrException
   {
     byte[] par = new byte[6];
@@ -1211,80 +1211,80 @@ public class FrDrv implements FrConst
   }
 
 
-//    Прерывание тестового прогона 
-//    Команда: 2BH. Длина сообщения: 5 байт. 
-//    ? Пароль оператора (4 байта) 
-//    Ответ:   2BH. Длина сообщения: 3 байта. 
-//    ? Код ошибки (1 байт) 
-//    ? Порядковый номер оператора (1 байт) 1?30 
+//    п÷я─п╣я─я▀п╡п╟п╫п╦п╣ я┌п╣я│я┌п╬п╡п╬пЁп╬ п©я─п╬пЁп╬п╫п╟ 
+//    п п╬п╪п╟п╫п╢п╟: 2BH. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 5 п╠п╟п╧я┌. 
+//    ? п÷п╟я─п╬п╩я▄ п╬п©п╣я─п╟я┌п╬я─п╟ (4 п╠п╟п╧я┌п╟) 
+//    п·я┌п╡п╣я┌:   2BH. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 3 п╠п╟п╧я┌п╟. 
+//    ? п п╬п╢ п╬я┬п╦п╠п╨п╦ (1 п╠п╟п╧я┌) 
+//    ? п÷п╬я─я▐п╢п╨п╬п╡я▀п╧ п╫п╬п╪п╣я─ п╬п©п╣я─п╟я┌п╬я─п╟ (1 п╠п╟п╧я┌) 1?30 
   public int interruptTest() throws FrException
   {
     return execCmd((byte)0x2B, pwd_oper, null);
   }
 
-  // 2Dh - Запрос структуры таблицы
-//      Команда: 2DH. Длина сообщения: 6 байт. 
-//    ? Пароль системного администратора (4 байта) 
-//    ? Номер таблицы (1 байт) 
-//    Ответ:   2DH. Длина сообщения: 45 байт. 
-//    ? Код ошибки (1 байт) 
-//    ? Название таблицы (40 байт) 
-//    ? Количество рядов (2 байта) 
-//    ? Количество полей (1 байт) 
+  // 2Dh - п≈п╟п©я─п╬я│ я│я┌я─я┐п╨я┌я┐я─я▀ я┌п╟п╠п╩п╦я├я▀
+//      п п╬п╪п╟п╫п╢п╟: 2DH. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 6 п╠п╟п╧я┌. 
+//    ? п÷п╟я─п╬п╩я▄ я│п╦я│я┌п╣п╪п╫п╬пЁп╬ п╟п╢п╪п╦п╫п╦я│я┌я─п╟я┌п╬я─п╟ (4 п╠п╟п╧я┌п╟) 
+//    ? п²п╬п╪п╣я─ я┌п╟п╠п╩п╦я├я▀ (1 п╠п╟п╧я┌) 
+//    п·я┌п╡п╣я┌:   2DH. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 45 п╠п╟п╧я┌. 
+//    ? п п╬п╢ п╬я┬п╦п╠п╨п╦ (1 п╠п╟п╧я┌) 
+//    ? п²п╟п╥п╡п╟п╫п╦п╣ я┌п╟п╠п╩п╦я├я▀ (40 п╠п╟п╧я┌) 
+//    ? п п╬п╩п╦я┤п╣я│я┌п╡п╬ я─я▐п╢п╬п╡ (2 п╠п╟п╧я┌п╟) 
+//    ? п п╬п╩п╦я┤п╣я│я┌п╡п╬ п©п╬п╩п╣п╧ (1 п╠п╟п╧я┌) 
   public int getTabStructure(byte tab_num) throws FrException
   {
     return execCmd((byte)0x2D, pwd_oper, new byte[]{tab_num});
-    // TODO - разбор данных
+    // TODO - я─п╟п╥п╠п╬я─ п╢п╟п╫п╫я▀я┘
   }
 
-  // 2Eh - Запрос структуры поля
-//    Команда:  2EH. Длина сообщения: 7 байт. 
-//    ? Пароль системного администратора (4 байта) 
-//    ? Номер таблицы (1 байт) 
-//    ? Номер поля (1 байт) 
-//    Ответ:    2EH. Длина сообщения: (44+X+X) байт. 
-//    ? Код ошибки (1 байт) 
-//    ? Название поля (40 байт) 
-//    ? Тип поля (1 байт) ?0? ? BIN, ?1? ? CHAR 
-//    ? Количество байт ? X (1 байт) 
-//    ? Минимальное значение поля ? для полей типа BIN (X байт) 
-//    ? Максимальное значение поля ? для полей типа BIN (X байт)   
+  // 2Eh - п≈п╟п©я─п╬я│ я│я┌я─я┐п╨я┌я┐я─я▀ п©п╬п╩я▐
+//    п п╬п╪п╟п╫п╢п╟:  2EH. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 7 п╠п╟п╧я┌. 
+//    ? п÷п╟я─п╬п╩я▄ я│п╦я│я┌п╣п╪п╫п╬пЁп╬ п╟п╢п╪п╦п╫п╦я│я┌я─п╟я┌п╬я─п╟ (4 п╠п╟п╧я┌п╟) 
+//    ? п²п╬п╪п╣я─ я┌п╟п╠п╩п╦я├я▀ (1 п╠п╟п╧я┌) 
+//    ? п²п╬п╪п╣я─ п©п╬п╩я▐ (1 п╠п╟п╧я┌) 
+//    п·я┌п╡п╣я┌:    2EH. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: (44+X+X) п╠п╟п╧я┌. 
+//    ? п п╬п╢ п╬я┬п╦п╠п╨п╦ (1 п╠п╟п╧я┌) 
+//    ? п²п╟п╥п╡п╟п╫п╦п╣ п©п╬п╩я▐ (40 п╠п╟п╧я┌) 
+//    ? п╒п╦п© п©п╬п╩я▐ (1 п╠п╟п╧я┌) ?0? ? BIN, ?1? ? CHAR 
+//    ? п п╬п╩п╦я┤п╣я│я┌п╡п╬ п╠п╟п╧я┌ ? X (1 п╠п╟п╧я┌) 
+//    ? п°п╦п╫п╦п╪п╟п╩я▄п╫п╬п╣ п╥п╫п╟я┤п╣п╫п╦п╣ п©п╬п╩я▐ ? п╢п╩я▐ п©п╬п╩п╣п╧ я┌п╦п©п╟ BIN (X п╠п╟п╧я┌) 
+//    ? п°п╟п╨я│п╦п╪п╟п╩я▄п╫п╬п╣ п╥п╫п╟я┤п╣п╫п╦п╣ п©п╬п╩я▐ ? п╢п╩я▐ п©п╬п╩п╣п╧ я┌п╦п©п╟ BIN (X п╠п╟п╧я┌)   
   public int getFieldStructure(byte tab_num, byte field_num) throws FrException
   {
     return execCmd((byte)0x2E, pwd_oper, new byte[]{tab_num, field_num});
-    // TODO - разбор данных
+    // TODO - я─п╟п╥п╠п╬я─ п╢п╟п╫п╫я▀я┘
   }
 
-//    Суточный отчет без гашения 
-//    Команда:  40H. Длина сообщения: 5 байт. 
-//    ? Пароль администратора или системного администратора (4 байта) 
-//    Ответ:    40H. Длина сообщения: 3 байта. 
-//    ? Код ошибки (1 байт) 
-//    ? Порядковый номер оператора (1 байт) 29, 30   
+//    п║я┐я┌п╬я┤п╫я▀п╧ п╬я┌я┤п╣я┌ п╠п╣п╥ пЁп╟я┬п╣п╫п╦я▐ 
+//    п п╬п╪п╟п╫п╢п╟:  40H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 5 п╠п╟п╧я┌. 
+//    ? п÷п╟я─п╬п╩я▄ п╟п╢п╪п╦п╫п╦я│я┌я─п╟я┌п╬я─п╟ п╦п╩п╦ я│п╦я│я┌п╣п╪п╫п╬пЁп╬ п╟п╢п╪п╦п╫п╦я│я┌я─п╟я┌п╬я─п╟ (4 п╠п╟п╧я┌п╟) 
+//    п·я┌п╡п╣я┌:    40H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 3 п╠п╟п╧я┌п╟. 
+//    ? п п╬п╢ п╬я┬п╦п╠п╨п╦ (1 п╠п╟п╧я┌) 
+//    ? п÷п╬я─я▐п╢п╨п╬п╡я▀п╧ п╫п╬п╪п╣я─ п╬п©п╣я─п╟я┌п╬я─п╟ (1 п╠п╟п╧я┌) 29, 30   
   public int makeXReport() throws FrException
   {
     return execCmd((byte)0x40, pwd_oper, null);
   }
 
-  // 41h - Суточный отчет с гашением
-//    Команда:  41H. Длина сообщения: 5 байт. 
-//    ? Пароль администратора или системного администратора (4 байта) 
-//    Ответ:    41H. Длина сообщения: 3 байта. 
-//    ? Код ошибки (1 байт) 
-//    ? Порядковый номер оператора (1 байт) 29, 30 
+  // 41h - п║я┐я┌п╬я┤п╫я▀п╧ п╬я┌я┤п╣я┌ я│ пЁп╟я┬п╣п╫п╦п╣п╪
+//    п п╬п╪п╟п╫п╢п╟:  41H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 5 п╠п╟п╧я┌. 
+//    ? п÷п╟я─п╬п╩я▄ п╟п╢п╪п╦п╫п╦я│я┌я─п╟я┌п╬я─п╟ п╦п╩п╦ я│п╦я│я┌п╣п╪п╫п╬пЁп╬ п╟п╢п╪п╦п╫п╦я│я┌я─п╟я┌п╬я─п╟ (4 п╠п╟п╧я┌п╟) 
+//    п·я┌п╡п╣я┌:    41H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 3 п╠п╟п╧я┌п╟. 
+//    ? п п╬п╢ п╬я┬п╦п╠п╨п╦ (1 п╠п╟п╧я┌) 
+//    ? п÷п╬я─я▐п╢п╨п╬п╡я▀п╧ п╫п╬п╪п╣я─ п╬п©п╣я─п╟я┌п╬я─п╟ (1 п╠п╟п╧я┌) 29, 30 
   public int makeClrZReport() throws FrException
   {
     return execCmd((byte)0x41, pwd_oper, null);
   }
 
-  // 50h - внесение
-//    Команда:  50H. Длина сообщения: 10 байт. 
-//    ? Пароль оператора (4 байта) 
-//    ? Сумма (5 байт) 
-//    Ответ:    50H. Длина сообщения: 5 байт. 
-//    ? Код ошибки (1 байт) 
-//    ? Порядковый номер оператора (1 байт) 1?30 
-//    ? Сквозной номер документа (2 байта)
+  // 50h - п╡п╫п╣я│п╣п╫п╦п╣
+//    п п╬п╪п╟п╫п╢п╟:  50H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 10 п╠п╟п╧я┌. 
+//    ? п÷п╟я─п╬п╩я▄ п╬п©п╣я─п╟я┌п╬я─п╟ (4 п╠п╟п╧я┌п╟) 
+//    ? п║я┐п╪п╪п╟ (5 п╠п╟п╧я┌) 
+//    п·я┌п╡п╣я┌:    50H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 5 п╠п╟п╧я┌. 
+//    ? п п╬п╢ п╬я┬п╦п╠п╨п╦ (1 п╠п╟п╧я┌) 
+//    ? п÷п╬я─я▐п╢п╨п╬п╡я▀п╧ п╫п╬п╪п╣я─ п╬п©п╣я─п╟я┌п╬я─п╟ (1 п╠п╟п╧я┌) 1?30 
+//    ? п║п╨п╡п╬п╥п╫п╬п╧ п╫п╬п╪п╣я─ п╢п╬п╨я┐п╪п╣п╫я┌п╟ (2 п╠п╟п╧я┌п╟)
   public int payInOper(long sum) throws FrException
   {
     byte[] par = new byte[9];
@@ -1294,14 +1294,14 @@ public class FrDrv implements FrConst
     return execCmd((byte)0x50, par);
   }
 
-  // 51h - выплата
-//    Команда:  51H. Длина сообщения: 10 байт. 
-//    ? Пароль оператора (4 байта) 
-//    ? Сумма (5 байт) 
-//    Ответ:    51H. Длина сообщения: 5 байт. 
-//    ? Код ошибки (1 байт) 
-//    ? Порядковый номер оператора (1 байт) 1?30 
-//    ? Сквозной номер документа (2 байта) 
+  // 51h - п╡я▀п©п╩п╟я┌п╟
+//    п п╬п╪п╟п╫п╢п╟:  51H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 10 п╠п╟п╧я┌. 
+//    ? п÷п╟я─п╬п╩я▄ п╬п©п╣я─п╟я┌п╬я─п╟ (4 п╠п╟п╧я┌п╟) 
+//    ? п║я┐п╪п╪п╟ (5 п╠п╟п╧я┌) 
+//    п·я┌п╡п╣я┌:    51H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 5 п╠п╟п╧я┌. 
+//    ? п п╬п╢ п╬я┬п╦п╠п╨п╦ (1 п╠п╟п╧я┌) 
+//    ? п÷п╬я─я▐п╢п╨п╬п╡я▀п╧ п╫п╬п╪п╣я─ п╬п©п╣я─п╟я┌п╬я─п╟ (1 п╠п╟п╧я┌) 1?30 
+//    ? п║п╨п╡п╬п╥п╫п╬п╧ п╫п╬п╪п╣я─ п╢п╬п╨я┐п╪п╣п╫я┌п╟ (2 п╠п╟п╧я┌п╟) 
   public int payOutOper(long sum) throws FrException
   {
     byte[] par = new byte[9];
@@ -1312,20 +1312,20 @@ public class FrDrv implements FrConst
   }
 
 
-//    Команда:  80H, 81H, 82H, 84H. Длина сообщения: 60 байт. 
-//    ? Пароль оператора (4 байта) 
-//    ? Количество (5 байт) 0000000000?9999999999 
-//    ? Цена (5 байт) 0000000000?9999999999 
-//    ? Номер отдела (1 байт) 0?16 
-//    ? Налог 1 (1 байт) ?0? ? нет, ?1???4? ? налоговая группа 
-//    ? Налог 2 (1 байт) ?0? ? нет, ?1???4? ? налоговая группа 
-//    ? Налог 3 (1 байт) ?0? ? нет, ?1???4? ? налоговая группа 
-//    ? Налог 4 (1 байт) ?0? ? нет, ?1???4? ? налоговая группа 
-//    ? Текст (40 байт) 
-//    Ответ:    80H. Длина сообщения: 3 байта. 
-//    ? Код ошибки (1 байт) 
-//    ? Порядковый номер оператора (1 байт) 1?30 
-    // дополнительно, позиция в чеке
+//    п п╬п╪п╟п╫п╢п╟:  80H, 81H, 82H, 84H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 60 п╠п╟п╧я┌. 
+//    ? п÷п╟я─п╬п╩я▄ п╬п©п╣я─п╟я┌п╬я─п╟ (4 п╠п╟п╧я┌п╟) 
+//    ? п п╬п╩п╦я┤п╣я│я┌п╡п╬ (5 п╠п╟п╧я┌) 0000000000?9999999999 
+//    ? п╕п╣п╫п╟ (5 п╠п╟п╧я┌) 0000000000?9999999999 
+//    ? п²п╬п╪п╣я─ п╬я┌п╢п╣п╩п╟ (1 п╠п╟п╧я┌) 0?16 
+//    ? п²п╟п╩п╬пЁ 1 (1 п╠п╟п╧я┌) ?0? ? п╫п╣я┌, ?1???4? ? п╫п╟п╩п╬пЁп╬п╡п╟я▐ пЁя─я┐п©п©п╟ 
+//    ? п²п╟п╩п╬пЁ 2 (1 п╠п╟п╧я┌) ?0? ? п╫п╣я┌, ?1???4? ? п╫п╟п╩п╬пЁп╬п╡п╟я▐ пЁя─я┐п©п©п╟ 
+//    ? п²п╟п╩п╬пЁ 3 (1 п╠п╟п╧я┌) ?0? ? п╫п╣я┌, ?1???4? ? п╫п╟п╩п╬пЁп╬п╡п╟я▐ пЁя─я┐п©п©п╟ 
+//    ? п²п╟п╩п╬пЁ 4 (1 п╠п╟п╧я┌) ?0? ? п╫п╣я┌, ?1???4? ? п╫п╟п╩п╬пЁп╬п╡п╟я▐ пЁя─я┐п©п©п╟ 
+//    ? п╒п╣п╨я│я┌ (40 п╠п╟п╧я┌) 
+//    п·я┌п╡п╣я┌:    80H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 3 п╠п╟п╧я┌п╟. 
+//    ? п п╬п╢ п╬я┬п╦п╠п╨п╦ (1 п╠п╟п╧я┌) 
+//    ? п÷п╬я─я▐п╢п╨п╬п╡я▀п╧ п╫п╬п╪п╣я─ п╬п©п╣я─п╟я┌п╬я─п╟ (1 п╠п╟п╧я┌) 1?30 
+    // п╢п╬п©п╬п╩п╫п╦я┌п╣п╩я▄п╫п╬, п©п╬п╥п╦я├п╦я▐ п╡ я┤п╣п╨п╣
     private int checkPosition(byte cmd, long quan, long price, int section, 
                                byte n1, byte n2, byte n3, byte n4, String text) throws FrException
     {
@@ -1344,53 +1344,53 @@ public class FrDrv implements FrConst
       return execCmd(cmd, par);
     }
 
-  // 80h - Продажа
+  // 80h - п÷я─п╬п╢п╟п╤п╟
   public int salePosition(long quan, long price, int section, byte n1, byte n2, byte n3, byte n4, String text) throws FrException
   {
     return checkPosition((byte)0x80, quan, price, section, n1, n2, n3, n4, text);
   }
 
-  // 81h - Покупка
+  // 81h - п÷п╬п╨я┐п©п╨п╟
   public int buyPosition(long quan, long price, int section, byte n1, byte n2, byte n3, byte n4, String text) throws FrException
   {
     return checkPosition((byte)0x81, quan, price, section, n1, n2, n3, n4, text);
   }
 
-  // 82h - Возврат продажи         
+  // 82h - п▓п╬п╥п╡я─п╟я┌ п©я─п╬п╢п╟п╤п╦         
   public int saleReturnPosition(long quan, long price, int section, byte n1, byte n2, byte n3, byte n4, String text) throws FrException
   {
     return checkPosition((byte)0x82, quan, price, section, n1, n2, n3, n4, text);
   }
 
-  // 83h - Возврат покупки
+  // 83h - п▓п╬п╥п╡я─п╟я┌ п©п╬п╨я┐п©п╨п╦
   public int buyReturnPosition(long quan, long price, int section, byte n1, byte n2, byte n3, byte n4, String text) throws FrException
   {
     return checkPosition((byte)0x83, quan, price, section, n1, n2, n3, n4, text);
   }
 
-  // 84h - строно
+  // 84h - я│я┌я─п╬п╫п╬
   public int cancelPosition(long quan, long price, int section, byte n1, byte n2, byte n3, byte n4, String text) throws FrException
   {
     return checkPosition((byte)0x84, quan, price, section, n1, n2, n3, n4, text);
   }
 
-  // 85h - Закрытие чека
-//    Команда:  85H. Длина сообщения: 71 байт. 
-//    ? Пароль оператора (4 байта) 
-//    ? Сумма наличных (5 байт) 0000000000?9999999999 
-//    ? Сумма типа оплаты 2 (5 байт) 0000000000?9999999999 
-//    ? Сумма типа оплаты 3 (5 байт) 0000000000?9999999999 
-//    ? Сумма типа оплаты 4 (5 байт) 0000000000?9999999999 
-//    ? Скидка в % на чек от 0 до 99,99 % (2 байта) 0000?9999 
-//    ? Налог 1 (1 байт) ?0? ? нет, ?1???4? ? налоговая группа 
-//    ? Налог 2 (1 байт) ?0? ? нет, ?1???4? ? налоговая группа 
-//    ? Налог 3 (1 байт) ?0? ? нет, ?1???4? ? налоговая группа 
-//    ? Налог 4 (1 байт) ?0? ? нет, ?1???4? ? налоговая группа 
-//    ? Текст (40 байт) 
-//    Ответ:    85H. Длина сообщения: 8 байт. 
-//    ? Код ошибки (1 байт) 
-//    ? Порядковый номер оператора (1 байт) 1?30 
-//    ? Сдача (5 байт) 0000000000?9999999999 
+  // 85h - п≈п╟п╨я─я▀я┌п╦п╣ я┤п╣п╨п╟
+//    п п╬п╪п╟п╫п╢п╟:  85H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 71 п╠п╟п╧я┌. 
+//    ? п÷п╟я─п╬п╩я▄ п╬п©п╣я─п╟я┌п╬я─п╟ (4 п╠п╟п╧я┌п╟) 
+//    ? п║я┐п╪п╪п╟ п╫п╟п╩п╦я┤п╫я▀я┘ (5 п╠п╟п╧я┌) 0000000000?9999999999 
+//    ? п║я┐п╪п╪п╟ я┌п╦п©п╟ п╬п©п╩п╟я┌я▀ 2 (5 п╠п╟п╧я┌) 0000000000?9999999999 
+//    ? п║я┐п╪п╪п╟ я┌п╦п©п╟ п╬п©п╩п╟я┌я▀ 3 (5 п╠п╟п╧я┌) 0000000000?9999999999 
+//    ? п║я┐п╪п╪п╟ я┌п╦п©п╟ п╬п©п╩п╟я┌я▀ 4 (5 п╠п╟п╧я┌) 0000000000?9999999999 
+//    ? п║п╨п╦п╢п╨п╟ п╡ % п╫п╟ я┤п╣п╨ п╬я┌ 0 п╢п╬ 99,99 % (2 п╠п╟п╧я┌п╟) 0000?9999 
+//    ? п²п╟п╩п╬пЁ 1 (1 п╠п╟п╧я┌) ?0? ? п╫п╣я┌, ?1???4? ? п╫п╟п╩п╬пЁп╬п╡п╟я▐ пЁя─я┐п©п©п╟ 
+//    ? п²п╟п╩п╬пЁ 2 (1 п╠п╟п╧я┌) ?0? ? п╫п╣я┌, ?1???4? ? п╫п╟п╩п╬пЁп╬п╡п╟я▐ пЁя─я┐п©п©п╟ 
+//    ? п²п╟п╩п╬пЁ 3 (1 п╠п╟п╧я┌) ?0? ? п╫п╣я┌, ?1???4? ? п╫п╟п╩п╬пЁп╬п╡п╟я▐ пЁя─я┐п©п©п╟ 
+//    ? п²п╟п╩п╬пЁ 4 (1 п╠п╟п╧я┌) ?0? ? п╫п╣я┌, ?1???4? ? п╫п╟п╩п╬пЁп╬п╡п╟я▐ пЁя─я┐п©п©п╟ 
+//    ? п╒п╣п╨я│я┌ (40 п╠п╟п╧я┌) 
+//    п·я┌п╡п╣я┌:    85H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 8 п╠п╟п╧я┌. 
+//    ? п п╬п╢ п╬я┬п╦п╠п╨п╦ (1 п╠п╟п╧я┌) 
+//    ? п÷п╬я─я▐п╢п╨п╬п╡я▀п╧ п╫п╬п╪п╣я─ п╬п©п╣я─п╟я┌п╬я─п╟ (1 п╠п╟п╧я┌) 1?30 
+//    ? п║п╢п╟я┤п╟ (5 п╠п╟п╧я┌) 0000000000?9999999999 
   public int closeCheck(long nal, long pt2, long pt3, long pt4, int dsc_pc, 
                           byte n1, byte n2, byte n3, byte n4, String text) throws FrException
   {
@@ -1410,22 +1410,22 @@ public class FrDrv implements FrConst
     strToBuf(par, text, 40, 30);
     
     return execCmd((byte)0x85, par);
-    // сдача в результате TODO
+    // я│п╢п╟я┤п╟ п╡ я─п╣п╥я┐п╩я▄я┌п╟я┌п╣ TODO
   }
 
 /*
-Скидка
-Команда:  86H. Длина сообщения: 54 байт.
-? Пароль оператора (4 байта)
-? Сумма (5 байт) 0000000000?9999999999
-? Налог 1 (1 байт) ?0? ? нет, ?1???4? ? налоговая группа
-? Налог 2 (1 байт) ?0? ? нет, ?1???4? ? налоговая группа
-? Налог 3 (1 байт) ?0? ? нет, ?1???4? ? налоговая группа
-? Налог 4 (1 байт) ?0? ? нет, ?1???4? ? налоговая группа
-? Текст (40 байт)
-Ответ:    86H. Длина сообщения: 3 байта.
-? Код ошибки (1 байт)
-? Порядковый номер оператора (1 байт) 1?30
+п║п╨п╦п╢п╨п╟
+п п╬п╪п╟п╫п╢п╟:  86H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 54 п╠п╟п╧я┌.
+? п÷п╟я─п╬п╩я▄ п╬п©п╣я─п╟я┌п╬я─п╟ (4 п╠п╟п╧я┌п╟)
+? п║я┐п╪п╪п╟ (5 п╠п╟п╧я┌) 0000000000?9999999999
+? п²п╟п╩п╬пЁ 1 (1 п╠п╟п╧я┌) ?0? ? п╫п╣я┌, ?1???4? ? п╫п╟п╩п╬пЁп╬п╡п╟я▐ пЁя─я┐п©п©п╟
+? п²п╟п╩п╬пЁ 2 (1 п╠п╟п╧я┌) ?0? ? п╫п╣я┌, ?1???4? ? п╫п╟п╩п╬пЁп╬п╡п╟я▐ пЁя─я┐п©п©п╟
+? п²п╟п╩п╬пЁ 3 (1 п╠п╟п╧я┌) ?0? ? п╫п╣я┌, ?1???4? ? п╫п╟п╩п╬пЁп╬п╡п╟я▐ пЁя─я┐п©п©п╟
+? п²п╟п╩п╬пЁ 4 (1 п╠п╟п╧я┌) ?0? ? п╫п╣я┌, ?1???4? ? п╫п╟п╩п╬пЁп╬п╡п╟я▐ пЁя─я┐п©п©п╟
+? п╒п╣п╨я│я┌ (40 п╠п╟п╧я┌)
+п·я┌п╡п╣я┌:    86H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 3 п╠п╟п╧я┌п╟.
+? п п╬п╢ п╬я┬п╦п╠п╨п╦ (1 п╠п╟п╧я┌)
+? п÷п╬я─я▐п╢п╨п╬п╡я▀п╧ п╫п╬п╪п╣я─ п╬п©п╣я─п╟я┌п╬я─п╟ (1 п╠п╟п╧я┌) 1?30
 */
     private int _dscPos(byte cmd, long sum, byte n1, byte n2, byte n3, byte n4, String text) throws FrException
     {
@@ -1449,48 +1449,48 @@ public class FrDrv implements FrConst
 
 
 /*
-Надбавка
-Команда:  87H. Длина сообщения: 54 байт.
-? Пароль оператора (4 байта)
-? Сумма (5 байт) 0000000000?9999999999
-? Налог 1 (1 байт) ?0? ? нет, ?1???4? ? налоговая группа
-? Налог 2 (1 байт) ?0? ? нет, ?1???4? ? налоговая группа
-? Налог 3 (1 байт) ?0? ? нет, ?1???4? ? налоговая группа
-? Налог 4 (1 байт) ?0? ? нет, ?1???4? ? налоговая группа
-? Текст (40 байт)
-Ответ:    87H. Длина сообщения: 3 байта.
-? Код ошибки (1 байт)
-? Порядковый номер оператора (1 байт) 1?30
+п²п╟п╢п╠п╟п╡п╨п╟
+п п╬п╪п╟п╫п╢п╟:  87H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 54 п╠п╟п╧я┌.
+? п÷п╟я─п╬п╩я▄ п╬п©п╣я─п╟я┌п╬я─п╟ (4 п╠п╟п╧я┌п╟)
+? п║я┐п╪п╪п╟ (5 п╠п╟п╧я┌) 0000000000?9999999999
+? п²п╟п╩п╬пЁ 1 (1 п╠п╟п╧я┌) ?0? ? п╫п╣я┌, ?1???4? ? п╫п╟п╩п╬пЁп╬п╡п╟я▐ пЁя─я┐п©п©п╟
+? п²п╟п╩п╬пЁ 2 (1 п╠п╟п╧я┌) ?0? ? п╫п╣я┌, ?1???4? ? п╫п╟п╩п╬пЁп╬п╡п╟я▐ пЁя─я┐п©п©п╟
+? п²п╟п╩п╬пЁ 3 (1 п╠п╟п╧я┌) ?0? ? п╫п╣я┌, ?1???4? ? п╫п╟п╩п╬пЁп╬п╡п╟я▐ пЁя─я┐п©п©п╟
+? п²п╟п╩п╬пЁ 4 (1 п╠п╟п╧я┌) ?0? ? п╫п╣я┌, ?1???4? ? п╫п╟п╩п╬пЁп╬п╡п╟я▐ пЁя─я┐п©п©п╟
+? п╒п╣п╨я│я┌ (40 п╠п╟п╧я┌)
+п·я┌п╡п╣я┌:    87H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 3 п╠п╟п╧я┌п╟.
+? п п╬п╢ п╬я┬п╦п╠п╨п╦ (1 п╠п╟п╧я┌)
+? п÷п╬я─я▐п╢п╨п╬п╡я▀п╧ п╫п╬п╪п╣я─ п╬п©п╣я─п╟я┌п╬я─п╟ (1 п╠п╟п╧я┌) 1?30
 */
   public int echargePos(long sum, byte n1, byte n2, byte n3, byte n4, String text) throws FrException
   {
     return _dscPos((byte)0x87, sum, n1, n2, n3, n4, text);
   }
 
-  // 88h - Аннулирование чека
-//      Команда:  88H. Длина сообщения: 5 байт. 
-//    ? Пароль оператора (4 байта) 
-//    Ответ:    88H. Длина сообщения: 3 байта. 
-//    ? Код ошибки (1 байт) 
-//    ? Порядковый номер оператора (1 байт) 1?30 
+  // 88h - п░п╫п╫я┐п╩п╦я─п╬п╡п╟п╫п╦п╣ я┤п╣п╨п╟
+//      п п╬п╪п╟п╫п╢п╟:  88H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 5 п╠п╟п╧я┌. 
+//    ? п÷п╟я─п╬п╩я▄ п╬п©п╣я─п╟я┌п╬я─п╟ (4 п╠п╟п╧я┌п╟) 
+//    п·я┌п╡п╣я┌:    88H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 3 п╠п╟п╧я┌п╟. 
+//    ? п п╬п╢ п╬я┬п╦п╠п╨п╦ (1 п╠п╟п╧я┌) 
+//    ? п÷п╬я─я▐п╢п╨п╬п╡я▀п╧ п╫п╬п╪п╣я─ п╬п©п╣я─п╟я┌п╬я─п╟ (1 п╠п╟п╧я┌) 1?30 
   public int calcelCheck() throws FrException
   {
     return execCmd((byte)0x88, pwd_oper, null);
   }
 
-  // 8Dh - открыть чек (0 - чек продажи)
+  // 8Dh - п╬я┌п╨я─я▀я┌я▄ я┤п╣п╨ (0 - я┤п╣п╨ п©я─п╬п╢п╟п╤п╦)
   public int openCheck(byte check_type) throws FrException
   {
     return execCmd((byte)0x8D, pwd_oper, new byte[]{check_type});
   }
 
 
-//    Продолжение печати 
-//    Команда: B0h. Длина сообщения: 5 байт.
-//    ? Пароль оператора, администратора или системного администратора (4 байта)
-//    Ответ: B0H. Длина сообщения: 3 байта.
-//    ? Код ошибки (1 байт)
-//    ? Порядковый номер оператора (1 байт) 1?30   
+//    п÷я─п╬п╢п╬п╩п╤п╣п╫п╦п╣ п©п╣я┤п╟я┌п╦ 
+//    п п╬п╪п╟п╫п╢п╟: B0h. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 5 п╠п╟п╧я┌.
+//    ? п÷п╟я─п╬п╩я▄ п╬п©п╣я─п╟я┌п╬я─п╟, п╟п╢п╪п╦п╫п╦я│я┌я─п╟я┌п╬я─п╟ п╦п╩п╦ я│п╦я│я┌п╣п╪п╫п╬пЁп╬ п╟п╢п╪п╦п╫п╦я│я┌я─п╟я┌п╬я─п╟ (4 п╠п╟п╧я┌п╟)
+//    п·я┌п╡п╣я┌: B0H. п■п╩п╦п╫п╟ я│п╬п╬п╠я┴п╣п╫п╦я▐: 3 п╠п╟п╧я┌п╟.
+//    ? п п╬п╢ п╬я┬п╦п╠п╨п╦ (1 п╠п╟п╧я┌)
+//    ? п÷п╬я─я▐п╢п╨п╬п╡я▀п╧ п╫п╬п╪п╣я─ п╬п©п╣я─п╟я┌п╬я─п╟ (1 п╠п╟п╧я┌) 1?30   
   public int continuePrint() throws FrException
   {
     return execCmd((byte)0xB0, pwd_oper, null);

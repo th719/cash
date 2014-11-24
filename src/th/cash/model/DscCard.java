@@ -1,10 +1,10 @@
 package th.cash.model;
 
-// накопительная карта, некоторые атрибуты опущены
+// п╫п╟п╨п╬п©п╦я┌п╣п╩я▄п╫п╟я▐ п╨п╟я─я┌п╟, п╫п╣п╨п╬я┌п╬я─я▀п╣ п╟я┌я─п╦п╠я┐я┌я▀ п╬п©я┐я┴п╣п╫я▀
 public class DscCard implements Comparable
 {
   private String id_num; 
-  private String name = null; // зачем ?
+  private String name = null; // п╥п╟я┤п╣п╪ ?
   private String ct;
   private Double amass_sum;
   private Integer auto_id;

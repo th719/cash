@@ -14,9 +14,9 @@ import javax.comm.SerialPort;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-// "драйвер" Pos дисплея, Firich, PosLab ...
+// "п╢я─п╟п╧п╡п╣я─" Pos п╢п╦я│п©п╩п╣я▐, Firich, PosLab ...
 
-// 12.11.2010 доработка ... переделать под конкретный протокол  CD5220 
+// 12.11.2010 п╢п╬я─п╟п╠п╬я┌п╨п╟ ... п©п╣я─п╣п╢п╣п╩п╟я┌я▄ п©п╬п╢ п╨п╬п╫п╨я─п╣я┌п╫я▀п╧ п©я─п╬я┌п╬п╨п╬п╩  CD5220 
 public class PosDisp extends Thread implements CustDisplay 
 {
   //
@@ -60,7 +60,7 @@ public class PosDisp extends Thread implements CustDisplay
     CommPort cp = cpid.open("PosDisp", timeout);
 
     if (cp instanceof SerialPort) serial_port = (SerialPort)cp;
-      else throw new Exception("Запрошенное устройство не является последовательным портом");
+      else throw new Exception("п≈п╟п©я─п╬я┬п╣п╫п╫п╬п╣ я┐я│я┌я─п╬п╧я│я┌п╡п╬ п╫п╣ я▐п╡п╩я▐п╣я┌я│я▐ п©п╬я│п╩п╣п╢п╬п╡п╟я┌п╣п╩я▄п╫я▀п╪ п©п╬я─я┌п╬п╪");
 
     serial_port.setSerialPortParams(
       speed, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
@@ -82,7 +82,7 @@ public class PosDisp extends Thread implements CustDisplay
 //
 //    synchronized (buf)
 //    {
-//      if (!data_set) return; //!!! выход, если данные уже отображены
+//      if (!data_set) return; //!!! п╡я▀я┘п╬п╢, п╣я│п╩п╦ п╢п╟п╫п╫я▀п╣ я┐п╤п╣ п╬я┌п╬п╠я─п╟п╤п╣п╫я▀
 //      cbuf = new byte[2 * STR_LEN];
 //      System.arraycopy(buf, 0, cbuf, 0, 2 * STR_LEN);
 //    }
@@ -103,20 +103,20 @@ public class PosDisp extends Thread implements CustDisplay
 
     synchronized (buf)
     {
-      if (!data_set) return; //!!! выход, если данные уже отображены
+      if (!data_set) return; //!!! п╡я▀я┘п╬п╢, п╣я│п╩п╦ п╢п╟п╫п╫я▀п╣ я┐п╤п╣ п╬я┌п╬п╠я─п╟п╤п╣п╫я▀
       cbuf = new byte[2 * (STR_LEN + 4)];
 
       cbuf[0] = ESC_BYTE;
       cbuf[1] = TEXT_MODE;
       cbuf[2] = LINE1_BYTE;
-      System.arraycopy(buf, 0, cbuf, 3, STR_LEN); // первую строку
+      System.arraycopy(buf, 0, cbuf, 3, STR_LEN); // п©п╣я─п╡я┐я▌ я│я┌я─п╬п╨я┐
       cbuf[STR_LEN + 3] = FIN_BYTE;
 
       // line 2
       cbuf[STR_LEN + 4] = ESC_BYTE;
       cbuf[STR_LEN + 5] = TEXT_MODE;
       cbuf[STR_LEN + 6] = LINE2_BYTE;
-      System.arraycopy(buf, STR_LEN, cbuf, STR_LEN + 7, STR_LEN); // первую строку
+      System.arraycopy(buf, STR_LEN, cbuf, STR_LEN + 7, STR_LEN); // п©п╣я─п╡я┐я▌ я│я┌я─п╬п╨я┐
       cbuf[2 * STR_LEN + 7] = FIN_BYTE;
       
     }

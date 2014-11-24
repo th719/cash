@@ -10,20 +10,20 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
 
-// общие данные авторизации 
+// п╬п╠я┴п╦п╣ п╢п╟п╫п╫я▀п╣ п╟п╡я┌п╬я─п╦п╥п╟я├п╦п╦ 
 
 public class AuthData 
 {
 
 /*
-  protected char   statusFlag = FConst.FILL_CHAR;   // флаг 
-  protected String msgN       = null;               // уникальный номер транзакции [4]
-  protected char   entryMode  = FConst.FILL_CHAR;   // тип ввода [1], K/R
-  protected String cardNo     = null;               // номер карты [..19]
-  protected String expDate    = null;               // срок действия карты [4], YYMM
-  protected String transDate  = null;                 // дата DDMMYY
-  protected String transTime  = null;                 // и время транзакции  HHMMSS
-  protected String authCode   = null;                 // Код авторизации (оффлайн транзакция) [9]
+  protected char   statusFlag = FConst.FILL_CHAR;   // я└п╩п╟пЁ 
+  protected String msgN       = null;               // я┐п╫п╦п╨п╟п╩я▄п╫я▀п╧ п╫п╬п╪п╣я─ я┌я─п╟п╫п╥п╟п╨я├п╦п╦ [4]
+  protected char   entryMode  = FConst.FILL_CHAR;   // я┌п╦п© п╡п╡п╬п╢п╟ [1], K/R
+  protected String cardNo     = null;               // п╫п╬п╪п╣я─ п╨п╟я─я┌я▀ [..19]
+  protected String expDate    = null;               // я│я─п╬п╨ п╢п╣п╧я│я┌п╡п╦я▐ п╨п╟я─я┌я▀ [4], YYMM
+  protected String transDate  = null;                 // п╢п╟я┌п╟ DDMMYY
+  protected String transTime  = null;                 // п╦ п╡я─п╣п╪я▐ я┌я─п╟п╫п╥п╟п╨я├п╦п╦  HHMMSS
+  protected String authCode   = null;                 // п п╬п╢ п╟п╡я┌п╬я─п╦п╥п╟я├п╦п╦ (п╬я└я└п╩п╟п╧п╫ я┌я─п╟п╫п╥п╟п╨я├п╦я▐) [9]
   
 
   public char   getStatusFlag() { return statusFlag; }
@@ -44,7 +44,7 @@ public class AuthData
 
 */
   // *********************************************************************
-  // новый вариант 
+  // п╫п╬п╡я▀п╧ п╡п╟я─п╦п╟п╫я┌ 
   public AuthData()
   {
     this(null);
@@ -55,9 +55,9 @@ public class AuthData
     rdata  = s;
   }
 
-  private String rdata; // 198 символов ()
+  private String rdata; // 198 я│п╦п╪п╡п╬п╩п╬п╡ ()
 
-  // индексы начинаются с 1, как в мануале
+  // п╦п╫п╢п╣п╨я│я▀ п╫п╟я┤п╦п╫п╟я▌я┌я│я▐ я│ 1, п╨п╟п╨ п╡ п╪п╟п╫я┐п╟п╩п╣
   private static int[] _getFParams(int f_ind)
   {
     return FConst.FLD_IND[f_ind - 1];
@@ -83,7 +83,7 @@ public class AuthData
   {
     return _fill(s, FConst.FILL_CHAR, len);
   }
-  // заполнить нужными символами до указанной длины
+  // п╥п╟п©п╬п╩п╫п╦я┌я▄ п╫я┐п╤п╫я▀п╪п╦ я│п╦п╪п╡п╬п╩п╟п╪п╦ п╢п╬ я┐п╨п╟п╥п╟п╫п╫п╬п╧ п╢п╩п╦п╫я▀
   private static String _fill(String s, char fc, int len)
   {
     if (s == null) s = "";
@@ -93,7 +93,7 @@ public class AuthData
         {
           StringBuffer sb = new StringBuffer();
           for (int i = slen; i<len; i++) sb.append(fc);
-          return s + sb.toString(); // выровнено по правому краю
+          return s + sb.toString(); // п╡я▀я─п╬п╡п╫п╣п╫п╬ п©п╬ п©я─п╟п╡п╬п╪я┐ п╨я─п╟я▌
         }
   }
 ////////////////////////////////////////////////////////////////
@@ -132,8 +132,8 @@ public class AuthData
       trans_date, trans_time, auth_code, track2_data, trans_type, amount, trm_n);
   }
 
-  // создение строки по атрибутам запроса
-  // основной метод
+  // я│п╬п╥п╢п╣п╫п╦п╣ я│я┌я─п╬п╨п╦ п©п╬ п╟я┌я─п╦п╠я┐я┌п╟п╪ п╥п╟п©я─п╬я│п╟
+  // п╬я│п╫п╬п╡п╫п╬п╧ п╪п╣я┌п╬п╢
   public static AuthData createAuthData(
     char sf, String f13, char f20, String f26,
     String msg_n, boolean akeyb,  String card_no, String exp_date, 
@@ -143,7 +143,7 @@ public class AuthData
   {
     StringBuffer sb = new StringBuffer(197);
 
-    // добавляем поля фиксированной длины по описанию
+    // п╢п╬п╠п╟п╡п╩я▐п╣п╪ п©п╬п╩я▐ я└п╦п╨я│п╦я─п╬п╡п╟п╫п╫п╬п╧ п╢п╩п╦п╫я▀ п©п╬ п╬п©п╦я│п╟п╫п╦я▌
     sb.append(sf/*FConst.FILL_CHAR*/);  // 1
     sb.append(_fill(msg_n, _getFParams(2)[1]));
     sb.append(akeyb ? FConst.EM_KEY : FConst.EM_READER);
@@ -190,8 +190,8 @@ public class AuthData
   }
 
   // factory
-  // только online - авторизация
-  // msg_n нужно только для отмены транзакции
+  // я┌п╬п╩я▄п╨п╬ online - п╟п╡я┌п╬я─п╦п╥п╟я├п╦я▐
+  // msg_n п╫я┐п╤п╫п╬ я┌п╬п╩я▄п╨п╬ п╢п╩я▐ п╬я┌п╪п╣п╫я▀ я┌я─п╟п╫п╥п╟п╨я├п╦п╦
   public static AuthData createAuthData(
     String msg_n, boolean akeyb, String card_no, String exp_date, 
     String track2_data, char trans_type, double amount, String trm_n)
@@ -200,7 +200,7 @@ public class AuthData
     return createAuthData(msg_n, akeyb, card_no, exp_date, null, null, null, track2_data, trans_type, amount, trm_n);
   }
 
-  // общий метод для продажи по безналу
+  // п╬п╠я┴п╦п╧ п╪п╣я┌п╬п╢ п╢п╩я▐ п©я─п╬п╢п╟п╤п╦ п©п╬ п╠п╣п╥п╫п╟п╩я┐
   public static AuthData createSaleAuthData( boolean akeyb, String card_no, 
     String exp_date, String track2_data, double amount, String trm_n)
       throws UnsupportedEncodingException
@@ -208,7 +208,7 @@ public class AuthData
     return createAuthData(null, akeyb, card_no, exp_date, null, null, null, track2_data, FConst.TT_SALE, amount, trm_n);
   }
 
-  // при использовании ридера
+  // п©я─п╦ п╦я│п©п╬п╩я▄п╥п╬п╡п╟п╫п╦п╦ я─п╦п╢п╣я─п╟
   public static AuthData createAuthData(
     String msg_n, String track2_data, char trans_type, double amount, String trm_n)
       throws UnsupportedEncodingException
@@ -258,9 +258,9 @@ public class AuthData
     } else
     if (akey == FConst.SF_DENY)
     {
-      return "Ошибка авторизации (" + ans.getCharValue(20) + ":" + ans.getValue(26) + ")";
+      return "п·я┬п╦п╠п╨п╟ п╟п╡я┌п╬я─п╦п╥п╟я├п╦п╦ (" + ans.getCharValue(20) + ":" + ans.getValue(26) + ")";
     } else
-      return null; // без атрибута ответа
+      return null; // п╠п╣п╥ п╟я┌я─п╦п╠я┐я┌п╟ п╬я┌п╡п╣я┌п╟
   }
 
   public static String getErrComents(AuthData ans)
@@ -287,7 +287,7 @@ public class AuthData
     return c + ":" + ans.getValue(13) + " & " + ans.getValue(26) + f26d;
   }
 
-  /// транзакция для закрытия смены
+  /// я┌я─п╟п╫п╥п╟п╨я├п╦я▐ п╢п╩я▐ п╥п╟п╨я─я▀я┌п╦я▐ я│п╪п╣п╫я▀
   public String _makeTrStr()
   {
     String s_exp_date = getValue(5);
@@ -310,7 +310,7 @@ public class AuthData
     System.out.println(rdata);
   }
 
-  // строка запроса / ответа
+  // я│я┌я─п╬п╨п╟ п╥п╟п©я─п╬я│п╟ / п╬я┌п╡п╣я┌п╟
   public String getData() { return rdata; }
 
 }

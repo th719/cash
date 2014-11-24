@@ -1,7 +1,7 @@
 /*
  * DocCashe.java
  *
- * Created on 20 Ноябрь 2007 г., 17:35
+ * Created on 20 п²п╬я▐п╠я─я▄ 2007 пЁ., 17:35
  *
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.
@@ -16,7 +16,7 @@ import th.common.util.RMath;
 import th.cash.fr.doc.Position;
 
 /**
- * Кэш данных для визуализации документа продажи/покупки
+ * п я█я┬ п╢п╟п╫п╫я▀я┘ п╢п╩я▐ п╡п╦п╥я┐п╟п╩п╦п╥п╟я├п╦п╦ п╢п╬п╨я┐п╪п╣п╫я┌п╟ п©я─п╬п╢п╟п╤п╦/п©п╬п╨я┐п©п╨п╦
  * @author lazarev
  */
 public class DocCashe extends VectorDataCashe {
@@ -39,7 +39,7 @@ public class DocCashe extends VectorDataCashe {
     }
     
     
-    // перенумеровать действительные позиции
+    // п©п╣я─п╣п╫я┐п╪п╣я─п╬п╡п╟я┌я▄ п╢п╣п╧я│я┌п╡п╦я┌п╣п╩я▄п╫я▀п╣ п©п╬п╥п╦я├п╦п╦
     public void renumber()
     {
         int i = 0;
@@ -59,7 +59,7 @@ public class DocCashe extends VectorDataCashe {
     public int getNumPos()
     {
       int i = 0;
-      int cnt = 0; // количество регистраций (без сторно)
+      int cnt = 0; // п╨п╬п╩п╦я┤п╣я│я┌п╡п╬ я─п╣пЁп╦я│я┌я─п╟я├п╦п╧ (п╠п╣п╥ я│я┌п╬я─п╫п╬)
       VRow row;
       for (i = 0; i < size(); i++)
       {
@@ -71,7 +71,7 @@ public class DocCashe extends VectorDataCashe {
     }
         
     
-    // создать новую строку
+    // я│п╬п╥п╢п╟я┌я▄ п╫п╬п╡я┐я▌ я│я┌я─п╬п╨я┐
     public VRow createNewRow_()
     {
         return createNewRow(NUM_COLS);

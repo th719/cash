@@ -1,6 +1,6 @@
 package th.cash.model;
 
-// Скидка/схема накопительная
+// п║п╨п╦п╢п╨п╟/я│я┘п╣п╪п╟ п╫п╟п╨п╬п©п╦я┌п╣п╩я▄п╫п╟я▐
 public class AmassDsc implements Comparable
 {
   private Integer d_id;

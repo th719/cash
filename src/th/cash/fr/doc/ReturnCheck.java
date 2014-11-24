@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import th.cash.model.User;
 
 /**
- * Чек возврата (переопределено закрытие и отмена)
+ * п╖п╣п╨ п╡п╬п╥п╡я─п╟я┌п╟ (п©п╣я─п╣п╬п©я─п╣п╢п╣п╩п╣п╫п╬ п╥п╟п╨я─я▀я┌п╦п╣ п╦ п╬я┌п╪п╣п╫п╟)
  */
 public class ReturnCheck extends Check 
 {
@@ -36,34 +36,34 @@ public class ReturnCheck extends Check
 
 
 
-    // если есть скидка на чек - добавляем транзакцию детализации
-    // определиться со знаками getCheckDscSum() - сумму скидки берем с минусом
-    // и процедуру восстановления
+    // п╣я│п╩п╦ п╣я│я┌я▄ я│п╨п╦п╢п╨п╟ п╫п╟ я┤п╣п╨ - п╢п╬п╠п╟п╡п╩я▐п╣п╪ я┌я─п╟п╫п╥п╟п╨я├п╦я▌ п╢п╣я┌п╟п╩п╦п╥п╟я├п╦п╦
+    // п╬п©я─п╣п╢п╣п╩п╦я┌я▄я│я▐ я│п╬ п╥п╫п╟п╨п╟п╪п╦ getCheckDscSum() - я│я┐п╪п╪я┐ я│п╨п╦п╢п╨п╦ п╠п╣я─п╣п╪ я│ п╪п╦п╫я┐я│п╬п╪
+    // п╦ п©я─п╬я├п╣п╢я┐я─я┐ п╡п╬я│я│я┌п╟п╫п╬п╡п╩п╣п╫п╦я▐
     if (getCheckDscSum() != 0)
     {
-      // для совместимости - еще и транзакция итога по скидкам
+      // п╢п╩я▐ я│п╬п╡п╪п╣я│я┌п╦п╪п╬я│я┌п╦ - п╣я┴п╣ п╦ я┌я─п╟п╫п╥п╟п╨я├п╦я▐ п╦я┌п╬пЁп╟ п©п╬ я│п╨п╦п╢п╨п╟п╪
       int tt;
       tt = getCheckDscPc() == 0 ? Transaction.ITOG_DSC_SUM : Transaction.ITOG_DSC_PC;
       transactions.add(
         new Transaction(-1, null, tt, getCashNum(), getDocNum(), u.getCode().intValue(), "0", 1, 0, getCheckDscPc() == 0 ? -getCheckDscSum() : getCheckDscPc(), -getCheckDscSum(), null, null));
 
-      // и детализация      
+      // п╦ п╢п╣я┌п╟п╩п╦п╥п╟я├п╦я▐      
       transactions.add(
         new Transaction(-1, null, Transaction.CHECK_DSC_DET, getCashNum(), getDocNum(), u.getCode().intValue(), "0", 1, 0, getCheckDscPc(), -getCheckDscSum(), null, null));
     }
 
-    // оплата наличными (для возврата ТОЛЬКО НАЛИЧНЫЕ)
+    // п╬п©п╩п╟я┌п╟ п╫п╟п╩п╦я┤п╫я▀п╪п╦ (п╢п╩я▐ п╡п╬п╥п╡я─п╟я┌п╟ п╒п·п⌡п╛п п· п²п░п⌡п≤п╖п²п╚п∙)
     if (getNalSum() > 0)
       transactions.add(
         Transaction.createPayment(getCashNum(), getDocNum(), u.getCode().intValue(), "0", -getChange(), 1, -getNalSum()));
 
 
-     // собственно транзакция закрытия
+     // я│п╬п╠я│я┌п╡п╣п╫п╫п╬ я┌я─п╟п╫п╥п╟п╨я├п╦я▐ п╥п╟п╨я─я▀я┌п╦я▐
     transactions.add(
       Transaction.createCloseCheck(getCashNum(), getDocNum(), u.getCode().intValue(), -getSum()));
 
 
-    // ставим признак того, что транзакции закрытия чека добавлены
+    // я│я┌п╟п╡п╦п╪ п©я─п╦п╥п╫п╟п╨ я┌п╬пЁп╬, я┤я┌п╬ я┌я─п╟п╫п╥п╟п╨я├п╦п╦ п╥п╟п╨я─я▀я┌п╦я▐ я┤п╣п╨п╟ п╢п╬п╠п╟п╡п╩п╣п╫я▀
 //    close_tr_added = true;
 
   }
@@ -83,8 +83,8 @@ public class ReturnCheck extends Check
     transactions.add(
       Transaction.createCancelCheck(getCashNum(), getDocNum(), u.getCode().intValue(), -getSum()));
 
-    // признак того, что добавлена транзакция отмены чека
-//    cancel_tr_added = true;  убрано, определяется проверкой списка транзакций
+    // п©я─п╦п╥п╫п╟п╨ я┌п╬пЁп╬, я┤я┌п╬ п╢п╬п╠п╟п╡п╩п╣п╫п╟ я┌я─п╟п╫п╥п╟п╨я├п╦я▐ п╬я┌п╪п╣п╫я▀ я┤п╣п╨п╟
+//    cancel_tr_added = true;  я┐п╠я─п╟п╫п╬, п╬п©я─п╣п╢п╣п╩я▐п╣я┌я│я▐ п©я─п╬п╡п╣я─п╨п╬п╧ я│п©п╦я│п╨п╟ я┌я─п╟п╫п╥п╟п╨я├п╦п╧
   }
 
 }

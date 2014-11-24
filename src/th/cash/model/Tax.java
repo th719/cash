@@ -5,8 +5,8 @@ public class Tax implements Comparable
   private Integer taxId;
   private String taxName;
   private Integer gtaxId;
-  private Double  taxPc;   // ставка налога
-  private Integer kkmNum;  // номер в регистраторе
+  private Double  taxPc;   // я│я┌п╟п╡п╨п╟ п╫п╟п╩п╬пЁп╟
+  private Integer kkmNum;  // п╫п╬п╪п╣я─ п╡ я─п╣пЁп╦я│я┌я─п╟я┌п╬я─п╣
 
   public Tax(Integer taxId, String taxName, Integer gtaxId, Double  taxPc, Integer kkmNum)
   {

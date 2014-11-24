@@ -14,7 +14,7 @@ public class ATrUtil
     num_fmt.setMaximumFractionDigits(2);
   }
 
-  // здесь длина полей !
+  // п╥п╢п╣я│я▄ п╢п╩п╦п╫п╟ п©п╬п╩п╣п╧ !
   /*
   public String makeAuthReqStr(AuthReq r)
   {
@@ -29,14 +29,14 @@ public class ATrUtil
   }
 
  */
-  // исключительно разбор строки ответа без анализа флагов и параметров
+  // п╦я│п╨п╩я▌я┤п╦я┌п╣п╩я▄п╫п╬ я─п╟п╥п╠п╬я─ я│я┌я─п╬п╨п╦ п╬я┌п╡п╣я┌п╟ п╠п╣п╥ п╟п╫п╟п╩п╦п╥п╟ я└п╩п╟пЁп╬п╡ п╦ п©п╟я─п╟п╪п╣я┌я─п╬п╡
  /*
   public AuthAns parseAuthReply(String s) throws Exception
   {
     int len = s.length();
 
     if (len != FConst.FIXED_AUTH_LEN)
-      throw new Exception("Некорректна длина ответа");
+      throw new Exception("п²п╣п╨п╬я─я─п╣п╨я┌п╫п╟ п╢п╩п╦п╫п╟ п╬я┌п╡п╣я┌п╟");
   
     String ms = s.substring(0, len - 3);
 
@@ -44,7 +44,7 @@ public class ATrUtil
     char scc = s.charAt(len - 3);
 
     if (cur_cc != scc)
-      throw new Exception("Некорректна контрольная сумма");
+      throw new Exception("п²п╣п╨п╬я─я─п╣п╨я┌п╫п╟ п╨п╬п╫я┌я─п╬п╩я▄п╫п╟я▐ я│я┐п╪п╪п╟");
 
     char sf, em, error_code;
 
@@ -77,7 +77,7 @@ public class ATrUtil
       auth_code, trans_id, msg, card_type, trm_id, merch_n, error_code, resp_code);
   }
 */
-  // что может из этого получиться - совсем непонятно
+  // я┤я┌п╬ п╪п╬п╤п╣я┌ п╦п╥ я█я┌п╬пЁп╬ п©п╬п╩я┐я┤п╦я┌я▄я│я▐ - я│п╬п╡я│п╣п╪ п╫п╣п©п╬п╫я▐я┌п╫п╬
   private char countControlChar(String s)
   {
     char cc = (char)0;
@@ -85,7 +85,7 @@ public class ATrUtil
     return (char) ((cc & 0x3F) | 0x0030);
   }
 
-  // 2 вариант
+  // 2 п╡п╟я─п╦п╟п╫я┌
   private byte countControlChar(byte[] sb)
   {
     byte cb = (byte)0;
@@ -97,7 +97,7 @@ public class ATrUtil
   {
     return _fill(s, FConst.FILL_CHAR, len);
   }
-  // заполнить нужными символами до указанной длины
+  // п╥п╟п©п╬п╩п╫п╦я┌я▄ п╫я┐п╤п╫я▀п╪п╦ я│п╦п╪п╡п╬п╩п╟п╪п╦ п╢п╬ я┐п╨п╟п╥п╟п╫п╫п╬п╧ п╢п╩п╦п╫я▀
   private String _fill(String s, char fc, int len)
   {
     if (s == null) s = "";
@@ -107,7 +107,7 @@ public class ATrUtil
         {
           StringBuffer sb = new StringBuffer();
           for (int i = slen; i<len; i++) sb.append(fc);
-          return s + sb; // выровнено по правому краю
+          return s + sb; // п╡я▀я─п╬п╡п╫п╣п╫п╬ п©п╬ п©я─п╟п╡п╬п╪я┐ п╨я─п╟я▌
         }
    
   }

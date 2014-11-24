@@ -4,7 +4,7 @@ public class PermException extends UserException
 {
   public PermException()
   {
-    this("Операция запрещена в настройках");
+    this("п·п©п╣я─п╟я├п╦я▐ п╥п╟п©я─п╣я┴п╣п╫п╟ п╡ п╫п╟я│я┌я─п╬п╧п╨п╟я┘");
   }
 
   public PermException(String msg)

@@ -3,7 +3,7 @@ package th.cash.model;
 import java.util.Comparator;
 
 /**
- * Класс для поиска по векторо элементов Barcode...?
+ * п п╩п╟я│я│ п╢п╩я▐ п©п╬п╦я│п╨п╟ п©п╬ п╡п╣п╨я┌п╬я─п╬ я█п╩п╣п╪п╣п╫я┌п╬п╡ Barcode...?
  */
 
 public class BCCmp 
