@@ -10,7 +10,7 @@
       <ConnectionName>sth_th</ConnectionName>
       <SID>th</SID>
       <JdbcDriver>oracle.jdbc.driver.OracleDriver</JdbcDriver>
-      <password>eidm,13qvd8</password>
+      <password>123</password>
       <ORACLE_JDBC_TYPE>thin</ORACLE_JDBC_TYPE>
    </connection>
    <connection>
